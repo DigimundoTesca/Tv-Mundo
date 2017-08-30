@@ -1,0 +1,24 @@
+{% extends 'base/nav.html'%}
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/vid.css' %}">
+{% endblock link %}
+
+{% block content %}
+    <div class="container content">
+      <div class="col-md-12">
+        <div class="card video">
+          <video controls>
+            <source src="{{video.link}}" type="video/mp4">
+          </video>
+          <h4><b>{{ video.name }}</b></h4>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock content %}
+{% block javascript %}
+
+
+{% endblock javascript %}

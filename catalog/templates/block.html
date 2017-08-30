@@ -1,0 +1,40 @@
+{% extends 'base/nav_search.html' %}
+{% load static %}
+{% block link %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/blocks.css' %}">
+{% endblock link %}
+
+{% block content %}
+
+<div class="container" id='main'>
+  <div class="row">
+    {% for video in videos %}
+    <div class="col-md-3">
+      <div class="card b1">
+        <div id="{% url "catalog:vid" video.pk %}" class="container content">
+          <h4><b>{{ video.name }}</b></h4>
+        </div>
+      </div>
+    </div>
+    {% endfor%}
+  </div>
+</div>
+
+{% endblock content %}
+{% block javascript %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" charset="utf-8" defer>
+
+$(document).ready(function() {
+
+  $(".b1").on("click",function(e){
+    var pk = $(this).children('.content').attr('id');
+    window.location = pk
+  });
+
+
+});
+</script>
+
+
+{% endblock javascript %}
