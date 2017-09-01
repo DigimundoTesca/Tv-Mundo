@@ -15,6 +15,30 @@ def catalog(request):
     return render(request, template, context)
 
 @login_required(login_url='users:login')
+def videos(request):
+    template = 'videos.html'
+    category = Category.objects.all()
+
+    title = 'Catalogo - Documentos'
+    context = {
+        'category' : category,
+        'title': title,
+    }
+    return render(request, template, context)
+
+@login_required(login_url='users:login')
+def documents(request):
+    template = 'documents.html'
+    category = Category.objects.all()
+
+    title = 'Catalogo - Videos'
+    context = {
+        'category' : category,
+        'title': title,
+    }
+    return render(request, template, context)
+
+@login_required(login_url='users:login')
 def docs(request, pk):
     video = get_object_or_404(Videos, pk=pk)
     template = 'vid.html'
@@ -46,5 +70,14 @@ def block(request, name):
     context = {
         'videos': videos,
         'title': title,
+    }
+    return render(request, template, context)
+
+def home(request):
+    template = 'home.html'
+    videos = Videos.objects.all()
+    context = {
+        'videos': videos,
+        'title': "Tv Mundo",
     }
     return render(request, template, context)

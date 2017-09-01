@@ -2,7 +2,7 @@
   /* Add shadows to create the "card" effect */
   box-shadow: 5px 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
-  height: 40vh;
+  height: 80vh;
   margin-top: 30px;
 }
 
@@ -26,14 +26,14 @@
 }
 
 .content-title{
-  height: 25vh;
+  height: 65vh;
   padding: 70px 16px;
   color: white;
   background: #5c6bc0;
 }
 
 .vid-btn{
-  height: 15vh;
+  height: 10vh;
   padding-top: 20px;
   color: white;
   background: #8e99f3;
@@ -41,7 +41,7 @@
 
 .doc-btn{
   padding-top: 20px;
-  height: 15vh;
+  height: 10vh;
   color: white;
   background: #26418f;
 }
