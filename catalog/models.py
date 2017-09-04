@@ -42,8 +42,18 @@ class Videos(models.Model):
 
 class Docs(models.Model):
 
+    IMAGE = 'IMG'
+    PDF = 'PDF'
+    WORD = 'WRD'
+    TYPE = (
+        (IMAGE, 'Imagen'),
+        (PDF, 'PDF'),
+        (WORD, 'WORD'),
+    )
+
     name = models.CharField(max_length=125, unique=True)
     link = models.CharField(max_length=200, unique=True)
+    kind = models.CharField(choices=TYPE, default=IMAGE, max_length=3)
     category = models.ForeignKey(Category, default=1, on_delete=models.CASCADE)
     subcategory = models.ForeignKey(SubCategory, default=1, on_delete=models.CASCADE)
     created_at = models.DateTimeField(editable=False, auto_now=True)

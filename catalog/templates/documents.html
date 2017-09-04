@@ -1,1 +1,48 @@
 {% extends "base/nav.html" %}
+{%load static%}
+{% block link%}
+<link rel="stylesheet" href="{% static 'css/videos.css' %}">
+{% endblock link%}
+
+{% block content%}
+<div class="container container-videos">
+    {% for cat in category %}
+      <div class="row row-vid">
+        <div class="title">
+          <h4>{{ cat }}</h4>
+        </div>
+      </div>
+      <div class="row">
+        {% for doc in docs %}
+        {% if doc.category == cat %}
+        <div class="col-md-3 b1">
+          <div class="video" id="{% url "catalog:vid" 1 %}">
+            <img style="height:200px;"  src="{{doc.link}}" alt="">
+            <h6 class="text-center"><b>{{ doc.name }}</b></h6>
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+
+      </div>
+    {% endfor %}
+
+</div>
+{%endblock content%}
+
+{% block javascript %}
+<script type="text/javascript" charset="utf-8" defer>
+
+$(document).ready(function() {
+
+  $(".b1").on("click",function(e){
+    var pk = $(this).children('.content').attr('id');
+    window.location = pk
+  });
+
+
+});
+</script>
+
+
+{% endblock javascript %}

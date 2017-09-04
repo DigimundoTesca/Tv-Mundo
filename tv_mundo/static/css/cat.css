@@ -4,6 +4,7 @@
   transition: 0.3s;
   height: 80vh;
   margin-top: 30px;
+  cursor: pointer;
 }
 
 /* On mouse-over, add a deeper shadow */
@@ -33,15 +34,15 @@
 }
 
 .vid-btn{
-  height: 10vh;
-  padding-top: 20px;
+  height: 15vh;
+  padding-top: 10px;
   color: white;
   background: #8e99f3;
 }
 
 .doc-btn{
-  padding-top: 20px;
-  height: 10vh;
+  height: 15vh;
+  padding-top: 10px;
   color: white;
   background: #26418f;
 }

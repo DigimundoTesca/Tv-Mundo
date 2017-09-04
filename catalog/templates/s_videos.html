@@ -20,20 +20,6 @@
   </div>
 </div>
 
-<div class="container">
-  <div class="row">
-    {% for doc in docs %}
-    <div class="col-md-3">
-      <div class="card b1">
-        <div id="{% url "catalog:vid" doc.pk %}" class="container content">
-          <h4><b>{{ doc.name }}</b></h4>
-        </div>
-      </div>
-    </div>
-    {% endfor%}
-  </div>
-</div>
-
 {% endblock content %}
 {% block javascript %}
 <script type="text/javascript" charset="utf-8" defer>

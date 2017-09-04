@@ -1,7 +1,16 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from catalog.models import Videos, Category
+from catalog.models import Videos, Category, Docs
 # Create your views here.
+def home(request):
+    template = 'home.html'
+    videos = Videos.objects.all()
+    context = {
+        'videos': videos,
+        'title': "Tv Mundo",
+    }
+    return render(request, template, context)
+
 @login_required(login_url='users:login')
 def catalog(request):
     template = 'catalog.html'
@@ -17,11 +26,13 @@ def catalog(request):
 @login_required(login_url='users:login')
 def videos(request):
     template = 'videos.html'
-    category = Category.objects.all()
+    videos = Videos.objects.all()
+    categories = Category.objects.all()
 
     title = 'Catalogo - Documentos'
     context = {
-        'category' : category,
+        'videos' : videos,
+        'category' : categories,
         'title': title,
     }
     return render(request, template, context)
@@ -29,23 +40,47 @@ def videos(request):
 @login_required(login_url='users:login')
 def documents(request):
     template = 'documents.html'
-    category = Category.objects.all()
+    docs = Docs.objects.all()
+    categories = Category.objects.all()
 
-    title = 'Catalogo - Videos'
+    title = 'Catalogo - Documentos'
     context = {
-        'category' : category,
+        'docs' : docs,
+        'category' : categories,
+        'title': title,
+    }
+    return render(request, template, context)
+
+@login_required(login_url='users:login')
+def s_videos(request, name):
+    template = 's_videos.html'
+    videos = Videos.objects.all().filter(category__name=name)
+    title = name
+    context = {
+        'videos': videos,
+        'title': title,
+    }
+    return render(request, template, context)
+
+@login_required(login_url='users:login')
+def s_documents(request, name):
+    template = 's_documents.html'
+    docs = Docs.objects.all().filter(category__name=name)
+    title = name
+    context = {
+        'docs': docs,
         'title': title,
     }
     return render(request, template, context)
 
 @login_required(login_url='users:login')
 def docs(request, pk):
-    video = get_object_or_404(Videos, pk=pk)
-    template = 'vid.html'
-    title = 'MetaMundo - ' + video.name
+    doc = get_object_or_404(Docs, pk=pk)
+    template = 'doc.html'
+    title = 'MetaMundo - ' + doc.name
     context = {
         'page_title': 'PAGE_TITLE',
-        'video': video,
+        'doc': doc,
         'title': title
     }
     return render(request, template, context)
@@ -66,18 +101,11 @@ def vid(request, pk):
 def block(request, name):
     template = 'block.html'
     videos = Videos.objects.all().filter(category__name=name)
+    docs = Docs.objects.all().filter(category__name=name)
     title = name
     context = {
+        'docs': docs,
         'videos': videos,
         'title': title,
-    }
-    return render(request, template, context)
-
-def home(request):
-    template = 'home.html'
-    videos = Videos.objects.all()
-    context = {
-        'videos': videos,
-        'title': "Tv Mundo",
     }
     return render(request, template, context)
