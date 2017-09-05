@@ -22,7 +22,7 @@
 
 <div class="slider container-fluid">
   <div class="row">
-    {% for video in videos %}
+    {% for video in videos|slice:":3" %}
     <div class="col-md-4">
       <div class="video">
         <video class="video col-md-12">
