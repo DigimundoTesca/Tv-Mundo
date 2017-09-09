@@ -1,6 +1,6 @@
 {% extends "base/nav.html" %}
-{%load static%}
-{% block link%}
+{% load static %}
+{% block link %}
 <link rel="stylesheet" href="{% static 'css/videos.css' %}">
 {% endblock link%}
 
@@ -12,15 +12,14 @@
           <h4>{{ cat }}</h4>
         </div>
       </div>
-      <div class="row">
+      <div class="row regular">
         {% for video in videos %}
         {% if video.category == cat %}
-        <div class="col-md-3 b1">
-          <div class="video" id="{% url "catalog:vid" 1 %}">
-            <video class="video col-md-12">
-              <source src="{{video.link}}" type="video/mp4">
-            </video>
-            <h6 class="text-center"><b>{{ video.name }}</b></h6>
+        <div class="col-md-3">
+          <div class="card b1">
+            <div id="{% url "catalog:vid" video.pk %}" class="container content">
+              <h4><b>{{ video.name }}</b></h4>
+            </div>
           </div>
         </div>
         {% endif %}
@@ -36,6 +35,15 @@
 <script type="text/javascript" charset="utf-8" defer>
 
 $(document).ready(function() {
+
+  $(".regular").slick({
+    dots: true,
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 5000,
+  });
 
   $(".b1").on("click",function(e){
     var pk = $(this).children('.content').attr('id');
