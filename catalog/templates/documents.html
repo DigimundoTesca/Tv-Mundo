@@ -15,11 +15,6 @@
       <div class="row regular">
         {% for doc in docs %}
         {% if doc.category == cat %}
-        <div class="card b1">
-            <div id="{% url "catalog:docs" doc.pk %}" class="container content">
-              <img src="{{doc.link}}" class="image-p">
-            </div>
-        </div>
         <div class="card b1 align-items-center">
             <div id="{% url "catalog:docs" doc.pk %}" class="container content">
               <img src="{{doc.link}}" class="image-p">
@@ -41,9 +36,9 @@ $(document).ready(function() {
   $(".regular").slick({
     dots: true,
     infinite: true,
-    slidesToShow: 3,
+    slidesToShow: 2,
     slidesToScroll: 1,
-    autoplay: true,    
+    autoplay: true,
   });
 
   $(".b1").on("longclick",function(e){
