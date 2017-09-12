@@ -11,7 +11,6 @@ def home(request):
     }
     return render(request, template, context)
 
-@login_required(login_url='users:login')
 def catalog(request):
     template = 'catalog.html'
     category = Category.objects.all()
@@ -23,7 +22,6 @@ def catalog(request):
     }
     return render(request, template, context)
 
-@login_required(login_url='users:login')
 def videos(request):
     template = 'videos.html'
     videos = Videos.objects.all()
@@ -37,7 +35,6 @@ def videos(request):
     }
     return render(request, template, context)
 
-@login_required(login_url='users:login')
 def documents(request):
     template = 'documents.html'
     docs = Docs.objects.all()
@@ -51,7 +48,6 @@ def documents(request):
     }
     return render(request, template, context)
 
-@login_required(login_url='users:login')
 def s_videos(request, name):
     template = 's_videos.html'
     videos = Videos.objects.all().filter(category__name=name)
@@ -62,7 +58,6 @@ def s_videos(request, name):
     }
     return render(request, template, context)
 
-@login_required(login_url='users:login')
 def s_documents(request, name):
     template = 's_documents.html'
     docs = Docs.objects.all().filter(category__name=name)
@@ -73,7 +68,6 @@ def s_documents(request, name):
     }
     return render(request, template, context)
 
-@login_required(login_url='users:login')
 def docs(request, pk):
     doc = get_object_or_404(Docs, pk=pk)
     template = 'doc.html'
@@ -85,7 +79,6 @@ def docs(request, pk):
     }
     return render(request, template, context)
 
-@login_required(login_url='users:login')
 def vid(request, pk):
     video = get_object_or_404(Videos, pk=pk)
     template = 'vid.html'
@@ -97,7 +90,6 @@ def vid(request, pk):
     }
     return render(request, template, context)
 
-@login_required(login_url='users:login')
 def block(request, name):
     template = 'block.html'
     videos = Videos.objects.all().filter(category__name=name)
