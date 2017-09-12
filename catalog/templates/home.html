@@ -21,9 +21,13 @@
     {% for video in videos|slice:":6" %}
     <div class="col-md-3">
       <div class="card b1">
+        <div class="color">
+
+        </div>
         <div id="{% url "catalog:vid" video.pk %}" class="container content">
           <h4><b>{{ video.name }}</b></h4>
         </div>
+
       </div>
     </div>
     {% endfor%}
@@ -45,7 +49,7 @@
       var pk = $(this).children('.content').attr('id');
       window.location = pk
     });
-    
+
   });
 </script>
 {% endblock javascript %}
