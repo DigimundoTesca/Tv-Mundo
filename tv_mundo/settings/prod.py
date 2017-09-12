@@ -2,7 +2,7 @@ from tv_mundo.settings.base import *
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['.cristobal-jodorowsky.com']
 TEMPLATES[0]['OPTIONS']['debug'] = DEBUG
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
