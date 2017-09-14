@@ -8,7 +8,7 @@
   <div class="container title-container">
     <div class="row">
       <div id="title" class="col-md-12 text-center ">
-        <h1>Cristobal Jodorowsky</h1>
+        <h2>Cristobal Jodorowsky</h2>
       </div>
     </div>
     <div class="row">
@@ -17,21 +17,22 @@
       </div>
     </div>
   </div>
-  <section class="regular slider container-fluid">
-    {% for video in videos|slice:":6" %}
-    <div class="col-md-3">
-      <div class="card b1">
-        <div class="color">
-
+  <div id="recent-videos" class="container">
+    <h4 id="title-videos">Videos Recientes</h4>
+    <div class="regular slider">
+      {% for video in videos|slice:":6" %}
+      <div class="col-md-3">
+        <div class="card b1">
+          <div class="color">
+          </div>
+          <div id="{% url "catalog:vid" video.pk %}" class="content">
+            <h4><b>{{ video.name }}</b></h4>
+          </div>
         </div>
-        <div id="{% url "catalog:vid" video.pk %}" class="container content">
-          <h4><b>{{ video.name }}</b></h4>
-        </div>
-
       </div>
+      {% endfor%}
     </div>
-    {% endfor%}
-  </section>
+  </div>
 {% endblock content %}
 {% block javascript %}
 <script type="text/javascript">

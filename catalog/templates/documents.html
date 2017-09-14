@@ -5,26 +5,28 @@
 {% endblock link%}
 
 {% block content%}
-<div class="container container-videos">
+<div class="container container-docs">
     {% for cat in category %}
-      <div class="row row-vid">
+    <div class="row-cat">
+      <div class="row row-doc">
         <div class="title">
-          <h4>{{ cat }}</h4>
+          <h4>{{cat.name}}:  {{cat.title}}</h4>
         </div>
       </div>
-      <div class="row regular">
+      <div class="row slide-elements align-items-center">
         {% for doc in docs %}
         {% if doc.category == cat %}
-        <div class="card b1 align-items-center">
-            <div id="{% url "catalog:docs" doc.pk %}" class="container content">
-              <img src="{{doc.link}}" class="image-p">
-            </div>
+        <div class="element col-md-12">
+          <div id="{% url "catalog:docs" doc.pk %}" class="container content">
+            <h3>{{ doc.name }}</h3>
+            <img src="{{doc.link}}" alt="">
+          </div>
         </div>
         {% endif %}
         {% endfor %}
       </div>
+    </div>
     {% endfor %}
-
 </div>
 {%endblock content%}
 
@@ -33,7 +35,7 @@
 
 $(document).ready(function() {
 
-  $(".regular").slick({
+  $(".slide-elements").slick({
     dots: true,
     infinite: true,
     slidesToShow: 2,

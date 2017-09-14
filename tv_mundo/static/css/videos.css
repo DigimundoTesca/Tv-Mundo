@@ -1,22 +1,36 @@
+.container-videos{
+  margin-top: 30px;
+  padding: 20px;
+  box-shadow:
+}
+
+.row-cat{
+  border-radius: 20px;
+  background: grey;
+  margin-top: 10px;
+}
+
 .row-vid{
-  margin-top: 30px;
+  color: white;
+  margin: 0px;
+  padding-top: 10px;
+  padding-left: 10px;
 }
 
-.title{
-  text-align: center;
-}
-
-.card {
-  text-align: center;
+.slide-elements{
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  margin: auto;
   height: 20vh;
-  padding-top: 7vh;
+  background: rgb(26, 26, 26);
 }
 
-.card {
-  margin-top: 30px;
-  box-shadow: 0 8px 16px 4px rgba(0,0,0,0.2);
-  transition: 0.6s;
+.element{
+  margin: auto;
 }
-.card:hover {
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+
+h3{
+  color: white;
+  font-size: 2vh;
+  text-align: center;
 }

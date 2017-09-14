@@ -7,27 +7,25 @@
 {% block content%}
 <div class="container container-videos">
     {% for cat in category %}
+    <div class="row-cat">
       <div class="row row-vid">
-        <div class="title">
-          <h4>{{ cat }}</h4>
+        <div class="title"> 
+          <h4>{{cat.name}}:  {{cat.title}}</h4>
         </div>
       </div>
-      <div class="row regular">
+      <div class="row slide-elements align-items-center">
         {% for video in videos %}
         {% if video.category == cat %}
-        <div class="col-md-3">
-          <div class="card b1">
-            <div id="{% url "catalog:vid" video.pk %}" class="container content">
-              <h4><b>{{ video.name }}</b></h4>
-            </div>
+        <div class="element col-md-12">
+          <div id="{% url "catalog:vid" video.pk %}" class="container content">
+            <h3>{{ video.name }}</h3>
           </div>
         </div>
         {% endif %}
         {% endfor %}
-
       </div>
+    </div>
     {% endfor %}
-
 </div>
 {%endblock content%}
 
@@ -36,7 +34,7 @@
 
 $(document).ready(function() {
 
-  $(".regular").slick({
+  $(".slide-elements").slick({
     dots: true,
     infinite: true,
     slidesToShow: 3,
@@ -45,7 +43,7 @@ $(document).ready(function() {
     autoplaySpeed: 5000,
   });
 
-  $(".b1").on("click",function(e){
+  $(".element").on("click",function(e){
     var pk = $(this).children('.content').attr('id');
     window.location = pk
   });

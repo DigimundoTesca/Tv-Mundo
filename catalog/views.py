@@ -14,9 +14,13 @@ def home(request):
 def catalog(request):
     template = 'catalog.html'
     category = Category.objects.all()
+    videos = Videos.objects.all()
+    docs = Docs.objects.all()
 
     title = 'Catalogo'
     context = {
+        'docs' : docs,
+        'videos' : videos,
         'category' : category,
         'title': title,
     }

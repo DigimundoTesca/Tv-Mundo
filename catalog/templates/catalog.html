@@ -1,57 +1,65 @@
 {% extends "base/nav.html" %} {%load static%} {% block link %}
-  <link rel="stylesheet" type="text/css" href="{% static 'css/cat.css' %}"> {% endblock link %} {% block content %}
-  <div class="container-fluid container-main">
-    <div class="row">
-      {% for cat in category %}
-        <div class="col-md-3">
-          <div class="card main-card ">
-            <div class="container" id="{{cat.name}}">
-              <div class="row align-items-center">
-                <div class="card col-md-12 content-title">
-                  <h1><b>{{cat.name}}</b></h4>
-                  <h5>{{cat.title}}</h5>
-                </div>
-              </div>
-              <div class="row">
-                <div class="card col-md-6 vid-btn">
-                  <h1 style="font-size:75px;" class="material-icons">video_library</h1>
-                  <h4>Videos</h4>
-                </div>
-                <div class="card col-md-6 doc-btn">
-                  <h1 style="font-size:75px;" class="material-icons">insert_drive_file</h1>
-                  <h4>Documentos</h4>
-                </div>
-              </div>
-            </div>
-          </div>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/cat.css' %}">
+{% endblock link %}
+{% block content %}
+
+<div class="container">
+  <div class="row justify-content-around">
+    {% for cat in category %}
+    <div class="col-md-5 main-card">
+      <div id="{{cat.name}}">
+        <div class="col-md-12 content-title">
+          <h1>{{cat.title}}</h2>
+          <p>{{cat.name}}</p>
         </div>
-      {% endfor %}
+        <div class="col-md-12 vid-sect">
+          <h4><i class="icon material-icons">video_library</i>Videos</h4>
+        </div>
+        <div class="col-md-12 vid-btn">
+          <ul>
+            {% for vid in videos %}
+            {% if vid.category == cat %}
+              <li><i class="icon material-icons">play_circle_outline</i>{{vid.name}}</li>
+            {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="col-md-12 doc-sect">
+          <h4><i class="icon material-icons">folder</i>Documentos</h4>
+        </div>
+        <ul>
+          {% for doc in docs %}
+          {% if doc.category == cat %}
+            <li><i class="icon material-icons">play_circle_outline</i>{{doc.name}}</li>
+          {% endif %}
+          {% endfor %}
+        </ul>
+
+      </div>
     </div>
+    {% endfor %}
   </div>
-{% endblock content %} {% block javascript %}
+</div>
+{% endblock content %}
+{% block javascript %}
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" charset="utf-8" defer>
-  $(document).ready(function() {
-
-    $(".content-title").on("click", function(e) {
-      var name = $(this).parent().parent().attr('id');
-      var url_mask = "{% url 'catalog:block' 'var' %}".replace(/var/, name);
-      window.location = (url_mask);
-    });
-
-    $(".vid-btn").on("click", function(e) {
-      var name = $(this).parent().parent().attr('id');
-      var url_mask = "{% url 'catalog:s_videos' 'var' %}".replace(/var/, name);
-      window.location = (url_mask);
-    });
-
-    $(".doc-btn").on("click", function(e) {
-      var name = $(this).parent().parent().attr('id');
-      var url_mask = "{% url 'catalog:s_documents' 'var' %}".replace(/var/, name);
-      window.location = (url_mask);
-    });
-
+$(document).ready(function() {
+  $(".content-title").on("click", function(e) {
+    var name = $(this).parent().parent().attr('id');
+    var url_mask = "{% url 'catalog:block' 'var' %}".replace(/var/, name);
+    window.location = (url_mask);
   });
+  $(".vid-btn").on("click", function(e) {
+    var name = $(this).parent().parent().attr('id');
+    var url_mask = "{% url 'catalog:s_videos' 'var' %}".replace(/var/, name);
+    window.location = (url_mask);
+  });
+  $(".doc-btn").on("click", function(e) {
+    var name = $(this).parent().parent().attr('id');
+    var url_mask = "{% url 'catalog:s_documents' 'var' %}".replace(/var/, name);
+    window.location = (url_mask);
+  });
+});
 </script>
-
 {% endblock javascript %}
