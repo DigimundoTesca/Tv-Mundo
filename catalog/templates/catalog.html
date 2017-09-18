@@ -2,64 +2,62 @@
   <link rel="stylesheet" type="text/css" href="{% static 'css/cat.css' %}">
 {% endblock link %}
 {% block content %}
-
-<div class="container">
-  <div class="row justify-content-around">
-    {% for cat in category %}
-    <div class="col-md-5 main-card">
-      <div id="{{cat.name}}">
-        <div class="col-md-12 content-title">
-          <h1>{{cat.title}}</h2>
-          <p>{{cat.name}}</p>
+  <div class="container">
+    <div class="row justify-content-around">
+      {% for cat in category %}
+        <div class="col-md-5 main-card">
+          <div id="{{cat.name}}">
+            <div class="col-md-12 content-title">
+              <h1>{{cat.title}}</h2>
+              <p>{{cat.name}}</p>
+            </div>
+            <div class="col-md-12 vid-sect">
+              <h4><i class="icon material-icons">video_library</i>Videos</h4>
+            </div>
+            <div class="col-md-12 vid-btn">
+              <ul>
+                {% for vid in videos %}
+                  {% if vid.category == cat %}
+                    <li><i class="icon material-icons">play_circle_outline</i>{{vid.name}}</li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            </div>
+            <div class="col-md-12 doc-sect">
+              <h4><i class="icon material-icons">folder</i>Documentos</h4>
+            </div>
+            <ul>
+              {% for doc in docs %}
+                {% if doc.category == cat %}
+                  <li><i class="icon material-icons">play_circle_outline</i>{{doc.name}}</li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
         </div>
-        <div class="col-md-12 vid-sect">
-          <h4><i class="icon material-icons">video_library</i>Videos</h4>
-        </div>
-        <div class="col-md-12 vid-btn">
-          <ul>
-            {% for vid in videos %}
-            {% if vid.category == cat %}
-              <li><i class="icon material-icons">play_circle_outline</i>{{vid.name}}</li>
-            {% endif %}
-            {% endfor %}
-          </ul>
-        </div>
-        <div class="col-md-12 doc-sect">
-          <h4><i class="icon material-icons">folder</i>Documentos</h4>
-        </div>
-        <ul>
-          {% for doc in docs %}
-          {% if doc.category == cat %}
-            <li><i class="icon material-icons">play_circle_outline</i>{{doc.name}}</li>
-          {% endif %}
-          {% endfor %}
-        </ul>
-
-      </div>
+      {% endfor %}
     </div>
-    {% endfor %}
   </div>
-</div>
 {% endblock content %}
 {% block javascript %}
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script type="text/javascript" charset="utf-8" defer>
-$(document).ready(function() {
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type="text/javascript" charset="utf-8" defer>
+  $(document).ready(function() {
   $(".content-title").on("click", function(e) {
-    var name = $(this).parent().parent().attr('id');
-    var url_mask = "{% url 'catalog:block' 'var' %}".replace(/var/, name);
-    window.location = (url_mask);
+  var name = $(this).parent().parent().attr('id');
+  var url_mask = "{% url 'catalog:block' 'var' %}".replace(/var/, name);
+  window.location = (url_mask);
   });
   $(".vid-btn").on("click", function(e) {
-    var name = $(this).parent().parent().attr('id');
-    var url_mask = "{% url 'catalog:s_videos' 'var' %}".replace(/var/, name);
-    window.location = (url_mask);
+  var name = $(this).parent().parent().attr('id');
+  var url_mask = "{% url 'catalog:s_videos' 'var' %}".replace(/var/, name);
+  window.location = (url_mask);
   });
   $(".doc-btn").on("click", function(e) {
-    var name = $(this).parent().parent().attr('id');
-    var url_mask = "{% url 'catalog:s_documents' 'var' %}".replace(/var/, name);
-    window.location = (url_mask);
+  var name = $(this).parent().parent().attr('id');
+  var url_mask = "{% url 'catalog:s_documents' 'var' %}".replace(/var/, name);
+  window.location = (url_mask);
   });
-});
-</script>
+  });
+  </script>
 {% endblock javascript %}
