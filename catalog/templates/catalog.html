@@ -43,21 +43,21 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script type="text/javascript" charset="utf-8" defer>
   $(document).ready(function() {
-  $(".content-title").on("click", function(e) {
-  var name = $(this).parent().parent().attr('id');
-  var url_mask = "{% url 'catalog:block' 'var' %}".replace(/var/, name);
-  window.location = (url_mask);
-  });
-  $(".vid-btn").on("click", function(e) {
-  var name = $(this).parent().parent().attr('id');
-  var url_mask = "{% url 'catalog:s_videos' 'var' %}".replace(/var/, name);
-  window.location = (url_mask);
-  });
-  $(".doc-btn").on("click", function(e) {
-  var name = $(this).parent().parent().attr('id');
-  var url_mask = "{% url 'catalog:s_documents' 'var' %}".replace(/var/, name);
-  window.location = (url_mask);
-  });
+    $(".content-title").on("click", function(e) {
+      var name = $(this).parent().parent().attr('id');
+      var url_mask = "{% url 'catalog:block' 'var' %}".replace(/var/, name);
+      window.location = (url_mask);
+    });
+    $(".vid-btn").on("click", function(e) {
+      var name = $(this).parent().parent().attr('id');
+      var url_mask = "{% url 'catalog:s_videos' 'var' %}".replace(/var/, name);
+      window.location = (url_mask);
+    });
+    $(".doc-btn").on("click", function(e) {
+      var name = $(this).parent().parent().attr('id');
+      var url_mask = "{% url 'catalog:s_documents' 'var' %}".replace(/var/, name);
+      window.location = (url_mask);
+    });
   });
   </script>
 {% endblock javascript %}

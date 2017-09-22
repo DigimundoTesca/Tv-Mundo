@@ -7,43 +7,61 @@
 {% block content %}
   <div class="container title-container">
     <div class="row">
-      <div id="title" class="col-md-12 text-center ">
-        <h2>Cristobal Jodorowsky</h2>
-      </div>
-    </div>
-    <div class="row">
-      <div id="subtitle" class="col-md-12 text-center">
-        <h3>MetaMundo - Online</h3>
+      <div id="subtitle" class="col-md-12">
+        <h2>MetaMundo - Online</h3>
       </div>
     </div>
   </div>
-  <div id="recent-videos" class="container">
-    <h4 id="title-videos">Videos Recientes</h4>
-    <div class="regular slider">
-      {% for video in videos|slice:":6" %}
-      <div class="col-md-3">
-        <div class="card b1">
-          <div class="color">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <div class="title">
+          <h3>Explora nuestros Bloques</h3>
+
+        </div>
+        <div class="section">
+          <img class="img-bg" src="{% static 'images/logo-meta.png' %}" alt="">
+        </div>
+        <div class="section">
+          <img class="img-bg" src="{% static 'images/psicoteatro_front.jpg' %}" alt="">
+        </div>
+        <div class="section">
+          <img class="img-bg" src="{% static 'images/psicomagia_front.jpg' %}" alt="">
+        </div>
+        <div class="section">
+          <img class="img-bg" src="{% static 'images/psicochamanismo_front.jpg' %}" alt="">
+        </div>
+
+      </div>
+      <div class="videos-slider col-md-3">
+        <h4 id="title-videos">Videos Recientes</h4>
+        <div class="regular">
+          {% for video in videos|slice:":6" %}
+          <div class="vid">
+            <div id="{% url "catalog:vid" video.pk %}" class="content">
+              <b>{{ video.name }}</b>
+            </div>
+            <div>
+              <img class="video-img" src="{% static 'images/video.png' %}" alt="">
+            </div>
           </div>
-          <div id="{% url "catalog:vid" video.pk %}" class="content">
-            <h4><b>{{ video.name }}</b></h4>
-          </div>
+          {% endfor%}
         </div>
       </div>
-      {% endfor%}
     </div>
   </div>
+
 {% endblock content %}
 {% block javascript %}
 <script type="text/javascript">
   $(document).on('ready', function () {
     $(".regular").slick({
-      dots: true,
-      infinite: true,
+      vertical: true,
+      verticalSwiping: true,
       slidesToShow: 3,
       slidesToScroll: 1,
       autoplay: true,
-      autoplaySpeed: 5000,
+      autoplaySpeed: 10000,
     });
 
     $(".b1").on("click",function(e){
