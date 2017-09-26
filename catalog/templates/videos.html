@@ -5,20 +5,23 @@
 {% endblock link%}
 
 {% block content%}
-<div class="container container-videos">
+<div class="container-fluid container-videos">
     {% for cat in category %}
     <div class="row-cat">
       <div class="row row-vid">
-        <div class="title"> 
+        <div class="title">
           <h4>{{cat.name}}:  {{cat.title}}</h4>
         </div>
       </div>
-      <div class="row slide-elements align-items-center">
+      <div class="row slide-elements">
         {% for video in videos %}
         {% if video.category == cat %}
-        <div class="element col-md-12">
-          <div id="{% url "catalog:vid" video.pk %}" class="container content">
-            <h3>{{ video.name }}</h3>
+        <div class="element">
+          <div id="{% url "catalog:vid" video.pk %}" class="content">
+            <div class="">
+              <img class="video-img" src="{% static 'images/video.jpg' %}" alt="">
+            </div>
+            <h5>{{ video.name }}</h5>
           </div>
         </div>
         {% endif %}
@@ -35,9 +38,8 @@
 $(document).ready(function() {
 
   $(".slide-elements").slick({
-    dots: true,
     infinite: true,
-    slidesToShow: 3,
+    slidesToShow: 5,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 5000,
