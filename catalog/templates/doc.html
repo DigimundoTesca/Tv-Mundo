@@ -2,15 +2,24 @@
 {% load static %}
 
 {% block link %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/vid.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/doc.css' %}">
 {% endblock link %}
 
 {% block content %}
     <div class="container content">
       <div class="col-md-12">
-        <div class="card video">
-          <img src="{{ doc.link }}" alt="">
-          <h4><b>{{ doc.name }}</b></h4>
+        <div class="video">
+          {% if doc.kind == 'IMG' %}
+            <h4><b>{{ doc.name }}</b></h4>
+            <img src="{{ doc.link }}" alt="">
+          {% endif %}
+          {% if doc.kind == 'PDF' %}
+            <h4><b>{{ doc.name }}</b></h4>
+            <embed src="{{ doc.link }}">
+          {% endif %}
+          {% if doc.kind == 'WRD' %}
+            <h4><b>{{ doc.name }}</b></h4>
+          {% endif %}
           </div>
         </div>
       </div>

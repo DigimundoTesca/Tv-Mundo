@@ -1,36 +1,12 @@
 .container-docs{
   margin-top: 30px;
-  padding: 20px;
-  box-shadow:
 }
 
-.row-cat{
-  border-radius: 20px;
-  background: grey;
-  margin-top: 10px;
-}
-
-.row-doc{
-  color: white;
-  margin: 0px;
-  padding-top: 10px;
-  padding-left: 10px;
-}
-
-.slide-elements{
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-  margin: auto;
-  height: 20vh;
-  background: rgb(26, 26, 26);
-}
-
-.element{
+.img-sld{
   margin: auto;
 }
 
 h3{
-  color: white;
   font-size: 2vh;
   text-align: center;
 }

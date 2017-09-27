@@ -6,27 +6,37 @@
 
 {% block content%}
 <div class="container container-docs">
-    {% for cat in category %}
+  {% for cat in category %}
     <div class="row-cat">
-      <div class="row row-doc">
-        <div class="title">
-          <h4>{{cat.name}}:  {{cat.title}}</h4>
-        </div>
+      <div class="title">
+        <h4>{{cat.name}}:  {{cat.title}}</h4>
       </div>
       <div class="row slide-elements align-items-center">
         {% for doc in docs %}
-        {% if doc.category == cat %}
-        <div class="element col-md-12">
-          <div id="{% url "catalog:docs" doc.pk %}" class="container content">
-            <h3>{{ doc.name }}</h3>
-            <img src="{{doc.link}}" alt="">
-          </div>
-        </div>
-        {% endif %}
+          {% if doc.category == cat %}
+            {% if doc.kind == 'IMG' %}
+              <div id="{% url "catalog:docs" doc.pk %}" class="container content col-md-12 element {{doc.kind}}">
+                <img class="img-sld" src="{{doc.link}}" alt="">
+                <h3>{{ doc.name }}</h3>
+              </div>
+            {% endif %}
+            {% if doc.kind == 'PDF' %}
+              <div id="{% url "catalog:docs" doc.pk %}" class="container content col-md-12 element {{doc.kind}}">
+                <img class="img-sld" src="{% static 'images/pdf_logo.png' %}" alt="">
+                <h3>{{ doc.name }}</h3>
+              </div>
+            {% endif %}
+            {% if doc.kind == 'WRD' %}
+              <div id="{% url "catalog:docs" doc.pk %}" class="container content col-md-12 element {{doc.kind}}">
+                <img class="img-sld" src="{% static 'images/hw_logo.png' %}" alt="">
+                <h3>{{ doc.name }}</h3>
+              </div>
+            {% endif %}
+          {% endif %}
         {% endfor %}
       </div>
     </div>
-    {% endfor %}
+  {% endfor %}
 </div>
 {%endblock content%}
 
@@ -36,15 +46,15 @@
 $(document).ready(function() {
 
   $(".slide-elements").slick({
-    dots: true,
-    infinite: true,
-    slidesToShow: 2,
+    slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
+    autoplaySpeed: 5000,
+    arrows: false,
   });
 
-  $(".b1").on("longclick",function(e){
-    var pk = $(this).children('.content').attr('id');
+  $(".element").on("click",function(e){
+    var pk = $(this).attr('id');
     window.location = pk
   });
 

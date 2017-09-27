@@ -5,7 +5,7 @@
 {% endblock link%}
 
 {% block content%}
-<div class="container-fluid container-videos">
+<div class="container-fluid container">
     {% for cat in category %}
     <div class="row-cat">
       <div class="row row-vid">
@@ -16,8 +16,8 @@
       <div class="row slide-elements">
         {% for video in videos %}
         {% if video.category == cat %}
-        <div class="element">
           <div id="{% url "catalog:vid" video.pk %}" class="content">
+            <div class="element">
             <div class="">
               <img class="video-img" src="{% static 'images/video.jpg' %}" alt="">
             </div>
@@ -39,10 +39,43 @@ $(document).ready(function() {
 
   $(".slide-elements").slick({
     infinite: true,
-    slidesToShow: 5,
+    slidesToShow: 8,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 5000,
+    arrows: false,
+    responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        infinite: true,
+        slidesToShow: 6,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 5000,
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        infinite: true,
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 5000,
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 5000,
+      }
+    }
+  ]
   });
 
   $(".element").on("click",function(e){
