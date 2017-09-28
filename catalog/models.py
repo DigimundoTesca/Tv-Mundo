@@ -4,7 +4,7 @@ from django.core.validators import MaxValueValidator, MinLengthValidator
 
 class Category(models.Model):
     name = models.CharField(max_length=30, unique=True)
-    title = models.CharField(max_length=30, default="")    
+    title = models.CharField(max_length=30, default="")
 
     def __str__(self):
         return self.name
@@ -29,6 +29,7 @@ class Videos(models.Model):
 
     name = models.CharField(max_length=125, unique=True)
     link = models.CharField(max_length=200, unique=True)
+    image = models.CharField(max_length=200, default='video.png')
     category = models.ForeignKey(Category, default=1, on_delete=models.CASCADE)
     subcategory = models.ForeignKey(SubCategory, default=1, on_delete=models.CASCADE)
     created_at = models.DateTimeField(editable=False, auto_now=True)

@@ -18,12 +18,10 @@
         {% if video.category == cat %}
           <div id="{% url "catalog:vid" video.pk %}" class="content">
             <div class="element">
-            <div class="">
               <img class="video-img" src="{% static 'images/video.jpg' %}" alt="">
             </div>
             <h5>{{ video.name }}</h5>
-          </div>
-        </div>
+          </div>          
         {% endif %}
         {% endfor %}
       </div>

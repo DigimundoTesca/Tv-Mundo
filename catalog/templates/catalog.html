@@ -3,36 +3,41 @@
 {% endblock link %}
 {% block content %}
   <div class="container">
-    <div class="row justify-content-around">
+    <div class="row">
       {% for cat in category %}
-        <div class="col-md-5 main-card">
+        <div class="col-xl-3 col-md-6 col-sm-6 main-card">
           <div id="{{cat.name}}">
-            <div class="col-md-12 content-title">
-              <h1>{{cat.title}}</h2>
-              <p>{{cat.name}}</p>
+            <div class="content-title">
+              <h2>{{cat.title}}</h2>
             </div>
-            <div class="col-md-12 vid-sect">
-              <h4><i class="icon material-icons">video_library</i>Videos</h4>
+            <div class="vid-title">
+              Videos
             </div>
-            <div class="col-md-12 vid-btn">
-              <ul>
+            <div class="vid-sect">
+              <ul class="list-group">
                 {% for vid in videos %}
                   {% if vid.category == cat %}
-                    <li><i class="icon material-icons">play_circle_outline</i>{{vid.name}}</li>
+                    <li class="list-group-item list-group-item-action vid-ele">
+                      {{vid.name}}
+                    </li>
                   {% endif %}
                 {% endfor %}
               </ul>
             </div>
-            <div class="col-md-12 doc-sect">
-              <h4><i class="icon material-icons">folder</i>Documentos</h4>
+            <div class="doc-title">
+              Documentos
             </div>
-            <ul>
-              {% for doc in docs %}
-                {% if doc.category == cat %}
-                  <li><i class="icon material-icons">play_circle_outline</i>{{doc.name}}</li>
-                {% endif %}
-              {% endfor %}
-            </ul>
+            <div class="doc-sect">
+              <ul class="list-group">
+                {% for doc in docs %}
+                  {% if doc.category == cat %}
+                    <li class="list-group-item list-group-item-action doc-ele">
+                      {{doc.name}}
+                    </li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            </div>
           </div>
         </div>
       {% endfor %}
@@ -43,21 +48,7 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script type="text/javascript" charset="utf-8" defer>
   $(document).ready(function() {
-    $(".content-title").on("click", function(e) {
-      var name = $(this).parent().parent().attr('id');
-      var url_mask = "{% url 'catalog:block' 'var' %}".replace(/var/, name);
-      window.location = (url_mask);
-    });
-    $(".vid-btn").on("click", function(e) {
-      var name = $(this).parent().parent().attr('id');
-      var url_mask = "{% url 'catalog:s_videos' 'var' %}".replace(/var/, name);
-      window.location = (url_mask);
-    });
-    $(".doc-btn").on("click", function(e) {
-      var name = $(this).parent().parent().attr('id');
-      var url_mask = "{% url 'catalog:s_documents' 'var' %}".replace(/var/, name);
-      window.location = (url_mask);
-    });
+
   });
   </script>
 {% endblock javascript %}
