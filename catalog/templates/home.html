@@ -6,46 +6,33 @@
 {% endblock link %}
 {% block content %}
   <div class="container title-container">
-    <div class="row">
-      <div id="subtitle" class="col-md-12">
-        <h2>MetaMundo - Online</h3>
-      </div>
-    </div>
+    <h2>MetaMundo - Online</h3>
+    <h5>Cristobal Jodorowsky</h5>
   </div>
   <div class="container">
     <div class="row">
-      <div class="col-md-9">
-        <div class="title">
-          <h3>Explora nuestros Bloques</h3>
-
-        </div>
-        <div class="section">
+      <div class="section col-md-3 col-sm-6">
+        <div class="img-cont">
           <img class="img-bg" src="{% static 'images/logo-meta.png' %}" alt="">
+          <a href="{% url 'catalog:block' 'Introduccion' %}">Introduccion</a>
         </div>
-        <div class="section">
-          <img class="img-bg" src="{% static 'images/psicoteatro_front.jpg' %}" alt="">
-        </div>
-        <div class="section">
-          <img class="img-bg" src="{% static 'images/psicomagia_front.jpg' %}" alt="">
-        </div>
-        <div class="section">
-          <img class="img-bg" src="{% static 'images/psicochamanismo_front.jpg' %}" alt="">
-        </div>
-
       </div>
-      <div class="videos-slider col-md-3">
-        <h4 id="title-videos">Videos Recientes</h4>
-        <div class="regular">
-          {% for video in videos|slice:":6" %}
-          <div class="vid">
-            <div id="{% url "catalog:vid" video.pk %}" class="content">
-              <b>{{ video.name }}</b>
-            </div>
-            <div>
-              <img class="video-img" src="{% static 'images/video.jpg' %}" alt="">
-            </div>
-          </div>
-          {% endfor%}
+      <div class="section col-md-3 col-sm-6">
+        <div class="img-cont">
+          <img class="img-bg" src="{% static 'images/psicoteatro_front.jpg' %}" alt="">
+          <a href="{% url 'catalog:block' 'Tarot' %}">Tarot</a>
+        </div>
+      </div>
+      <div class="section col-md-3 col-sm-6">
+        <div class="img-cont">
+          <img class="img-bg" src="{% static 'images/psicomagia_front.jpg' %}" alt="">
+          <a href="{% url 'catalog:block' 'Metagenealogia' %}">Metagenealogia</a>
+        </div>
+      </div>
+      <div class="section col-md-3 col-sm-6">
+        <div class="img-cont">
+          <img class="img-bg" src="{% static 'images/psicochamanismo_front.jpg' %}" alt="">
+          <a href="{% url 'catalog:block' 'Psicochamanismo' %}">Psicochamanismo</a>
         </div>
       </div>
     </div>

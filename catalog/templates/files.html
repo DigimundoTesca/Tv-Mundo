@@ -15,19 +15,19 @@
         {% for doc in docs %}
           {% if doc.category == cat %}
             {% if doc.kind == 'IMG' %}
-              <div id="{% url "catalog:docs" doc.pk %}" class="container content col-md-12 element {{doc.kind}}">
+              <div id="{% url "catalog:file" doc.pk %}" class="container content col-md-12 element {{doc.kind}}">
                 <img class="img-sld" src="{{doc.link}}" alt="">
                 <h3>{{ doc.name }}</h3>
               </div>
             {% endif %}
             {% if doc.kind == 'PDF' %}
-              <div id="{% url "catalog:docs" doc.pk %}" class="container content col-md-12 element {{doc.kind}}">
+              <div id="{% url "catalog:file" doc.pk %}" class="container content col-md-12 element {{doc.kind}}">
                 <img class="img-sld" src="{% static 'images/pdf_logo.png' %}" alt="">
                 <h3>{{ doc.name }}</h3>
               </div>
             {% endif %}
             {% if doc.kind == 'WRD' %}
-              <div id="{% url "catalog:docs" doc.pk %}" class="container content col-md-12 element {{doc.kind}}">
+              <div id="{% url "catalog:file" doc.pk %}" class="container content col-md-12 element {{doc.kind}}">
                 <img class="img-sld" src="{% static 'images/hw_logo.png' %}" alt="">
                 <h3>{{ doc.name }}</h3>
               </div>
