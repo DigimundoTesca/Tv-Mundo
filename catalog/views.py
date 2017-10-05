@@ -26,21 +26,8 @@ def catalog(request):
     }
     return render(request, template, context)
 
-def videos(request):
-    template = 'videos.html'
-    videos = Videos.objects.all()
-    categories = Category.objects.all()
-
-    title = 'Catalogo - Documentos'
-    context = {
-        'videos' : videos,
-        'category' : categories,
-        'title': title,
-    }
-    return render(request, template, context)
-
-def documents(request):
-    template = 'documents.html'
+def files(request):
+    template = 'files.html'
     docs = Docs.objects.all()
     categories = Category.objects.all()
 
@@ -52,18 +39,8 @@ def documents(request):
     }
     return render(request, template, context)
 
-def s_videos(request, name):
-    template = 's_videos.html'
-    videos = Videos.objects.all().filter(category__name=name)
-    title = name
-    context = {
-        'videos': videos,
-        'title': title,
-    }
-    return render(request, template, context)
-
-def s_documents(request, name):
-    template = 's_documents.html'
+def block(request, name):
+    template = 'block.html'
     docs = Docs.objects.all().filter(category__name=name)
     title = name
     context = {
@@ -72,9 +49,9 @@ def s_documents(request, name):
     }
     return render(request, template, context)
 
-def docs(request, pk):
+def file(request, pk):
     doc = get_object_or_404(Docs, pk=pk)
-    template = 'doc.html'
+    template = 'file.html'
     title = 'MetaMundo - ' + doc.name
     context = {
         'page_title': 'PAGE_TITLE',
@@ -85,23 +62,13 @@ def docs(request, pk):
 
 def vid(request, pk):
     video = get_object_or_404(Videos, pk=pk)
+    r_videos = Videos.objects.all()
     template = 'vid.html'
     title = 'MetaMundo - ' + video.name
     context = {
         'page_title': 'PAGE_TITLE',
+        'r_videos': r_videos,
         'video': video,
         'title': title
-    }
-    return render(request, template, context)
-
-def block(request, name):
-    template = 'block.html'
-    videos = Videos.objects.all().filter(category__name=name)
-    docs = Docs.objects.all().filter(category__name=name)
-    title = name
-    context = {
-        'docs': docs,
-        'videos': videos,
-        'title': title,
     }
     return render(request, template, context)
