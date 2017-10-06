@@ -41,9 +41,11 @@ def files(request):
 
 def block(request, name):
     template = 'block.html'
-    docs = Docs.objects.all().filter(category__name=name)
+    docs = Docs.objects.all().filter(category__title=name)
+    videos = Videos.objects.all().filter(category__title=name)
     title = name
     context = {
+        'videos': videos,
         'docs': docs,
         'title': title,
     }
