@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from catalog.models import Videos, Category, Docs
-# Create your views here.
+from django.contrib.auth.decorators import login_required
+
+@login_required
 def home(request):
     template = 'home.html'
     videos = Videos.objects.all()
@@ -9,17 +11,9 @@ def home(request):
         'videos': videos,
         'title': "Tv Mundo",
     }
-    return render(request, template, context)
-
-
-def login(request):
-    template = 'home.html'    
-    context = {        
-        'title': "LogIn Tv Mundo",
-    }
     return render(request, template, context)    
-    
 
+@login_required
 def catalog(request):
     template = 'catalog.html'
     category = Category.objects.all()
@@ -35,6 +29,7 @@ def catalog(request):
     }
     return render(request, template, context)
 
+@login_required
 def files(request):
     template = 'files.html'
     docs = Docs.objects.all()    
@@ -47,6 +42,7 @@ def files(request):
     }
     return render(request, template, context)
 
+@login_required
 def block(request, name):
     template = 'block.html'
     docs = Docs.objects.all().filter(category__title=name)
@@ -59,6 +55,7 @@ def block(request, name):
     }
     return render(request, template, context)
 
+@login_required
 def file(request, pk):
     doc = get_object_or_404(Docs, pk=pk)
     template = 'file.html'
@@ -70,6 +67,7 @@ def file(request, pk):
     }
     return render(request, template, context)
 
+@login_required
 def vid(request, pk):
     video = get_object_or_404(Videos, pk=pk)
     r_videos = Videos.objects.all()
