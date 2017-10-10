@@ -1,0 +1,25 @@
+{% extends "base/nav.html" %}
+{% load static %}
+{% block link %}
+	<link rel="stylesheet" href="{% static 'css/Google-Style-Login.css' %}">
+{% endblock link %}
+{% block content %}
+	<div class="login-card"><img src="{% static 'images/avatar_2x.png' %}" class="profile-img-card">
+		<p class="profile-name-card"> </p>
+		<form class="form-signin">
+			<span class="reauth-email"> </span>
+			<input class="form-control" type="email" required="" placeholder="Correo" autofocus="" id="inputEmail">
+			<input class="form-control" type="password" required="" placeholder="Contraseña" id="inputPassword">
+			<div class="checkbox">
+				<div class="checkbox">
+					<label>
+					<input type="checkbox"> Recuerdame</label>
+				</div>
+			</div>
+			<button class="btn btn-primary btn-block btn-lg btn-signin" type="submit">Entrar </button>
+			<button class="btn btn-primary btn-block btn-lg btn-signin" type="submit">Registrarse </button>
+		</form>
+		<a href="#" class="forgot-password">¿Olvidaste tu Contraseña?</a>
+	</div>
+	
+{% endblock content %}

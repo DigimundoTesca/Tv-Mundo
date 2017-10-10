@@ -11,6 +11,15 @@ def home(request):
     }
     return render(request, template, context)
 
+
+def login(request):
+    template = 'home.html'    
+    context = {        
+        'title': "LogIn Tv Mundo",
+    }
+    return render(request, template, context)    
+    
+
 def catalog(request):
     template = 'catalog.html'
     category = Category.objects.all()
@@ -28,7 +37,7 @@ def catalog(request):
 
 def files(request):
     template = 'files.html'
-    docs = Docs.objects.all()
+    docs = Docs.objects.all()    
     categories = Category.objects.all()
     title = 'Catalogo - Documentos'
     context = {
