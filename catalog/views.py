@@ -30,7 +30,6 @@ def files(request):
     template = 'files.html'
     docs = Docs.objects.all()
     categories = Category.objects.all()
-
     title = 'Catalogo - Documentos'
     context = {
         'docs' : docs,
@@ -41,12 +40,12 @@ def files(request):
 
 def block(request, name):
     template = 'block.html'
-    docs = Docs.objects.all().filter(category__title=name)
+    documents = Docs.objects.all().filter(category__title=name)
     videos = Videos.objects.all().filter(category__title=name)
     title = name
     context = {
         'videos': videos,
-        'docs': docs,
+        'docs': documents,
         'title': title,
     }
     return render(request, template, context)
