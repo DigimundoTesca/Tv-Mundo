@@ -30,7 +30,6 @@ def files(request):
     template = 'files.html'
     docs = Docs.objects.all()
     categories = Category.objects.all()
-
     title = 'Catalogo - Documentos'
     context = {
         'docs' : docs,

@@ -12,27 +12,36 @@
   <div class="container">
     <div class="row">
       <div class="section col-md-3 col-sm-6">
-        <div class="img-cont">
-          <img class="img-bg" src="{% static 'images/logo-meta.png' %}" alt="">
-          <a href="{% url 'catalog:block' 'Introduccion' %}">Introduccion</a>
+        <div class="img-cont">          
+          <a href="{% url 'catalog:block' 'Introduccion' %}">
+            <img class="img-bg" src="{% static 'images/logo-meta.png' %}" alt="">
+            Introduccion
+          </a>
         </div>
       </div>
       <div class="section col-md-3 col-sm-6">
         <div class="img-cont">
-          <img class="img-bg" src="{% static 'images/psicoteatro_front.jpg' %}" alt="">
-          <a href="{% url 'catalog:block' 'Tarot' %}">Tarot</a>
+          <a href="{% url 'catalog:block' 'Tarot' %}">
+            <img class="img-bg" src="{% static 'images/psicoteatro_front.jpg' %}" alt="">
+            Tarot
+          </a>
         </div>
       </div>
       <div class="section col-md-3 col-sm-6">
         <div class="img-cont">
-          <img class="img-bg" src="{% static 'images/psicomagia_front.jpg' %}" alt="">
-          <a href="{% url 'catalog:block' 'Metagenealogia' %}">Metagenealogia</a>
+          <a href="{% url 'catalog:block' 'Metagenealogia' %}">
+            <img class="img-bg" src="{% static 'images/psicomagia_front.jpg' %}" alt="">
+            Metagenealogia
+          </a>          
+          </a>
         </div>
       </div>
       <div class="section col-md-3 col-sm-6">
         <div class="img-cont">
-          <img class="img-bg" src="{% static 'images/psicochamanismo_front.jpg' %}" alt="">
-          <a href="{% url 'catalog:block' 'Psicochamanismo' %}">Psicochamanismo</a>
+          <a href="{% url 'catalog:block' 'Psicochamanismo' %}">
+            <img class="img-bg" src="{% static 'images/psicochamanismo_front.jpg' %}" alt="">
+            Psicochamanismo
+          </a>
         </div>
       </div>
     </div>
@@ -43,12 +52,7 @@
 <script type="text/javascript">
   $(document).on('ready', function () {
     $(".regular").slick({
-      vertical: true,
-      verticalSwiping: true,
-      slidesToShow: 3,
-      slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 10000,
+      
     });
 
     $(".b1").on("click",function(e){

@@ -1,44 +1,40 @@
 <{% extends 'base/nav.html'%}
 {% load static %}
-
 {% block link %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/vid.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/vid.css' %}">
 {% endblock link %}
-
 {% block content %}
-    <div class="container content">
-      <div class="row">
-        <div class="col-md-9">
-          <div class="card video">
-            <video controls>
-              <source src="{{video.link}}" type="video/mp4">
-              </video>
-              <h4><b>{{ video.name }}</b></h4>
-            </div>
-          </div>
-          <div class="videos-slider col-md-3">
-            <h4 id="title-videos">Videos Recientes</h4>
-            <div class="regular">
-              {% for vid in videos|slice:":6" %}
-              <div class="vid">
-                <div id="{% url "catalog:vid" vid.pk %}" class="content">
-                  <b>{{ video.name }}</b>
-                </div>
-                <div>
-                  <img class="video-img" src="{% static 'images/video.jpg' %}" alt="">
-                </div>
+  <div class="container content">
+    <div class="row">
+      <div class="col-md-9">
+        <div class="card video">
+          <video controls>
+            <source src="{{video.link}}" type="video/mp4">
+          </video>
+          <h4><b>{{ video.name }}</b></h4>
+        </div>
+      </div>
+      <div class="videos-slider col-md-3">
+        <h4 id="title-videos">Videos Recientes</h4>
+        <div class="regular">
+          {% for vid in videos|slice:":6" %}
+            <div class="vid">
+              <div id="{% url "catalog:vid" vid.pk %}" class="content">
+                <b>{{ video.name }}</b>
               </div>
-              {% endfor%}
+              <div>
+                <img class="video-img" src="{% static 'images/video.jpg' %}" alt="">
+              </div>
             </div>
-          </div>
+          {% endfor%}
+        </div>
       </div>
     </div>
+  </div>
 {% endblock content %}
 {% block javascript %}
-
-<script type="text/javascript">
+  <script type="text/javascript">
   $(document).on('ready', function () {
-
     $(".regular").slick({
       vertical: true,
       verticalSwiping: true,
@@ -47,12 +43,10 @@
       autoplay: true,
       autoplaySpeed: 10000,
     });
-
-    $(".b1").on("click",function(e){
-      var pk = $(this).children('.content').attr('id');
+  $(".b1").on("click",function(e){
+    var pk = $(this).children('.content').attr('id');
       window.location = pk
     });
-
   });
-</script>
+  </script>
 {% endblock javascript %}

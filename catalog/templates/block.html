@@ -1,53 +1,61 @@
 {% extends 'base/nav.html' %}
 {% load static %}
 {% block link %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/blocks.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/blocks.css' %}">
 {% endblock link %}
-
 {% block content %}
-
-<div class="container" id='main'>
-  <div class="row">
-    {% for video in videos %}
-    <div class="col-md-3">
-      <div class="card b1">
-        <div id="{% url "catalog:vid" video.pk %}" class="container content">
-          <h4><b>{{ video.name }}</b></h4>
-        </div>
-      </div>
-    </div>
-    {% endfor%}
-  </div>
-</div>
-
-<div class="container">
-  <div class="row">
-    {% for doc in docs %}
-    <div class="col-md-3">
-      <div class="card b1">
-        <div id="{% url "catalog:vid" doc.pk %}" class="container content">
-          <h4><b>{{ doc.name }}</b></h4>
-        </div>
-      </div>
-    </div>
-    {% endfor%}
-  </div>
-</div>
-
+	<div class="container">
+		<div class="row">
+			<div class="video-cont col-sm-12 col-md-9">
+				<h4><b>{{ videos.0.name }}</b></h4>
+				<video controls width="100%">
+					<source src="{{videos.0.link}}" type="video/mp4">
+				</video>
+			</div>
+			<div class="slider-cont col-md-3">
+				<h4 id="title-videos">Videos</h4>
+				<div class="slider">
+					<ul class="list-group">
+						{% for vid in videos %}
+							<li class="list-group-item">
+								<div id="{% url "catalog:vid" vid.pk %}" class="content">
+									<h6>{{ vid.name }}</h6>
+								</div>							
+							</li>						
+						{% endfor%}									
+					</ul>					
+				</div>
+			</div>
+		</div>
+		<h4>Material</h4>
+		<div class="row">						
+			{% for doc in docs %}				
+            	{% if doc.kind == 'IMG' %}
+              		<div id="{% url "catalog:file" doc.pk %}" class="img col-md-2">              			
+                		<img class="img-sld" src="{{doc.link}}" alt="">
+                		<h6>{{ doc.name }}</h6>
+              		</div>
+            	{% endif %}
+            	{% if doc.kind == 'PDF' %}
+              		<div id="{% url "catalog:file" doc.pk %}" class="img col-md-2">
+                		<img class="img-sld" src="{% static 'images/pdf_logo.png' %}" alt="">
+                		<h6>{{ doc.name }}</h6>
+              		</div>
+            	{% endif %}
+            	{% if doc.kind == 'WRD' %}
+              		<div id="{% url "catalog:file" doc.pk %}" class="img col-md-2">
+                		<img class="img-sld" src="{% static 'images/hw_logo.png' %}" alt="">
+                		<h6>{{ doc.name }}</h6>
+              		</div>
+            	{% endif %}          		
+			{% endfor%}
+		</div>
+	</div>
 {% endblock content %}
 {% block javascript %}
-<script type="text/javascript" charset="utf-8" defer>
-
-$(document).ready(function() {
-
-  $(".b1").on("click",function(e){
-    var pk = $(this).children('.content').attr('id');
-    window.location = pk
-  });
-
-
-});
-</script>
-
-
+	<script type="text/javascript" charset="utf-8" defer>
+		$(document).ready(function() {
+			
+		});
+	</script>
 {% endblock javascript %}
