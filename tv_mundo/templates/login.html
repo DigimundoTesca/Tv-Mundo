@@ -1,26 +1,19 @@
 {% extends "base/nav.html" %}
-{% load static %}	
+{% load static %}
 {% block nav %}
 {% endblock nav %}
 {% block link %}
-	<link rel="stylesheet" href="{% static 'css/Google-Style-Login.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Google-Style-Login.css' %}">
 {% endblock link %}
 {% block content %}
-	<div class="login-card"><img src="{% static 'images/avatar_2x.png' %}" class="profile-img-card">
-		<p class="profile-name-card"> </p>
-		<form class="form-signin">
-			<span class="reauth-email"> </span>
-			<input class="form-control" type="username" required="" placeholder="Correo" autofocus="" id="inputEmail">
-			<input class="form-control" type="password" required="" placeholder="Contraseña" id="inputPassword">
-			<div class="checkbox">
-				<div class="checkbox">
-					<label>
-					<input type="checkbox"> Recuerdame</label>
-				</div>
-			</div>
-			<button class="btn btn-primary btn-block btn-lg btn-signin" type="submit">Entrar </button>			
-		</form>
-		<a href="#" class="forgot-password">¿Olvidaste tu Contraseña?</a>
-	</div>
-	
+    <div class="login-card"><img src="{% static 'images/avatar_2x.png' %}" class="profile-img-card">
+        <p class="profile-name-card"> </p>
+        <form class="form-signin" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-primary btn-block btn-lg btn-signin" type="submit">Entrar </button>
+        </form>
+        <a href="#" class="forgot-password">¿Olvidaste tu Contraseña?</a>
+    </div>
+    
 {% endblock content %}
