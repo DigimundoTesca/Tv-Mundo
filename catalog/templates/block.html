@@ -2,6 +2,16 @@
 {% load static %}
 {% block link %}
 	<link rel="stylesheet" type="text/css" href="{% static 'css/blocks.css' %}">
+	<style>
+		img{			
+			width: 100%;
+		}
+		.img-sld{
+			align-self: center;
+			width: 100%;
+		}
+
+	</style>
 {% endblock link %}
 {% block content %}
 	<div class="container">
@@ -20,36 +30,52 @@
 							<li class="list-group-item">
 								<div id="{% url "catalog:vid" vid.pk %}" class="content">
 									<h6>{{ vid.name }}</h6>
+									<img src="https://s3-us-west-2.amazonaws.com/cristobalbucket/law/01/Images/El+Tarot+como+Gu%C3%ADa.jpg" alt="">
 								</div>							
 							</li>						
 						{% endfor%}									
 					</ul>					
 				</div>
 			</div>
-		</div>
-		<h4>Material</h4>
-		<div class="row">						
+		</div>		
+		<h3>Imagenes</h3>
+		<div class="row">									
 			{% for doc in docs %}				
             	{% if doc.kind == 'IMG' %}
               		<div id="{% url "catalog:file" doc.pk %}" class="img col-md-2">              			
                 		<img class="img-sld" src="{{doc.link}}" alt="">
                 		<h6>{{ doc.name }}</h6>
-              		</div>
+              		</div>              		
             	{% endif %}
+            	{% if doc.length == 0 %}
+            	<h3>No Hay Imagenes</h3>
+            	{% endif %}
+
+            {% endfor%}
+        </div>
+        <h3>Documentos</h3>
+        <div class="row">
+            {% for doc in docs %}				
             	{% if doc.kind == 'PDF' %}
               		<div id="{% url "catalog:file" doc.pk %}" class="img col-md-2">
                 		<img class="img-sld" src="{% static 'images/pdf_logo.png' %}" alt="">
                 		<h6>{{ doc.name }}</h6>
               		</div>
             	{% endif %}
+            {% endfor%}
+        	
+        </div>
+        <h3>Tareas</h3>
+        <div class="row">
+            {% for doc in docs %}				
             	{% if doc.kind == 'WRD' %}
               		<div id="{% url "catalog:file" doc.pk %}" class="img col-md-2">
                 		<img class="img-sld" src="{% static 'images/hw_logo.png' %}" alt="">
                 		<h6>{{ doc.name }}</h6>
               		</div>
             	{% endif %}          		
-			{% endfor%}
-		</div>
+            {% endfor%}        	
+        </div>
 	</div>
 {% endblock content %}
 {% block javascript %}
