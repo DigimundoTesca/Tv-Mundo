@@ -1,35 +1,29 @@
 {% extends 'base/base.html' %}
 {% load static %}
 {% block nav %}
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="{% url 'catalog:home' %}">MetaMundo</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">MetaMundo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Bloques
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="{% url 'catalog:block' 'Introduccion' %}">Introduccion</a>
-          <a class="dropdown-item" href="{% url 'catalog:block' 'Tarot' %}">Tarot</a>
-          <a class="dropdown-item" href="{% url 'catalog:block' 'Metagenealogia' %}">Metage</a>
-          <a class="dropdown-item" href="{% url 'catalog:block' 'Psicochamanismo' %}">Tarot</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'catalog:catalog' %}">Aprender</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'catalog:files' %}">Archivo</a>
-      </li>      
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'register:logout' %}">Cerrar Sesion</a>
-      </li>      
-    </ul>
-  </div>
-</nav>
-
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown" >
+          <a class="nav-link dropdown-toggle" href="#"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Bloques</a>
+          <div class="dropdown-menu" aria-labelledby="supportedContentDropdown">
+            <a class="dropdown-item" href="{% url 'catalog:block' 'Introduccion' %}">Introduccion</a>
+            <a class="dropdown-item" href="{% url 'catalog:block' 'Tarot' %}">Tarot</a>
+            <a class="dropdown-item" href="{% url 'catalog:block' 'Metagenealogia' %}">Matagenealogia</a>
+            <a class="dropdown-item" href="{% url 'catalog:block' 'Psicochamanismo' %}">Psicochamanismo</a>
+          </div>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'catalog:catalog'%}">Aprender <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'catalog:files'%}">Archivo</a>
+        </li>                
+      </ul>
+    </div>
+  </nav
 {% endblock nav %}

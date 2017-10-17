@@ -20,7 +20,9 @@
 							<li class="list-group-item">
 								<div id="{% url "catalog:vid" vid.pk %}" class="content">
 									<h6>{{ vid.name }}</h6>
-								</div>							
+									<img src="{{vid.image}}">
+								</div>			
+
 							</li>						
 						{% endfor%}									
 					</ul>					
