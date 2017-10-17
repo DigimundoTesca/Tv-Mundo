@@ -16,15 +16,18 @@
   width: 100%;
 }
 
-.img-sld{ 
-  width: 60%;
+img{		
+  width: 100%;
+}
+
+.img-sld{
+	align-self: center;
+width: 100%;
 }
 
 h6{
 	font-size: 15px;
 }
 
-img{
-  text-align: center;
-}
+
 
