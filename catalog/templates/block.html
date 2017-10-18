@@ -17,12 +17,21 @@
 				<div class="slider">
 					<ul class="list-group">
 						{% for vid in videos %}
-							<li class="list-group-item">
-								<div id="{% url "catalog:vid" title vid.pk %}" class="content vid-ele">
-									<h6>{{ vid.name }}</h6>
-									<img src="{{vid.image}}">
-								</div>			
-							</li>						
+                            {% if vid == s_vid %}
+                            <li class="list-group-item mark">
+                                <div id="{% url "catalog:vid" title vid.pk %}" class="content vid-ele">
+                                    <h6>{{ vid.name }}</h6>
+                                    <img src="{{vid.image}}">
+                                </div>
+                            </li>
+                            {% else %}
+                            <li class="list-group-item">
+                                <div id="{% url "catalog:vid" title vid.pk %}" class="content vid-ele">
+                                    <h6>{{ vid.name }}</h6>
+                                    <img src="{{vid.image}}">
+                                </div>
+                            </li>
+                            {% endif %}
 						{% endfor%}									
 					</ul>					
 				</div>
@@ -32,7 +41,7 @@
 		<div class="row">									
 			{% for doc in docs %}				
             	{% if doc.kind == 'IMG' %}
-              		<div id="{% url "catalog:file" doc.pk %}" class="img col-md-2 col-sm-3">
+              		<div id="{% url "catalog:file" doc.pk %}" class="img col-md-2 col-sm-3 element">
                 		<img class="img-sld" src="{{doc.link}}" alt="">
                 		<h6>{{ doc.name }}</h6>
               		</div>              		
@@ -47,7 +56,7 @@
         <div class="row">
             {% for doc in docs %}				
             	{% if doc.kind == 'PDF' %}
-              		<div id="{% url "catalog:file" doc.pk %}" class="img col-md-2 col-sm-3 ">
+              		<div id="{% url "catalog:file" doc.pk %}" class="img col-md-2 col-sm-3 element">
                 		<img class="img-sld" src="{% static 'images/pdf_logo.png' %}" alt="">
                 		<h6>{{ doc.name }}</h6>
               		</div>
@@ -59,7 +68,7 @@
         <div class="row">
             {% for doc in docs %}				
             	{% if doc.kind == 'WRD' %}
-              		<div id="{% url "catalog:file" doc.pk %}" class="img col-md-2 col-sm-3">
+              		<div id="{% url "catalog:file" doc.pk %}" class="img col-md-2 col-sm-3 element">
                 		<img class="img-sld" src="{% static 'images/hw_logo.png' %}" alt="">
                 		<h6>{{ doc.name }}</h6>
               		</div>

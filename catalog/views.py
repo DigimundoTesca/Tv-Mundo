@@ -55,8 +55,6 @@ def block(request, name, pk=None):
         s_vid=videos.filter(pk=pk)
         s_vid=s_vid[:1].get()
 
-    print(s_vid)
-
     context = {        
         's_vid' : s_vid,
         'videos' : videos,
