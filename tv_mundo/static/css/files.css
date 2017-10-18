@@ -1,5 +1,5 @@
-.container-docs{
-  margin-top: 30px;
+.title{
+  text-align: center;
 }
 
 .img-sld{
@@ -11,6 +11,6 @@ h3{
   text-align: center;
 }
 
-img{
-  height: 15vh;
+img{ 
+  height: 25vh;  
 }

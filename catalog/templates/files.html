@@ -1,42 +1,44 @@
 {% extends "base/nav.html" %}
 {% load static %}
 {% block link %}
-<link rel="stylesheet" href="{% static 'css/documents.css' %}">
+<link rel="stylesheet" href="{% static 'css/files.css' %}">
 {% endblock link%}
 
 {% block content%}
-<div class="container container-docs">
-  {% for cat in category %}
-    <div class="row-cat">
-      <div class="title">
-        <h4>{{cat.name}}:  {{cat.title}}</h4>
+<div class="container-fluid">
+  <div class="row">
+    {% for cat in category %}
+      <div class="col-md-3">
+        <div class="title">
+          <h4>{{cat.title}}</h4>
+        </div>
+        <div class="row slide-elements align-items-center">
+          {% for doc in docs %}
+            {% if doc.category == cat %}
+              {% if doc.kind == 'IMG' %}
+                <div id="{% url "catalog:file" doc.pk %}" class="content col-md-12 element {{doc.kind}}">
+                  <img class="img-sld" src="{{doc.link}}" alt="">
+                  <h3>{{ doc.name }}</h3>
+                </div>
+              {% endif %}
+              {% if doc.kind == 'PDF' %}
+                <div id="{% url "catalog:file" doc.pk %}" class="content col-md-12 element {{doc.kind}}">
+                  <img class="img-sld" src="{% static 'images/pdf_logo.png' %}" alt="">
+                  <h3>{{ doc.name }}</h3>
+                </div>
+              {% endif %}
+              {% if doc.kind == 'WRD' %}
+                <div id="{% url "catalog:file" doc.pk %}" class="content col-md-12 element {{doc.kind}}">
+                  <img class="img-sld" src="{% static 'images/hw_logo.png' %}" alt="">
+                  <h3>{{ doc.name }}</h3>
+                </div>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        </div>
       </div>
-      <div class="row slide-elements align-items-center">
-        {% for doc in docs %}
-          {% if doc.category == cat %}
-            {% if doc.kind == 'IMG' %}
-              <div id="{% url "catalog:file" doc.pk %}" class="container content col-md-12 element {{doc.kind}}">
-                <img class="img-sld" src="{{doc.link}}" alt="">
-                <h3>{{ doc.name }}</h3>
-              </div>
-            {% endif %}
-            {% if doc.kind == 'PDF' %}
-              <div id="{% url "catalog:file" doc.pk %}" class="container content col-md-12 element {{doc.kind}}">
-                <img class="img-sld" src="{% static 'images/pdf_logo.png' %}" alt="">
-                <h3>{{ doc.name }}</h3>
-              </div>
-            {% endif %}
-            {% if doc.kind == 'WRD' %}
-              <div id="{% url "catalog:file" doc.pk %}" class="container content col-md-12 element {{doc.kind}}">
-                <img class="img-sld" src="{% static 'images/hw_logo.png' %}" alt="">
-                <h3>{{ doc.name }}</h3>
-              </div>
-            {% endif %}
-          {% endif %}
-        {% endfor %}
-      </div>
-    </div>
-  {% endfor %}
+    {% endfor %}    
+  </div>
 </div>
 {%endblock content%}
 
@@ -47,10 +49,10 @@ $(document).ready(function() {
 
   $(".slide-elements").slick({
     slidesToShow: 3,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 5000,
+    slidesToScroll: 1,    
     arrows: false,
+    vertical: true,
+    verticalSwiping: true,
   });
 
   $(".element").on("click",function(e){
