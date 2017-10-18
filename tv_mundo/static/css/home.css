@@ -9,18 +9,21 @@
 
 .section{
   height: 70vh;
-  padding: 15px;
+  margin-top: 10px;
+  padding-left: 30px; 
+  padding-right: 30px;   
 }
 
 .section:hover .img-cont{
   transform: scale(1.05);
   transition: box-shadow 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
   box-shadow: 7px 7px 3px #888888;
 }
 
 .img-bg{  
   height: 90%;
-  width: 100%;
+  width: 100%; 
 } 
 
 .img-cont{
@@ -29,6 +32,7 @@
   overflow: hidden;
   text-align: center;
   font-size: 25px;
+  transition: transform 0.3s ease-in-out;
 }
 
 h4{
