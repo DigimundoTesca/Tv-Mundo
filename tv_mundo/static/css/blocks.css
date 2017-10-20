@@ -7,12 +7,12 @@
 }
 
 .slider-cont{  
-  margin-top: 30px;    
+  margin-top: 30px;      
 }
 
 
 .slider{
-  height: 34vw;
+  height: 24vw;
   overflow-y: auto;	
 }
 
@@ -20,13 +20,10 @@
   width: 100%;
 }
 
-img{		
-  width: 100%;
-}
-
 .img-sld{
-	align-self: center;	
-	width: 100%;	
+	margin: auto;
+	align-self: center;		
+	height: 14vh;
 }
 
 h6{
@@ -42,6 +39,11 @@ h6{
 }
 
 .slide-elements{
-	text-align: center;
+	text-align: center; 
+	height: 20vh;	
+}
+
+.files{
+	margin-top: 100px;
 }
 

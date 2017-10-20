@@ -21,14 +21,14 @@
                 <li class="list-group-item mark">
                   <div id="{% url "catalog:vid" title vid.pk %}" class="content vid-ele">
                     <h6>{{ vid.name }}</h6>
-                    <img src="{{vid.image}}">
+                    <img class="video-img" src="{{vid.image}}">
                   </div>
                 </li>
               {% else %}
                 <li class="list-group-item">
                   <div id="{% url "catalog:vid" title vid.pk %}" class="content vid-ele">
                     <h6>{{ vid.name }}</h6>
-                    <img src="{{vid.image}}">
+                    <img class="video-img" src="{{vid.image}}">
                   </div>
                 </li>
               {% endif %}
@@ -38,10 +38,8 @@
       </div>
     </div>
   </div>
-  <div class="container">    
-    {% if docs.0 %}
-      <h3>Imagenes</h3>
-    {% endif %}
+  <div class="container files">    
+    <h3>Imagenes</h3>
     <div class="slide-elements row">
       {% for doc in docs %}        
         {% if doc.kind == 'IMG' %}
@@ -49,15 +47,10 @@
             <img class="img-sld" src="{{doc.link}}" alt="">
             <h6>{{ doc.name }}</h6>
           </div>
-        {% endif %}
-        {% if doc.length == 0 %}
-          <h3>No Hay Imagenes</h3>
-        {% endif %}
+        {% endif %}        
       {% endfor%}
     </div>
-    {% if docs.0 %}
-      <h3>Documentos</h3>
-    {% endif %}
+    <h3>Documentos</h3>    
     <div class="slide-elements row">
       {% for doc in docs %}
         {% if doc.kind == 'PDF' %}
@@ -69,9 +62,7 @@
       {% endfor%}
       
     </div>
-    {% if docs.0 %}
-      <h3>Tareas</h3>
-    {% endif %}
+    <h3>Tareas</h3>
     <div class="slide-elements row">
       {% for doc in docs %}
         {% if doc.kind == 'WRD' %}
@@ -88,14 +79,14 @@
   <script type="text/javascript" charset="utf-8" defer>
     $(document).ready(function() {
   $(".slide-elements").slick({
-  slidesToShow: 6,
+  slidesToShow: 3,
   slidesToScroll: 1,
   focusOnSelect: true,
   responsive: [
   {
   breakpoint: 1024,
   settings: {
-  slidesToShow: 6,
+  slidesToShow: 3,
   slidesToScroll: 1,
   focusOnSelect: true,
   }
@@ -103,7 +94,7 @@
   {
   breakpoint: 600,
   settings: {
-  slidesToShow: 6,
+  slidesToShow: 3,
   slidesToScroll: 1,
   focusOnSelect: true,
   }
@@ -111,7 +102,7 @@
   {
   breakpoint: 480,
   settings: {
-  slidesToShow: 6,
+  slidesToShow: 3,
   slidesToScroll: 1,
   focusOnSelect: true,
   }
