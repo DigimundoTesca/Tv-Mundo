@@ -7,9 +7,9 @@
 	<div class="container">
 		<div class="row">
 			<div class="video-cont col-sm-12 col-md-9">
-				<h4><b>{{ videos.0.name }}</b></h4>
+				<h4><b>{{ s_vid.name }}</b></h4>
 				<video controls width="100%">
-					<source src="{{videos.0.link}}" type="video/mp4">
+					<source src="{{ s_vid.link }}" type="video/mp4">
 				</video>
 			</div>
 			<div class="slider-cont col-md-3">
@@ -17,12 +17,21 @@
 				<div class="slider">
 					<ul class="list-group">
 						{% for vid in videos %}
-							<li class="list-group-item">
-								<div id="{% url "catalog:vid" vid.pk %}" class="content">
-									<h6>{{ vid.name }}</h6>
-									<img src="{{vid.image}}">
-								</div>			
-							</li>						
+                            {% if vid == s_vid %}
+                            <li class="list-group-item mark">
+                                <div id="{% url "catalog:vid" title vid.pk %}" class="content vid-ele">
+                                    <h6>{{ vid.name }}</h6>
+                                    <img src="{{vid.image}}">
+                                </div>
+                            </li>
+                            {% else %}
+                            <li class="list-group-item">
+                                <div id="{% url "catalog:vid" title vid.pk %}" class="content vid-ele">
+                                    <h6>{{ vid.name }}</h6>
+                                    <img src="{{vid.image}}">
+                                </div>
+                            </li>
+                            {% endif %}
 						{% endfor%}									
 					</ul>					
 				</div>
@@ -32,7 +41,7 @@
 		<div class="row">									
 			{% for doc in docs %}				
             	{% if doc.kind == 'IMG' %}
-              		<div id="{% url "catalog:file" doc.pk %}" class="img col-md-2">              			
+              		<div id="{% url "catalog:file" doc.pk %}" class="img col-md-2 col-sm-3 element">
                 		<img class="img-sld" src="{{doc.link}}" alt="">
                 		<h6>{{ doc.name }}</h6>
               		</div>              		
@@ -47,7 +56,7 @@
         <div class="row">
             {% for doc in docs %}				
             	{% if doc.kind == 'PDF' %}
-              		<div id="{% url "catalog:file" doc.pk %}" class="img col-md-2">
+              		<div id="{% url "catalog:file" doc.pk %}" class="img col-md-2 col-sm-3 element">
                 		<img class="img-sld" src="{% static 'images/pdf_logo.png' %}" alt="">
                 		<h6>{{ doc.name }}</h6>
               		</div>
@@ -59,7 +68,7 @@
         <div class="row">
             {% for doc in docs %}				
             	{% if doc.kind == 'WRD' %}
-              		<div id="{% url "catalog:file" doc.pk %}" class="img col-md-2">
+              		<div id="{% url "catalog:file" doc.pk %}" class="img col-md-2 col-sm-3 element">
                 		<img class="img-sld" src="{% static 'images/hw_logo.png' %}" alt="">
                 		<h6>{{ doc.name }}</h6>
               		</div>
@@ -69,9 +78,17 @@
 	</div>
 {% endblock content %}
 {% block javascript %}
-	<script type="text/javascript" charset="utf-8" defer>
-		$(document).ready(function() {
-			
-		});
-	</script>
+<script type="text/javascript" charset="utf-8" defer>
+	$(document).ready(function() {
+		$(".element").on("click",function(e){
+		    var pk = $(this).attr('id');
+    		window.location = pk
+  		});		
+
+        $(".vid-ele").on("click",function(e){
+            var pk = $(this).attr('id');
+            window.location = pk
+        });
+	});
+</script>
 {% endblock javascript %}

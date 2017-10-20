@@ -681,7 +681,8 @@ SELECT pg_catalog.setval('auth_permission_id_seq', 30, true);
 --
 
 COPY auth_user (id, password, last_login, is_superuser, username, first_name, last_name, email, is_staff, is_active, date_joined) FROM stdin;
-1	pbkdf2_sha256$36000$Y7KQu2YZluc3$VyMtZWliPj4U6VQ4qKViPdny030+Sqfvo5ZR1IcuRas=	2017-09-18 15:19:45.622338+00	t	Rich			drdr_2@hotmail.com	t	t	2017-09-09 11:15:49.711969+00
+1	pbkdf2_sha256$36000$Y7KQu2YZluc3$VyMtZWliPj4U6VQ4qKViPdny030+Sqfvo5ZR1IcuRas=	2017-10-17 08:51:12.685052+00	t	Rich			drdr_2@hotmail.com	t	t	2017-09-09 11:15:49.711969+00
+3	pbkdf2_sha256$36000$qQz6jFu98S42$t6uLPcNpjFpxcKLWVGJyO3nDvt95yFkcbtIKcDv4OT4=	2017-10-18 08:55:02.040824+00	f	TescaCEO				f	t	2017-10-18 08:47:03.354374+00
 \.
 
 
@@ -704,7 +705,7 @@ SELECT pg_catalog.setval('auth_user_groups_id_seq', 1, false);
 -- Name: auth_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: digimundo
 --
 
-SELECT pg_catalog.setval('auth_user_id_seq', 1, true);
+SELECT pg_catalog.setval('auth_user_id_seq', 3, true);
 
 
 --
@@ -1272,6 +1273,8 @@ COPY django_admin_log (id, action_time, object_id, object_repr, action_flag, cha
 283	2017-09-28 18:55:23.588765+00	86	El Centro Emocional y Sus Nudos	1	[{"added": {}}]	8	1
 284	2017-09-28 18:55:34.277696+00	87	Correspondencias Palos del Tarot	1	[{"added": {}}]	8	1
 285	2017-09-28 18:55:57.209413+00	88	Alejandro-Jodorowsky-Manual-Psicomagia Consejos pa_	1	[{"added": {}}]	8	1
+286	2017-10-17 08:51:29.319603+00	2	Josue	3		2	1
+287	2017-10-18 08:47:03.403877+00	3	TescaCEO	1	[{"added": {}}]	2	1
 \.
 
 
@@ -1279,7 +1282,7 @@ COPY django_admin_log (id, action_time, object_id, object_repr, action_flag, cha
 -- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: digimundo
 --
 
-SELECT pg_catalog.setval('django_admin_log_id_seq', 285, true);
+SELECT pg_catalog.setval('django_admin_log_id_seq', 287, true);
 
 
 --
@@ -1349,6 +1352,8 @@ SELECT pg_catalog.setval('django_migrations_id_seq', 20, true);
 COPY django_session (session_key, session_data, expire_date) FROM stdin;
 tquynzf24zezjujcvn0fmpiyduanj2d7	YTk1NDkwYWUwZmQ4ZTM3Y2MyZDliNmQyOTc3ZmZiY2YwNjZiYzZhOTp7Il9hdXRoX3VzZXJfaGFzaCI6IjJjZGE0Y2JmMTg2YTExMGQ5OGM0OTQ3YzEzMTc2ZTNkNjMwMzJlZDEiLCJfYXV0aF91c2VyX2lkIjoiMSIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIn0=	2017-09-26 08:06:43.049254+00
 h4x5mk073igsa7zn931btnstvvalan1g	YTk1NDkwYWUwZmQ4ZTM3Y2MyZDliNmQyOTc3ZmZiY2YwNjZiYzZhOTp7Il9hdXRoX3VzZXJfaGFzaCI6IjJjZGE0Y2JmMTg2YTExMGQ5OGM0OTQ3YzEzMTc2ZTNkNjMwMzJlZDEiLCJfYXV0aF91c2VyX2lkIjoiMSIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIn0=	2017-10-02 15:19:45.624735+00
+g0m2ilt82xo12m8wevvffjt5bv7sgpbm	Y2U1ZjNkZWM1ZjAyYThmM2NkYmQ4ZjdlYmU1MjQzNTUyODE1NGQyYjp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiMmNkYTRjYmYxODZhMTEwZDk4YzQ5NDdjMTMxNzZlM2Q2MzAzMmVkMSIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=	2017-10-22 01:02:37.394882+00
+55oeh4ndkpaat1aswiuq6onduq51lvkp	Mzg5YWQ1ZWZiM2FiYmExYTEwZGI0YmU5ZDQ1NTRkY2YxMTNlZWEyYzp7Il9hdXRoX3VzZXJfaGFzaCI6IjBkZDc2Yzc2ZGQ5NjFjOGJlN2M5ZTA0MDJlMDQ2ZDM1NWFjOTRiZWYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIzIn0=	2017-11-01 08:55:02.043822+00
 \.
 
 

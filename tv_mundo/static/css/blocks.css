@@ -1,9 +1,13 @@
+.mark{
+	background: grey; 
+}
+
 .video-cont{
   margin-top: 30px;  
 }
 
 .slider-cont{
-  margin-top: 30px;  
+  margin-top: 30px;    
 }
 
 

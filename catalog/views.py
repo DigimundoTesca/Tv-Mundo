@@ -43,12 +43,20 @@ def files(request):
     return render(request, template, context)
 
 @login_required
-def block(request, name):
+def block(request, name, pk=None):
     template = 'block.html'
     docs = Docs.objects.all().filter(category__title=name)
     videos = Videos.objects.all().filter(category__title=name)
     title = name
-    context = {
+
+    if pk==None:        
+        s_vid =videos[:1].get()
+    else:
+        s_vid=videos.filter(pk=pk)
+        s_vid=s_vid[:1].get()
+
+    context = {        
+        's_vid' : s_vid,
         'videos' : videos,
         'docs': docs,
         'title': title,
@@ -63,20 +71,6 @@ def file(request, pk):
     context = {
         'page_title': 'PAGE_TITLE',
         'doc': doc,
-        'title': title
-    }
-    return render(request, template, context)
-
-@login_required
-def vid(request, pk):
-    video = get_object_or_404(Videos, pk=pk)
-    r_videos = Videos.objects.all()
-    template = 'vid.html'
-    title = 'MetaMundo - ' + video.name
-    context = {
-        'page_title': 'PAGE_TITLE',
-        'r_videos': r_videos,
-        'video': video,
         'title': title
     }
     return render(request, template, context)
