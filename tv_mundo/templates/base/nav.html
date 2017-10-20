@@ -11,17 +11,17 @@
         <li class="nav-item dropdown" >
           <a class="nav-link dropdown-toggle" href="#"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Bloques</a>
           <div class="dropdown-menu" aria-labelledby="supportedContentDropdown">
-            <a class="dropdown-item" href="{% url 'catalog:block' 'Introduccion' %}">Introduccion</a>
-            <a class="dropdown-item" href="{% url 'catalog:block' 'Tarot' %}">Tarot</a>
-            <a class="dropdown-item" href="{% url 'catalog:block' 'Metagenealogia' %}">Matagenealogia</a>
-            <a class="dropdown-item" href="{% url 'catalog:block' 'Psicochamanismo' %}">Psicochamanismo</a>
+            <a class="dropdown-item" href="{% url 'catalog:block' category.0.title %}">Introduccion</a>
+            <a class="dropdown-item" href="{% url 'catalog:block' category.1.title %}">Tarot</a>
+            <a class="dropdown-item" href="{% url 'catalog:block' category.2.title %}">Matagenealogia</a>
+            <a class="dropdown-item" href="{% url 'catalog:block' category.3.title %}">Psicochamanismo</a>
           </div>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="{% url 'catalog:catalog'%}">Aprender <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="{% url 'catalog:catalog' %}">Aprender <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'catalog:files'%}">Archivo</a>
+          <a class="nav-link" href="{% url 'catalog:files' %}">Archivo</a>
         </li>
 
       </ul>
