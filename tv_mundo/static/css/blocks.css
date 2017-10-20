@@ -1,12 +1,12 @@
 .mark{
-	background: grey; 
+	background: #C8C8C8; 
 }
 
-.video-cont{
+.video-cont{  
   margin-top: 30px;  
 }
 
-.slider-cont{
+.slider-cont{  
   margin-top: 30px;    
 }
 
@@ -26,12 +26,18 @@ img{
 
 .img-sld{
 	align-self: center;
-width: 100%;
+	width: 100%;	
 }
 
 h6{
 	font-size: 15px;
 }
 
+.slick-next:before{
+	color: black;
+}
 
+.slick-prev:before{
+	color: black;
+}
 
