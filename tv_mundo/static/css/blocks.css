@@ -1,5 +1,5 @@
 .mark{
-	background: grey; 
+	background: #C8C8C8; 
 }
 
 .video-cont{
@@ -8,11 +8,9 @@
 
 .slider-cont{  
   margin-top: 30px;    
-}
-
 
 .slider{
-  height: 34vw;
+  height: 24vw;
   overflow-y: auto;	
 }
 
@@ -20,18 +18,30 @@
   width: 100%;
 }
 
-img{		
-  width: 100%;
-}
-
 .img-sld{
-	align-self: center;
-width: 100%;
+	margin: auto;
+	align-self: center;		
+	height: 14vh;
 }
 
 h6{
-	font-size: 15px;
+	font-size: 1.1vw;
 }
 
+.slick-next:before{
+	color: black;
+}
 
+.slick-prev:before{
+	color: black;
+}
+
+.slide-elements{
+	text-align: center; 
+	height: 20vh;	
+}
+
+.files{
+	margin-top: 100px;
+}
 

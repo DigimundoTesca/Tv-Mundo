@@ -19,7 +19,7 @@
               <ul class="list-group">
                 {% for vid in videos %}
                   {% if vid.category == cat %}
-                    <li id="{% url "catalog:vid" vid.pk %}" class="list-group-item list-group-item-action vid-ele">
+                    <li id="{% url "catalog:vid" vid.category.title vid.pk %}" class="list-group-item list-group-item-action vid-ele">
                       {{vid.name}}
                     </li>
                   {% endif %}
@@ -33,9 +33,11 @@
               <ul class="list-group">
                 {% for doc in docs %}
                   {% if doc.category == cat %}
+                  <div class="img-sld" id="{% url "catalog:file" doc.pk %}">
                     <li class="list-group-item list-group-item-action doc-ele">
                       {{doc.name}}
-                    </li>
+                    </li>                    
+                  </div>
                   {% endif %}
                 {% endfor %}
               </ul>
@@ -52,6 +54,11 @@
   $(document).ready(function() {
 
     $(".vid-ele").on("click",function(e){
+      var pk = $(this).attr('id');
+      window.location = pk
+    });
+
+    $(".img-sld").on("click",function(e){
       var pk = $(this).attr('id');
       window.location = pk
     });

@@ -8,7 +8,7 @@
 <div class="container-fluid">
   <div class="row">
     {% for cat in category %}
-      <div class="col-md-12">        
+      <div class="line col-md-12">        
         <div class="title">
           <h4>{{cat.title}}</h4>
         </div>
@@ -48,13 +48,39 @@
 $(document).ready(function() {
 
   $(".slide-elements").slick({
-    slidesToShow: 6,
-    slidesToScroll: 1,    
-    arrows: true,
+    slidesToShow: 2,
+    slidesToScroll: 1,   
+    focusOnSelect: true,     
+    responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,        
+        focusOnSelect: true,     
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        focusOnSelect: true,     
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        focusOnSelect: true,     
+      }
+    }    
+  ]
   }); 
 
-  $(".element").on("click",function(e){
-    var pk = $(this).attr('id');
+  $(".img-sld").on("click",function(e){
+    var pk = $(this).parent().attr('id');
     window.location = pk
   });
 

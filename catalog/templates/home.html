@@ -13,7 +13,7 @@
     <div class="row">
       <div class="section col-lg-3 col-md-6 col-sm-6">
         <div class="img-cont">          
-          <a href="{% url 'catalog:block' 'Introduccion' %}">
+          <a href="{% url 'catalog:block' category.0.title %}">
             <img class="img-bg" src="{% static 'images/intro_pic2.jpg' %}" alt="">
             <h3 class="title_block">Introduccion</h3>
           </a>
@@ -21,7 +21,7 @@
       </div>
       <div class="section col-lg-3 col-md-6 col-sm-6">
         <div class="img-cont">
-          <a href="{% url 'catalog:block' 'Tarot' %}">
+          <a href="{% url 'catalog:block' category.1.title %}">
             <img class="img-bg" src="{% static 'images/tarot_pic2.jpg' %}" alt="">
             <h3 class="title_block">Tarot</h3>            
           </a>
@@ -29,7 +29,7 @@
       </div>
       <div class="section col-lg-3 col-md-6 col-sm-6">
         <div class="img-cont">
-          <a href="{% url 'catalog:block' 'Metagenealogia' %}">
+          <a href="{% url 'catalog:block' category.2.title %}">
             <img class="img-bg" src="{% static 'images/meta_pic.jpg' %}" alt="">
             <h3 class="title_block">Metagenealogia</h3>            
           </a>          
@@ -38,7 +38,7 @@
       </div>
       <div class="section col-lg-3 col-md-6 col-sm-6">
         <div class="img-cont">
-          <a href="{% url 'catalog:block' 'Psicochamanismo' %}">
+          <a href="{% url 'catalog:block' category.3.title %}">
             <img class="img-bg" src="{% static 'images/psico_pic2.jpg' %}" alt="">
             <h3 class="title_block">Psicomagia</h3>            
           </a>

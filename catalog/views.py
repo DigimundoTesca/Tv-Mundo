@@ -6,10 +6,12 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def home(request):
     template = 'home.html'
+    category = Category.objects.all()
     videos = Videos.objects.all()
     context = {
         'videos': videos,
         'title': "Tv Mundo",
+        'category' : category,
     }
     return render(request, template, context)    
 
@@ -47,6 +49,7 @@ def block(request, name, pk=None):
     template = 'block.html'
     docs = Docs.objects.all().filter(category__title=name)
     videos = Videos.objects.all().filter(category__title=name)
+    category = Category.objects.all()
     title = name
 
     if pk==None:        
@@ -58,6 +61,7 @@ def block(request, name, pk=None):
     context = {        
         's_vid' : s_vid,
         'videos' : videos,
+        'category' : category,
         'docs': docs,
         'title': title,
     }
@@ -65,12 +69,14 @@ def block(request, name, pk=None):
 
 @login_required
 def file(request, pk):
+    category = Category.objects.all()
     doc = get_object_or_404(Docs, pk=pk)
     template = 'file.html'
     title = 'MetaMundo - ' + doc.name
     context = {
         'page_title': 'PAGE_TITLE',
         'doc': doc,
+        'category' : category,
         'title': title
     }
     return render(request, template, context)

@@ -1,7 +1,7 @@
 {% extends 'base/nav.html' %}
 {% load static %}
 {% block link %}
-	<link rel="stylesheet" type="text/css" href="{% static 'css/blocks.css' %}">	
+  <link rel="stylesheet" type="text/css" href="{% static 'css/blocks.css' %}">
 {% endblock link %}
 {% block content %}
 	<div class="container-fluid">
@@ -52,8 +52,8 @@
             	{% if doc.length == 0 %}
             	<h3>No Hay Imagenes</h3>
             	{% endif %}
-
             {% endfor%}
+          </ul>
         </div>
         <h3>Documentos</h3>                
         {% if  docs|length == 0 %}
@@ -86,17 +86,47 @@
 	</div>
 {% endblock content %}
 {% block javascript %}
-<script type="text/javascript" charset="utf-8" defer>
-	$(document).ready(function() {
-		$(".element").on("click",function(e){
-		    var pk = $(this).attr('id');
-    		window.location = pk
-  		});		
-
-        $(".vid-ele").on("click",function(e){
-            var pk = $(this).attr('id');
-            window.location = pk
-        });
-	});
-</script>
+  <script type="text/javascript" charset="utf-8" defer>
+    $(document).ready(function() {
+  $(".slide-elements").slick({
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  focusOnSelect: true,
+  responsive: [
+  {
+  breakpoint: 1024,
+  settings: {
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  focusOnSelect: true,
+  }
+  },
+  {
+  breakpoint: 600,
+  settings: {
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  focusOnSelect: true,
+  }
+  },
+  {
+  breakpoint: 480,
+  settings: {
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  focusOnSelect: true,
+  }
+  }
+  ]
+  });
+      $(".img-sld").on("click",function(e){
+      var pk = $(this).parent().attr('id');
+      window.location = pk
+          });
+  $(".vid-ele").on("click",function(e){
+  var pk = $(this).attr('id');
+  window.location = pk
+  });
+    });
+  </script>
 {% endblock javascript %}
