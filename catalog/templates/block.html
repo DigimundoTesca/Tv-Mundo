@@ -4,11 +4,11 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'css/blocks.css' %}">	
 {% endblock link %}
 {% block content %}
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row">
 			<div class="video-cont col-sm-12 col-md-9">
 				<h4><b>{{ s_vid.name }}</b></h4>
-				<video controls width="100%">
+				<video controls width="100%" controlsList="nodownload">
 					<source src="{{ s_vid.link }}" type="video/mp4">
 				</video>
 			</div>
@@ -37,7 +37,10 @@
 				</div>
 			</div>
 		</div>		
-		<h3>Imagenes</h3>
+        <h3>Imagenes</h3>
+        {% if  docs|length == 0 %}
+            <h5 style="opacity: 0.5">No hay Imagenes en esta Seccion</h5>
+        {% endif %}		
 		<div class="row">									
 			{% for doc in docs %}				
             	{% if doc.kind == 'IMG' %}
@@ -52,7 +55,10 @@
 
             {% endfor%}
         </div>
-        <h3>Documentos</h3>
+        <h3>Documentos</h3>                
+        {% if  docs|length == 0 %}
+            <h5 style="opacity: 0.5">No hay Documentos en esta Seccion</h5>           
+        {% endif %}        
         <div class="row">
             {% for doc in docs %}				
             	{% if doc.kind == 'PDF' %}
@@ -61,10 +67,12 @@
                 		<h6>{{ doc.name }}</h6>
               		</div>
             	{% endif %}
-            {% endfor%}
-        	
-        </div>
+            {% endfor%}        	
+        </div>        
         <h3>Tareas</h3>
+        {% if  docs|length == 0 %}
+            <h5 style="opacity: 0.5">No hay Tareas en esta Seccion</h5>
+        {% endif %}
         <div class="row">
             {% for doc in docs %}				
             	{% if doc.kind == 'WRD' %}
