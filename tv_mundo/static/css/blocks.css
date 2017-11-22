@@ -8,9 +8,10 @@
 
 .slider-cont{  
   margin-top: 30px;    
+}
 
 .slider{
-  height: 24vw;
+  height: 31rem;
   overflow-y: auto;	
 }
 
@@ -18,10 +19,14 @@
   width: 100%;
 }
 
+img{
+	width: 100%;
+}
+
 .img-sld{
 	margin: auto;
 	align-self: center;		
-	height: 14vh;
+	height: 24vh;
 }
 
 h6{

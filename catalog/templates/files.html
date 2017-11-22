@@ -11,7 +11,7 @@
       <div class="line col-md-12">        
         <div class="title">
           <h4>{{cat.title}}</h4>
-        </div>
+        </div>        
         <div class="row slide-elements align-items-center">
           {% for doc in docs %}
             {% if doc.category == cat %}
@@ -47,15 +47,17 @@
 
 $(document).ready(function() {
 
+  $('.carousel').carousel()
+
   $(".slide-elements").slick({
-    slidesToShow: 2,
+    slidesToShow: 8,
     slidesToScroll: 1,   
     focusOnSelect: true,     
     responsive: [
     {
       breakpoint: 1024,
       settings: {
-        slidesToShow: 2,
+        slidesToShow: 6,
         slidesToScroll: 1,        
         focusOnSelect: true,     
       }
@@ -63,7 +65,7 @@ $(document).ready(function() {
     {
       breakpoint: 600,
       settings: {
-        slidesToShow: 2,
+        slidesToShow: 4,
         slidesToScroll: 1,
         focusOnSelect: true,     
       }
