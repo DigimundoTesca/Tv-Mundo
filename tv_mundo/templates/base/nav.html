@@ -27,6 +27,7 @@
           {% if request.user.is_authenticated %}
             <a class="nav-link" href="{% url 'register:logout'%}">Cerrar Sesion</a>  
           {% endif %}          
+            <a class="nav-link" href="{% url 'register:login'%}">Iniciar Sesion</a>  
         </li>                
       </ul>
     </div>
