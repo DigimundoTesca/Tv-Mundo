@@ -25,3 +25,14 @@ def logout_view(request):
         'title': "Tv Mundo - Sesion Terminada",        
     }
     return render(request, template, context)    
+
+def welcome(request):
+    template = 'welcome.html'    
+    title = 'Tv-Mundo Bienvenido'
+    category = Category.objects.all()
+
+    context = {                
+        'category': category,
+        'title': title,
+    }
+    return render(request, template, context)

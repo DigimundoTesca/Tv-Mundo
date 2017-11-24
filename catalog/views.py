@@ -3,17 +3,6 @@ from django.contrib.auth.decorators import login_required
 from catalog.models import Videos, Category, Docs
 from django.contrib.auth.decorators import login_required
 
-def welcome(request):
-    template = 'welcome.html'    
-    title = 'Tv-Mundo Bienvenido'
-    category = Category.objects.all()
-
-    context = {                
-        'category': category,
-        'title': title,
-    }
-    return render(request, template, context)
-
 @login_required
 def home(request):
     template = 'home.html'
