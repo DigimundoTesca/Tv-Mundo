@@ -20,3 +20,8 @@ def register(request):
 
 def logout_view(request):
     logout(request)
+    template = 'logout.html'    
+    context = {        
+        'title': "Tv Mundo - Sesion Terminada",        
+    }
+    return render(request, template, context)    
