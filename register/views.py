@@ -26,7 +26,7 @@ def logout_view(request):
     }
     return render(request, template, context)    
 
-def welcome(request):
+def bienvenido(request):
     template = 'welcome.html'    
     title = 'Tv-Mundo Bienvenido'
     category = Category.objects.all()
