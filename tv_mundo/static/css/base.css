@@ -1,0 +1,15 @@
+.title-a{
+    margin-left:60px; 
+    color:blue;
+}
+.title-b{
+    position:absolute;
+    left:40vw;
+    top:3px;
+}
+
+.title-c{
+    position:absolute; 
+    right:60px; 
+    top:3px;
+}
