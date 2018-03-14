@@ -1,132 +1,69 @@
-{% extends 'base/nav.html' %}
+{% extends "base/nav.html" %}
 {% load static %}
 {% block link %}
-  <link rel="stylesheet" type="text/css" href="{% static 'css/blocks.css' %}">
+<link rel="stylesheet" href="{% static 'css/templates/block.css' %}">
 {% endblock link %}
+
 {% block content %}
-	<div class="container-fluid">
-		<div class="row">
-			<div class="video-cont col-sm-12 col-md-9">
-				<h4><b>{{ s_vid.name }}</b></h4>
-				<video controls autoplay="" width="100%" controlsList="nodownload">
-					<source src="{{ s_vid.link }}" type="video/mp4">
-				</video>
-			</div>
-			<div class="slider-cont col-md-3">
-				<h4 id="title-videos">Videos</h4>
-				<div class="slider">
-					<ul class="list-group">
-						{% for vid in videos %}
-                            {% if vid == s_vid %}
-                            <li class="list-group-item mark">
-                                <div id="{% url "catalog:vid" title vid.pk %}" class="content vid-ele">
-                                    <h6>{{ vid.name }}</h6>
-                                    <img src="{{vid.image}}">
-                                </div>
-                            </li>
-                            {% else %}
-                            <li class="list-group-item">
-                                <div id="{% url "catalog:vid" title vid.pk %}" class="content vid-ele">
-                                    <h6>{{ vid.name }}</h6>
-                                    <img src="{{vid.image}}">
-                                </div>
-                            </li>
-                            {% endif %}
-						{% endfor%}									
-					</ul>					
-				</div>
-			</div>
-		</div>		
-        <h3>Imagenes</h3>
-        {% if  docs|length == 0 %}
-            <h5 style="opacity: 0.5">No hay Imagenes en esta Seccion</h5>
-        {% endif %}		
-		<div class="row">									
-			{% for doc in docs %}				
-            	{% if doc.kind == 'IMG' %}
-              		<div id="{% url "catalog:file" doc.pk %}" class="img col-md-2 col-sm-3 element">
-                		<img class="img-sld" src="{{doc.link}}" alt="">
-                		<h6>{{ doc.name }}</h6>
-              		</div>              		
-            	{% endif %}
-            	{% if doc.length == 0 %}
-            	<h3>No Hay Imagenes</h3>
-            	{% endif %}
-            {% endfor%}
-          </ul>
+<div class="container cont">  
+  <div class="row">
+    <div class="col-12 col-md-6">      
+      <div class="cCategory">        
+        {% if selCat.title == "Introduccion" %}
+        <img class="image" src="{% static 'images/intro_pic2.jpg' %}" alt="">          
+        {% elif selCat.title == "Tarot"%}
+        <img class="image" src="{% static 'images/tarot_pic2.jpg' %}" alt="">
+        {% elif selCat.title == "Metagenealogia"%}
+        <img class="image" src="{% static 'images/meta_pic.jpg' %}" alt="">
+        {% elif selCat.title == "Psicochamanismo"%}
+        <img class="image" src="{% static 'images/psico_pic2.jpg' %}" alt="">
+        {% endif %} 
+        <div class="message">
+          <div class="text">{{selCat.title}}</div>
         </div>
-        <h3>Documentos</h3>                
-        {% if  docs|length == 0 %}
-            <h5 style="opacity: 0.5">No hay Documentos en esta Seccion</h5>           
-        {% endif %}        
-        <div class="row">
-            {% for doc in docs %}				
-            	{% if doc.kind == 'PDF' %}
-              		<div id="{% url "catalog:file" doc.pk %}" class="img col-md-2 col-sm-3 element">
-                		<img class="img-sld" src="{% static 'images/pdf_logo.png' %}" alt="">
-                		<h6>{{ doc.name }}</h6>
-              		</div>
-            	{% endif %}
-            {% endfor%}        	
+      </div>
+    </div>
+    <div class="col-12 col-md-6">
+      <div class="row">
+        <div class="col-12">
+          <a href="{% url 'catalog:videos' selCat.title 0 %}" >
+            <div class="cVideos">
+              <img class="img_a" src="{% static 'images/vid_bg.jpg' %}" alt="No img">
+              <div class="overlay_a">
+                <div class="text">Videos</div>
+              </div>
+            </div>
+          </a>
         </div>        
-        <h3>Tareas</h3>
-        {% if  docs|length == 0 %}
-            <h5 style="opacity: 0.5">No hay Tareas en esta Seccion</h5>
-        {% endif %}
-        <div class="row">
-            {% for doc in docs %}				
-            	{% if doc.kind == 'WRD' %}
-              		<div id="{% url "catalog:file" doc.pk %}" class="img col-md-2 col-sm-3 element">
-                		<img class="img-sld" src="{% static 'images/hw_logo.png' %}" alt="">
-                		<h6>{{ doc.name }}</h6>
-              		</div>
-            	{% endif %}          		
-            {% endfor%}        	
+        <div class="col-12">
+          <a href="{% url 'catalog:images' selCat.title %}">
+            <div class="cImg">
+              <img class="img_b" src="{% static 'images/images_bg.jpg' %}" alt="No img">
+              <div class="overlay_b">
+                <div class="text">Imagenes</div>
+              </div>
+            </div>
+          </a>
         </div>
-	</div>
+        <div class="col-12">
+          <a href="{% url 'catalog:docs' selCat.title %}">
+            <div class="cDoc">
+              <img class="img_c" src="{% static 'images/doc_bg.jpg' %}" alt="No img">
+              <div class="overlay_c">
+                <div class="text">Documentos</div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>    
+    </div>
+  </div>
+</div>
 {% endblock content %}
+
 {% block javascript %}
-  <script type="text/javascript" charset="utf-8" defer>
-    $(document).ready(function() {
-  $(".slide-elements").slick({
-  slidesToShow: 3,
-  slidesToScroll: 1,
-  focusOnSelect: true,
-  responsive: [
-  {
-  breakpoint: 1024,
-  settings: {
-  slidesToShow: 3,
-  slidesToScroll: 1,
-  focusOnSelect: true,
-  }
-  },
-  {
-  breakpoint: 600,
-  settings: {
-  slidesToShow: 3,
-  slidesToScroll: 1,
-  focusOnSelect: true,
-  }
-  },
-  {
-  breakpoint: 480,
-  settings: {
-  slidesToShow: 3,
-  slidesToScroll: 1,
-  focusOnSelect: true,
-  }
-  }
-  ]
-  });
-      $(".img-sld").on("click",function(e){
-      var pk = $(this).parent().attr('id');
-      window.location = pk
-          });
-  $(".vid-ele").on("click",function(e){
-  var pk = $(this).attr('id');
-  window.location = pk
-  });
-    });
-  </script>
+<script>
+  
+
+</script>
 {% endblock javascript %}

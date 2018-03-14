@@ -13,7 +13,7 @@ def home(request):
         'title': "Tv Mundo",
         'category' : category,
     }
-    return render(request, template, context)    
+    return render(request, template, context)
 
 @login_required
 def catalog(request):
@@ -31,52 +31,86 @@ def catalog(request):
     }
     return render(request, template, context)
 
+
 @login_required
-def files(request):
-    template = 'files.html'
-    docs = Docs.objects.all()    
-    categories = Category.objects.all()
-    title = 'Catalogo - Documentos'
+def videos(request, name, pk=0):
+    template = 'videos.html'    
+    videos = Videos.objects.filter(category__title=name)
+    category = Category.objects.all()
+    title = name
+
+    if pk == '0':
+        s_vid = videos[:1].get()
+    else:
+        s_vid = videos.filter(pk=pk)
+        s_vid = s_vid[:1].get()
+
     context = {
-        'docs' : docs,
-        'category' : categories,
+        's_vid': s_vid,
+        'videos': videos,
+        'category': category,        
         'title': title,
     }
     return render(request, template, context)
 
 @login_required
-def block(request, name, pk=None):
-    template = 'block.html'
+def images(request, name, pk=None):
+    template = 'file.html'
     docs = Docs.objects.all().filter(category__title=name)
     videos = Videos.objects.all().filter(category__title=name)
     category = Category.objects.all()
     title = name
 
-    if pk==None:        
-        s_vid =videos[:1].get()
+    if pk == None:
+        s_vid = videos[:1].get()
     else:
-        s_vid=videos.filter(pk=pk)
-        s_vid=s_vid[:1].get()
+        s_vid = videos.filter(pk=pk)
+        s_vid = s_vid[:1].get()
 
-    context = {        
-        's_vid' : s_vid,
-        'videos' : videos,
-        'category' : category,
+    context = {
+        's_vid': s_vid,
+        'videos': videos,
+        'category': category,
         'docs': docs,
         'title': title,
     }
     return render(request, template, context)
 
+
 @login_required
-def file(request, pk):
+def docs(request, name, pk=None):
+    template = 'files.html'
+    docs = Docs.objects.all().filter(category__title=name)
+    videos = Videos.objects.all().filter(category__title=name)
     category = Category.objects.all()
-    doc = get_object_or_404(Docs, pk=pk)
-    template = 'file.html'
-    title = 'MetaMundo - ' + doc.name
+    title = name
+
+    if pk == None:
+        s_vid = videos[:1].get()
+    else:
+        s_vid = videos.filter(pk=pk)
+        s_vid = s_vid[:1].get()
+
     context = {
-        'page_title': 'PAGE_TITLE',
-        'doc': doc,
-        'category' : category,
-        'title': title
+        's_vid': s_vid,
+        'videos': videos,
+        'category': category,
+        'docs': docs,
+        'title': title,
+    }
+    return render(request, template, context)
+
+
+@login_required
+def block(request, name):
+    template = 'block.html'
+    cat = Category.objects.all()
+    selCat = cat.get(title=name);
+    title = name;
+
+    context = {
+        'title': title,
+        'category': cat,
+        'selCat':selCat,
     }
     return render(request, template, context)
