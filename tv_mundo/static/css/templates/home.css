@@ -6,11 +6,17 @@
 }
 
 @font-face {
-  font-family: myFirstFont;
-  src: url(../font/ACaslonPro-Regular.otf);
+  font-family: acpRegular;
+  src: url(../fonts/ACaslonPro-Regular.otf);
 }
+
+@font-face {
+  font-family: acpBold;
+  src: url(../fonts/ACaslonPro-Bold.otf);
+} 
+
 body{
-  font-family: myFirstFont;
+  font-family: myFirstFont;  
 }
 
 img{
