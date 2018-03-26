@@ -7,6 +7,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),    
     url(r'^', include('catalog.urls')),
     url(r'^', include('register.urls')),
+    url(r'^', include('tarot.urls')),
 ]
 
 if settings.DEBUG:

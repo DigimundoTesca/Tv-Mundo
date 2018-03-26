@@ -23,6 +23,7 @@ THIRD_APPS = []
 USER_APPS = [
     'catalog.apps.CatalogConfig',
     'register.apps.RegisterConfig',
+    'tarot.apps.TarotConfig',
 ]
 
 
