@@ -10,6 +10,7 @@
       console.log("Enviado a php");
     }
 
+
     window.addEvent('domready', function() {
     var positions = $$('#tarot-layout div')
     var cards = $$('#tarot-cards div')
@@ -61,7 +62,7 @@
             el.style.zIndex = vidx;
 
             var progress = new Element('img', {
-                src: 'statics/Images/Tarot-Cards/' + 'img' + el.id + '.jpg',
+                src: '../static/images/Tarot-Cards/' + 'img' + el.id + '.jpg',
                 style: 'height:410px;width:300',
             });
 

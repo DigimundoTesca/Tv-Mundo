@@ -1,4 +1,3 @@
-$ = jQuery.noConflict();
 /*background aleatorio*/
 do {
   $(document).ready(function() {
