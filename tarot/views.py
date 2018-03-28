@@ -23,3 +23,8 @@ def test(request):
         'title': "Tarot",
     }
     return render(request, template, context)
+
+def admin_t(request):
+    template = 'admin_t.html'
+    context = {}
+    return render(request, template, {})

@@ -10,7 +10,6 @@
       console.log("Enviado a php");
     }
 
-
     window.addEvent('domready', function() {
     var positions = $$('#tarot-layout div')
     var cards = $$('#tarot-cards div')
@@ -24,6 +23,8 @@
     var vidx = 100;
     var colum = 0;
     var lin = 0;
+    visto = [];
+
 
     cards.each(function(el, key) {
         el.set('tween', {
@@ -85,22 +86,28 @@
                 }
             });
             cardIds.push(el.id);
+
+            for(let i = 0; i<cardIds.length; i++){
+              var p = cardIds[i]-1
+            text[p].setStyles({
+              'display':'block'
+              });
+            title[p].setStyles({
+              'display':'block'
+              });
+            }
+            visto.push(p);
+            document.getElementById(el.id).removeClass("container-card");
             if(cardIds.length == 3){
-                envia_ajax(cardIds);
-            }
-            for(let i = 0; i<cardIds.length; i++){
-              p = cardIds[i]
-              r = p-1;
-            text[r].setStyles({
-              'display':'block'
-              });
-            }
-            for(let i = 0; i<cardIds.length; i++){
-              t = cardIds[i]
-              q = t-1;
-            title[q].setStyles({
-              'display':'block'
-              });
+              envia_ajax(cardIds);
+              /*for(let i = 0; i<visto.length; i++){
+                p = visto [i];
+                cards.erase(p);
+              }
+              console.log(cards);
+              cards.setStyles({
+                'display':'block'
+              })*/
             }
             elFx.start({
                 // 'top': pos.y,
