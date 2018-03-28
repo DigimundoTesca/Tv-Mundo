@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Tarot</title>
+      <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+      --><!--styles.css-->
+      <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    </head>
+    <body>
+      <div class="container-fluid" id="Tarot">
+      <header>
+				<h1 class="site-title"><a href="#" rel="home"><span class="title-caps">C</span>Cristóbal <span class="title-caps">J</span>odorowsky</a></h1>
+      </header>
+          <div class="tarot-container text-center">
+              <h1>Seleccione 3 cartas</h1>
+              <div id="tarot-cards" class="col-12 text-center">
+                  {% for card in cards %}
+                      <div id='{{ card.number }}' class="container-card">
+                          <h1 class="card-title">{{ card.name }}</h1>
+                          <p class="card-description align-text-bottom">{{ card.description }}</p>
+                      </div>
+                  {% endfor %}
+              </div>
+              <div  class="col-md-4 position-absolute"><h2 class="Reintentar mano" id="return" onClick="window.location.reload()"></h2></div>
+              <div class="row"  id="tarot-layout">
+                  <div  class="col-md-4 col-sm-4 "></div>
+                  <div  class="col-md-4 col-sm-4 "></div>
+                  <div  class="col-md-4 col-sm-4 "></div>
+              </div>
+          </div>
+      </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <!--font awesome -->
+      <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+      <script src="{% static 'javascript/mootools-yui-compressed.js' %}"></script>
+      <script src="{% static 'javascript/main.js' %}"></script>
+    </body>
+</html>
