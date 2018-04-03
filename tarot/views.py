@@ -33,3 +33,8 @@ def news_t(request):
     template = 'news.html'
     context = {}
     return render(request, template, {})
+
+def questions_t(request):
+    template = 'questions.html'
+    context = {}
+    return render(request, template, {})
