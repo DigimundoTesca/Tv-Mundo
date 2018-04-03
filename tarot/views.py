@@ -28,3 +28,8 @@ def admin_t(request):
     template = 'admin_t.html'
     context = {}
     return render(request, template, {})
+
+def news_t(request):
+    template = 'news.html'
+    context = {}
+    return render(request, template, {})

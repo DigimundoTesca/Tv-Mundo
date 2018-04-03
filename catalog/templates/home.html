@@ -9,11 +9,11 @@
     <h2>Escuela MetaMundo - Online</h3>
     <h5>Cristobal Jodorowsky</h5>
     <h6>Un proceso transformativo</h6>
-  </div>       
-  <div class="container-fluid"> 
-    <div class="row"> 
+  </div>
+  <div class="container-fluid">
+    <div class="row">
       <div class="section col-lg-3 col-md-6 col-sm-6">
-        <div class="img-cont">          
+        <div class="img-cont">
           <a href="{% url 'catalog:block' category.0.title %}">
             <img class="img-bg" src="{% static 'images/intro_pic2.jpg' %}" alt="">
             <h3 class="title_block">Introduccion</h3>
@@ -24,7 +24,7 @@
         <div class="img-cont">
           <a href="{% url 'catalog:block' category.1.title %}">
             <img class="img-bg" src="{% static 'images/tarot_pic2.jpg' %}" alt="">
-            <h3 class="title_block">Tarot</h3>            
+            <h3 class="title_block">Tarot</h3>
           </a>
         </div>
       </div>
@@ -32,8 +32,8 @@
         <div class="img-cont">
           <a href="{% url 'catalog:block' category.2.title %}">
             <img class="img-bg" src="{% static 'images/meta_pic.jpg' %}" alt="">
-            <h3 class="title_block">Metagenealogia</h3>            
-          </a>          
+            <h3 class="title_block">Metagenealogia</h3>
+          </a>
           </a>
         </div>
       </div>
@@ -41,19 +41,18 @@
         <div class="img-cont">
           <a href="{% url 'catalog:block' category.3.title %}">
             <img class="img-bg" src="{% static 'images/psico_pic2.jpg' %}" alt="">
-            <h3 class="title_block">Psicomagia</h3>            
+            <h3 class="title_block">Psicomagia</h3>
           </a>
         </div>
       </div>
     </div>
   </div>
-
 {% endblock content %}
 {% block javascript %}
 <script type="text/javascript">
   $(document).on('ready', function () {
     $(".regular").slick({
-      
+
     });
 
     $(".b1").on("click",function(e){

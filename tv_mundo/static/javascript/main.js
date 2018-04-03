@@ -24,6 +24,8 @@
     var colum = 0;
     var lin = 0;
     visto = [];
+    textIds=[];
+    var e = [10,15,5]
 
 
     cards.each(function(el, key) {
@@ -86,16 +88,39 @@
                 }
             });
             cardIds.push(el.id);
+            console.log(cardIds);
+
 
             for(let i = 0; i<cardIds.length; i++){
-              var p = cardIds[i]-1
-            text[p].setStyles({
-              'display':'block'
-              });
-            title[p].setStyles({
-              'display':'block'
-              });
+              var textId = '<div id="' + cardIds[i] + '"' + '>' + '</div>';
+              console.log(textId);
+
+              let h = cardIds[i]-1;
+              /*text[p].setStyles({
+                'display':'block'
+              });*/
+              title[h].setStyles({
+                'display':'block'
+                });
+
+
+            for(let j = 0; j<cards.length; j++){
+              for(let h = 0; h<j.length; h++){
+
+              }
             }
+          }
+            for(let i = 0; i<cardIds.length; i++){
+              var p = cardIds[i]-1;
+
+              var y = cards[p];
+              console.log(cards[p])
+              var z = cards.indexOf(y);
+              console.log(z);
+            }
+            var hola = $$(el.id " > p");
+            console.log(hola);
+
             visto.push(p);
             document.getElementById(el.id).removeClass("container-card");
             if(cardIds.length == 3){

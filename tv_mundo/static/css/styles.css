@@ -1,3 +1,5 @@
+@import url("news.css");
+@import url("rvslider.css");
 body {
  background-color: #FFF;
  background-position: 50% 0;
@@ -7,36 +9,17 @@ body {
 -webkit-background-size: cover;
 background-size: cover;
 }
-.nav-content {
-  height: auto;
-  background-color: #92b541;
-}
-.nav-containier {
-  color: #FFF;
-  padding: .5em;
-}
-.nav-containier a {
-  color: #FFF !important;
-  padding: .15em;
-  margin-left: .5em;
-  font-size: 23pt;
-  text-decoration: none !important;
-  background: none !important;
-}
-.nav-containier a:hover {
-  text-decoration: none;
-  background-color: #818493;
-}
-
 #Tarot {
-  width: 95%;
+  width: 100%;
+  height: 100vh;
   position: relative;
 }
 p {
   font-family: "ACaslonPro-regular";
 }
 h1,h2,h3,h4,h5,h6{
-  color: #000;
+  color: #37b4ee;
+  font-weight: 600;
   font-family: "ACaslonPro-semibold";
 }
 #tarot-cards {
@@ -146,7 +129,6 @@ img:after{
   line-height: 20pt;
   font-weight: 600;
   font-family: 'Adobe Caslon Pro';
-  margin: 2em;
   padding: 0;
 }
 .title-caps {
@@ -317,8 +299,40 @@ input[type="submit"] { cursor: pointer; }
 	text-align: center;
 	width: 20px;
 }
-@media (min-width: 2000px) {
+@media screen and (min-width: 320px) {
   #tarot-cards {
-    left: calc(15% + 10px)
+    left: 9.5%;
+ }
+}
+
+@media screen and (min-width: 768px) {
+  #tarot-cards {
+    max-width: 500px;
+    position: absolute;
+    top: 4.5em;
+    left: 9.2%;
+  }
+}
+@media screen and (min-width: 1025px) {
+  #tarot-cards {
+    max-width: 500px;
+    position: absolute;
+    top: 4.5em;
+    left: 12.5%;
+  }
+}
+@media screen and (min-width: 1367px) {
+  #tarot-cards {
+    left: calc(12.5% + 25px);
+ }
+}
+@media screen and (min-width: 1500px) {
+  #tarot-cards {
+    left: calc(13.5% + 25px);
+ }
+}
+@media screen and (min-width: 2000px) {
+  #tarot-cards {
+    left: calc(17% + 30px);
  }
 }
