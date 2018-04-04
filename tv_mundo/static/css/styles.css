@@ -96,6 +96,9 @@ img:after{
   -o-transition: display 4s ease;
   transition: display 4s ease;
 }
+.muestra > p, .muestra > .muestra h1 {
+  display: block !important;
+}
 #tarot-cards h1 {
   text-transform: uppercase;
   margin-top: 16.5em;

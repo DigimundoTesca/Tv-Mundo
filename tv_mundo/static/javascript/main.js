@@ -26,10 +26,11 @@
     visto = [];
     textIds=[];
 
-    text.each(function(textId,key){
-      console.log(textId)
-      console.log("hola", textId.id);
-    });
+    /*text.each(function(texts,index){
+      textIds.push(texts.id);
+      console.log(texts + index);
+    });*/
+
     cards.each(function(el, key) {
         el.set('tween', {
             duration: 'short'
@@ -48,6 +49,7 @@
             'left': pos.x + (key * spacing),
             'top': pos.y
         })
+
         el.addClass("rot5");
         el.addEvent('mouseover', function() {
             el.tween('top', pos.y - 10);
@@ -60,6 +62,7 @@
         })
         el.addEvent('click', function() {
             if ((selected) >= positions.length) return false;
+
             el.removeEvents('mouseout');
             el.removeEvents('mouseover');
             el.removeEvents('click');
@@ -82,6 +85,7 @@
                     });
                     el.removeClass("rot5");
                     el.addClass("muevetee");
+                    el.addClass("muestra");
                     progress.inject(el);
                     el.tween('opacity', 0, 1, {
                         duration: 'long'
@@ -89,31 +93,18 @@
 
                 }
             });
+
             cardIds.push(el.id);
             console.log(cardIds);
 
-            for(let j = 0; j<cards.length; j++){
-              for(let h = 0; h<j.length; h++){
-
-              }
-            }
-
-            for(let i = 0; i<cardIds.length; i++){
-              var p = cardIds[i]-1;
-
-              var muestra = function() {
-                text[p].setStyles({
-                'display':'block'
-              });
-                title[p].setStyles({
-                  'display':'block'
-              });
-            };
-            muestra.delay(3110);
-          }
+          /*  cards.each(['0','1','2'], function(card, index){
+              console.log(card + index);
+            });*/
 
 
-            visto.push(p);
+
+
+        
             document.getElementById(el.id).removeClass("container-card");
             if(cardIds.length == 3){
               envia_ajax(cardIds);
