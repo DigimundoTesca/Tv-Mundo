@@ -2,7 +2,7 @@
     function envia_ajax(cardIds) {
       console.log(cardIds);
       var myRequest = new Request.HTML({
-        url: "../Tarot/script.php",
+        url: urltarot,
         method: "post",
         data: {
             'cartas': cardIds

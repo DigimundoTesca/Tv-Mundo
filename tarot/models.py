@@ -10,7 +10,7 @@ class Card(models.Model):
 
 class Response(models.Model):
     video = models.URLField()
-    description = models.TextField()
+    date = models.DateTimeField(editable=False, auto_now=True)
 
 
 class Week(models.Model):
@@ -19,10 +19,21 @@ class Week(models.Model):
 
 
 class Question(models.Model):
+    OPEN = 'OP'
+    CLOSE = 'CL'
+    RESPONDING = 'RP'
+
+    STATUS = (
+        (OPEN, 'Abierta'),
+        (CLOSE, 'Cerrada'),
+    )
+
     card_one = models.ForeignKey(Card, related_name='card1_question')
     card_two = models.ForeignKey(Card, related_name='card2_question')
     card_three = models.ForeignKey(Card, related_name='card3_question')
     date_create = models.DateField(auto_now=True)
-    response = models.ForeignKey(Response, on_delete=models.CASCADE)
-    week = models.ForeignKey(Week, on_delete=models.CASCADE)
-
+    response = models.ForeignKey(Response, on_delete=models.CASCADE, default=1, null=True)
+    week = models.ForeignKey(Week, on_delete=models.CASCADE, default=1, null=True)
+    status = models.CharField(max_length=2, null=True, choices=STATUS, default='OP')
+    name = models.CharField(max_length=30, null=True)
+    question = models.CharField(max_length=30, null=True)
