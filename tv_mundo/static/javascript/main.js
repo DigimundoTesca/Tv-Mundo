@@ -9,6 +9,12 @@
         },
       }).send();
       console.log("Enviado a php");
+      var myFx = new Fx.Scroll('myElement', {
+        offset: {
+        x: 0,
+        y: 100
+    }
+}).toTop();
     }
     /*Tarto position cards*/
     window.addEvent('domready', function() {
