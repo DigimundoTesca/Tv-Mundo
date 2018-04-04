@@ -25,7 +25,7 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Administrar">
-          <a class="nav-link" href="index.html">
+          <a class="nav-link" href="{% url 'tarot:admin_tarot' %}">
 
             <span class="nav-link-text">Inicio</span>
           </a>
@@ -76,7 +76,7 @@
           </a>
 
           <div class="dropdown-menu" aria-labelledby="messagesDropdown">
-            <h6 class="dropdown-header">Pregunta día viernes:</h6>
+            <h6 class="dropdown-header">Preguntas de esta semana</h6>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">
               <strong>David Miller</strong>
@@ -84,7 +84,7 @@
               <div class="dropdown-message small">Hola, Cristobal. Mi pregunta es la siguiente ... Las cartas fueron ... </div>
             </a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item small" href="#">View all messages</a>
+            <a class="dropdown-item small" href="#">Ver todos los mensajes</a>
           </div>
 
         </li>
@@ -123,3 +123,48 @@
       </ul>
     </div>
   </nav>
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      {% block content %}
+      {% endblock %}
+
+    </div>
+  <!-- /.container-fluid-->
+  <!-- /.content-wrapper-->
+  <footer class="sticky-footer">
+  <div class="container">
+    <div class="text-center">
+      <small>Copyright © Cristobal Jodorowsky 2018	| Tema: Cristobal por  <a href="http://www.digimundo.com.mx/">Digimundo Technologies © </a></small>
+    </div>
+  </div>
+  </footer>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+        <a class="btn btn-primary" href="login.html">Logout</a>
+      </div>
+    </div>
+  </div>
+  </div>
+  <!--Fontawesome-->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+  <!--For Bootstrap-->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="{% static 'javascript/admin.js'%}"></script>
+  </div>
+  </body>
+
+  </html>

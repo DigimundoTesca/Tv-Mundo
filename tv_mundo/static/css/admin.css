@@ -25,7 +25,9 @@ body.fixed-nav {
     text-transform: uppercase;
     margin: 0;
   }
-
+#url {
+  display: none; 
+}
 
 .site-title a {
     color: #FFF;
