@@ -12,6 +12,11 @@ class Response(models.Model):
     video = models.URLField()
     date = models.DateTimeField(editable=False, auto_now=True)
 
+    def getmin(self):
+        url = self.video
+        img ="http://i1.ytimg.com/vi/"+url[32:43]+"/maxresdefault.jpg"
+        return img
+
 
 class Week(models.Model):
     number_week = models.PositiveSmallIntegerField()

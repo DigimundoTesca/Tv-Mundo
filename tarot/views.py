@@ -4,12 +4,11 @@ from tarot.models import Week, Card, Response, Question
 from django.contrib.auth.decorators import login_required
 import random
 
-@login_required
 def start(request):
     template = 'tarot.html'
     cards = sorted(Card.objects.all(), key=lambda x: random.random())
     if request.method == 'POST':
-        print(request.POST['cartas'])
+        print("post")
 
     context = {
         'cards': cards,
@@ -18,12 +17,11 @@ def start(request):
     return render(request, template, context)
 
 
-@login_required
 def test(request):
-    template = 'Tarot/tarot.html'
-    card = Card.objects.all()
+    template = 'questions_solved.html'
+    questions = Question.objects.filter(status='CL')
     context = {
-        'cards': card,
+        'questions': questions,
         'title': "Tarot",
     }
     return render(request, template, context)
@@ -35,8 +33,14 @@ def admin_t(request):
 
 def news_t(request):
     template = 'news.html'
-    context = {}
-    return render(request, template, {})
+    response = Response.objects.all()
+    for id in response:
+        print(id.getmin())
+    context = {
+        'responses': response,
+
+    }
+    return render(request, template, context)
 
 def questions_t(request):
     template = 'questions.html'
