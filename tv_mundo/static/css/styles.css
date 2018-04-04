@@ -1,0 +1,345 @@
+@import url("news.css");
+@import url("rvslider.css");
+body {
+ background-color: #FFF;
+ background-position: 50% 0;
+-ms-background-size: cover;
+-o-background-size: cover;
+-moz-background-size: cover;
+-webkit-background-size: cover;
+background-size: cover;
+}
+#Tarot {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+p {
+  font-family: "ACaslonPro-regular";
+}
+h1,h2,h3,h4,h5,h6{
+  color: #37b4ee;
+  font-weight: 600;
+  font-family: "ACaslonPro-semibold";
+}
+#tarot-cards {
+  max-width: 500px;
+  position: absolute;
+  top: 4.5em;
+  left: 10.5%;
+}
+
+#tarot-cards div {
+    background-image: url("../images/Tarot-Cards/img22.jpg");
+    border: 3px solid #967996;
+border-top-left-radius: 10px;
+    background-size: 99px;
+    cursor: pointer;
+    height: 132px;
+    width: 90px;
+    background-position: 50% 0;
+-ms-background-size: cover;
+-o-background-size: cover;
+-moz-background-size: cover;
+-webkit-background-size: cover;
+background-size: cover;
+}
+
+.muevetee{
+    -webkit-transform: rotateY(360deg);
+    -moz-transform: rotateY(360deg);
+    -o-transform: rotateY(360deg);
+    transform: rotateY(360deg);
+    -webkit-transition: 0.6s;
+    -webkit-transform-style: preserve-3d;
+    -moz-transition: 0.6s;
+    -moz-transform-style: preserve-3d;
+
+    -o-transition: 0.6s;
+    -o-transform-style: preserve-3d;
+
+    transition: 0.6s;
+    transform-style: preserve-3d;
+    position: relative;
+    }
+
+.destino {
+    border: none!important
+}
+.Reintentar{
+  color: #000;
+    display: none;
+    visibility: hidden;
+
+}
+
+.mano{
+  cursor: pointer;
+}
+img:after{
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.card-description, #tarot-cards  h1 {
+  display: none;
+  position: absolute;
+  margin-top: 27em;
+  text-align: justify;
+  padding-top: 1em;
+  color: #000;
+  font-size: 1em;
+  left: -28%;
+  width: 350px;
+  cursor: default;
+  -webkit-transition: display 4s ease;
+  -moz-transition: display 4s ease;
+  -o-transition: display 4s ease;
+  transition: display 4s ease;
+}
+.muestra > p, .muestra > h1 {
+  display: block !important;
+}
+#tarot-cards h1 {
+  text-transform: uppercase;
+  margin-top: 16.5em;
+  font-weight: 700;
+  font-size: 1.5em;
+}
+.site-title {
+    font-size: 25px;
+    line-height: 40px;
+    margin-left: 25px;
+    padding: 3px;
+    padding-bottom: 15px;
+    word-spacing: 10px;
+    font-weight: 600;
+    margin: 0;
+    text-transform: uppercase;
+    display: block;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+}
+.site-title a{
+  color: #000000;
+  list-style: none;
+  text-decoration: none;
+}
+.site-title a:hover,
+.site-title a:focus,
+.site-title a:active {
+  color: #000000;
+}
+.site-title {
+  font-size: 11pt;
+  line-height: 20pt;
+  font-weight: 600;
+  font-family: 'Adobe Caslon Pro';
+  padding: 0;
+}
+.title-caps {
+  font-size: 35px;
+}
+
+
+/*sesion*/
+
+body#sesion {
+	font-family: "ACaslonPro-regular";
+	background: #eaeaea;
+	color: #999;
+	font: 100%/1.5em sans-serif;
+	margin: 0;
+}
+#inicio {
+	height: 100vh;
+  background-position: center;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  -webkit-transition: background-image 2s ease-out;
+  -moz-transition: background-image 2s ease-out;
+  -o-transition: background-image 2s ease-out;
+  transition: background-image 2s ease-out;
+}
+#inicio:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.75);
+  /*background-color: rgba(0, 0, 0, 0.5);*/
+}
+#inicio h1 { margin: 0; }
+
+#inicio a {
+	color: #999;
+	text-decoration: none;
+}
+
+#inicio a:hover {
+  color: #1dabb8;
+}
+
+fieldset {
+	border: none;
+	margin: 0;
+}
+
+#inicio input {
+	border: none;
+	font-family: inherit;
+	font-size: inherit;
+	margin: 0;
+	outline: none;
+	-webkit-appearance: none;
+}
+
+input[type="submit"] { cursor: pointer; }
+
+.clearfix { *zoom: 1; }
+.clearfix:before, .clearfix:after {
+	content: "";
+	display: table;
+}
+.clearfix:after { clear: both; }
+
+/* ---------- LOGIN-FORM ---------- */
+
+#login-form {
+	width: 400px;
+  margin-top: 10em;
+	text-align: center;
+	/*box-shadow:0 4px 8px 0 rgba(255, 255, 255, 0.2), 0 6px 20px 0 rgba(255, 255, 255, 0.19);*/
+  box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  z-index: 20;
+}
+
+#login-form h1 {
+	background-color: #92b541;
+	border-radius: 5px 5px 0 0;
+	color: #fff;
+	font-size: 16px;
+	padding: 20px;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+#login-form fieldset {
+	background: #fff;
+	border-radius: 0 0 5px 5px;
+	padding: 20px;
+	position: relative;
+}
+
+#login-form fieldset:before {
+	background-color: #fff;
+	content: "";
+	height: 8px;
+	left: 50%;
+	margin: -4px 0 0 -4px;
+	position: absolute;
+	top: 0;
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
+	width: 8px;
+}
+
+#login-form input {
+	font-size: 14px;
+}
+
+#login-form input[type="text"],
+#login-form input[type="password"] {
+	width: 80% !important;
+	display: block;
+	margin: 0 auto;
+	border: 1px solid #dcdcdc;
+	padding: 12px 10px;
+	width: 238px;
+}
+
+#login-form input[type="text"] {
+	border-radius: 3px 3px 0 0;
+}
+
+#login-form input[type="password"] {
+	border-top: none;
+	border-radius: 0px 0px 3px 3px;
+}
+
+#login-form input[type="submit"] {
+	background: #9f010f;
+	border-radius: 3px;
+	color: #fff;
+	font-weight: bold;
+	padding: 12px 20px;
+	position: absolute;
+	bottom: 1em;
+	right: 2em;
+}
+
+#login-form input[type="submit"]:hover {
+	background: #9f010fd6;
+}
+
+#login-form footer {
+	font-size: 12px;
+	margin-top: 16px;
+}
+
+.info {
+	background: #e5e5e5;
+	border-radius: 50%;
+	display: inline-block;
+	height: 20px;
+	line-height: 20px;
+	margin: 0 10px 0 0;
+	text-align: center;
+	width: 20px;
+}
+@media screen and (min-width: 320px) {
+  #tarot-cards {
+    left: 9.5%;
+ }
+}
+
+@media screen and (min-width: 768px) {
+  #tarot-cards {
+    max-width: 500px;
+    position: absolute;
+    top: 4.5em;
+    left: 9.2%;
+  }
+}
+@media screen and (min-width: 1025px) {
+  #tarot-cards {
+    max-width: 500px;
+    position: absolute;
+    top: 4.5em;
+    left: 12.5%;
+  }
+}
+@media screen and (min-width: 1367px) {
+  #tarot-cards {
+    left: calc(12.5% + 25px);
+ }
+}
+@media screen and (min-width: 1500px) {
+  #tarot-cards {
+    left: calc(13.5% + 25px);
+ }
+}
+@media screen and (min-width: 2000px) {
+  #tarot-cards {
+    left: calc(17% + 30px);
+ }
+}

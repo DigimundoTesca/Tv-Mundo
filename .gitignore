@@ -124,6 +124,11 @@ tags
 polls/migrations/*
 !polls/migrations/__init__.py
 
+# Django Migrations
+tarot/migrations/*
+!tarot/migrations/__init__.py
+
+
 # Django settings
 staticfiles/
 

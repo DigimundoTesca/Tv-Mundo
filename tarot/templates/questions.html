@@ -1,0 +1,76 @@
+{% extends "base/base-admin.html" %}
+{% load static %}
+
+{% block content %}
+<div class="ask-container mt-3">
+  <h1>Bandeja de entrada </h1>
+
+  <span><h3>Preguntas de última semana</h3></span>
+
+    <div class="row text-center justify-content-center mt-3">
+      <div class="col-12 response text-center" id="url">
+        <form>
+          <div class="form-group row">
+            <label for="response" class="col-sm-2 col-form-label">Respuesta</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="response" name="response" placeholder="Pegar aquí url ">
+
+          </div>
+          <button type="submit" class="btn btn-primary" name="send-response"> Publicar </button>
+        </div>
+
+        </form>
+      </div>
+    <table class="table col-10">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Preguntas</th>
+          <th scope="col">Cartas</th>
+        </tr>
+
+      </thead>
+      <tbody>
+        <tr>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+
+        </tr>
+        <tr>
+          <td>Jacob</td>
+          <td>Thornton</td>
+          <td>@fat</td>
+
+        </tr>
+        <tr>
+          <td>Larry</td>
+          <td>the Bird</td>
+          <td>@twitter</td>
+
+        </tr>
+        <tr>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+
+        </tr>
+        <tr>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="row text-right">
+      <div class="col-11">
+        <button type="button" class="btn btn-danger" id="responder"name="button">Responder</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
