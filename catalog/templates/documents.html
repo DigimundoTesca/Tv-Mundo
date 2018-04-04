@@ -1,0 +1,47 @@
+{% extends "base/nav.html" %}
+{% load static %}
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/templates/documents.css' %}">
+{% endblock link%}
+
+{% block content%}
+{% if not docs %}
+<div class="noImg">
+  <h3>Esta galeria no cuenta con imagenes por el momento</h3>
+</div>
+{% endif %}
+<div class="container-fluid content">  
+  <div class="col-12">
+    <div class="video">
+      <div class="row">
+        {% for doc in docs %} {% if doc.kind == 'PDF' %}
+        <div class="col-1">
+          <a href="{{doc.link}}">
+            <img class="sImg" src="{% static 'images/pdf_logo.png' %}" alt="No img" width="100%">
+          </a>
+        </div>
+        {% endif %} {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid content">
+  <div class="col-12">
+    <div class="video">
+      <div class="row">
+        {% for doc in docs %} {% if doc.kind == 'WRD' %}
+        <div class="col-1">
+          <a href="{{doc.link}}">
+            <img class="sImg" src="{% static 'images/hw_logo.png' %}" alt="No img" width="100%">
+          </a>
+        </div>
+        {% endif %} {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{%endblock content%}
+
+{% block javascript %}
+
+{% endblock javascript %}

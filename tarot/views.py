@@ -26,3 +26,18 @@ def test(request):
         'title': "Tarot",
     }
     return render(request, template, context)
+
+def admin_t(request):
+    template = 'admin_t.html'
+    context = {}
+    return render(request, template, {})
+
+def news_t(request):
+    template = 'news.html'
+    context = {}
+    return render(request, template, {})
+
+def questions_t(request):
+    template = 'questions.html'
+    context = {}
+    return render(request, template, {})

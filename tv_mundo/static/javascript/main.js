@@ -1,3 +1,4 @@
+    /***Envia arreglo por ajax***/
     function envia_ajax(cardIds) {
       console.log(cardIds);
       var myRequest = new Request.HTML({
@@ -8,13 +9,17 @@
         },
       }).send();
       console.log("Enviado a php");
+      var myFx = new Fx.Scroll('myElement', {
+        offset: {
+        x: 0,
+        y: 100
     }
-
-
+}).toTop();
+    }
+    /*Tarto position cards*/
     window.addEvent('domready', function() {
     var positions = $$('#tarot-layout div')
     var cards = $$('#tarot-cards div')
-    var text = $$('#tarot-cards p')
     var title = $$('#tarot-cards h1')
     var selected = 0;
     var spacing = 27;
@@ -43,6 +48,7 @@
             'left': pos.x + (key * spacing),
             'top': pos.y
         })
+
         el.addClass("rot5");
         el.addEvent('mouseover', function() {
             el.tween('top', pos.y - 10);
@@ -55,6 +61,7 @@
         })
         el.addEvent('click', function() {
             if ((selected) >= positions.length) return false;
+
             el.removeEvents('mouseout');
             el.removeEvents('mouseover');
             el.removeEvents('click');
@@ -77,6 +84,7 @@
                     });
                     el.removeClass("rot5");
                     el.addClass("muevetee");
+                    el.addClass("muestra");
                     progress.inject(el);
                     el.tween('opacity', 0, 1, {
                         duration: 'long'
@@ -84,23 +92,12 @@
 
                 }
             });
+
             cardIds.push(el.id);
+            console.log(cardIds);
+
             if(cardIds.length == 3){
-                envia_ajax(cardIds);
-            }
-            for(let i = 0; i<cardIds.length; i++){
-              p = cardIds[i]
-              r = p-1;
-            text[r].setStyles({
-              'display':'block'
-              });
-            }
-            for(let i = 0; i<cardIds.length; i++){
-              t = cardIds[i]
-              q = t-1;
-            title[q].setStyles({
-              'display':'block'
-              });
+              envia_ajax(cardIds);
             }
             elFx.start({
                 // 'top': pos.y,
@@ -117,7 +114,7 @@
                 }).delay(4000);
             }
         })
-    });
+      });
     });
     function calculaAncho() {
     if (document.layers) {
