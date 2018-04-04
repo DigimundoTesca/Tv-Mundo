@@ -1,0 +1,83 @@
+.cCategory{
+  margin-top: 2vh;
+  height: 79vh;  
+  border-radius: 40px;  
+  overflow: hidden;     
+  background-color: black;
+}
+
+.cVideos, .cImg, .cDoc{
+  margin-top: 2vh;
+  height: 25vh;  
+  border-radius: 40px;  
+  overflow: hidden;    
+}
+
+.image {
+  opacity: 1;
+  display: block;
+  height: 100%;  
+  transition: .5s ease;
+  backface-visibility: hidden;  
+}
+
+.cVideos:hover .overlay_a{  
+  bottom: 40%;
+}
+.cVideos:hover .img_a{
+  opacity: 0.6;    
+}
+
+.cImg:hover .overlay_b{  
+  bottom: 40%;
+}
+.cImg:hover .img_b {
+  opacity: 0.6;
+}
+
+.cDoc:hover .overlay_c{  
+  bottom: 40%;
+}
+.cDoc:hover .img_c {
+  opacity: 0.6;
+}
+
+.img_a, .img_b, .img_c{
+  opacity: 1;  
+  width: 100%;
+  transition: .5s ease;  
+  backface-visibility: hidden;
+  display: block;
+  cursor: pointer;
+}
+
+.message{
+  position: absolute;
+  bottom: 10%;
+  left: 15%;    
+  font-size: 30px;
+  background: black;
+  opacity: .7;
+  border-radius: 30px;
+  padding: 10px;
+  transition: .5s ease;  
+  cursor: pointer;
+}
+
+.overlay_a,.overlay_b,.overlay_c{
+  position: absolute;
+  bottom: 20%;
+  left: 10%;    
+  font-size: 30px;
+  background: black;
+  opacity: .7;
+  border-radius: 30px;
+  padding: 10px;
+  transition: .5s ease;  
+  cursor: pointer;
+}
+
+.text{
+  color: white;
+  opacity: 1px;
+}
