@@ -1,3 +1,4 @@
+    /***Envia arreglo por ajax***/
     function envia_ajax(cardIds) {
       console.log(cardIds);
       var myRequest = new Request.HTML({
@@ -9,11 +10,10 @@
       }).send();
       console.log("Enviado a php");
     }
-
+    /*Tarto position cards*/
     window.addEvent('domready', function() {
     var positions = $$('#tarot-layout div')
     var cards = $$('#tarot-cards div')
-    var text = $$('#tarot-cards p')
     var title = $$('#tarot-cards h1')
     var selected = 0;
     var spacing = 27;
@@ -23,13 +23,6 @@
     var vidx = 100;
     var colum = 0;
     var lin = 0;
-    visto = [];
-    textIds=[];
-
-    /*text.each(function(texts,index){
-      textIds.push(texts.id);
-      console.log(texts + index);
-    });*/
 
     cards.each(function(el, key) {
         el.set('tween', {
@@ -97,25 +90,8 @@
             cardIds.push(el.id);
             console.log(cardIds);
 
-          /*  cards.each(['0','1','2'], function(card, index){
-              console.log(card + index);
-            });*/
-
-
-
-
-        
-            document.getElementById(el.id).removeClass("container-card");
             if(cardIds.length == 3){
               envia_ajax(cardIds);
-              /*for(let i = 0; i<visto.length; i++){
-                p = visto [i];
-                cards.erase(p);
-              }
-              console.log(cards);
-              cards.setStyles({
-                'display':'block'
-              })*/
             }
             elFx.start({
                 // 'top': pos.y,

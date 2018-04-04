@@ -17,9 +17,9 @@
 				<h1 class="site-title"><a href="#" rel="home"><span class="title-caps">C</span>ristóbal <span class="title-caps">J</span>odorowsky</a></h1>
         <div class="nav-content">
           <div class="nav-containier">
-            <a href="#">Últimas Respuestas</a>
+            <a href="{% url 'tarot:news_tarot' %}">Últimas Respuestas</a>
             <a href= "{% url 'tarot:start_tarot' %}">Tarot</a>
-            <a href="#">Dar videorespuesta</a>
+            <a href="{% url 'tarot:admin_tarot' %}">Dar videorespuesta</a>
           </div>
         </div>
       </header>

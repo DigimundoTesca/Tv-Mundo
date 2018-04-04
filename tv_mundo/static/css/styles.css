@@ -96,7 +96,7 @@ img:after{
   -o-transition: display 4s ease;
   transition: display 4s ease;
 }
-.muestra > p, .muestra > .muestra h1 {
+.muestra > p, .muestra > h1 {
   display: block !important;
 }
 #tarot-cards h1 {
