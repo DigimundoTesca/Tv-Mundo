@@ -2,13 +2,18 @@
     function envia_ajax(cardIds) {
       console.log(cardIds);
       var myRequest = new Request.HTML({
-        url: "../Tarot/script.php",
+        url: urltarot,
         method: "post",
         data: {
             'cartas': cardIds
         },
       }).send();
       console.log("Enviado a php");
+      var form = document.getElementById("form-tarot").setStyles({
+        'display':'block'
+      });
+      document.body.scrollTop = document.body.scrollHeight;
+
     }
     /*Tarto position cards*/
     window.addEvent('domready', function() {
@@ -91,6 +96,7 @@
             console.log(cardIds);
 
             if(cardIds.length == 3){
+
               envia_ajax(cardIds);
             }
             elFx.start({

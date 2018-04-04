@@ -30,18 +30,12 @@
 	<div class="rvs-item-container">
 		<div class="rvs-item-stage">
 			<!-- The below is a single item, simply duplicate this layout for each item -->
-			<div class="rvs-item" style="background-image: url({% static 'images/respuesta1.PNG' %})">
+            {% for response in responses %}
+			<div class="rvs-item" style="background-image: url({{ response.getmin }})">
 				<p class="rvs-item-text">Respuesta ... <small>Cristobal Jodorowsky</small></p>
-				<a href="https://www.youtube.com/watch?v=4x-mULLHoVk" class="rvs-play-video"></a>
+				<a href="{{ response.video }}" class="rvs-play-video"></a>
 			</div>
-			<div class="rvs-item" style="background-image: url({% static 'images/respuesta2.PNG' %})">
-				<p class="rvs-item-text">VIDEO_TITLE <small>by VIDEO_CREDITS</small></p>
-				<a href="https://www.youtube.com/watch?v=70nwRkmWC1I" class="rvs-play-video"></a>
-			</div>
-			<div class="rvs-item" style="background-image: url({% static 'images/respuesta2.PNG' %})">
-				<p class="rvs-item-text">VIDEO_TITLE <small>by VIDEO_CREDITS</small></p>
-				<a href="https://www.youtube.com/watch?v=70nwRkmWC1I" class="rvs-play-video"></a>
-			</div>
+            {% endfor %}
 		</div>
 	</div>
 	<div class="rvs-nav-container">
@@ -61,21 +55,13 @@
 			</div>
 
 			<!-- The below is the corresponding nav item for the single item, simply duplicate this layout for each item -->
-			<a class="rvs-nav-item">
-				<span class="rvs-nav-item-thumb" style="background-image: url({% static 'images/respuesta1.PNG' %})"></span>
-				<h4 class="rvs-nav-item-title">Respuesta 1</h4>
+			{% for response in responses%}
+            <a class="rvs-nav-item">
+				<span class="rvs-nav-item-thumb" style="background-image: url({{ response.getmin }})"></span>
+				<h4 class="rvs-nav-item-title">Respuesta {{ response.id }}</h4>
 				<small class="rvs-nav-item-credits">Cristobal Responde acerca de ...</small>
 			</a>
-			<a class="rvs-nav-item">
-				<span class="rvs-nav-item-thumb" style="background-image: url({% static 'images/respuesta2.PNG' %})"></span>
-				<h4 class="rvs-nav-item-title">Respuesta 2</h4>
-				<small class="rvs-nav-item-credits">Cristobal Responde acerca de ...</small>
-			</a>
-			<a class="rvs-nav-item">
-				<span class="rvs-nav-item-thumb" style="background-image: url({% static 'images/respuesta2.PNG' %})"></span>
-				<h4 class="rvs-nav-item-title">Respuesta 2</h4>
-				<small class="rvs-nav-item-credits">Cristobal Responde acerca de ...</small>
-			</a>
+            {% endfor %}
 
 		</div>
 		<a class="rvs-nav-next"></a>
