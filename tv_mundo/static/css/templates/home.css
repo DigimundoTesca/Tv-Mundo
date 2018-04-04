@@ -1,0 +1,54 @@
+.section:hover .img-cont{
+  transform: scale(1.05);
+  transition: box-shadow 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+  box-shadow: 7px 7px 3px #888888;
+}
+
+@font-face {
+  font-family: acpRegular;
+  src: url(../fonts/ACaslonPro-Regular.otf);
+}
+
+@font-face {
+  font-family: acpBold;
+  src: url(../fonts/ACaslonPro-Bold.otf);
+} 
+
+body{
+  font-family: myFirstFont;  
+}
+
+img{
+  height: 93%;    
+}
+
+.img-cont{
+  height: 80vh;  
+  text-align: center;
+  overflow: hidden;  
+}
+
+a{
+  color: white;
+}
+
+a:hover .img-cont{  
+  color: white;
+}
+
+.cont{  
+  padding: 60px;
+}
+
+.title_block{
+  padding: 10px;
+}
+
+
+
+
+
+
+
+
