@@ -3,13 +3,16 @@ from django.contrib.auth.decorators import login_required
 from tarot.models import Week, Card, Response
 from django.contrib.auth.decorators import login_required
 
+import random
+
 @login_required
 def start(request):
     template = 'tarot.html'
-    card = Card.objects.all()
+    card = sorted(Card.objects.all(), key=lambda x: random.random())
     context = {
         'cards': card,
         'title': "Tarot",
+        'cards': card,
     }
     return render(request, template, context)
 

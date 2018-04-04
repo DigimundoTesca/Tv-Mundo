@@ -3,10 +3,10 @@ from django.db import models
 # Create your models here.
 
 class Card(models.Model):
-    number = models.IntegerField()
+    number = models.CharField(max_length=3, unique=True)
     name = models.CharField(max_length=30, unique=True)
     description = models.TextField()
-    image = models.ImageField()
+
 
 
 class Response(models.Model):
