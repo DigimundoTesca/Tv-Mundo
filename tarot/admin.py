@@ -3,7 +3,7 @@ from tarot.models import Card, Question, Response, Week
 
 @admin.register(Card)
 class AdminCard(admin.ModelAdmin):
-    list_display = ('number', 'name', 'image',)
+    list_display = ('number', 'name', )
     ordering = ['number']
 
 @admin.register(Question)
