@@ -1,3 +1,4 @@
+    var cardsTarot = function(){
     /***Envia arreglo por ajax***/
     function envia_ajax(cardIds) {
       console.log(cardIds);
@@ -21,7 +22,7 @@
     var cards = $$('#tarot-cards div')
     var title = $$('#tarot-cards h1')
     var selected = 0;
-    var spacing = 27;
+    var spacing = 37;
     var cardIds = Array();
     var posmarco = $("tarot-layout").getPosition();
     var despcard = posmarco.x + 25;
@@ -39,18 +40,41 @@
         lin=0;
         var pos = el.getPosition();
         var espacio = Math.floor(Math.random() * 8) + 5;
-        var vespacio = Math.floor(Math.random() * 10);
-        pos.y = pos.y + vespacio + lin;
+        /*for (i=0; i < cards.length; i++){
+          var vespacio = 0;
+          var increment = 7;
+          var deg = 0;
+          more_deg = deg + 18;
+          if (i <= 10 ){
+            pos.y = pos.y + vespacio - increment + lin;
+            cards[i].setStyles({
+              'top' : pos.y,
+              'transform': 'rotate(' +  -more_deg + 'deg)'
+            })
+            if (i== 10){
+              cards[i].setStyles({
+                'transform': 'rotate(0deg)'
+              })
+            }
+          }
+          else if(i >10) {
+            pos.y = pos.y + vespacio - increment + lin;
+            cards[i].setStyles({
+              'top' : pos.y,
+              'transform': 'rotate(-15deg)'
+            })
+          }
+        }*/
         pos.x = pos.x + despcard;
         el.setStyles({
             'position': 'absolute',
             'left': pos.x + (key * spacing),
-            'top': pos.y
+            
         })
 
         el.addClass("rot5");
         el.addEvent('mouseover', function() {
-            el.tween('top', pos.y - 10);
+            el.tween('top', pos.y + 15);
         })
         el.addEvent('mouseout', function() {
             el.tween('top', pos.y);
@@ -101,7 +125,7 @@
             }
             elFx.start({
                 // 'top': pos.y,
-                'top': +250,
+                'top': +350,
                 'left': pos.x-42,
                 'height': [132, 400],
                 'width': [80, 220],
@@ -124,3 +148,5 @@
     }
     return ancho;
     }
+  }
+  cardsTarot.delay(2000);

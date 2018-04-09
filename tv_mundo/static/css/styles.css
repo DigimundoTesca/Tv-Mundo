@@ -37,11 +37,14 @@ h1,h2,h3,h4,h5,h6{
 #tarot-cards {
   max-width: 500px;
   position: absolute;
-  top: 4.5em;
-  left: 10.5%;
+  top: 5em;
+  left: 8.5%;
 }
 
 #tarot-cards div {
+  position: absolute;
+  top: 180px;
+  left: 100px;
     background-image: url("../images/Tarot-Cards/img22.jpg");
     border: 3px solid #967996;
 border-top-left-radius: 10px;
@@ -55,6 +58,11 @@ border-top-left-radius: 10px;
 -moz-background-size: cover;
 -webkit-background-size: cover;
 background-size: cover;
+box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+-webkit-transition: left 4s ease;
+-moz-transition: left 4s ease;
+-o-transition: left 4s ease;
+transition: left 4s ease;
 }
 
 .muevetee{
@@ -335,8 +343,7 @@ input[type="submit"] { cursor: pointer; }
   #tarot-cards {
     max-width: 500px;
     position: absolute;
-    top: 4.5em;
-    left: 9.2%;
+    left: 7.2%;
   }
   .card-description, #tarot-cards h1 {
     left: -10%;
@@ -350,8 +357,7 @@ input[type="submit"] { cursor: pointer; }
   #tarot-cards {
     max-width: 500px;
     position: absolute;
-    top: 4.5em;
-    left: 12.5%;
+    left: 9%;
   }
   .card-description, #tarot-cards h1 {
     left: -28%;
@@ -363,7 +369,7 @@ input[type="submit"] { cursor: pointer; }
 }
 @media screen and (min-width: 1367px) {
   #tarot-cards {
-    left: calc(12.5% + 25px);
+    left: calc(9.5% + 25px);
  }
 
 }
