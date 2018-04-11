@@ -17,6 +17,7 @@ height: 100%;
 }
 #form-tarot {
   display: none;
+  max-width: 100%;
 }
 #form-tarot > div {
   margin: 0 auto;
@@ -37,13 +38,13 @@ h1,h2,h3,h4,h5,h6{
 #tarot-cards {
   max-width: 500px;
   position: absolute;
-  top: 5em;
+  top: -10px;
   left: 8.5%;
 }
 
 #tarot-cards div {
   position: absolute;
-  top: 180px;
+  top: 20em;
   left: 100px;
     background-image: url("../images/Tarot-Cards/img22.jpg");
     border: 3px solid #967996;
@@ -59,10 +60,10 @@ border-top-left-radius: 10px;
 -webkit-background-size: cover;
 background-size: cover;
 box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
--webkit-transition: left 4s ease;
--moz-transition: left 4s ease;
--o-transition: left 4s ease;
-transition: left 4s ease;
+-webkit-transition: left 3s ease;
+-moz-transition: left 3s ease;
+-o-transition: left 3s ease;
+transition: left 3s ease;
 }
 
 .muevetee{
@@ -94,6 +95,8 @@ transition: left 4s ease;
 }
 
 .mano{
+  margin-top: 5.8em;
+  margin-bottom: 1.5em;
   cursor: pointer;
 }
 img:after{
@@ -328,6 +331,7 @@ input[type="submit"] { cursor: pointer; }
 }
 @media screen and (max-width: 767px) {
   #tarot-cards {
+    min-width: 500px;
     left: 9.5%;
  }
  .card-description, #tarot-cards h1 {
@@ -343,7 +347,7 @@ input[type="submit"] { cursor: pointer; }
   #tarot-cards {
     max-width: 500px;
     position: absolute;
-    left: 7.2%;
+    left: .9%;
   }
   .card-description, #tarot-cards h1 {
     left: -10%;
@@ -357,7 +361,8 @@ input[type="submit"] { cursor: pointer; }
   #tarot-cards {
     max-width: 500px;
     position: absolute;
-    left: 9%;
+
+    left: 7%;
   }
   .card-description, #tarot-cards h1 {
     left: -28%;
@@ -369,18 +374,22 @@ input[type="submit"] { cursor: pointer; }
 }
 @media screen and (min-width: 1367px) {
   #tarot-cards {
-    left: calc(9.5% + 25px);
+    left: calc(6% + 25px);
  }
 
 }
 @media screen and (min-width: 1500px) {
   #tarot-cards {
-    left: calc(13.5% + 25px);
+    left: calc(6.5% + 25px);
  }
 }
 @media screen and (min-width: 2000px) {
   #tarot-cards {
-    left: calc(17% + 30px);
+    left: calc(13% + 30px);
+ }
+ #tarot-cards div {
+   width: 130px;
+   height: 172px;
  }
 
  .card-description, #tarot-cards h1 {
