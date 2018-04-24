@@ -113,8 +113,8 @@
           if (pc_big.matches) {
             elFx.start({
                 'top': pos.y,
-                'top': +550,
-                'left': pos.x - 65,
+                'top': +600,
+                'left': pos.x - 50,
                 'height': [132, 400],
                 'width': [80, 220],
                 'background-size': [80, 160]

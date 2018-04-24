@@ -91,7 +91,6 @@ transition: left 3s ease;
   color: #000;
     display: none;
     visibility: hidden;
-
 }
 
 .mano{
@@ -384,8 +383,41 @@ input[type="submit"] { cursor: pointer; }
  }
 }
 @media screen and (min-width: 2000px) {
+  body#tarot-page {
+    margin: 2.5%;
+        -webkit-font-smoothing: antialiased;
+        display: block;
+  }
+  #Tarot {
+    max-width: 2500px;
+    padding: 0 !important;
+  }
+  .nav-content {
+    padding: 0;
+    margin: 0;
+    display: block;
+    height: 99px;
+  }
+  .nav-containier{
+    font-size: 1rem;
+line-height: 1.5;
+position: relative;
+  }
+  .nav-containier a {
+    color: #FFF !important;
+padding: 5px;
+margin-left: .5em;
+margin-right: 25px;
+font-size: 49px;
+text-decoration: none !important;
+background: none !important;
+  }
   #tarot-cards {
-    left: calc(13% + 30px);
+    left: calc(10.9% + 30px);
+    top: 3.5em !important;
+ }
+ #return i {
+   margin-right: .5em;
  }
  #tarot-cards div {
    width: 130px;
@@ -393,10 +425,70 @@ input[type="submit"] { cursor: pointer; }
  }
 
  .card-description, #tarot-cards h1 {
-   left: -55%;
+   left: -71%;
    width: 520px;
  }
  #form-tarot {
    margin-top: 50em;
  }
+ .site-title {
+   font-size: 50px;
+  line-height: 65px;
+
+  margin: 0;
+  margin-left: 30px;
+  font-weight: 600;
+  padding: 5px;
+  padding-bottom: 20px;
+  word-spacing: 10px;
+      font-family: "ACaslon-Pro-Bold" !important;
+}
+.title-caps {
+    font-size: 65px
+  }
+  .mano {
+    margin-top: 7.5em;
+  }
+}
+#social {
+    display: inline-flex;
+    position: relative;
+  }
+  #social ul {
+    display: block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  #social li {
+    display: inline-flex;
+    font-size: 17pt;
+    margin: 0 5px;
+  }
+
+element.style {
+}
+.site-branding {
+    justify-content: space-between;
+}
+.site-branding {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#social a:hover {
+  color: #154FCF !important;
+}
+#langbar li:first-child a::after {
+  content: '  /  ';
+}
+#social .fa-instagram:before{
+  color: #D13EB6 !important;
+}
+#social .fa-facebook-square:before{
+  color: 	#3b5998 !important;
+}
+#social .fa-twitter:before {
+  color: #00aced !important;
 }

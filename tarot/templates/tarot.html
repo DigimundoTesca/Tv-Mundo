@@ -9,10 +9,21 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     </head>
-    <body>
+    <body id="tarot-page">
       <div class="container-fluid" id="Tarot">
       <header>
-				<h1 class="site-title"><a href="#" rel="home"><span class="title-caps">C</span>ristóbal <span class="title-caps">J</span>odorowsky</a></h1>
+        <div class="site-branding">
+          <h1 class="site-title"><a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/" rel="home"><span class="title-caps">C</span>ristóbal <span class="title-caps">J</span>odorowsky</a></h1>
+          <div id="social">
+            <nav>
+              <ul>
+                <li><a href="" style="font-size: 36px;" target="_blank" title="" class="fab fa-instagram" aria-hidden="true"></a></li>
+                <li><a href="" style="font-size: 36px;" target="_blank" title="" class="fab fa-facebook-square" aria-hidden="true"></a></li>
+                <li><a href="" style="font-size: 36px;" target="_blank" title="" class="fab fa-twitter" aria-hidden="true"></a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
         <div class="nav-content">
           <div class="nav-containier">
             <a href="{% url 'tarot:news_tarot' %}">Últimas Respuestas</a>
