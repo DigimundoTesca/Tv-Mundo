@@ -1,4 +1,43 @@
-    var cardsTarot = function(){
+
+  $('show-menu').addEvent('click', function() {
+    $('navigation').setStyles({
+      'left':'0'
+    })
+    $('movil').setStyles({
+      'background-color': 'rgba(0,0,0,0.65)',
+      'width':'100%',
+      'z-index':'900',
+      'display': 'block',
+      'height': '100%'
+    })
+  })
+  $('close').addEvent('click', function(){
+    $('navigation').setStyles({
+      'left':'-85%'
+    })
+    $('movil').setStyles({
+      'width':'0',
+      'height':'0'
+    })
+  })
+  /*menu lateral
+	var navigation		= document.getElementById('navigation');
+	var hammer		= new Hammer.Manager(navigation);
+	var swipe		= new Hammer.Swipe();
+
+	hammer.add(swipe);
+	hammer.on('swipeleft', function(){
+	   $(navigation).setStyles({
+       'left': "-85%",
+       'overflow-y':'scroll'
+   })
+     $('movil').setStyles({
+       'height': '0',
+       'width': '0'
+     });
+	});*/
+
+  var cardsTarot = function(){
       /***Envia arreglo por ajax***/
   function envia_ajax(cardIds) {
     console.log(cardIds);
@@ -18,7 +57,7 @@
     var form = document.getElementById("form-tarot").setStyles({
       'display':'block'
     });
-    document.body.scrollTop = document.body.scrollHeight;
+
 
   }
   /*Tarto position cards*/
@@ -46,7 +85,7 @@
       var pos = el.getPosition();
       var espacio = Math.floor(Math.random() * 8) + 5;
       pos.x = pos.x + despcard;
-
+      pos.y = pos.y-33;
       el.setStyles({
           'position': 'absolute',
           'left': pos.x + (key * spacing),
@@ -112,8 +151,7 @@
           console.log(pc)
           if (pc_big.matches) {
             elFx.start({
-                'top': pos.y,
-                'top': +600,
+                'top': +680,
                 'left': pos.x - 50,
                 'height': [132, 400],
                 'width': [80, 220],
@@ -132,9 +170,9 @@
           }
           else{
             elFx.start({
-                'top': pos.y,
+
                 'top': +550,
-                'left': pos.x + 53,
+                'left': pos.x + 64,
                 'height': [132, 400],
                 'width': [80, 220],
                 'background-size': [80, 160]

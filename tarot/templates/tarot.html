@@ -10,32 +10,63 @@
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     </head>
     <body id="tarot-page">
+      <div id="movil"></div>
       <div class="container-fluid" id="Tarot">
       <header>
         <div class="site-branding">
-          <h1 class="site-title"><a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/" rel="home"><span class="title-caps">C</span>ristóbal <span class="title-caps">J</span>odorowsky</a></h1>
-          <div id="social">
+          <button id="show-menu" class="menu-boton"><a href="http://www.faceboook.com" class="dropbtn icon-container fas fa-bars"></a></button>
+          <h1 class="site-title text-left"><a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/" rel="home"><span class="title-caps">C</span>ristóbal <span class="title-caps">J</span>odorowsky</a></h1>
+          <div id="social" class="mr-3">
             <nav>
               <ul>
-                <li><a href="" style="font-size: 36px;" target="_blank" title="" class="fab fa-instagram" aria-hidden="true"></a></li>
+                <li><a href="http://www.instagram.com" style="font-size: 36px;" target="_blank" title="" class="fab fa-instagram" aria-hidden="true"></a></li>
                 <li><a href="" style="font-size: 36px;" target="_blank" title="" class="fab fa-facebook-square" aria-hidden="true"></a></li>
                 <li><a href="" style="font-size: 36px;" target="_blank" title="" class="fab fa-twitter" aria-hidden="true"></a></li>
+                <li><a href="" style="font-size: 36px;" target="_blank" title="" class="fab fa-youtube" aria-hidden="true"></a></li>
               </ul>
             </nav>
           </div>
+          	<img class="brand-logo img-fluid" src="{% static 'images/logo.png' %}" alt="Community logo">
         </div>
         <div class="nav-content">
           <div class="nav-containier">
-            <a href="{% url 'tarot:news_tarot' %}">Últimas Respuestas</a>
+            <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/">Inicio</a>
+            <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/biografia">Biografía</a>
+            <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/saber-mas">Saber más</a>
+            <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/libros">Libros</a>
             <a href="{% url 'tarot:start_tarot' %}">Tarot</a>
-            <a href="{% url 'tarot:admin_tarot' %}">Dar videorespuesta</a>
+            <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/agenda">Agenda</a>
+            <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/contacto">Contacto</a>
+            <a id="metamundo" href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/metamundo">Metamundo</a>
+            <!--<a href="{% url 'tarot:news_tarot' %}">Últimas Respuestas</a>
+            <a href="{% url 'tarot:admin_tarot' %}">Dar videorespuesta</a>-->
           </div>
         </div>
+          <div id="navigation" class="">
+            <span id="close" class="text-right"><i class="fas fa-times"></i></span>
+            <h1 class="site-title text-center mt-5"><a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/" rel="home"><span class="title-caps">C</span>ristóbal <span class="title-caps">J</span>odorowsky</a></h1>
+            <img src="{% static 'images/movil-menu.jpeg'%}" class="img-fluid" alt="">
+            <!--<img id="logo-menu" class="img-fluid rounded mx-auto d-block" src="statics/images/CloudKitchen_white.png" alt="Cloud Kitchen LOGO">-->
+            <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/"><i class="fas fa-home mr-4"></i>  Inicio</a>
+            <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/biografia"><i class="fas fa-user-circle mr-4"></i> Biografía</a>
+            <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/saber-mas"><i class="fas fa-question-circle mr-4"></i> Saber más</a>
+            <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/libros"><i class="fas fa-book mr-4"></i>  Libros</a>
+            <a href="{% url 'tarot:start_tarot' %}"><i class="fab fa-accusoft mr-4"></i> Tarot</a>
+            <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/agenda"><i class="fas fa-calendar-alt mr-4"></i> Agenda</a>
+            <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/contacto"><i class="fas fa-comments mr4"></i> Contacto</a>
+            <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/metamundo"><i class="fas fa-globe mr-4"></i> Metamundo</a>
+            <div class="share">
+              <a href="https://www.facebook.com"><i id="facebook" class="text-center fab fa-facebook-square"></i></a>
+              <a href="http://www.instagram.com"><i class="fab fa-instagram"></i></a>
+              <a href="http://www.twitter.com"><i class="fab fa-twitter"></i></a>
+              <a href="http://www.youtube.com"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
       </header>
-      <div class="tarot-description mt-4">
+      <div class="container tarot-description mt-4">
         <h2>Lorem ipsum</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vel dolor a nunc maximus viverra quis non ex.
-          Nulla laoreet, nisl vel scelerisque pretium, leo arcu faucibus lectus, nec pharetra odio lectus a turpis. Nullam volutpat id augue sit amet vestibulum.</p>
+          Nulla laoreet, nisl vel scelerisque pretium, leo arcu faucibus lectus, nec pharetra odio lectus a turpis.</p>
           <h1 class="text-center">Elija 3 cartas</h1>
       </div>
 
@@ -176,9 +207,9 @@
                     <div  class="col-md-4 col-sm-4 "></div>
             </div>
           </div>
-
-
           </div>
+
+          <div id="time"></div>
           <div class="form-group row justify-content-center" id="form-tarot">
             <div class="col-6">
             <h4>Si quieres saber más llena el siguiente formulario, Cristobal te responderá en un video</h4>
@@ -200,10 +231,66 @@
             	</div>
             </footer>
           </div>
+
           <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
           <!--font awesome -->
           <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+          <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
           <script src="{% static 'javascript/mootools-yui-compressed.js' %}"></script>
           <script src="{% static 'javascript/main.js' %}"></script>
     </body>
 </html>
+
+<script type="text/javascript">
+
+  var hoy = new Date(),
+  dia = hoy.getDay();
+  hora = hoy.getHours();
+  minutos = hoy.getMinutes();
+
+  restan = 12 - hora;
+  console.log(dia);
+  console.log(hora +":" + minutos);
+  /*LUNES A LAS 12 pm*/
+  if (hora == 12 && dia == 1) {
+    console.log("Felicidades Cristobal respondera a tu Consulta")
+  }
+  else {
+    console.log("Aún no es tiempo para poder ganar una de las 5 respuestas de Cristobal" + restan);
+  }
+
+  const getRmainTime = deadline => {
+    let now = new Date(),
+      remainTime = (new Date(deadline) - now + 1000) / 1000,
+      remainSeconds = ( '0' + Math.floor(remainTime % 60)).slice(-2),
+      remainMinutes = ( '0' + Math.floor(remainTime / 60 % 60)).slice(-2),
+      remainHours = ( '0' + Math.floor(remainTime / 3600 % 24)).slice(-2),
+      remainDays = Math.floor(remainTime / (3600 * 24));
+
+    return {
+      remainTime,
+      remainSeconds,
+      remainMinutes,
+      remainHours,
+      remainDays
+    }
+  };
+
+  const countdown = (deadline, elem , finalMessage) => {
+    const el = document.getElementById(elem);
+
+    const timerUpdate = setInterval( () => {
+      let t = getRmainTime(deadline);
+      el.innerHTML = t.remainDays+"d" + ":" + t.remainHours + "h" + ":" + t.remainMinutes + "m" + ":" + t.remainSeconds + "s";
+
+      if (t.remainTime <= 1) {
+        clearInterval(timerUpdate);
+        el.innerHTML = finalMessage;
+      }
+    }, 1000)
+  };
+
+  countdown('Mon May 07 2018 12:00:00 GMT-0500', 'time', 'Puedes realizar tu consulta con Cristobal');
+
+
+</script>
