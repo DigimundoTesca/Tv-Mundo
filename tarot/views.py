@@ -11,6 +11,9 @@ def start(request):
         'cards': card,
         'title': "Tarot",
     }
+
+
+
     return render(request, template, context)
 
 
