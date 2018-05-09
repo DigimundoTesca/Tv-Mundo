@@ -78,132 +78,12 @@
       <div class="tarot-container text-center">
 
           <div id="tarot-cards" class="row justify-content-center text-center">
-            <div id='01'>
-                <h1 class="card-title">El Mago</h1>
-                <p class="card-description align-text-bottom">Comienzo, prestidigitador, estafador, jugador, hay algo oculto bajo la mesa, nueva empresa, nuevos estudios, renovación profesional, principio de una relación,
-                  chico o chica masculinizada, principiante, astucia, habilidad, arte de convencer, talentos múltiples, se dispone de todo lo necesario para actuar, necesidad de ayuda, de guía, “Querer, osar,
-                  poder, callar”, elección que hay que hacer, vacilación, multiplicidad de los potenciales, Animus del consultante, hombre o mujer, comienzo de la búsqueda de la sabiduría, iniciado, mago,
-                  espiritualización de la materia.</p>
+            {% for card in cards %}
+            <div id='{{ card.number }}'>
+              <h1 class="card-title">{{ card.name }}</h1>
+              <p class="card-description align-text-bottom">{{ card.description }}</p>
             </div>
-            <div id='02'>
-              <h1 class="card-title">La papisa</h1>
-              <p class="card-description align-text-bottom">Acumulación, preparación, estudio, virginidad, escritura de un libro, contabilidad espera,
-                constancia, retiro, mujer fría, perdón, actriz aprendiendo su papel, monja, madre severa, obstinación, peso de la religión, asilamiento, frigidez, persona de gran calidad moral,
-          12 mt-5     educación estricta, gestación, necesidad de calor, ideal de pureza, soledad, silencio, meditación, sabiduría en femenino, figura carismática femenina, la Virgen María, lectura de textos sagrados.</p>
-            </div>
-            <div id='03'>
-              <h1 class="card-title">La emperatriz</h1>
-              <p class="card-description align-text-bottom" >Mujer bella, fertilidad, ama, madre cálida, seductora, creatividad, adolescencia, fecundidad, encanto, coquetería, mujer de negocios, prostituta, amante, artista, producción,
-                belleza, abundancia, acción creativa no razonada, que no sabe a donde va, ebullición, la pulsión vital como motor de crecimiento.  </p>
-            </div>
-            <div id='04'>
-              <h1 class="card-title">El emperador</h1>
-              <p class="card-description align-text-bottom" >Hombre de poder, capacidad de pacificar, de reinar, de proteger, estabilidad, equilibrio económico, dinero, administración, éxito en los negocios, aliado financiero, autoridad,
-                 ejercicio de la ley, paz, esposo, hombre franco, seguridad, rectitud, espíritu racional, potencia, hogar estable, casa, padre poderoso o dominante, protector, cuestiones relacionadas con la potencia sexual, masculinidad, patriarcado,
-                 tiranía, dictador, abuso de poder, arraigo en la materia, respeto de las leyes del universo, equilibrio de las energías, Dios Padre </p>
-            </div>
-            <div id='05'>
-              <h1 class="card-title">El papa</h1>
-              <p class="card-description align-text-bottom" >Maestro, profesor, hombre casado, hombre espiritual, boda, unión, sacerdote, gurú, sincero o falso, tartufo, dogma religioso, Unión entre cielo y tierra, mostrar la vía, vínculo,
-                dominio de uno mismo amplitud de miras emergencia de un nuevo ideal, todos los medios de comunicación, intermediario, deseo de comunicar nueva comunicación, revelación de los secretos, el padre frente a sus hijos, guía espiritual,
-                bendición, cuestionamiento sobre la fe y el dogma.</p>
-            </div>
-            <div id='06'>
-              <h1 class="card-title">El enamorado</h1>
-              <p class="card-description align-text-bottom">Vida social – Alegría  Gustarle a uno lo que hace – Hacer lo que a uno le gusta – Nueva unión  - elección que hay que hacer – Placer  Belleza – Amistad – Triagulo amoroso
-                – Enamorarse – Conflicto emocionale  separación – Disputa -  terreno incestuoso – Hermanos – Ideal y realidad – Pirmeros pasos en la alegría de vivir – Amor consciente – La Vía de la Belleza</p>
-            </div>
-            <div id='07'>
-              <h1 class="card-title">El carro</h1>
-              <p class="card-description align-text-bottom" >Victoria, acción sobre el mundo, empresa llevada a buen fin, viaje, dinamismo, amante, guerrero, mensajero, conquistador, príncipe, enano, saqueador, acción intensa,
-                éxito mediático, pantalla de televisión, de cine o de ordenador, síntesis, tener en cuenta los pros y los contras, armonía animus / anima, conducir sus energías, el espíritu en la materia, consciencia inmortal </p>
-            </div>
-            <div id='08'>
-              <h1 class="card-title">La justicia</h1>
-              <p class="card-description align-text-bottom">Equilibrio, estabilidad, hacer frente, plenitud, perfección femenina, acoger, mujer encinta, maternidad, inflexibilidad, implacabilidad, juzgar, claridad, prohibir,
-                autorizar, dar(se) lo que se merece, pensamiento límpido, procesamiento, La Ley, deseo de perfección, perfeccionismo, espíritu crítico, madre normativa o castradora, trampa, exactitud, leyes cósmicas, perfección, armonía, momento presente.</p>
-            </div>
-            <div id='09'>
-              <h1 class="card-title">El ermitaño</h1>
-              <p class="card-description align-text-bottom" >Crisis positiva, guía, soledad, hombre mayor, vejez, prudencia, retiro, terapeuta, maestro masculino, peregrinación, castidad, alcoholismo, invierno, duda y superación, alumbrar el pasado,
-                ir hacia el futuro sin saber adónde se va, andar retrocediendo, terapia, padre ausente o frío, abuelo, humildad, Saturno, visión clara del mundo, sabiduría, amor desinteresado, abnegación, altruismo, maestro secreto.</p>
-            </div>
-            <div id='10'>
-              <h1 class="card-title">La rueda de la fortuna</h1>
-              <p class="card-description align-text-bottom" >Fin de un ciclo, principio de un ciclo, necesidad de una ayuda exterior nueva partida, cambio de fortuna, circunstancias ajenas a la voluntad del consultante,
-                ocasión que no hay que dejar pasar, ciclo hornonal, enigma emocional por resolver, bloqueo, parada, callejón sin salida, rueda del karma, reencarnaciones sucesivas, Leyes de la naturaleza, providencia, ciclo completo,
-                compleción, rodaje de una película, ganancia de dinero. </p>
-            </div>
-            <div id='11'>
-              <h1 class="card-title">La fuerza</h1>
-              <p class="card-description align-text-bottom" >Potencia creativa – Valentía – Nobleza de corazón – Nueva partida – Inicio de una actividad – Aporte de nueva energía – Energía instintiva – Animalidad – Fuerza – Ira
-                – Heroísmo – Coraje – Autodisciplina – Relación entre la mente y el instinto – Apertura o represión – Llamada de la sexualidad – Inhibición sexual – Represión . Dificultad de expresión – Apertura – Orgasmo – Tantra. </p>
-            </div>
-            <div id='12'>
-              <h1 class="card-title">El colgado</h1>
-              <p class="card-description align-text-bottom" >Parada – Espera – Inmovilidad – No ha llegado aún el momento de actuar – Ocultar algo – Autocastigo – Feto en gestación -  Secreto – Inversión de las perspectivas
-                – Ver desde otro punto de vista – No elegir – Reposo – Enfermedad – Embarazo – Condiciones de la gestación del consultante -  Vínculo al árbol genealógico – Plegaria – Sacrificio – Don de uno mismo – Meditación Profunda
-                – No hacer – Fuerzas interiores recibidas a través de la plegaria.</p>
-            </div>
-            <div id='13'>
-              <h1 class="card-title">Arcano sin nombre</h1>
-              <p class="card-description align-text-bottom" >Transformación profunda -  revolución – corte – Eliminar lo que nos impide avanzar – Fin de una ilusión – Ruptura saludable – Revolucionario – Ira – Agresividad – Cosecha
-                 – Labor de ruptura relativa a una persona o a una situación – Odio – Violencia -  Limpieza – Purificación radical – Esencia del cambio – Trabajo del inconsciente – El rostro destructor de la divinidad . La muerte como máscara de Dios
-                 – Transmutación – Erradicación de lo antiguo para dejar sitio a lo nuevo – Trabajo relacionado con el esqueleto humano  - Movimiento esencial -  Rayos X . Psicoanálisis, persona que acompaña el cambio. </p>
-            </div>
-            <div id='14'>
-              <h1 class="card-title">La templanza</h1>
-              <p class="card-description align-text-bottom" >Curación – Salud – Protección – Equilibrio dinámico – Cambios – Reconciliación – Circulación de los fluidos (sangre, agua…) – Flujo de las energías – Paso de una frontera – Viajes
-                – Sueños premonitorios – Armonía – Humor equilibrado y apacible – Mezclar – Ponderar – Atenuar las pasiones – Equilibrio de las fuerzas vitales – Angelismo (el ángel no tiene sexo) – Excesiva tendencia a la moderación  - Avaricia
-                – Comunicación consigo mismo – Mensajero de la gracia – Curación espiritual – Evoca a un difunto (escultura funeraria ) – Transmigración de las almas,  reencarnación – Serpiente emplumada.</p>
-            </div>
-            <div id='15'>
-              <h1 class="card-title">El diablo</h1>
-              <p class="card-description align-text-bottom" >Pasión – Atadura – Dependencia – Carácter posesivo – Adoración – Gran creatividad – Lo prohibido – Tentación – Bestialidad – Drogas – Contrato prometedor que hay que estudiar detenidamente
-                – Entrada de dinero – Potencias ocultas del inconsciente humano (negativas o positivas) – Fermentación – Prostitución – Crueldad – Trabajo de las profundidades – Psiquiatría – Lado oscuro del ser – Sexualidad – Lucifer, ángel caído portador
-                de luz – Soberbia – Posesión – Obsesión – Magia negra – Negarse a envejecer – Gran vigor sexual – Fantasías – Tesoro oculto – Energía oculta en el psiquismo -  Superación – Tentación. </p>
-            </div>
-            <div id='16'>
-              <h1 class="card-title"></h1>
-              <p class="card-description align-text-bottom" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam efficitur nisi sit amet tellus aliquet accumsan at a nunc.
-                  Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-            </div>
-            <div id='17'>
-              <h1 class="card-title">La estrella</h1>
-              <p class="card-description align-text-bottom" >Éxito – Suerte – verdad – generosidad – acción altruista – poner frente a frente dos acciones o dos relaciones – encontrar
-                su sitio – vedette – mujer fecunda – amamantar – mujer encinta – herida en la rodilla – amante ideal – don o despilfarro, según la dirección hacia la cual La Estrella vacíe
-                sus jarras – nostalgia (si mira hacia el pasado) – purificación del mundo – ecología – fuente – irrigación – recepción de la energía cósmica – sacralización de un lugar – armonía con las fuerzas de la naturaleza – paraíso – acuario – chamán – bruja hermosa.</p>
-            </div>
-            <div id='18'>
-              <h1 class="card-title">La luna</h1>
-              <p class="card-description align-text-bottom" >Intuición – noche – sueño – ensoñaciones – superstición – poesía – adivinación – imaginación – inconsciente profundo
-                – sensualidad – verdad oculta (por descubrir) – locura – soledad – terror nocturno – gestación – petición sin límites – “vampiro” de energía – niño en busca de un amor materno
-                – amor que une – depresión – secreto – travesía del mar – océano – receptividad – vida oscura de la materia – ideal que se quiere alcanzar – feminidad – arquetipo maternal cósmico.</p>
-            </div>
-            <div id='19'>
-              <h1 class="card-title">El sol</h1>
-              <p class="card-description align-text-bottom" >Amor recíproco – fraternidad – ayuda mutua – unión feliz – nueva vida – asociación – éxito, cosecha abundante – felicidad – luz – verano
-                – irradiación – inteligencia – brío – riqueza – sequía por exceso de calor – Niños o infancia – gemelidad – rivalidad – Arquetipo paterno cósmico – Padre ideal – Padre ausente
-                – cortar con el pasado para construir más lejos – construcción – solidaridad..</p>
-            </div>
-            <div id='20'>
-              <h1 class="card-title">El juicio</h1>
-              <p class="card-description align-text-bottom" >Llamada – deseo irresistible – despertar de la sexualidad – toma de consciencia – anuncio – buena nueva – vocación – triunfo – renombre
-                – proyecto de futuro – dar vida – nacimiento de un hijo – curación – música – apertura – eclosión – obra de una pareja – célula padre / madre / hijo – amor dependiente de los padres
-                – condiciones del nacimiento del consultante – negarse a actuar como adulto – emergencia de lo que está oculto  - la gracia – despertar de la cosciencia – diablo sublimado – impulso hacia la luz.</p>
-            </div>
-            <div id='21'>
-              <h1 class="card-title">El mundo</h1>
-              <p class="card-description align-text-bottom" >Renombre – recorrer e lmundo – realización de los potenciales – éxito – perfecto acuerdo – reunión – Mujer ideal – plenitud – comienzo difícil
-                – vientre de una mujer encinta – sexo femenino – orgasmo – realización suprema – final feliz – parto – nacimiento - ¿cómo nací? – encierro – sentimiento de fracaso – egocentrismo – realización del andrógino espiritual
-                – huevo cósmico – realización de los cuatro centros . perfección finita – Universo llegado a su límite – expansión máxima.</p>
-            </div>
-            <div id='23'>
-              <h1 class="card-title">El loco</h1>
-              <p class="card-description align-text-bottom" >Renombre – recorrer e lmundo – realización de los potenciales – éxito – perfecto acuerdo – reunión – Mujer ideal – plenitud – comienzo difícil
-                – vientre de una mujer encinta – sexo femenino – orgasmo – realización suprema – final feliz – parto – nacimiento - ¿cómo nací? – encierro – sentimiento de fracaso – egocentrismo – realización del andrógino espiritual
-                – huevo cósmico – realización de los cuatro centros . perfección finita – Universo llegado a su límite – expansión máxima.</p>
-            </div>
+            {% endfor %}
           </div>
           <div class="row"  id="tarot-layout">
                     <div  class="col-md-4 col-sm-4 "></div>
@@ -217,7 +97,12 @@
           <div class="form-group row justify-content-center" id="form-tarot">
             <div class="col-6">
             <h4>Si quieres saber más llena el siguiente formulario, Cristobal te responderá en un video</h4>
+<<<<<<< HEAD
             <form class="" id="ask" action="recibo.php" method="post">
+=======
+            <form class="" action="" method="post">
+                {% csrf_token %}
+>>>>>>> 400ceef2dc9f8d64335caf6d10306bda67a0d3d4
              <h5 for="" class="">Nombre</h5>
                <input type="text" class="form-control form-control-lg" name="nombre">
                <h5 for="" class="">Correo</h5>
@@ -243,6 +128,7 @@
           <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
           <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
           <script src="{% static 'javascript/mootools-yui-compressed.js' %}"></script>
+          <script>var urltarot = "{% url 'tarot:start_tarot' %}"</script>
           <script src="{% static 'javascript/main.js' %}"></script>
     </body>
 </html>
