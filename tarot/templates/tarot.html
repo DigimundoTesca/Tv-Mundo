@@ -98,7 +98,7 @@
         <div class="col-6">
           <h4>Si quieres saber más llena el siguiente formulario, Cristobal te responderá en un video</h4>
           <form class="" id="ask" method="POST">
-            {% csrf_token %}  
+            {% csrf_token %}
             <h5 for="" class="">Nombre</h5>
             <input type="text" class="form-control form-control-lg" name="nombre">
             <h5 for="" class="">Correo</h5>
@@ -132,76 +132,91 @@
 
  <script type="text/javascript">
 
-  var hoy = new Date(),
-  dia = hoy.getDay();
-  mes = hoy.getMonth();
-  hora = hoy.getHours();
-  minutos = hoy.getMinutes();
+   const getRmainTime = deadline => {
+     let now = new Date(),
+       remainTime = (new Date(deadline) - now + 1000) / 1000,
+       remainSeconds = ( '0' + Math.floor(remainTime % 60)).slice(-2),
+       remainMinutes = ( '0' + Math.floor(remainTime / 60 % 60)).slice(-2),
+       remainHours = ( '0' + Math.floor(remainTime / 3600 % 24)).slice(-2),
+       remainDays = Math.floor(remainTime / (3600 * 24));
 
-  restan = 12 - hora;
-  console.log(dia);
-  console.log("mes" + mes);
-  console.log(hora +":" + minutos);
-  /*LUNES A LAS 12 pm*/
-  if (hora == 12 && dia == 1) {
-    console.log("Felicidades Cristobal respondera a tu Consulta")
-  }
-  else {
-    console.log("Aún no es tiempo para poder ganar una de las 5 respuestas de Cristobal" + restan);
-  }
+     return {
+       remainTime,
+       remainSeconds,
+       remainMinutes,
+       remainHours,
+       remainDays
+     }
+   };
 
-  var day = new Array();
-  day[1] = "Mon";
-  day[2] = "Martes";
-  day[3] = "Miércoles";
-  day[4] = "Jueves";
-  day[5] = "Viernes";
-  day[6] = "Sábado";
-  day[7] = "Domingo";
+   const countdown = (deadline, elem , finalMessage) => {
+     const el = document.getElementById(elem);
 
-  const getRmainTime = deadline => {
-    let now = new Date(),
-    remainTime = (new Date(deadline) - now + 1000) / 1000,
-    remainSeconds = ( '0' + Math.floor(remainTime % 60)).slice(-2),
-    remainMinutes = ( '0' + Math.floor(remainTime / 60 % 60)).slice(-2),
-    remainHours = ( '0' + Math.floor(remainTime / 3600 % 24)).slice(-2),
-    remainDays = Math.floor(remainTime / (3600 * 24));
+     const timerUpdate = setInterval( () => {
+       let t = getRmainTime(deadline);
+       el.innerHTML = t.remainDays+"d" + ":" + t.remainHours + "h" + ":" + t.remainMinutes + "m" + ":" + t.remainSeconds + "s";
 
-    return {
-      remainTime,
-      remainSeconds,
-      remainMinutes,
-      remainHours,
-      remainDays
-    }
-  };
+       if (t.remainTime <= 1) {
+         clearInterval(timerUpdate);
+         el.innerHTML = finalMessage;
+       }
+     }, 1000)
+   };
 
-  const countdown = (deadline, elem , finalMessage) => {
-    const el = document.getElementById(elem);
+   function fechaChida(mes, lunes){
+     countdown(''+mes+''+lunes+' 2018 12:00:00 GMT-0500', 'time', 'Puedes realizar tu consulta con Cristobal');
+   }
 
-    const timerUpdate = setInterval( () => {
-      let t = getRmainTime(deadline);
-      el.innerHTML = t.remainDays+"d" + ":" + t.remainHours + "h" + ":" + t.remainMinutes + "m" + ":" + t.remainSeconds + "s";
+   var hoy = new Date(),
+   dia = hoy.getDay();
+   mes = hoy.getMonth();
+   fecha = 14
 
-      if (t.remainTime <= 1) {
-        clearInterval(timerUpdate);
-        el.innerHTML = finalMessage;
-      }
-    }, 1000)
-  };
+   var month = new Array();
+     month[0] = "January";
+     month[1] = "February";
+     month[2] = "March";
+     month[3] = "April";
+     month[4] = "May";
+     month[5] = "June";
+     month[6] = "July";
+     month[7] = "August";
+     month[8] = "September";
+     month[9] = "October";
+     month[10] = "November";
+     month[11] = "December";
 
-  var n = day[hoy.getDay()];
-  console.log(n)
-  if(dia == 2){
-    fecha = 7 + 7
-    if (fecha > 31 && (mes == 0 || mes == 4 || mes == 2  )) {
+     var n = month[hoy.getMonth()];
+ if (dia == 1 && hora == 23) {
+   var fecha = fecha + 7;
+ }
 
-    }
-    n = "Mon"
-    console.log(fecha)
-    countdown(''+n+' May '+fecha+' 2018 12:00:00 GMT-0500', 'time', 'Puedes realizar tu consulta con Cristobal');
-  }
-</script>
+ if(dia > 2){
+
+   if (fecha > 31 && (mes == 0 || mes == 2 || mes == 4 || mes == 6 || mes == 7 || mes == 9 || mes == 11  )) {
+     fecha = fecha - 31
+     console.log(fecha)
+     var n = month[hoy.getMonth()+1];
+     fechaChida(n, fecha);
+   }
+   else if (fecha > 30 && ( mes == 3 || mes == 5 || mes == 8 || mes == 10)) {
+     fecha = fecha - 30
+     console.log(fecha)
+     var n = month[hoy.getMonth()+1];
+     fechaChida(n, fecha);
+   }
+   else if (fecha > 28 && mes == 1) {
+     fecha = fecha - 28
+     var n = month[hoy.getMonth()+1];
+     fechaChida(n, fecha);
+   }
+   else {
+     console.log(fecha)
+     fechaChida(n, fecha);
+   }
+ }
+ </script>
+
 <!-- <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -259,7 +274,6 @@
   })
 
   var cardsTarot = function(){
-
     /***Envia arreglo por ajax***/
     function envia_ajax(cardIds) {
       var miJSON = JSON.encode(cardIds);
@@ -315,7 +329,6 @@
         el.setStyles({
           'position': 'absolute',
           'left': pos.x + (key * spacing),
-
         })
 
         el.addClass("rot5");
@@ -404,7 +417,6 @@
               'background-size': [80, 160]
             });
           }
-
 
           selected++;
           if ((selected) >= positions.length) {
