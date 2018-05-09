@@ -271,6 +271,9 @@
         csrfmiddlewaretoken: '{{ csrf_token }}',
         'datos=': miJSON,
       },
+      onSuccess: function(){
+        $('resultado').set("html", "Se pudo");
+      },
       onFailure: function(){
         $('resultado').set("html", "fallo en la conexión Ajax");
       }
