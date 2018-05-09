@@ -23,7 +23,6 @@
 	var navigation		= document.getElementById('navigation');
 	var hammer		= new Hammer.Manager(navigation);
 	var swipe		= new Hammer.Swipe();
-
 	hammer.add(swipe);
 	hammer.on('swipeleft', function(){
 	   $(navigation).setStyles({
@@ -76,19 +75,6 @@
   cards.each(function(el, key) {
       el.set('tween', {
           duration: 'short'
-        /***Envia arreglo por ajax***/
-    function envia_ajax(cardIds) {
-      console.log(cardIds);
-      var myRequest = new Request.HTML({
-        url: /start/,
-        method: "post",
-        data: {
-            'cartas': cardIds
-        },
-      }).send();
-      console.log("Enviado a php");
-      var form = document.getElementById("form-tarot").setStyles({
-        'display':'block'
       });
       colum = colum + 1;
       if (colum > 3) colum = 1;
