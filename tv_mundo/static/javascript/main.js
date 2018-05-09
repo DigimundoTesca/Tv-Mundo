@@ -1,3 +1,4 @@
+
   $('show-menu').addEvent('click', function() {
     $('navigation').setStyles({
       'left':'0'
@@ -19,6 +20,7 @@
       'height':'0'
     })
   })
+  /*cards tarot function*/
   /*menu lateral
 	var navigation		= document.getElementById('navigation');
 	var hammer		= new Hammer.Manager(navigation);
@@ -36,26 +38,27 @@
 	});*/
 
   var cardsTarot = function(){
-      /***Envia arreglo por ajax***/
+
+  /***Envia arreglo por ajax***/
   function envia_ajax(cardIds) {
-    console.log(cardIds);
-    carta1 = cardIds[0];
-    carta2 = cardIds[1];
-    carta3 = cardIds[3];
-    var myRequest = new Request.HTML({
-      url: "../Tarot/script.php",
-      method: "post",
-      data: {
-          'carta1': carta1,
-          'carta2': carta2,
-          'carta3': carta3
-      },
-    }).send();
-    console.log("Enviado a php");
+    var miJSON = JSON.encode(cardIds);
+    var miAjax = new Request({
+
+     url: "",
+     data: "datos=" + miJSON,
+     onSuccess: function(){
+        $('resultado').set("html", "Se pudo");
+     },
+     onFailure: function(){
+        $('resultado').set("html", "fallo en la conexión Ajax");
+     }
+    })
+    miAjax.send();
+    console.log(miJSON);
+
     var form = document.getElementById("form-tarot").setStyles({
       'display':'block'
     });
-
 
   }
   /*Tarto position cards*/
@@ -149,7 +152,7 @@
           console.log(pc)
           if (pc_big.matches) {
             elFx.start({
-                'top': +680,
+                'top': +780,
                 'left': pos.x - 50,
                 'height': [132, 400],
                 'width': [80, 220],
@@ -159,7 +162,7 @@
           else if(pc.matches){
             elFx.start({
                 // 'top': pos.y,
-                'top': +550,
+                'top': +580,
                 'left': pos.x + 35,
                 'height': [132, 400],
                 'width': [80, 220],

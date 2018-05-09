@@ -67,7 +67,11 @@
         <h2>Lorem ipsum</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vel dolor a nunc maximus viverra quis non ex.
           Nulla laoreet, nisl vel scelerisque pretium, leo arcu faucibus lectus, nec pharetra odio lectus a turpis.</p>
+          <div id="time" class="text-center"></div>
+          <div id="resultado"></div>
+          <div id="resultado2">{{card}}</div>
           <h1 class="text-center">Elija 3 cartas</h1>
+
       </div>
 
       <div  class="col-md-12 mt-5 text-center mt-4"><h2 class="Reintentar mano" id="return" onClick="window.location.reload()"><i class="fas fa-sync-alt"></i></h2></div>
@@ -89,14 +93,20 @@
           </div>
           </div>
 
-          <div id="time"></div>
+
           <div class="form-group row justify-content-center" id="form-tarot">
             <div class="col-6">
             <h4>Si quieres saber más llena el siguiente formulario, Cristobal te responderá en un video</h4>
+<<<<<<< HEAD
+            <form class="" id="ask" action="recibo.php" method="post">
+=======
             <form class="" action="" method="post">
                 {% csrf_token %}
+>>>>>>> 400ceef2dc9f8d64335caf6d10306bda67a0d3d4
              <h5 for="" class="">Nombre</h5>
                <input type="text" class="form-control form-control-lg" name="nombre">
+               <h5 for="" class="">Correo</h5>
+                 <input type="email" class="form-control form-control-lg" name="nombre">
             <div class="form-group">
              <h5 for="nota">Escribe lo que te gustaría saber </h5>
              <textarea class="form-control" name="nota" rows="4"></textarea>
@@ -127,11 +137,13 @@
 
   var hoy = new Date(),
   dia = hoy.getDay();
+  mes = hoy.getMonth();
   hora = hoy.getHours();
   minutos = hoy.getMinutes();
 
   restan = 12 - hora;
   console.log(dia);
+  console.log("mes" + mes);
   console.log(hora +":" + minutos);
   /*LUNES A LAS 12 pm*/
   if (hora == 12 && dia == 1) {
@@ -140,6 +152,15 @@
   else {
     console.log("Aún no es tiempo para poder ganar una de las 5 respuestas de Cristobal" + restan);
   }
+
+  var day = new Array();
+   day[1] = "Mon";
+   day[2] = "Martes";
+   day[3] = "Miércoles";
+   day[4] = "Jueves";
+   day[5] = "Viernes";
+   day[6] = "Sábado";
+   day[7] = "Domingo";
 
   const getRmainTime = deadline => {
     let now = new Date(),
@@ -172,7 +193,16 @@
     }, 1000)
   };
 
-  countdown('Mon May 07 2018 12:00:00 GMT-0500', 'time', 'Puedes realizar tu consulta con Cristobal');
+  var n = day[hoy.getDay()];
+  console.log(n)
+if(dia == 2){
+  fecha = 7 + 7
+  if (fecha > 31 && (mes == 0 || mes == 4 || mes == 2  )) {
 
+  }
+  n = "Mon"
+  console.log(fecha)
+  countdown(''+n+' May '+fecha+' 2018 12:00:00 GMT-0500', 'time', 'Puedes realizar tu consulta con Cristobal');
+}
 
 </script>
