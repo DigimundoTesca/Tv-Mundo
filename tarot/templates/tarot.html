@@ -68,7 +68,7 @@
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vel dolor a nunc maximus viverra quis non ex.
           Nulla laoreet, nisl vel scelerisque pretium, leo arcu faucibus lectus, nec pharetra odio lectus a turpis.</p>
           <div id="time" class="text-center"></div>
-          <div id="resultado"></div>
+          <div id="resultado" class="d-none"></div>
           <div id="resultado2">{{card}}</div>
           <h1 class="text-center">Elija 3 cartas</h1>
 
@@ -100,14 +100,13 @@
           <form class="" id="ask" method="POST">
             {% csrf_token %}  
             <h5 for="" class="">Nombre</h5>
-            <input type="text" class="form-control form-control-lg" name="nombre">
+            <input id="nombre" type="text" class="form-control form-control-lg" name="nombre">
             <h5 for="" class="">Correo</h5>
-            <input type="email" class="form-control form-control-lg" name="nombre">
+            <input id="correo" type="email" class="form-control form-control-lg" name="nombre">
             <div class="form-group">
              <h5 for="nota">Escribe lo que te gustaría saber </h5>
-             <textarea class="form-control" name="nota" rows="4"></textarea>
+             <textarea id="mensaje" class="form-control" name="nota" rows="4"></textarea>
            </div>
-           <p>{{ csrf_token }}</p>
            <input type="submit" id="sendQuestion" class="btn btn-danger" name="" value="Enviar">
          </form>
        </div>
@@ -202,38 +201,6 @@
     countdown(''+n+' May '+fecha+' 2018 12:00:00 GMT-0500', 'time', 'Puedes realizar tu consulta con Cristobal');
   }
 </script>
-<!-- <script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
-<script type="text/javascript">
-  jQuery.noConflict();
-  (function ($) {
-    $('#sendQuestion').click(function (e) {
-      alert('ya entre');
-      console.log(miJSON);
-      e.preventDefault();
-      alert( $('.muevetee').toArray() );
-        // send_close();
-      });
-    function change_state(pk) {
-      $.ajax({
-     url: '{% url "tarot:start_tarot" %}',
-     type: 'POST',
-     data: {
-          csrfmiddlewaretoken: '{{ csrf_token }}',
-          'datos=': miJSON,
-        },
-        traditional: true,
-        datatype: 'jsonp',
-        success: function (result) {
-          alert('salio');
-          location.reload()
-        },
-      });
-    }
-  })(jQuery);
-</script> -->
 <script>
 
   $('show-menu').addEvent('click', function() {
@@ -259,34 +226,33 @@
   })
 
   var cardsTarot = function(){
-
-    /***Envia arreglo por ajax***/
     function envia_ajax(cardIds) {
       var miJSON = JSON.encode(cardIds);
+      var nombre = document.getElementById('nombre').value; 
+      var correo = document.getElementById('correo').value; 
+      var mensaje = document.getElementById('mensaje').value; 
       var miAjax = new Request({
 
        url: '{% url "tarot:start_tarot" %}',
        type: 'POST',
        data: {
         csrfmiddlewaretoken: '{{ csrf_token }}',
-        'datos=': miJSON,
+        'datos': miJSON,
+        'nombre': nombre,
+        'correo': correo,
+        'mensaje': mensaje,
       },
       onSuccess: function(){
-        $('resultado').set("html", "Se pudo");
+        console.log('se pudo');
+        window.location.reload();
       },
       onFailure: function(){
-        $('resultado').set("html", "fallo en la conexión Ajax");
+        console.log('Fallo en conexion AJAX');
       }
     })
       miAjax.send();
-      console.log(miJSON);
-
-      var form = document.getElementById("form-tarot").setStyles({
-        'display':'block'
-      });
-
     }
-    /*Tarto position cards*/
+    /*Tarot position cards*/
     window.addEvent('domready', function() {
       var positions = $$('#tarot-layout div')
       var cards = $$('#tarot-cards div')
@@ -366,8 +332,11 @@
           console.log(cardIds);
 
           if(cardIds.length == 3){
-
-            envia_ajax(cardIds);
+            var form = document.getElementById("form-tarot").setStyles({'display':'block'});
+            $('sendQuestion').addEvent('click', function(event) {
+              event.preventDefault();
+              envia_ajax(cardIds);
+            })
           }
           var pc_big = window.matchMedia("(min-width: 2000px)");
           var phones = window.matchMedia("(max-width: 600px)");
