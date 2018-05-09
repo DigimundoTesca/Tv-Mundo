@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-/*menu movil*/
-=======
->>>>>>> 400ceef2dc9f8d64335caf6d10306bda67a0d3d4
+
   $('show-menu').addEvent('click', function() {
     $('navigation').setStyles({
       'left':'0'
@@ -24,6 +21,22 @@
     })
   })
   /*cards tarot function*/
+  /*menu lateral
+	var navigation		= document.getElementById('navigation');
+	var hammer		= new Hammer.Manager(navigation);
+	var swipe		= new Hammer.Swipe();
+	hammer.add(swipe);
+	hammer.on('swipeleft', function(){
+	   $(navigation).setStyles({
+       'left': "-85%",
+       'overflow-y':'scroll'
+   })
+     $('movil').setStyles({
+       'height': '0',
+       'width': '0'
+     });
+	});*/
+
   var cardsTarot = function(){
 
   /***Envia arreglo por ajax***/
@@ -65,19 +78,6 @@
   cards.each(function(el, key) {
       el.set('tween', {
           duration: 'short'
-        /***Envia arreglo por ajax***/
-    function envia_ajax(cardIds) {
-      console.log(cardIds);
-      var myRequest = new Request.HTML({
-        url: /start/,
-        method: "post",
-        data: {
-            'cartas': cardIds
-        },
-      }).send();
-      console.log("Enviado a php");
-      var form = document.getElementById("form-tarot").setStyles({
-        'display':'block'
       });
       colum = colum + 1;
       if (colum > 3) colum = 1;
