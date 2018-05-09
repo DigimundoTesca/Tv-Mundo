@@ -16,7 +16,7 @@
 }
 .nav-content {
   height: auto;
-  background-color: #92b541;
+  background-color: #002983;
 }
 .nav-containier {
   color: #FFF;
@@ -29,10 +29,6 @@
   font-size: 30px;
   text-decoration: none !important;
   background: none !important;
-}
-.nav-containier a:hover {
-  text-decoration: none;
-  background-color: #818493;
 }
 
 .justify{text-align:justify;}
