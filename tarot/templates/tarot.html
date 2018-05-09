@@ -1,47 +1,47 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Tarot</title>
-      <!--styles.css-->
+<head>
+  <meta charset="utf-8">
+  <title>Tarot</title>
+  <!--styles.css-->
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    </head>
-    <body id="tarot-page">
-      <div id="movil"></div>
-      <div class="container-fluid" id="Tarot">
-      <header>
-        <div class="site-branding">
-          <button id="show-menu" class="menu-boton"><a href="http://www.faceboook.com" class="dropbtn icon-container fas fa-bars"></a></button>
-          <h1 class="site-title text-left"><a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/" rel="home"><span class="title-caps">C</span>ristóbal <span class="title-caps">J</span>odorowsky</a></h1>
-          <div id="social" class="mr-3">
-            <nav>
-              <ul>
-                <li><a href="http://www.instagram.com" style="font-size: 36px;" target="_blank" title="" class="fab fa-instagram" aria-hidden="true"></a></li>
-                <li><a href="" style="font-size: 36px;" target="_blank" title="" class="fab fa-facebook-square" aria-hidden="true"></a></li>
-                <li><a href="" style="font-size: 36px;" target="_blank" title="" class="fab fa-twitter" aria-hidden="true"></a></li>
-                <li><a href="" style="font-size: 36px;" target="_blank" title="" class="fab fa-youtube" aria-hidden="true"></a></li>
-              </ul>
-            </nav>
-          </div>
-          	<img class="brand-logo img-fluid" src="{% static 'images/logo.png' %}" alt="Community logo">
+</head>
+<body id="tarot-page">
+  <div id="movil"></div>
+  <div class="container-fluid" id="Tarot">
+    <header>
+      <div class="site-branding">
+        <button id="show-menu" class="menu-boton"><a href="http://www.faceboook.com" class="dropbtn icon-container fas fa-bars"></a></button>
+        <h1 class="site-title text-left"><a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/" rel="home"><span class="title-caps">C</span>ristóbal <span class="title-caps">J</span>odorowsky</a></h1>
+        <div id="social" class="mr-3">
+          <nav>
+            <ul>
+              <li><a href="http://www.instagram.com" style="font-size: 36px;" target="_blank" title="" class="fab fa-instagram" aria-hidden="true"></a></li>
+              <li><a href="" style="font-size: 36px;" target="_blank" title="" class="fab fa-facebook-square" aria-hidden="true"></a></li>
+              <li><a href="" style="font-size: 36px;" target="_blank" title="" class="fab fa-twitter" aria-hidden="true"></a></li>
+              <li><a href="" style="font-size: 36px;" target="_blank" title="" class="fab fa-youtube" aria-hidden="true"></a></li>
+            </ul>
+          </nav>
         </div>
-        <div class="nav-content">
-          <div class="nav-containier">
-            <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/">Inicio</a>
-            <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/biografia">Biografía</a>
-            <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/saber-mas">Saber más</a>
-            <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/libros">Libros</a>
-            <a href="{% url 'tarot:start_tarot' %}">Tarot</a>
-            <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/agenda">Agenda</a>
-            <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/contacto">Contacto</a>
-            <a id="metamundo" href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/metamundo">Metamundo</a>
+        <img class="brand-logo img-fluid" src="{% static 'images/logo.png' %}" alt="Community logo">
+      </div>
+      <div class="nav-content">
+        <div class="nav-containier">
+          <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/">Inicio</a>
+          <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/biografia">Biografía</a>
+          <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/saber-mas">Saber más</a>
+          <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/libros">Libros</a>
+          <a href="{% url 'tarot:start_tarot' %}">Tarot</a>
+          <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/agenda">Agenda</a>
+          <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/contacto">Contacto</a>
+          <a id="metamundo" href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/metamundo">Metamundo</a>
             <!--<a href="{% url 'tarot:news_tarot' %}">Últimas Respuestas</a>
-            <a href="{% url 'tarot:admin_tarot' %}">Dar videorespuesta</a>-->
+              <a href="{% url 'tarot:admin_tarot' %}">Dar videorespuesta</a>-->
+            </div>
           </div>
-        </div>
           <div id="navigation" class="">
             <span id="close" class="text-right"><i class="fas fa-times"></i></span>
             <h1 class="site-title text-center mt-5"><a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/" rel="home"><span class="title-caps">C</span>ristóbal <span class="title-caps">J</span>odorowsky</a></h1>
@@ -62,20 +62,20 @@
               <a href="http://www.youtube.com"><i class="fab fa-youtube"></i></a>
             </div>
           </div>
-      </header>
-      <div class="container tarot-description mt-4">
-        <h2>Lorem ipsum</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vel dolor a nunc maximus viverra quis non ex.
+        </header>
+        <div class="container tarot-description mt-4">
+          <h2>Lorem ipsum</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vel dolor a nunc maximus viverra quis non ex.
           Nulla laoreet, nisl vel scelerisque pretium, leo arcu faucibus lectus, nec pharetra odio lectus a turpis.</p>
           <div id="time" class="text-center"></div>
           <div id="resultado"></div>
           <div id="resultado2">{{card}}</div>
           <h1 class="text-center">Elija 3 cartas</h1>
 
-      </div>
+        </div>
 
-      <div  class="col-md-12 mt-5 text-center mt-4"><h2 class="Reintentar mano" id="return" onClick="window.location.reload()"><i class="fas fa-sync-alt"></i></h2></div>
-      <div class="tarot-container text-center">
+        <div  class="col-md-12 mt-5 text-center mt-4"><h2 class="Reintentar mano" id="return" onClick="window.location.reload()"><i class="fas fa-sync-alt"></i></h2></div>
+        <div class="tarot-container text-center">
 
           <div id="tarot-cards" class="row justify-content-center text-center">
             {% for card in cards %}
@@ -86,54 +86,51 @@
             {% endfor %}
           </div>
           <div class="row"  id="tarot-layout">
-                    <div  class="col-md-4 col-sm-4 "></div>
-                    <div  class="col-md-4 col-sm-4 "></div>
-                    <div  class="col-md-4 col-sm-4 "></div>
-            </div>
+            <div  class="col-md-4 col-sm-4 "></div>
+            <div  class="col-md-4 col-sm-4 "></div>
+            <div  class="col-md-4 col-sm-4 "></div>
           </div>
-          </div>
+        </div>
+      </div>
 
 
-          <div class="form-group row justify-content-center" id="form-tarot">
-            <div class="col-6">
-            <h4>Si quieres saber más llena el siguiente formulario, Cristobal te responderá en un video</h4>
-<<<<<<< HEAD
-            <form class="" id="ask" action="recibo.php" method="post">
-=======
-            <form class="" action="" method="post">
-                {% csrf_token %}
->>>>>>> 400ceef2dc9f8d64335caf6d10306bda67a0d3d4
-             <h5 for="" class="">Nombre</h5>
-               <input type="text" class="form-control form-control-lg" name="nombre">
-               <h5 for="" class="">Correo</h5>
-                 <input type="email" class="form-control form-control-lg" name="nombre">
+      <div class="form-group row justify-content-center" id="form-tarot">
+        <div class="col-6">
+          <h4>Si quieres saber más llena el siguiente formulario, Cristobal te responderá en un video</h4>
+          <form class="" id="ask" method="POST">
+            {% csrf_token %}  
+            <h5 for="" class="">Nombre</h5>
+            <input type="text" class="form-control form-control-lg" name="nombre">
+            <h5 for="" class="">Correo</h5>
+            <input type="email" class="form-control form-control-lg" name="nombre">
             <div class="form-group">
              <h5 for="nota">Escribe lo que te gustaría saber </h5>
              <textarea class="form-control" name="nota" rows="4"></textarea>
-            </div>
-            <button type="submit" class="btn btn-danger" name="button">Enviar</button>
-            </form>
-            </div>
-            <footer class="">
-            	<div class="container">
-            		<div class="text-center">
-            			<span>Copyright © Cristobal Jodorowsky 2018	| Tema: Cristobal por  <a href="http://www.digimundo.com.mx/">Digimundo Technologies © </a></span>
-            		</div>
-            	</div>
-            </footer>
-          </div>
+           </div>
+           <p>{{ csrf_token }}</p>
+           <input type="submit" id="sendQuestion" class="btn btn-danger" name="" value="Enviar">
+         </form>
+       </div>
+       <footer class="">
+         <div class="container">
+          <div class="text-center">
+           <span>Copyright © Cristobal Jodorowsky 2018	| Tema: Cristobal por  <a href="http://www.digimundo.com.mx/">Digimundo Technologies © </a></span>
+         </div>
+       </div>
+     </footer>
+   </div>
 
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-          <!--font awesome -->
-          <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-          <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
-          <script src="{% static 'javascript/mootools-yui-compressed.js' %}"></script>
-          <script>var urltarot = "{% url 'tarot:start_tarot' %}"</script>
-          <script src="{% static 'javascript/main.js' %}"></script>
-    </body>
-</html>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+   <!--font awesome -->
+   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+   <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
+   <script src="{% static 'javascript/mootools-yui-compressed.js' %}"></script>
+   <script>var urltarot = "{% url 'tarot:start_tarot' %}"</script>
+   <!-- <script src="{% static 'javascript/main.js' %}"></script> -->
+ </body>
+ </html>
 
-<script type="text/javascript">
+ <script type="text/javascript">
 
   var hoy = new Date(),
   dia = hoy.getDay();
@@ -154,21 +151,21 @@
   }
 
   var day = new Array();
-   day[1] = "Mon";
-   day[2] = "Martes";
-   day[3] = "Miércoles";
-   day[4] = "Jueves";
-   day[5] = "Viernes";
-   day[6] = "Sábado";
-   day[7] = "Domingo";
+  day[1] = "Mon";
+  day[2] = "Martes";
+  day[3] = "Miércoles";
+  day[4] = "Jueves";
+  day[5] = "Viernes";
+  day[6] = "Sábado";
+  day[7] = "Domingo";
 
   const getRmainTime = deadline => {
     let now = new Date(),
-      remainTime = (new Date(deadline) - now + 1000) / 1000,
-      remainSeconds = ( '0' + Math.floor(remainTime % 60)).slice(-2),
-      remainMinutes = ( '0' + Math.floor(remainTime / 60 % 60)).slice(-2),
-      remainHours = ( '0' + Math.floor(remainTime / 3600 % 24)).slice(-2),
-      remainDays = Math.floor(remainTime / (3600 * 24));
+    remainTime = (new Date(deadline) - now + 1000) / 1000,
+    remainSeconds = ( '0' + Math.floor(remainTime % 60)).slice(-2),
+    remainMinutes = ( '0' + Math.floor(remainTime / 60 % 60)).slice(-2),
+    remainHours = ( '0' + Math.floor(remainTime / 3600 % 24)).slice(-2),
+    remainDays = Math.floor(remainTime / (3600 * 24));
 
     return {
       remainTime,
@@ -195,14 +192,234 @@
 
   var n = day[hoy.getDay()];
   console.log(n)
-if(dia == 2){
-  fecha = 7 + 7
-  if (fecha > 31 && (mes == 0 || mes == 4 || mes == 2  )) {
+  if(dia == 2){
+    fecha = 7 + 7
+    if (fecha > 31 && (mes == 0 || mes == 4 || mes == 2  )) {
 
+    }
+    n = "Mon"
+    console.log(fecha)
+    countdown(''+n+' May '+fecha+' 2018 12:00:00 GMT-0500', 'time', 'Puedes realizar tu consulta con Cristobal');
   }
-  n = "Mon"
-  console.log(fecha)
-  countdown(''+n+' May '+fecha+' 2018 12:00:00 GMT-0500', 'time', 'Puedes realizar tu consulta con Cristobal');
-}
+</script>
+<!-- <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+  jQuery.noConflict();
+  (function ($) {
+    $('#sendQuestion').click(function (e) {
+      alert('ya entre');
+      console.log(miJSON);
+      e.preventDefault();
+      alert( $('.muevetee').toArray() );
+        // send_close();
+      });
+    function change_state(pk) {
+      $.ajax({
+     url: '{% url "tarot:start_tarot" %}',
+     type: 'POST',
+     data: {
+          csrfmiddlewaretoken: '{{ csrf_token }}',
+          'datos=': miJSON,
+        },
+        traditional: true,
+        datatype: 'jsonp',
+        success: function (result) {
+          alert('salio');
+          location.reload()
+        },
+      });
+    }
+  })(jQuery);
+</script> -->
+<script>
 
+  $('show-menu').addEvent('click', function() {
+    $('navigation').setStyles({
+      'left':'0'
+    })
+    $('movil').setStyles({
+      'background-color': 'rgba(0,0,0,0.65)',
+      'width':'100%',
+      'z-index':'900',
+      'display': 'block',
+      'height': '100%'
+    })
+  })
+  $('close').addEvent('click', function(){
+    $('navigation').setStyles({
+      'left':'-85%'
+    })
+    $('movil').setStyles({
+      'width':'0',
+      'height':'0'
+    })
+  })
+
+  var cardsTarot = function(){
+
+    /***Envia arreglo por ajax***/
+    function envia_ajax(cardIds) {
+      var miJSON = JSON.encode(cardIds);
+      var miAjax = new Request({
+
+       url: '{% url "tarot:start_tarot" %}',
+       type: 'POST',
+       data: {
+        csrfmiddlewaretoken: '{{ csrf_token }}',
+        'datos=': miJSON,
+      },
+      onFailure: function(){
+        $('resultado').set("html", "fallo en la conexión Ajax");
+      }
+    })
+      miAjax.send();
+      console.log(miJSON);
+
+      var form = document.getElementById("form-tarot").setStyles({
+        'display':'block'
+      });
+
+    }
+    /*Tarto position cards*/
+    window.addEvent('domready', function() {
+      var positions = $$('#tarot-layout div')
+      var cards = $$('#tarot-cards div')
+      var title = $$('#tarot-cards h1')
+      var selected = 0;
+      var spacing = 32;
+      var cardIds = Array();
+      var posmarco = $("tarot-layout").getPosition();
+      var despcard = posmarco.x + 25;
+      var vidx = 100;
+      var colum = 0;
+      var lin = 0;
+
+      cards.each(function(el, key) {
+        el.set('tween', {
+          duration: 'short'
+        });
+        colum = colum + 1;
+        if (colum > 3) colum = 1;
+        lin = (colum - 1) * 140;
+        lin=0;
+        var pos = el.getPosition();
+        var espacio = Math.floor(Math.random() * 8) + 5;
+        pos.x = pos.x + despcard;
+        pos.y = pos.y-33;
+        el.setStyles({
+          'position': 'absolute',
+          'left': pos.x + (key * spacing),
+
+        })
+
+        el.addClass("rot5");
+        el.addEvent('mouseover', function() {
+          el.tween('top', pos.y + 25);
+        })
+        el.addEvent('mouseout', function() {
+          el.tween('top', pos.y);
+        })
+        el.addEvent('touchstart', function() {
+          el.click();
+        })
+        el.addEvent('click', function() {
+          if ((selected) >= positions.length) return false;
+
+          el.removeEvents('mouseout');
+          el.removeEvents('mouseover');
+          el.removeEvents('click');
+          vidx = vidx + 1;
+          el.style.zIndex = vidx;
+
+          var progress = new Element('img', {
+            src: '../static/images/Tarot-Cards/' + 'img' + el.id + '.jpg',
+            style: 'height:410px;width:300',
+          });
+
+          var pos = positions[selected].getPosition();
+          Element.Styles.backgroundSize = '@px';
+          var elFx = new Fx.Morph(el, {
+            duration: 2800,
+            transition: Fx.Transitions.Sine.easeOut,
+            onComplete: function() {
+              el.tween('opacity', 1, 0, {
+                duration: 'long'
+              });
+              el.removeClass("rot5");
+              el.addClass("muevetee");
+              el.addClass("muestra");
+              progress.inject(el);
+              el.tween('opacity', 0, 1, {
+                duration: 'long'
+              });
+
+            }
+          });
+
+          cardIds.push(el.id);
+          console.log(cardIds);
+
+          if(cardIds.length == 3){
+
+            envia_ajax(cardIds);
+          }
+          var pc_big = window.matchMedia("(min-width: 2000px)");
+          var phones = window.matchMedia("(max-width: 600px)");
+          var pc = window.matchMedia("(min-width: 1025px)");
+          console.log(pc_big)
+          console.log(phones)
+          console.log(pc)
+          if (pc_big.matches) {
+            elFx.start({
+              'top': +780,
+              'left': pos.x - 50,
+              'height': [132, 400],
+              'width': [80, 220],
+              'background-size': [80, 160]
+            });
+          }
+          else if(pc.matches){
+            elFx.start({
+                // 'top': pos.y,
+                'top': +580,
+                'left': pos.x + 35,
+                'height': [132, 400],
+                'width': [80, 220],
+                'background-size': [80, 160]
+              });
+          }
+          else{
+            elFx.start({
+
+              'top': +550,
+              'left': pos.x + 64,
+              'height': [132, 400],
+              'width': [80, 220],
+              'background-size': [80, 160]
+            });
+          }
+
+
+          selected++;
+          if ((selected) >= positions.length) {
+            (function() {
+              document.getElementById("return").removeClass("Reintentar");
+            }).delay(4000);
+          }
+        })
+      });
+    });
+    function calculaAncho() {
+      if (document.layers) {
+        ancho = window.innerWidth;
+      } else {
+        ancho = document.body.clientWidth;
+      }
+      return ancho;
+    }
+  }
+  cardsTarot.delay(1000);
 </script>
