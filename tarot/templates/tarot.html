@@ -19,10 +19,10 @@
         <div id="social" class="mr-3">
           <nav>
             <ul>
-              <li><a href="http://www.instagram.com" style="font-size: 36px;" target="_blank" title="" class="fab fa-instagram" aria-hidden="true"></a></li>
-              <li><a href="" style="font-size: 36px;" target="_blank" title="" class="fab fa-facebook-square" aria-hidden="true"></a></li>
-              <li><a href="" style="font-size: 36px;" target="_blank" title="" class="fab fa-twitter" aria-hidden="true"></a></li>
-              <li><a href="" style="font-size: 36px;" target="_blank" title="" class="fab fa-youtube" aria-hidden="true"></a></li>
+              <li><a href="https://www.instagram.com/explore/tags/cristobaljodorowsky/?hl=es-la" style="font-size: 36px;" target="_blank"><i class="fab fa-instagram"></i> </a></li>
+              <li><a href="https://www.facebook.com/cristobal.jodorowsky" style="font-size: 36px;" target="_blank"><i class="fab fa-facebook-square"></i> </a></li>
+              <li><a href="" style="font-size: 36px;" target="_blank"><i class="fab fa-twitter"></i> </a></li>
+              <li><a href="https://twitter.com/cristobaljod?lang=es" style="font-size: 36px;" target="_blank"><i class="fab fa-youtube"></i> </a></li>
             </ul>
           </nav>
         </div>
@@ -56,10 +56,10 @@
             <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/contacto"><i class="fas fa-comments mr4"></i> Contacto</a>
             <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/metamundo"><i class="fas fa-globe mr-4"></i> Metamundo</a>
             <div class="share">
-              <a href="https://www.facebook.com"><i id="facebook" class="text-center fab fa-facebook-square"></i></a>
-              <a href="http://www.instagram.com"><i class="fab fa-instagram"></i></a>
-              <a href="http://www.twitter.com"><i class="fab fa-twitter"></i></a>
-              <a href="http://www.youtube.com"><i class="fab fa-youtube"></i></a>
+              <a href="https://www.facebook.com/cristobal.jodorowsky" target="_blank"><i id="facebook" class="text-center fab fa-facebook-square"></i></a>
+              <a href="https://www.instagram.com/explore/tags/cristobaljodorowsky/?hl=es-la" target="_blank"><i class="fab fa-instagram"></i></a>
+              <a href="https://twitter.com/cristobaljod?lang=es" target="_blank"><i class="fab fa-twitter" ></i></a>
+              <a href="https://www.youtube.com/channel/UCb3iaGZ7ll3Mbt3IvMYbqHg" target="_blank"><i class="fab fa-youtube"></i></a>
             </div>
           </div>
         </header>
@@ -153,7 +153,7 @@
 
      const timerUpdate = setInterval( () => {
        let t = getRmainTime(deadline);
-       el.innerHTML = t.remainDays+"d" + ":" + t.remainHours + "h" + ":" + t.remainMinutes + "m" + ":" + t.remainSeconds + "s";
+       el.innerHTML = '<span class= "timer" id="dia">' + t.remainDays + '<span class = "label">Días</span></span>' + ":" + '<span id = "hora" class="timer">' + t.remainHours + '<span class = "label"> Horas </span></span>' +  ":" + '<span class="timer" id="minutos">' + t.remainMinutes + '<span class="label">Minutos</span></span>' + ":" + '<span class="timer" id="segundos">' + t.remainSeconds + '<span class="label">Segundos</span></span>';
 
        if (t.remainTime <= 1) {
          clearInterval(timerUpdate);
@@ -253,9 +253,9 @@
   var cardsTarot = function(){
     function envia_ajax(cardIds) {
       var miJSON = JSON.encode(cardIds);
-      var nombre = document.getElementById('nombre').value; 
-      var correo = document.getElementById('correo').value; 
-      var mensaje = document.getElementById('mensaje').value; 
+      var nombre = document.getElementById('nombre').value;
+      var correo = document.getElementById('correo').value;
+      var mensaje = document.getElementById('mensaje').value;
       var miAjax = new Request({
 
        url: '{% url "tarot:start_tarot" %}',
