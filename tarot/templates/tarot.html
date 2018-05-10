@@ -67,9 +67,6 @@
           <h2>Lorem ipsum</h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vel dolor a nunc maximus viverra quis non ex.
           Nulla laoreet, nisl vel scelerisque pretium, leo arcu faucibus lectus, nec pharetra odio lectus a turpis.</p>
-          <div id="time" class="text-center"></div>
-          <div id="resultado" class="d-none"></div>
-          <div id="resultado2">{{card}}</div>
           <h1 class="text-center">Elija 3 cartas</h1>
 
         </div>
@@ -96,6 +93,7 @@
 
       <div class="form-group row justify-content-center" id="form-tarot">
         <div class="col-6">
+            {% if available %}
           <h4>Si quieres saber más llena el siguiente formulario, Cristobal te responderá en un video</h4>
           <form class="" id="ask" method="POST">
             {% csrf_token %}
@@ -109,6 +107,9 @@
            </div>
            <input type="submit" id="sendQuestion" class="btn btn-danger" name="" value="Enviar">
          </form>
+         {% else %}
+         <div id="time" class="text-center"></div>
+         {% endif %}
        </div>
        <footer class="">
          <div class="container">
@@ -262,10 +263,10 @@
        type: 'POST',
        data: {
         csrfmiddlewaretoken: '{{ csrf_token }}',
-        'datos': miJSON,
-        'nombre': nombre,
-        'correo': correo,
-        'mensaje': mensaje,
+        'data': miJSON,
+        'name': nombre,
+        'email': correo,
+        'description': mensaje,
       },
       onSuccess: function(){
         console.log('se pudo');

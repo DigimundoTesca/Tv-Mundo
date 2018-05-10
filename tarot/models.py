@@ -33,12 +33,13 @@ class Question(models.Model):
         (CLOSE, 'Cerrada'),
     )
 
-    card_one = models.ForeignKey(Card, related_name='card1_question')
-    card_two = models.ForeignKey(Card, related_name='card2_question')
-    card_three = models.ForeignKey(Card, related_name='card3_question')
+    card_one = models.CharField(max_length=3)
+    card_two = models.CharField(max_length=3)
+    card_three = models.CharField(max_length=3)
+    email = models.EmailField(default="prueba@gmail.com")
     date_create = models.DateField(auto_now=True)
     response = models.ForeignKey(Response, on_delete=models.CASCADE, default=1, null=True)
-    week = models.ForeignKey(Week, on_delete=models.CASCADE, default=1, null=True)
+    week = models.PositiveSmallIntegerField(default=0)
     status = models.CharField(max_length=2, null=True, choices=STATUS, default='OP')
     name = models.CharField(max_length=30, null=True)
     question = models.CharField(max_length=30, null=True)
