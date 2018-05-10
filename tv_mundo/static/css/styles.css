@@ -1,5 +1,8 @@
 @import url("news.css");
 @import url("rvslider.css");
+html {
+    font-family: "ACaslonPro-regular" !important;
+}
 body {
  background-color: #FFF;
  background-position: 50% 0;
@@ -9,9 +12,7 @@ body {
 -webkit-background-size: cover;
 background-size: cover;
 height: 100%;
-}
-* {
-    font-family: "ACaslonPro-regular" !important;
+position: relative;
 }
 body#tarot-page {
   margin: 2.5%;
@@ -20,6 +21,9 @@ body#tarot-page {
 }
 #Tarot {
   max-width: 1700px;
+}
+#tarotContainer {
+  min-height: 100vh;
 }
 .nav-content {
   padding: 0;
@@ -156,7 +160,7 @@ padding-top: .33em;
 }
 #form-tarot > div {
   margin: 0 auto;
-  margin-top: 57em;
+  margin-top: 53em;
 }
 #form-tarot > div h4 {
   color: #919191;
@@ -452,7 +456,10 @@ input[type="submit"] { cursor: pointer; }
 	font-size: 12px;
 	margin-top: 16px;
 }
-
+/*#tarotFooter {
+  position: absolute;
+  bottom: 0;
+}*/
 .info {
 	background: #e5e5e5;
 	border-radius: 50%;
@@ -558,9 +565,6 @@ input[type="submit"] { cursor: pointer; }
   .card-description, #tarot-cards h1 {
     left: -28%;
     width: 340px;
-  }
-  #form-tarot {
-    margin-top: 50em;
   }
 }
 @media screen and (min-width: 1367px) {
