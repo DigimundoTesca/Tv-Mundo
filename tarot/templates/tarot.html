@@ -67,6 +67,9 @@
           <h2>Lorem ipsum</h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vel dolor a nunc maximus viverra quis non ex.
           Nulla laoreet, nisl vel scelerisque pretium, leo arcu faucibus lectus, nec pharetra odio lectus a turpis.</p>
+          <div id="time" class="text-center"></div>  
+          <div id="resultado" class="d-none"></div>  
+          <div id="resultado2">{{card}}</div>
           <h1 class="text-center">Elija 3 cartas</h1>
 
         </div>
@@ -93,7 +96,7 @@
 
       <div class="form-group row justify-content-center" id="form-tarot">
         <div class="col-6">
-            {% if available %}
+          {% if available %}
           <h4>Si quieres saber más llena el siguiente formulario, Cristobal te responderá en un video</h4>
           <form class="" id="ask" method="POST">
             {% csrf_token %}
