@@ -14,7 +14,7 @@
           <div class="form-group row">
             <label for="response" class="col-sm-2 col-form-label">Respuesta</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="response" name="response" placeholder="Pegar aquí url ">
+              <input type="file" class="form-control" id="response" name="response" placeholder="Pegar aquí url ">
           </div>
           <button type="submit" class="btn btn-primary" name="send-response"> Publicar </button>
         </div>
@@ -45,9 +45,7 @@
     </div>
     <div class="row text-right">
       <div class="col-11">
-        {% if available %}
         <button type="button" class="btn btn-danger" id="responder"name="button">Responder</button>
-        {% endif %}
       </div>
 
     </div>
