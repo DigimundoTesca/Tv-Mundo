@@ -36,7 +36,7 @@
         <tr>
           <td>{{ question.name }}</td>
           <td>{{ question.question }}</td>
-          <td>{{ question.card_one.number }}, {{ question.card_two.number }}, {{ question.card_three.number }}</td>
+          <td>{{ question.card_one }}, {{ question.card_two }}, {{ question.card_three }}</td>
         </tr>
                 {% endfor %}
           {% endif %}
@@ -45,7 +45,9 @@
     </div>
     <div class="row text-right">
       <div class="col-11">
+        {% if available %}
         <button type="button" class="btn btn-danger" id="responder"name="button">Responder</button>
+        {% endif %}
       </div>
 
     </div>
