@@ -38,7 +38,7 @@ class Question(models.Model):
     card_three = models.CharField(max_length=3)
     email = models.EmailField(default="prueba@gmail.com")
     date_create = models.DateField(auto_now_add=True)
-    response = models.ForeignKey(Response, on_delete=models.CASCADE, default=1, null=True)
+    response = models.ForeignKey(Response, on_delete=models.CASCADE, null=True)
     week = models.PositiveSmallIntegerField(default=0)
     status = models.CharField(max_length=2, null=True, choices=STATUS, default='OP')
     name = models.CharField(max_length=30, null=True)
