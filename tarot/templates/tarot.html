@@ -105,8 +105,9 @@
         <input id="correo" type="email" class="form-control form-control-lg" name="correo" required>
         <div class="form-group">
           <h5 for="nota">Escribe lo que te gustaría saber </h5>
-          <textarea id="mensaje" class="form-control" name="nota" rows="4"></textarea>
+          <textarea id="mensaje" class="form-control" name="nota" rows="4" required></textarea>
         </div>
+        <p id="errorMessage" class="h5 font-weight-bold text-danger"></p>
         <input type="submit" id="sendQuestion" class="btn btn-danger" name="" value="Enviar">
       </form>
       {% else %}
@@ -351,9 +352,15 @@
 
           if(cardIds.length == 3){
             var form = document.getElementById("form-tarot").setStyles({'display':'block'});
+            var myFormChido =  document.getElementById('ask');
             $('sendQuestion').addEvent('click', function(event) {
               event.preventDefault();
-              envia_ajax(cardIds);
+              if (myFormChido.checkValidity()) {
+                envia_ajax(cardIds);
+              }
+              else {
+                $('errorMessage').innerHTML = 'Por favor verifica tus datos';
+              }
             })
           }
           var pc_big = window.matchMedia("(min-width: 2000px)");
