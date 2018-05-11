@@ -4,6 +4,7 @@ from tarot.models import Week, Card, Response, Question
 from django.contrib.auth.decorators import login_required
 
 import random
+import datetime
 from datetime import date
 
 # Mail includes
@@ -20,10 +21,14 @@ def start(request):
     template = 'tarot.html'
     cards = sorted(Card.objects.all(), key=lambda x: random.random())
     week = date.today().isocalendar()[1]
+    year = datetime.datetime.now().year
     question_week = Question.objects.filter(week=week)
     available = False
     if len(question_week) < 5:
-        available = True
+        if datetime.datetime.today().weekday() == 1 and datetime.datetime.now().hour >= 12:
+            available = True
+        elif datetime.datetime.today().weekday() != 1:
+            available = True
     if request.method == 'POST':
         cards = request.POST['data']
         card1 = cards[2:4]
