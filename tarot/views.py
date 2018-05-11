@@ -106,13 +106,32 @@ def questions_t(request):
 
 def sendmail(request, email_user, new_context):
     fromaddr = "cristobal.jodorowskyt@gmail.com"
-    toaddr = 'itzli2000@msn.com'
+    toaddr = email_user
     template = get_template('mail.html')
     html_content = template.render(new_context)
     msg = MIMEMultipart()
     msg['From'] = fromaddr
     msg['To'] = toaddr
     msg['Subject'] = "Se ha generado una respuesta a su consulta"
+    body = html_content
+    msg.attach(MIMEText(body, 'html'))
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.starttls()
+    server.login(fromaddr, "#Tarotjodorowsky")
+    text = msg.as_string()
+    server.sendmail(fromaddr, toaddr, text)
+    server.quit()
+
+
+def sendCristobal(request, Questions):
+    fromaddr = "cristobal.jodorowskyt@gmail.com"
+    toaddr = 'itzli2000@msn.com'
+    template = get_template('mailC.html')
+    html_content = template.render(Questions)
+    msg = MIMEMultipart()
+    msg['From'] = fromaddr
+    msg['To'] = toaddr
+    msg['Subject'] = "Preguntas de la semana"
     body = html_content
     msg.attach(MIMEText(body, 'html'))
     server = smtplib.SMTP('smtp.gmail.com', 587)
