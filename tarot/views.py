@@ -7,6 +7,15 @@ import random
 import datetime
 from datetime import date
 
+# Mail includes
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+import smtplib
+from smtplib import SMTPRecipientsRefused
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import get_template
+from django.template import Context
+
 
 def start(request):
     template = 'tarot.html'
@@ -30,6 +39,12 @@ def start(request):
         description = request.POST['description']
         question = Question.objects.create(card_one=card1, card_two=card2, card_three=card3,
                                 name=name, email=email, question=description, week=week)
+        new_context = {
+        'name': name,
+        'title': 'Su consulta se ha creado',
+        'consult': description,
+        }
+        sendmail(request, email, new_context)
         question.save()
     context = {
         'cards': cards,
@@ -87,3 +102,22 @@ def questions_t(request):
         'available': available,
     }
     return render(request, template, context)
+
+
+def sendmail(request, email_user, new_context):
+    fromaddr = "cristobal.jodorowskyt@gmail.com"
+    toaddr = 'itzli2000@msn.com'
+    template = get_template('mail.html')
+    html_content = template.render(new_context)
+    msg = MIMEMultipart()
+    msg['From'] = fromaddr
+    msg['To'] = toaddr
+    msg['Subject'] = "Se ha generado una respuesta a su consulta"
+    body = html_content
+    msg.attach(MIMEText(body, 'html'))
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.starttls()
+    server.login(fromaddr, "#Tarotjodorowsky")
+    text = msg.as_string()
+    server.sendmail(fromaddr, toaddr, text)
+    server.quit()
