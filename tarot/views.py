@@ -24,12 +24,15 @@ def start(request):
     year = datetime.datetime.now().year
     question_week = Question.objects.filter(week=week)
     available = False
+    number = len(question_week)+1
     if len(question_week) < 5:
         if datetime.datetime.today().weekday() == 1 and datetime.datetime.now().hour >= 12:
             available = True
         elif datetime.datetime.today().weekday() != 1:
             available = True
     if request.method == 'POST':
+        if len(Question.objects.filter(week=week))>=5:
+            redirect('tarot:start_tarot')
         cards = request.POST['data']
         card1 = cards[2:4]
         card2 = cards[7:9]
@@ -40,12 +43,20 @@ def start(request):
         question = Question.objects.create(card_one=card1, card_two=card2, card_three=card3,
                                 name=name, email=email, question=description, week=week)
         new_context = {
-        'name': name,
-        'title': 'Su consulta se ha creado',
-        'consult': description,
+            'name': name,
+            'title': 'Su consulta se ha creado',
+            'consult': description,
+            'number': number,
+            'week': week,
         }
         sendmail(request, email, new_context)
         question.save()
+        if number >= 5:
+            questions = Question.objects.filter(week=week)
+            question_context = {
+                'Questions': questions,
+            }
+            sendCristobal(request, question_context)
     context = {
         'cards': cards,
         'title': "Tarot",
@@ -125,7 +136,7 @@ def sendmail(request, email_user, new_context):
 
 def sendCristobal(request, Questions):
     fromaddr = "cristobal.jodorowskyt@gmail.com"
-    toaddr = 'itzli2000@msn.com'
+    toaddr = 'managerdigimundo@gmail.com'
     template = get_template('mailC.html')
     html_content = template.render(Questions)
     msg = MIMEMultipart()

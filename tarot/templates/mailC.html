@@ -112,7 +112,7 @@
 
 <!-- HIDDEN PREHEADER TEXT -->
 <div style="display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: Helvetica, Arial, sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;">
-    Entice the open with some amazing preheader text. Use a little mystery and get those subscribers to read through...
+    5 preguntas realizadas de la semana
 </div>
 
 <!-- HEADER -->
@@ -159,8 +159,8 @@
                             {% for question in Questions %}
                             <tr>
                                 <td align="left" style="padding: 20px 0 0 0; font-size: 16px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding-copy">
-                                    Nombre: {{ name }} <br> Fecha: {{ week }}
-                                    Cartas: {{card_one}}, {{card_two}}, {{card_three}} <br>Consulta: {{ question }}
+                                    Nombre: {{ question.name }} <br> Fecha: {{ question.week }}
+                                    Cartas: {{question.card_one}}, {{question.card_two}}, {{question.card_three}} <br>Consulta: {{ question.question }}
                                 </td>
                             </tr>
                             {% endfor %}
