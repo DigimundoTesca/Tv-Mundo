@@ -67,7 +67,7 @@
   <div class="container tarot-description mt-4">
     <h2>Lorem ipsum</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vel dolor a nunc maximus viverra quis non ex.
-    Nulla laoreet, nisl vel scelerisque pretium, leo arcu faucibus lectus, nec pharetra odio lectus a turpis.</p>  
+    Nulla laoreet, nisl vel scelerisque pretium, leo arcu faucibus lectus, nec pharetra odio lectus a turpis.</p>
     <div id="resultado2">{{card}}</div>
     <h1 class="text-center">Elija 3 cartas</h1>
 
@@ -111,7 +111,7 @@
         <input type="submit" id="sendQuestion" class="btn btn-danger" name="" value="Enviar">
       </form>
       {% else %}
-      <div id="time" class="text-center"></div>  
+      <div id="time" class="text-center"></div>
       <div id="resultado" class="d-none"></div>
       {% endif %}
     </div>
@@ -136,6 +136,18 @@
 </html>
 
 <script type="text/javascript">
+  function muestra() {
+    var myFormChido =  document.getElementById('ask');
+    $('sendQuestion').addEvent('click', function(event) {
+      event.preventDefault();
+      if (myFormChido.checkValidity()) {
+        envia_ajax(cardIds);
+      }
+      else {
+        $('errorMessage').innerHTML = 'Por favor verifica tus datos';
+      }
+    })
+  }
 
   const getRmainTime = deadline => {
     let now = new Date(),
@@ -164,12 +176,13 @@
       if (t.remainTime <= 1) {
         clearInterval(timerUpdate);
         el.innerHTML = finalMessage;
+        muestra();
       }
     }, 1000)
   };
 
   function fechaChida(mes, lunes){
-    countdown(''+mes+''+lunes+' 2018 12:00:00 GMT-0500', 'time', 'Puedes realizar tu consulta con Cristobal');
+    countdown(''+mes+''+lunes+' 2018 23:17:00 GMT-0500', 'time', 'Puedes realizar tu consulta con Cristobal');
   }
 
   var hoy = new Date(),
@@ -220,8 +233,6 @@
       fechaChida(n, fecha);
     }
   }
-</script>
-<script>
 
   $('show-menu').addEvent('click', function() {
     $('navigation').setStyles({
@@ -352,16 +363,6 @@
 
           if(cardIds.length == 3){
             var form = document.getElementById("form-tarot").setStyles({'display':'block'});
-            var myFormChido =  document.getElementById('ask');
-            $('sendQuestion').addEvent('click', function(event) {
-              event.preventDefault();
-              if (myFormChido.checkValidity()) {
-                envia_ajax(cardIds);
-              }
-              else {
-                $('errorMessage').innerHTML = 'Por favor verifica tus datos';
-              }
-            })
           }
           var pc_big = window.matchMedia("(min-width: 2000px)");
           var phones = window.matchMedia("(max-width: 600px)");
@@ -371,8 +372,8 @@
           console.log(pc)
           if (pc_big.matches) {
             elFx.start({
-              'top': +780,
-              'left': pos.x - 50,
+              'top': +720,
+              'left': pos.x - 45,
               'height': [132, 400],
               'width': [80, 220],
               'background-size': [80, 160]
@@ -380,7 +381,7 @@
           }
           else if(pc.matches){
             elFx.start({
-              'top': +580,
+              'top': +560,
               'left': pos.x + 35,
               'height': [132, 400],
               'width': [80, 220],
