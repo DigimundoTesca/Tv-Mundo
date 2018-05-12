@@ -42,4 +42,4 @@ class Question(models.Model):
     week = models.PositiveSmallIntegerField(default=0)
     status = models.CharField(max_length=2, null=True, choices=STATUS, default='OP')
     name = models.CharField(max_length=30, null=True)
-    question = models.CharField(max_length=30, null=True)
+    question = models.TextField(null=True)
