@@ -175,7 +175,6 @@
         remainDays
       }
     };
-
     function envia_ajax(cardIds) {
       var miJSON = JSON.encode(cardIds);
       var nombre = document.getElementById('nombre').value;
@@ -273,6 +272,7 @@
           console.log(cardIds);
             if(cardIds.length == 3){
               var form = document.getElementById("form-tarot").setStyles({'display':'block'});
+              
               function muestra(cardIds) {
                 var myFormChido =  document.getElementById('ask');
                 $('sendQuestion').addEvent('click', function(event) {
@@ -301,10 +301,11 @@
           function fechaChida(mes, lunes){
             countdown(''+mes+''+lunes+' 2018 12:30:00 GMT-0500', 'time', 'Puedes realizar tu consulta con Cristobal');
           }
-          var hoy = new Date(),
+          var hoy = new Date();
           dia = hoy.getDay();
           mes = hoy.getMonth();
           fecha = 14
+
           var month = new Array();
           month[0] = "January";
           month[1] = "February";
@@ -322,7 +323,7 @@
           if (dia == 1 && hora == 23) {
             var fecha = fecha + 7;
           }
-          if(dia > 2){
+          if(dia >= 0){
             if (fecha > 31 && (mes == 0 || mes == 2 || mes == 4 || mes == 6 || mes == 7 || mes == 9 || mes == 11  )) {
               fecha = fecha - 31
               console.log(fecha)
@@ -345,7 +346,6 @@
               fechaChida(n, fecha);
             }
           }
-
           var pc_big = window.matchMedia("(min-width: 2000px)");
           var phones = window.matchMedia("(max-width: 600px)");
           var pc = window.matchMedia("(min-width: 1025px)");

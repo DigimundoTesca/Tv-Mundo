@@ -195,7 +195,7 @@ h1,h2,h3,h4,h5,h6{
   position: absolute;
   top: 21em;
   left: 100px;
-    background-image: url("../images/Tarot-Cards/img22.jpg");
+    background-image: url("../images/Tarot-Cards/img24.jpg");
     border: 3px solid #967996;
 border-top-left-radius: 10px;
     background-size: 99px;
@@ -480,6 +480,8 @@ input[type="submit"] { cursor: pointer; }
 	text-align: center;
 	width: 20px;
 }
+
+
 @media screen and (min-width: 300px) and (max-width: 1023px){
   body#tarot-page {
     margin-top: 5%;
@@ -487,7 +489,7 @@ input[type="submit"] { cursor: pointer; }
   #tarot-cards {
     max-width: 500px;
     position: absolute;
-    left: .45%;
+    left: -1.65%;
     top: -28px;
   }
   .card-description, #tarot-cards h1 {
@@ -536,11 +538,19 @@ input[type="submit"] { cursor: pointer; }
     background: transparent;
   }
 }
+@media screen and (min-width: 377px) and (max-width: 412px) {
+  #tarot-cards {
+    max-width: 500px;
+    position: absolute;
+    left: -2.65%;
+    top: -28px;
+  }
+}
 @media screen and (min-width: 1024px) {
   #tarot-cards {
     max-width: 500px;
     position: absolute;
-    left: -1.5%;
+    left: -1.6%;
   }
   .nav-containier a {
     font-size: 22px;
