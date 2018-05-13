@@ -29,22 +29,23 @@ body#tarot-page {
   padding: 0;
   margin: 0;
   display: block;
-  height: 55px;
+  height: auto;
 }
 .nav-containier{
   font-size: 1rem;
 line-height: 1.5;
 position: relative;
 padding: 0;
-padding-top: .33em;
 
 }
 .nav-containier a {
-  padding-right: 2px;
-  padding-left: 2px;
-  padding-top: .4em;
-  padding-bottom: .4em;
-  margin: 0 13.45px;
+  position: relative;
+  display: inline-block;
+  padding-right: 1.5px;
+  padding-left: 1.5px;
+  padding-top: .05em;
+  padding-bottom: .05em;
+  margin: 0 7.45px;
 }
 .nav-content a:hover {
   background-color: #f19f30 !important;
@@ -60,28 +61,39 @@ padding-top: .33em;
 }
 #metamundo {
   float: right;
-  margin-top: -.18em;
+  clear: both;
   margin-right: 0 !important;
-  padding: 5px .4em;
   background: #17692a !important;
 }
+#time {
+  color: #962a20;
+    font-weight: 600;
 
+}
 #time .timer {
   position: relative;
   font-size: 35px;
   display: inline-block;
   padding: .65em .58em;
   padding-top: 0;
-  margin: .5em;
-  background:
-
+  margin: .2em;
+  width: 100px;
+  align-items: center;
+  justify-content: center;padding-top: 1em;
+  height: 120px;
 }
+
 #time .label {
   font-size: 18px;
   position: absolute;
   margin-left: .5em;
   left: 0;
   bottom: 0;
+}
+
+span#ldia, #lhora {
+  position: absolute;
+  left: 20px;
 }
 
 #navigation {
@@ -137,9 +149,7 @@ padding-top: .33em;
     margin: 10px; }
   #navigation img {
     margin-bottom: .5rem; }
-    .fa-home {
-        color: #92b541;
-    }
+
   #close {
     font-size: 3em !important;
     color: #9f010f;
@@ -477,7 +487,7 @@ input[type="submit"] { cursor: pointer; }
   #tarot-cards {
     max-width: 500px;
     position: absolute;
-    left: -2.38%;
+    left: .45%;
     top: -28px;
   }
   .card-description, #tarot-cards h1 {
@@ -532,6 +542,9 @@ input[type="submit"] { cursor: pointer; }
     position: absolute;
     left: -1.5%;
   }
+  .nav-containier a {
+    font-size: 22px;
+  }
   .card-description, #tarot-cards h1 {
     left: -12%;
     width: 280px;
@@ -562,6 +575,9 @@ input[type="submit"] { cursor: pointer; }
 
     left: 4%;
   }
+  .nav-containier a {
+    font-size: 28px;
+  }
   .card-description, #tarot-cards h1 {
     left: -28%;
     width: 340px;
@@ -571,8 +587,8 @@ input[type="submit"] { cursor: pointer; }
   #tarot-cards {
     left: calc(3.65% + 25px);
  }
- .nav-content {
-   height: 55px !important;
+ .nav-containier a {
+   font-size: 30px;
  }
 }
 @media screen and (min-width: 1500px) {
@@ -586,21 +602,18 @@ input[type="submit"] { cursor: pointer; }
     max-width: 2500px;
 
   }
-  .nav-content {
-
-    height: 99px !important;
-  }
   .nav-containier{
-    font-size: 1rem;
 line-height: 1.5;
 position: relative;
   }
   .nav-containier a {
+    position: relative;
+    display: inline-block;
     color: #FFF !important;
 padding: 5px;
 margin-left: .5em;
-margin-right: 25px;
-font-size: 40pt;
+margin-right: 1px;
+font-size: 38pt;
 text-decoration: none !important;
 background: none !important;
 padding: 10px 15px !important;

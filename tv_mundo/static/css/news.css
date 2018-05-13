@@ -24,9 +24,8 @@
 }
 .nav-containier a {
   color: #FFF !important;
-  padding: 5px;
-  margin-left: .5em;
-  font-size: 30px;
+
+  font-size: 28px;
   text-decoration: none !important;
   background: none !important;
 }
