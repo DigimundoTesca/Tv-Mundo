@@ -3,21 +3,27 @@
 {% block link %}
   <link rel="stylesheet" type="text/css" href="{% static 'css/templates/videos.css' %}">
 {% endblock link %}
-{% block content %}
+{% block content %}    
 	<div class="container block_content">        
 		<div class="row">
-			<div class="video-cont col-12 col-lg-9">
-                <h4><b>{{ s_vid.name }}</b></h4>                
+            <div class="col-12 col-lg-9 ">
+                <h4><b>{{ s_vid.name }}</b></h4>                                
+            </div>
+            <div class="col-12 col-lg-3">
+                <h4><b>Videos</b></h4>                
+            </div>
+            <div class="video-cont col-12 col-lg-9">
                 <video width="100%" controls controlsList="nodownload">
                     <source src="{{ s_vid.link }}" type="video/mp4">
                 </video>
             </div>
             <div class="sli col-md-12 col-lg-3">
-                <h4><b>Videos</b></h4>
                 <div class="row">
                     {% for vid in videos %}                
-                    <div class="vid_ele col-4 col-lg-12" id="{% url 'catalog:videos' title vid.pk %}">                        
-                            <img class="img-sld" src="{{vid.image}}">
+                    <div class="vid_ele col-4 col-lg-12" id="{% url 'catalog:videos' title vid.pk %}">
+                            <a href="{% url 'catalog:videos' title vid.pk %}">
+                                <img class="img-sld" src="{{vid.image}}">
+                            </a>
                             <div class="vid-title"><h6>{{ vid.name }}</h6></div>                        
                         </div>                    
                     {% endfor %}                                    
@@ -26,45 +32,124 @@
 		</div>		        
     </div>    
     <div class="container contIMG">
-        <h3>Imagenes</h3>
-        <div class="slider-img">            
-            {% for doc in docs %} 
-            {% if doc.kind == 'IMG' %}  
-            <div class="dImg">
-                <img src="{{doc.link}}" alt="No img" width="150px">                
-            </div>          
-            {% endif %} 
-            {% endfor %}
-        </div>
+        {% if docs|length >= 1 %}
+            <h3>Imagenes</h3>
+            <div class="slider-img">  
+                {% for doc in docs %} 
+                {% if doc.kind == 'IMG' %}  
+                <div class="dImg">                                            
+                    <button type="button" class="btn modalIMG-btn" data-toggle="modal" data-target="#imageModal">
+                                          <img src="{{doc.link}}" alt="No img" width="150px" id="{{doc.name}}">
+                    </button>
+                </div>          
+                {% endif %} 
+                {% endfor %}
+            </div>    
+        {% endif %}          
     </div>
     <div class="container contIMG">
-        <h3>Documentos</h3>
-        <div class="slider-img">
-            {% for doc in docs %} {% if doc.kind == 'PDF' %}
-            <div class="dImg">
-                <img src="{% static 'images/pdf_logo.png' %}" alt="No img" width="150px">
-                <h6>{{doc.name}}</h6>
+        {% if docs|length >= 1 %}
+            <h3>PDF</h3>
+            <div class="slider-img">
+                {% for doc in docs %} {% if doc.kind == 'PDF' %}
+                <div class="dImg">
+                    <button type="button" class="btn modalPDF-btn" data-toggle="modal" data-target="#pdfModal">
+                        <img src="{% static 'images/pdf_logo.png' %}" alt="No img" width="150px" id="{{doc.link}}">
+                    </button>                    
+                    <h6>{{doc.name}}</h6>
+                </div>
+                {% endif %} {% endfor %}
             </div>
-            {% endif %} {% endfor %}
-        </div>
+        {% endif %}
     </div>
     <div class="container contIMG">
-        <h3>PDFs</h3>
-        <div class="slider-img">
-            {% for doc in docs %} {% if doc.kind == 'WRD' %}
-            <div class="dImg">
-                <img src="{% static 'images/hw_logo.png' %}" alt="No img" width="150px">
-                <h6>{{doc.name}}</h6>
+        {% if docs|length >= 1 %}
+            <h3>Documentos</h3>
+            <div class="slider-img">
+                {% for doc in docs %} 
+                {% if doc.kind == 'WRD' %}
+                <div class="dImg">
+                    <a href="{{doc.link}}" "email me">
+                        <img src="{% static 'images/hw_logo.png' %}" alt="No img" width="150px">
+                        <h6>{{doc.name}}</h6>                                                
+                    </a>                    
+                </div>
+                {% endif %} 
+                {% endfor %}
             </div>
-            {% endif %} {% endfor %}
-        </div>
+        {% endif %}
+    </div>    
+
+
+<!-- Image Modal -->
+<div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title imgModalTitle" id="imageModalLabel"> </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img id="modalImage" src="" alt="No Image" width="100%">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" id="downloadIMG" class="btn btn-primary">Descargar</button>
+      </div>
     </div>
-    
+  </div>
+</div>
+
+<!-- PDF Modal -->
+<div class="modal fade" id="pdfModal" tabindex="-1" role="dialog" aria-labelledby="pdfModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title pdfModalTitle" id="pdfModalLabel"> </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <embed id="modalPDF" src="" alt="No Image" width="100%">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" id="downloadIMG" class="btn btn-primary">Descargar</button>
+      </div>
+    </div>
+  </div>
+</div>
     
 {% endblock content %}
 {% block javascript %}
 
-<script>
+<script type="text/javascript">
+    $('.modalIMG-btn').click(function(){        
+        //Cambiar titulo del modal
+        $('.imgModalTitle').text($(this).children('img').attr('id'));
+        //Cambiar imagen del modal
+        $('#modalImage').attr('src',$(this).children('img').attr('src'));
+        //Descargar imagen del modal       
+        
+    });
+
+    $('.modalPDF-btn').click(function(){        
+        //Cambiar titulo del modal
+        $('.pdfModalTitle').text($(this).parent().children('h6').text());
+        //Cambiar pdf del modal
+        $('#modalPDF').attr('src',$(this).children('img').attr('id'));
+        //Descargar imagen del modal       
+        
+    });
+
+    $('#downloadIMG').click(function(){
+        console.lolg($('#modalImage').attr('src'));
+    });
+
+
 
 </script>
   

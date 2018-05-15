@@ -1,6 +1,21 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinLengthValidator
+from django.contrib.auth.models import User
 # Create your models here.
+
+class Subscriber(models.Model):
+
+    TAR = 'TAR'
+    MET = 'MET'
+    PSI = 'PSI'
+    TYPE = (
+        (TAR, 'Tarot'),
+        (MET, 'Metagenealogia'),
+        (PSI, 'Psicomagia'),
+    )
+
+    grade = models.CharField(choices=TYPE, max_length=3)    
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
 
 class Category(models.Model):
     name = models.CharField(max_length=30, unique=True)
@@ -33,6 +48,7 @@ class Videos(models.Model):
     category = models.ForeignKey(Category, default=1, on_delete=models.CASCADE)
     subcategory = models.ForeignKey(SubCategory, default=1, on_delete=models.CASCADE)
     created_at = models.DateTimeField(editable=False, auto_now=True)
+    status = models.BooleanField(default=True)
 
     def __str__(self):
         return self.name

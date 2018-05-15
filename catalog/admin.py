@@ -1,15 +1,20 @@
 from django.contrib import admin
-from catalog.models import Videos, Category, SubCategory, Docs
+from catalog.models import Videos, Category, SubCategory, Docs, Subscriber
 
 @admin.register(Videos)
 class AdminVideo(admin.ModelAdmin):
-    list_display = ('name', 'link', 'image', 'category', 'subcategory', 'created_at')
+    list_display = ('name', 'category', 'subcategory', 'created_at')
     ordering = ['name']
 
 @admin.register(Docs)
 class AdminDocs(admin.ModelAdmin):
     list_display = ('name', 'link', 'kind' ,'category', 'subcategory', 'created_at')
     ordering = ['name']
+
+@admin.register(Subscriber)
+class AdminSubscriber(admin.ModelAdmin):
+    list_display = ('user', 'grade')
+    ordering = ['user']
 
 @admin.register(Category)
 class AdminCategory(admin.ModelAdmin):

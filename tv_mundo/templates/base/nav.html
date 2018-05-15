@@ -21,14 +21,20 @@
           <a class="nav-link dropdown-toggle" href="#"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Bloques</a>
           <div class="dropdown-menu" aria-labelledby="supportedContentDropdown">
             <a class="dropdown-item" href="{% url 'catalog:block' category.0.title %}">Introduccion</a>
-            <a class="dropdown-item" href="{% url 'catalog:block' category.1.title %}">Tarot</a>
-            <a class="dropdown-item" href="{% url 'catalog:block' category.2.title %}">Matagenealogia</a>
-            <a class="dropdown-item" href="{% url 'catalog:block' category.3.title %}">Psicochamanismo</a>
+            {% if request.user.subscriber.grade == 'TAR'  %}
+              <a class="dropdown-item" href="{% url 'catalog:block' category.1.title %}">Tarot</a>
+            {% endif %}
+            {% if request.user.subscriber.grade == 'MET'  %}
+              <a class="dropdown-item" href="{% url 'catalog:block' category.1.title %}">Tarot</a>              
+              <a class="dropdown-item" href="{% url 'catalog:block' category.2.title %}">Matagenealogia</a>
+            {% endif %}
+            {% if request.user.subscriber.grade == 'PSI'  %}
+              <a class="dropdown-item" href="{% url 'catalog:block' category.1.title %}">Tarot</a>              
+              <a class="dropdown-item" href="{% url 'catalog:block' category.2.title %}">Matagenealogia</a>
+              <a class="dropdown-item" href="{% url 'catalog:block' category.3.title %}">Psicochamanismo</a>
+            {% endif %}            
           </div>
-        </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link" href="{% url 'catalog:catalog' %}">Mapa</a>
-        </li>         -->
+        </li>        
         <li class="nav-item ">
           {% if request.user.is_authenticated %}
             <a class="nav-link" href="{% url 'register:logout'%}">Cerrar Sesion</a>  
