@@ -15,7 +15,8 @@
     <div class="video">
       <div class="row">
         {% for doc in docs %} {% if doc.kind == 'PDF' %}
-        <div class="col-1">
+        <div class="col-2">
+          <h5>{{doc.name}}</h5>
           <a href="{{doc.link}}">
             <img class="sImg" src="{% static 'images/pdf_logo.png' %}" alt="No img" width="100%">
           </a>
