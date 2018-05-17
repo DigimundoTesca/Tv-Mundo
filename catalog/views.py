@@ -8,7 +8,8 @@ def home(request):
     template = 'home.html'
     category = Category.objects.all()
     videos = Videos.objects.all()
-    grade = Subscriber.objects.filter(user=request.user)
+    grade = Subscriber.objects.get(user=request.user)
+    
     context = {
         'grade': grade,
         'videos': videos,
