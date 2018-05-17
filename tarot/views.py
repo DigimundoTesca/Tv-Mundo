@@ -4,13 +4,6 @@ from tarot.models import Week, Card, Response, Question
 from django.contrib.auth.decorators import login_required
 
 import random
-<<<<<<< HEAD
-
-@login_required
-def start(request):
-    template = 'tarot.html'
-    card = sorted(Card.objects.all(), key=lambda x: random.random())
-=======
 import datetime
 from datetime import date
 
@@ -64,7 +57,6 @@ def start(request):
                 'Questions': questions,
             }
             sendCristobal(request, question_context)
->>>>>>> develop
     context = {
         'cards': cards,
         'title': "Tarot",
