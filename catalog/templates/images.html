@@ -17,11 +17,14 @@
           <div class="row">
             {% for doc in docs %}                
               {% if doc.kind == 'IMG' %}
-              <div class="col-1">                
+              <div class="card" style="width: 10rem;">
                 <a href="{{doc.link}}">
                   <img class="sImg" src="{{doc.link}}" alt="No img" width="100%">
                 </a>
-              </div>
+                <div class="card-body">
+                  <p class="card-title">{{doc.name}}<p>            
+                </div>
+              </div>                
               {% endif %}                                       
             {% endfor %}                                         
           </div>

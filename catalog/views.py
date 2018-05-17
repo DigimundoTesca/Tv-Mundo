@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from catalog.models import Videos, Category, Docs
+from catalog.models import Videos, Category, Docs, Subscriber
 from django.contrib.auth.decorators import login_required
 
 @login_required
@@ -8,7 +8,9 @@ def home(request):
     template = 'home.html'
     category = Category.objects.all()
     videos = Videos.objects.all()
+    grade = Subscriber.objects.filter(user=request.user)
     context = {
+        'grade': grade,
         'videos': videos,
         'title': "Tv Mundo",
         'category' : category,
@@ -53,7 +55,7 @@ def videos(request, name, pk=0):
     template = 'videos.html'
     videos = Videos.objects.filter(category__title=name).filter(status=True)
     category = Category.objects.all()
-    docs = Docs.objects.filter(category__title=name)    
+    docs = Docs.objects.filter(category__title=name)
     title = name
 
     if pk == '0':
@@ -93,7 +95,7 @@ def docs(request, name, pk=None):
     category = Category.objects.all()
     title = name
 
-    context = {                
+    context = {
         'category': category,
         'docs': docs,
         'title': title,
