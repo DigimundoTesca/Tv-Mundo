@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>Respuestas</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- Responsive Video Slider CSS -->
+	<link href="{% static 'css/styles.css' %}" rel="stylesheet">
+
+</head>
+<body>
+  <div class="container-fluid" id="news-container">
+  <header>
+				<h1 class="site-title"><a href="#" rel="home"><span class="title-caps">C</span>ristóbal <span class="title-caps">J</span>odorowsky</a></h1>
+        <div class="nav-content">
+          <div class="nav-containier">
+            <a href="{% url 'tarot:news_tarot' %}">Últimas Respuestas</a>
+            <a href= "{% url 'tarot:start_tarot' %}">Tarot</a>
+            <a href="{% url 'tarot:admin_tarot' %}">Dar videorespuesta</a>
+          </div>
+        </div>
+      </header>
+      <h2 id="video_title" class="text-center mt-4">Últimas vídeorespuestas de Cristobal</h2>
+<!-- Video Slider START -->
+<div class="rvs-container row" id="video-content">
+
+	<div class="rvs-item-container">
+		<div class="rvs-item-stage">
+			<!-- The below is a single item, simply duplicate this layout for each item -->
+            {% for response in responses %}
+			<div class="rvs-item" style="background-image: url({{ response.getmin }})">
+				<p class="rvs-item-text">Respuesta ... <small>Cristobal Jodorowsky</small></p>
+				<a href="{{ response.video }}" class="rvs-play-video"></a>
+			</div>
+            {% endfor %}
+		</div>
+	</div>
+	<div class="rvs-nav-container">
+		<a class="rvs-nav-prev"></a>
+		<div class="rvs-nav-stage">
+			<div class="search justify-content-cente">
+				<form class="form-inline">
+					<div class="input-group">
+						<input class="form-control" type="text" placeholder="buscar respuesta">
+						<span class="input-group-append">
+							<button class="btn btn-danger" type="button">
+								<i class="fa fa-search"></i>
+							</button>
+						</span>
+					</div>
+				</form>
+			</div>
+
+			<!-- The below is the corresponding nav item for the single item, simply duplicate this layout for each item -->
+			{% for response in responses%}
+            <a class="rvs-nav-item">
+				<span class="rvs-nav-item-thumb" style="background-image: url({{ response.getmin }})"></span>
+				<h4 class="rvs-nav-item-title">Respuesta {{ response.id }}</h4>
+				<small class="rvs-nav-item-credits">Cristobal Responde acerca de ...</small>
+			</a>
+            {% endfor %}
+
+		</div>
+		<a class="rvs-nav-next"></a>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<h2>Lorem ipsum</h2>
+			<p>Cras ut nibh erat. Suspendisse potenti.</p>
+
+		</div>
+
+	</div>
+
+</div>
+
+</div>
+<footer class="">
+	<div class="container">
+		<div class="text-center">
+			<span>Copyright © Cristobal Jodorowsky 2018	| Tema: Cristobal por  <a href="http://www.digimundo.com.mx/">Digimundo Technologies © </a></span>
+		</div>
+	</div>
+</footer>
+<!--Video Slider END -->
+<!--Fontawesome-->
+<script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="{% static 'javascript/rvslider.min.js' %}"></script>
+<script>
+	jQuery(function($){
+		$('.rvs-container').rvslider();
+	});
+</script>
+</body>
+</html>

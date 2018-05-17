@@ -1,0 +1,108 @@
+
+#news-container {
+  width: 95%;
+  display: block;
+  margin: 0 auto;
+}
+#news-container h1 {
+  margin-bottom: 0;
+}
+#news-container h2 {
+  color: #37b4ee;
+  font-size: 2rem;
+}
+#news-container h1 a:hover {
+  text-decoration: none;
+}
+.nav-content {
+  height: auto;
+  background-color: #002983;
+}
+.nav-containier {
+  color: #FFF;
+  padding: .5em;
+}
+.nav-containier a {
+  color: #FFF !important;
+
+  font-size: 28px;
+  text-decoration: none !important;
+  background: none !important;
+}
+
+.justify{text-align:justify;}
+.bold{font-weight:bold;}
+.center{text-align:center;}
+.right{text-align:right;}
+.nostart{margin:0; padding:0; list-style-type:none;}
+
+.clear{clear:both;}
+br.clear{clear:both; margin-top:-15px;}
+
+.news-feed a{outline:none; text-decoration:none; color:#059BD8; background-color:#FFFFFF;}
+
+.fl_left, .imgl{float:left;}
+.fl_right, .imgr{float:right;}
+
+.news-feed img{display:block; margin:0; padding:0; border:none;}
+.imgl, .imgr{border:1px solid #C7C5C8; padding:5px;}
+.imgl{margin:0 8px 8px 0; clear:left;}
+.imgr{margin:0 0 8px 8px; clear:right;}
+
+/* ----------------------------------------------Wrapper------------------------------------- */
+
+div.wrapper{display:block; width:100%; margin:0; text-align:left; border-bottom:1px solid #E3E3E3;}
+div.wrapper h1, div.wrapper h2, div.wrapper h3, div.wrapper h4, div.wrapper h5, div.wrapper h6{margin:0 0 15px 0; padding:0; font-size:20px; font-weight:normal; line-height:normal;}
+.col0, .col0 a{color:#FFFFFF; background-color:#666666;}
+.col2{color:#FFFFFF; background-color:#F6F6F6;}
+
+/* ----------------------------------------------Generalise------------------------------------- */
+
+ #topline, #topbar, .container, #hpage_cats, #adblock {display:block; position:relative; width:960px; margin:0 auto;}
+
+/* ----------------------------------------------TopBar------------------------------------- */
+
+#topline{padding:10px 0;}
+#topline p{float:left; margin:0; padding:0;}
+#topline ul{float:right; margin:0; padding:0; list-style:none;}
+#topline li{display:inline; margin:0 8px 0 0; padding:0 10px 0 0; border-right:1px solid #999999;}
+#topline li.last{margin-right:0; padding-right:0; border:none;}
+
+
+/* ----------------------------------------------Topbar------------------------------------- */
+
+#topbar{padding:20px 0; z-index:1000;}
+#topbar #search{display:block; float:right; margin:0; padding:0; overflow:hidden;}
+
+/* ----------------------------------------------Content------------------------------------- */
+
+.container{padding:20px 0;}
+.content{display:block; float:left; width:630px;}
+
+/* ----------------------------------------------Column------------------------------------- */
+
+.column{display:block; float:right; width:300px;}
+.column .holder, .column #featured{display:block; width:300px; margin-bottom:20px;}
+.column .holder h2.title{display:block; width:100%; height:65px; margin:0; padding:15px 0 0 0; font-size:20px; line-height:normal; border-bottom:1px dotted #999999;}
+.column .holder h2.title img{float:left; margin:-15px 8px 0 0; padding:5px; border:1px solid #999999;}
+.column div.imgholder{display:block; width:290px; margin:0 0 10px 0; padding:4px; border:1px solid #CCCCCC;}
+.column .holder p.readmore{display:block; width:100%; font-weight:bold; text-align:right; line-height:normal;}
+
+/* Featured Block */
+
+.column #featured ul, .column #featured h2, .column #featured p{margin:0; padding:0; list-style:none; color:#666666; background-color:#F9F9F9;}
+.column #featured a{color:#059BD8; background-color:#F9F9F9;}
+.column #featured li{display:block; width:250px; margin:0; padding:20px 25px; color:#666666; background-color:#F9F9F9;}
+.column #featured li p.imgholder{display:block; width:240px; height:90px; margin:20px 0 15px 0; padding:4px; border:1px solid #CCCCCC;}
+.column #featured li h2{margin:0; padding:0 0 8px 0; font-weight:normal; font-family:Georgia, "Times New Roman", Times, serif; line-height:normal; border-bottom:1px dotted #999999;}
+.column #featured p.readmore{display:block; width:100%; margin-top:15px; font-weight:bold; text-align:right; line-height:normal;}
+
+.column .latestnews{display:block; width:100%; margin:0; padding:0; list-style:none;}
+.column .latestnews li{display:block; width:100%; height:99px; margin:0 0 11px 0; padding:0 0 21px 0; border-bottom:1px dotted #C7C5C8; overflow:hidden;}
+.column .latestnews li.last{margin-bottom:0;}
+.column .latestnews p{display:inline;}
+.column .latestnews img{float:left; margin:0 10px 0 0; padding:4px; border:1px solid #C7C5C8; clear:left;}
+
+/* ----------------------------------------------Homepage Specific------------------------------------- */
+
+#adblock{padding:20px 0;}

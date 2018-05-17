@@ -1,0 +1,30 @@
+@font-face {
+    font-family: myFirstFont;
+    src: url(../fonts/ACaslonPro-);
+}
+@font-face {
+    font-family: acpBold;
+    src: url(../fonts/ACaslonPro-Bold.otf);
+  } 
+
+p{
+    font-family: acpBold;
+    font-size: 20px;
+    margin-bottom: 0px;    
+}
+
+.title-a{
+    margin-left:60px; 
+    color:blue;    
+}
+.title-b{
+    position:absolute;
+    left:42.5%;
+    top:3px;
+}
+
+.title-c{
+    position:absolute; 
+    right:60px; 
+    top:3px;
+}

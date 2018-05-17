@@ -1,3 +1,8 @@
+@import url("news.css");
+@import url("rvslider.css");
+html {
+    font-family: "ACaslonPro-regular" !important;
+}
 body {
  background-color: #FFF;
  background-position: 50% 0;
@@ -6,27 +11,191 @@ body {
 -moz-background-size: cover;
 -webkit-background-size: cover;
 background-size: cover;
+height: 100%;
+position: relative;
+}
+body#tarot-page {
+  margin: 2.5%;
+      -webkit-font-smoothing: antialiased;
+      display: block;
 }
 #Tarot {
-  width: 100%;
+  max-width: 1700px;
+}
+#tarotContainer {
+  min-height: 100vh;
+}
+.nav-content {
+  padding: 0;
+  margin: 0;
+  display: block;
+  height: auto;
+}
+.nav-containier{
+  font-size: 1rem;
+line-height: 1.5;
+position: relative;
+padding: 0;
+
+}
+.nav-containier a {
   position: relative;
+  display: inline-block;
+  padding-right: 1.5px;
+  padding-left: 1.5px;
+  padding-top: .05em;
+  padding-bottom: .05em;
+  margin: 0 7.45px;
+}
+.nav-content a:hover {
+  background-color: #f19f30 !important;
+}
+#movil {
+  position: absolute;
+  left: 0;
+  top: 0;
+  -webkit-transition: background-color .45s ease;
+  -moz-transition: background-color .45s ease;
+  -o-transition: background-color .45s ease;
+  transition: background-color .45s ease;
+}
+#metamundo {
+  float: right;
+  clear: both;
+  margin-right: 0 !important;
+  background: #17692a !important;
+}
+#time {
+  color: #962a20;
+    font-weight: 600;
+
+}
+#time .timer {
+  position: relative;
+  font-size: 35px;
+  display: inline-block;
+  padding: .65em .58em;
+  padding-top: 0;
+  margin: .2em;
+  width: 100px;
+  align-items: center;
+  justify-content: center;padding-top: 1em;
+  height: 120px;
+}
+
+#time .label {
+  font-size: 18px;
+  position: absolute;
+  margin-left: .5em;
+  left: 0;
+  bottom: 0;
+}
+
+span#ldia, #lhora {
+  position: absolute;
+  left: 20px;
+}
+
+#navigation {
+  overflow-y: scroll;
+  position: fixed;
+  top: 0;
+  left: -85%;
+  -webkit-transition: left .5s ease;
+  -moz-transition: left .5s ease;
+  -o-transition: left .5s ease;
+  transition: left .5s ease;
+  z-index: 1000;
+  /*background-color: rgba(51,127,137, 0.8);*/
+  background-color: #fff;
+  height: 100%;
+  box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 85%; }
+  #navigation .site-title {
+    margin: 0 !important;
+    margin-top: 1.5em !important;
+    font-size: 3em !important;
+  }
+  #navigation .title-caps {
+    font-size: 1.8em !important;
+  }
+  #navigation > a {
+    display: block;
+    align-items: center;
+    font-size: 3.2em;
+    margin: 20px;
+    padding: 15px 3em;
+    text-decoration: none;
+    color: #000;
+    border-bottom: 1px solid #92b541;
+   }
+    #navigation .share {
+      margin-top: 4em;
+      margin-bottom: 4em;
+    }
+    #navigation .share a {
+      font-size: 5.5em;
+      display: inline-grid;
+      margin: 0 auto;
+      padding: 10px .3em;
+    }
+    .share a:first-child {
+      margin-left: 1.5em !important;
+    }
+    #navigation a i#Facebook {
+      color: #3b5998; }
+  #navigation h5 {
+    color: #FFF;
+    margin: 10px; }
+  #navigation img {
+    margin-bottom: .5rem; }
+
+  #close {
+    font-size: 3em !important;
+    color: #9f010f;
+    position: absolute;
+    right: 1em;
+    top: .35em;
+  }
+
+#Tarot {
+  width: 100%;
+  height: auto;
+  position: relative;
+  padding: 0 !important;
+}
+#form-tarot {
+  display: none;
+  max-width: 100%;
+}
+#form-tarot > div {
+  margin: 0 auto;
+  margin-top: 53em;
+}
+#form-tarot > div h4 {
+  color: #919191;
+  padding-top: 3rem;
 }
 p {
   font-family: "ACaslonPro-regular";
 }
 h1,h2,h3,h4,h5,h6{
-  color: #000;
+  color: #37b4ee;
+  font-weight: 600;
   font-family: "ACaslonPro-semibold";
 }
 #tarot-cards {
   max-width: 500px;
   position: absolute;
-  top: 3em;
-  left: 12.5%;
+  top: 0px;
+  left: 4%;
 }
 
 #tarot-cards div {
-    background-image: url("../images/Tarot-Cards/img22.jpg");
+  position: absolute;
+  top: 21em;
+  left: 100px;
+    background-image: url("../images/Tarot-Cards/img24.jpg");
     border: 3px solid #967996;
 border-top-left-radius: 10px;
     background-size: 99px;
@@ -39,6 +208,11 @@ border-top-left-radius: 10px;
 -moz-background-size: cover;
 -webkit-background-size: cover;
 background-size: cover;
+box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+-webkit-transition: left 3s ease;
+-moz-transition: left 3s ease;
+-o-transition: left 3s ease;
+transition: left 3s ease;
 }
 
 .muevetee{
@@ -66,10 +240,11 @@ background-size: cover;
   color: #000;
     display: none;
     visibility: hidden;
-
 }
 
 .mano{
+  margin-top: 3.35em;
+  margin-bottom: 1.5em;
   cursor: pointer;
 }
 img:after{
@@ -87,8 +262,16 @@ img:after{
   left: -28%;
   width: 350px;
   cursor: default;
+  -webkit-transition: display 4s ease;
+  -moz-transition: display 4s ease;
+  -o-transition: display 4s ease;
+  transition: display 4s ease;
+}
+.muestra > p, .muestra > h1 {
+  display: block !important;
 }
 #tarot-cards h1 {
+  text-transform: uppercase;
   margin-top: 16.5em;
   font-weight: 700;
   font-size: 1.5em;
@@ -124,7 +307,6 @@ img:after{
   line-height: 20pt;
   font-weight: 600;
   font-family: 'Adobe Caslon Pro';
-  margin: 2em;
   padding: 0;
 }
 .title-caps {
@@ -284,7 +466,10 @@ input[type="submit"] { cursor: pointer; }
 	font-size: 12px;
 	margin-top: 16px;
 }
-
+/*#tarotFooter {
+  position: absolute;
+  bottom: 0;
+}*/
 .info {
 	background: #e5e5e5;
 	border-radius: 50%;
@@ -294,4 +479,238 @@ input[type="submit"] { cursor: pointer; }
 	margin: 0 10px 0 0;
 	text-align: center;
 	width: 20px;
+}
+
+
+@media screen and (min-width: 300px) and (max-width: 1023px){
+  body#tarot-page {
+    margin-top: 5%;
+  }
+  #tarot-cards {
+    max-width: 500px;
+    position: absolute;
+    left: -1.65%;
+    top: -28px;
+  }
+  .card-description, #tarot-cards h1 {
+    left: -12%;
+    width: 265px;
+  }
+  #form-tarot {
+    margin-top: 63em;
+  }
+  .nav-content {
+    display: none;
+  }
+  .site-branding {
+        margin-top: 3.75rem !important;
+  }
+  .site-title {
+    font-size: 29pt !important;
+    word-spacing: 0 !important;
+    margin-top: .35em !important;
+
+  }
+  .title-caps {
+    font-size: 39pt !important;
+  }
+  #social {
+    display: none !important;
+  }
+  .brand-logo {
+    max-height: 78px;
+    width: auto;
+    margin: 3px 0;
+    margin-left: -.55em;
+    margin-right: 3.35em;
+  }
+  .menu-boton {
+    position: relative;
+    z-index: 1000;
+    margin: 0;
+    padding: 0;
+    margin-left: -.35em;
+    margin-right: -.3em;
+    border: none;
+    text-indent: 2em;
+    font-size: 3.1em;
+    color: #000;
+    background: transparent;
+  }
+}
+@media screen and (min-width: 377px) and (max-width: 412px) {
+  #tarot-cards {
+    max-width: 500px;
+    position: absolute;
+    left: -2.65%;
+    top: -28px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  #tarot-cards {
+    max-width: 500px;
+    position: absolute;
+    left: -1.6%;
+  }
+  .nav-containier a {
+    font-size: 22px;
+  }
+  .card-description, #tarot-cards h1 {
+    left: -12%;
+    width: 280px;
+  }
+  .brand-logo {
+    display: none;
+  }
+  .menu-boton {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .site-title {
+      font-size: 25px;
+      line-height: 40px;
+      margin: 0;
+      margin-left: 25px;
+      padding: 3px;
+      padding-bottom: 15px;
+      word-spacing: 10px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  #tarot-cards {
+    max-width: 500px;
+    position: absolute;
+
+    left: 4%;
+  }
+  .nav-containier a {
+    font-size: 28px;
+  }
+  .card-description, #tarot-cards h1 {
+    left: -28%;
+    width: 340px;
+  }
+}
+@media screen and (min-width: 1367px) {
+  #tarot-cards {
+    left: calc(3.65% + 25px);
+ }
+ .nav-containier a {
+   font-size: 30px;
+ }
+}
+@media screen and (min-width: 1500px) {
+  #tarot-cards {
+    left: calc(3.35% + 25px);
+ }
+}
+@media screen and (min-width: 2000px) {
+
+  #Tarot {
+    max-width: 2500px;
+
+  }
+  .nav-containier{
+line-height: 1.5;
+position: relative;
+  }
+  .nav-containier a {
+    position: relative;
+    display: inline-block;
+    color: #FFF !important;
+padding: 5px;
+margin-left: .5em;
+margin-right: 1px;
+font-size: 38pt;
+text-decoration: none !important;
+background: none !important;
+padding: 10px 15px !important;
+  }
+  #tarot-cards {
+    left: calc(10.9% + 30px);
+    top: -31px;
+
+ }
+ #return i {
+   margin-right: .5em;
+ }
+ #tarot-cards div {
+   width: 130px;
+   height: 172px;
+   top: 28em;
+ }
+
+ .card-description, #tarot-cards h1 {
+   left: -71%;
+   width: 520px;
+ }
+ #form-tarot {
+   margin-top: 50em;
+ }
+ .site-title {
+   font-size: 50px;
+  line-height: 65px;
+
+  margin: 0;
+  margin-left: 30px;
+  font-weight: 600;
+  padding: 5px;
+  padding-bottom: 20px;
+  word-spacing: 10px;
+      font-family: "ACaslon-Pro-Bold" !important;
+}
+.title-caps {
+    font-size: 65px
+  }
+  .mano {
+    margin-top: 5em;
+  }
+}
+#social {
+    display: inline-flex;
+    position: relative;
+
+  }
+  #social ul {
+    display: block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  #social li {
+    display: inline-flex;
+    font-size: 17pt;
+    margin: 0 5px;
+  }
+
+.site-branding {
+    justify-content: space-between;
+}
+.site-branding {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#social a:hover {
+  color: #154FCF !important;
+  cursor: pointer !important;
+}
+
+.fa-instagram{
+  color: #D13EB6 !important;
+}
+.fab:hover {
+  cursor: pointer !important;
+}
+.fa-facebook-square{
+  color: 	#3b5998 !important;
+}
+.fa-twitter {
+  color: #00aced !important;
+}
+.fa-youtube {
+  color: #c4302b;
 }

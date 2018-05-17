@@ -1,0 +1,57 @@
+{% extends "base/base-admin.html" %}
+{% load static %}
+
+{% block content %}
+<div class="ask-container mt-3">
+  <h1>Bandeja de entrada </h1>
+
+  <span><h3>Preguntas de última semana</h3></span>
+
+    <div class="row text-center justify-content-center mt-3">
+      <div class="col-12 response text-center" id="url">
+        <form method="POST">
+          {% csrf_token %}
+          <div class="form-group row">
+            <label for="response" class="col-sm-2 col-form-label">Respuesta</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="response" name="response" placeholder="Pegar aquí url ">
+          </div>
+          <button type="submit" class="btn btn-primary" name="send-response"> Publicar </button>
+        </div>
+
+        </form>
+      </div>
+    <table class="table col-10">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Preguntas</th>
+          <th scope="col">Cartas</th>
+        </tr>
+
+      </thead>
+      <tbody>
+                {% if questions %}
+          {% for question in questions %}
+        <tr>
+          <td>{{ question.name }}</td>
+          <td>{{ question.question }}</td>
+          <td>{{ question.card_one }}, {{ question.card_two }}, {{ question.card_three }}</td>
+        </tr>
+                {% endfor %}
+          {% endif %}
+      </tbody>
+    </table>
+    </div>
+    <div class="row text-right">
+      <div class="col-11">
+        {% if available %}
+        <button type="button" class="btn btn-danger" id="responder"name="button">Responder</button>
+        {% endif %}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

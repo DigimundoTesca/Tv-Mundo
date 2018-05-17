@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from catalog.models import Videos, Category, Docs
+from catalog.models import Videos, Category, Docs, Subscriber
 from django.contrib.auth.decorators import login_required
 
 @login_required
@@ -8,12 +8,31 @@ def home(request):
     template = 'home.html'
     category = Category.objects.all()
     videos = Videos.objects.all()
+    grade = Subscriber.objects.get(user=request.user)
+    
     context = {
+        'grade': grade,
         'videos': videos,
         'title': "Tv Mundo",
         'category' : category,
     }
     return render(request, template, context)
+
+
+@login_required
+def block(request, name):
+    template = 'block.html'
+    cat = Category.objects.all()
+    selCat = cat.get(title=name)
+    title = name
+
+    context = {
+        'title': title,
+        'category': cat,
+        'selCat': selCat,
+    }
+    return render(request, template, context)
+
 
 @login_required
 def catalog(request):
@@ -34,9 +53,10 @@ def catalog(request):
 
 @login_required
 def videos(request, name, pk=0):
-    template = 'videos.html'    
-    videos = Videos.objects.filter(category__title=name)
+    template = 'videos.html'
+    videos = Videos.objects.filter(category__title=name).filter(status=True)
     category = Category.objects.all()
+    docs = Docs.objects.filter(category__title=name)
     title = name
 
     if pk == '0':
@@ -48,28 +68,20 @@ def videos(request, name, pk=0):
     context = {
         's_vid': s_vid,
         'videos': videos,
-        'category': category,        
+        'docs':docs,
+        'category': category,
         'title': title,
     }
     return render(request, template, context)
 
 @login_required
 def images(request, name, pk=None):
-    template = 'file.html'
-    docs = Docs.objects.all().filter(category__title=name)
-    videos = Videos.objects.all().filter(category__title=name)
+    template = 'images.html'
+    docs = Docs.objects.filter(category__title=name).filter(kind="IMG")
     category = Category.objects.all()
     title = name
 
-    if pk == None:
-        s_vid = videos[:1].get()
-    else:
-        s_vid = videos.filter(pk=pk)
-        s_vid = s_vid[:1].get()
-
     context = {
-        's_vid': s_vid,
-        'videos': videos,
         'category': category,
         'docs': docs,
         'title': title,
@@ -79,38 +91,14 @@ def images(request, name, pk=None):
 
 @login_required
 def docs(request, name, pk=None):
-    template = 'files.html'
+    template = 'documents.html'
     docs = Docs.objects.all().filter(category__title=name)
-    videos = Videos.objects.all().filter(category__title=name)
     category = Category.objects.all()
     title = name
 
-    if pk == None:
-        s_vid = videos[:1].get()
-    else:
-        s_vid = videos.filter(pk=pk)
-        s_vid = s_vid[:1].get()
-
     context = {
-        's_vid': s_vid,
-        'videos': videos,
         'category': category,
         'docs': docs,
         'title': title,
-    }
-    return render(request, template, context)
-
-
-@login_required
-def block(request, name):
-    template = 'block.html'
-    cat = Category.objects.all()
-    selCat = cat.get(title=name);
-    title = name;
-
-    context = {
-        'title': title,
-        'category': cat,
-        'selCat':selCat,
     }
     return render(request, template, context)

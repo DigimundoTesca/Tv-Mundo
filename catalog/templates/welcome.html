@@ -1,0 +1,17 @@
+{% extends 'base/nav.html' %}
+{% load static %}
+{% block link %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/blocks.css' %}">
+{% endblock link %}
+{% block content %}
+	<div class="container-fluid">
+		<div class="row">
+			<div class="video-cont col-sm-12 col-md-9">
+				<h4><b>{{ s_vid.name }}</b></h4>
+				<video controls width="100%" controlsList="nodownload">
+					<source src=" " type="video/mp4">
+				</video>
+			</div>			
+		</div>		        
+	</div>
+{% endblock content %}

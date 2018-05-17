@@ -3,15 +3,26 @@ from django.db import models
 # Create your models here.
 
 class Card(models.Model):
+<<<<<<< HEAD
     number = models.CharField(max_length=3, unique=True)
     name = models.CharField(max_length=30, unique=True)
     description = models.TextField()
 
+=======
+    number = models.CharField(max_length=30, unique=True)
+    name = models.CharField(max_length=30, unique=True)
+    description = models.TextField()
+>>>>>>> develop
 
 
 class Response(models.Model):
     video = models.URLField()
-    description = models.TextField()
+    date = models.DateTimeField(editable=False, auto_now=True)
+
+    def getmin(self):
+        url = self.video
+        img ="http://i1.ytimg.com/vi/"+url[32:43]+"/maxresdefault.jpg"
+        return img
 
 
 class Week(models.Model):
@@ -20,10 +31,22 @@ class Week(models.Model):
 
 
 class Question(models.Model):
-    card_one = models.ForeignKey(Card, related_name='card1_question')
-    card_two = models.ForeignKey(Card, related_name='card2_question')
-    card_three = models.ForeignKey(Card, related_name='card3_question')
-    date_create = models.DateField(auto_now=True)
-    response = models.ForeignKey(Response, on_delete=models.CASCADE)
-    week = models.ForeignKey(Week, on_delete=models.CASCADE)
+    OPEN = 'OP'
+    CLOSE = 'CL'
+    RESPONDING = 'RP'
 
+    STATUS = (
+        (OPEN, 'Abierta'),
+        (CLOSE, 'Cerrada'),
+    )
+
+    card_one = models.CharField(max_length=3)
+    card_two = models.CharField(max_length=3)
+    card_three = models.CharField(max_length=3)
+    email = models.EmailField(default="prueba@gmail.com")
+    date_create = models.DateField(auto_now_add=True)
+    response = models.ForeignKey(Response, on_delete=models.CASCADE, null=True)
+    week = models.PositiveSmallIntegerField(default=0)
+    status = models.CharField(max_length=2, null=True, choices=STATUS, default='OP')
+    name = models.CharField(max_length=30, null=True)
+    question = models.TextField(null=True)

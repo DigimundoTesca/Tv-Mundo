@@ -1,18 +1,55 @@
-.block_content{
-	height: 50vh;
+.block_content{	
+	display: block;
 }
 
 .sli{	
-	overflow: scroll;
-	white-space: nowrap;
+	overflow-y: scroll;
+	height: 460px;
 }
 
-.vid_ele{	
-	width: 35%;
-	display: inline-block;			
+@media only screen and (max-width: 1200px) {
+    .sli{			
+		height: 420px;
+	}
 }
 
-img{
+@media only screen and (max-width: 990px) {
+    .sli{			
+		height: 190px;		
+	}
+}
+
+.img-sld{	
 	width:100%;
 }
+
+.titles{
+	margin-top: 3vh;
+}
+
+.contIMG{
+	text-align: center;
+}
+
+.vid-title{
+	padding: 8px;	
+	background-color: #BE0211;
+	color: white;
+	margin-bottom: 5px;		
+}
+
+.slider-img{	
+	display: block;
+	overflow-x: scroll;
+	white-space: nowrap;	
+}
+
+.dImg{			
+	display: inline-block;
+	margin-right: 35px;
+}
+
+
+
+
 
