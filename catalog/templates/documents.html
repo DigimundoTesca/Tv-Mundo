@@ -13,14 +13,20 @@
 <div class="container-fluid content">  
   <div class="col-12">
     <div class="video">
+      <h1>PDFs</h1>
       <div class="row">
-        {% for doc in docs %} {% if doc.kind == 'PDF' %}
-        <div class="col-1">
+        {% for doc in docs %} 
+        {% if doc.kind == 'PDF' %}
+        <div class="card" style="width: 10rem;">
           <a href="{{doc.link}}">
             <img class="sImg" src="{% static 'images/pdf_logo.png' %}" alt="No img" width="100%">
           </a>
-        </div>
-        {% endif %} {% endfor %}
+          <div class="card-body">
+            <p class="card-title">{{doc.name}}<p>            
+          </div>
+        </div>        
+        {% endif %} 
+        {% endfor %}
       </div>
     </div>
   </div>
@@ -28,13 +34,17 @@
 <div class="container-fluid content">
   <div class="col-12">
     <div class="video">
+      <h1>Documentos</h1>
       <div class="row">
         {% for doc in docs %} {% if doc.kind == 'WRD' %}
-        <div class="col-1">
+        <div class="card" style="width: 10rem;">
           <a href="{{doc.link}}">
             <img class="sImg" src="{% static 'images/hw_logo.png' %}" alt="No img" width="100%">
           </a>
-        </div>
+          <div class="card-body">
+            <p class="card-title">{{doc.name}}<p>            
+          </div>
+        </div>          
         {% endif %} {% endfor %}
       </div>
     </div>
