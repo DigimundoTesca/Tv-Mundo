@@ -96,7 +96,9 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" id="downloadIMG" class="btn btn-primary">Descargar</button>
+        <a id="downloadIMGBTN" download="">
+            <button type="button" id="downloadIMG" class="btn btn-primary">Descargar</button>            
+        </a>
       </div>
     </div>
   </div>
@@ -116,8 +118,10 @@
         <embed id="modalPDF" src="" alt="No Image" width="100%">
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" id="downloadIMG" class="btn btn-primary">Descargar</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>        
+        <form id="downloadPDFBTN" method="get" action="">
+            <button type="button" id="downloadIMG" class="btn btn-primary">Descargar</button>                        
+        </form>        
       </div>
     </div>
   </div>
@@ -133,6 +137,7 @@
         //Cambiar imagen del modal
         $('#modalImage').attr('src',$(this).children('img').attr('src'));
         //Descargar imagen del modal       
+        $('#downloadIMGBTN').attr('download',$(this).children('img').attr('src'));
         
     });
 
@@ -141,13 +146,18 @@
         $('.pdfModalTitle').text($(this).parent().children('h6').text());
         //Cambiar pdf del modal
         $('#modalPDF').attr('src',$(this).children('img').attr('id'));
-        //Descargar imagen del modal       
+        //Agregar atribute hred en boton de descarga del modal
+        $('#downloadPDFBTN').attr('action',$(this).children('img').attr('id'));
+
         
     });
 
     $('#downloadIMG').click(function(){
         console.lolg($('#modalImage').attr('src'));
     });
+
+
+    
 
 
 

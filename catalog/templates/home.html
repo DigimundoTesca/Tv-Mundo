@@ -9,7 +9,7 @@
     <div class="row">
       {% if grade.grade == 'TAR'  %}
       <div class="section col-lg-3 col-md-6 col-sm-6">
-        <div class="img-cont" style="background-color:rgb(146,181,65);">
+        <div class="img-cont" style="background-color:rgb(146,181,65);  margin-bottom: 30px;">
           <a href="{% url 'catalog:block' category.0.title %}">
             <img class="img-bg" src="{% static 'images/intro_pic2.jpg' %}" alt="" style="width: 100%;">
             <div class="title_block">
@@ -31,7 +31,7 @@
       {% endif %}
       {% if grade.grade == 'MET'  %}
       <div class="section col-lg-3 col-md-6 col-sm-6">
-        <div class="img-cont" style="background-color:rgb(146,181,65);">
+        <div class="img-cont" style="background-color:rgb(146,181,65); margin-bottom: 30px">
           <a href="{% url 'catalog:block' category.0.title %}">
             <img class="img-bg" src="{% static 'images/intro_pic2.jpg' %}" alt="" style="width: 100%;">
             <div class="title_block">
@@ -41,7 +41,7 @@
         </div>        
       </div>            
       <div class="section col-lg-6 col-md-6 col-sm-6">
-        <div class="img-cont" style="background-color:rgb(211,155,0);">
+        <div class="img-cont" style="background-color:rgb(211,155,0);margin-bottom: 30px">
           <a href="{% url 'catalog:block' category.1.title %}">
             <img class="img-bg" src="{% static 'images/tarot_pic2.jpg' %}" alt="">
             <div class="title_block">
@@ -50,10 +50,10 @@
           </a>
         </div>
       </div>
-      <div class="section col-lg-3 col-md-6 col-sm-6">
+      <div class="section col-lg-3 col-md-12 col-sm-6">
         <div class="img-cont" style="background-color:rgb(0,41,131);">
           <a href="{% url 'catalog:block' category.2.title %}">
-            <img class="img-bg" src="{% static 'images/meta_pic.jpg' %}" alt="">
+            <img class="img-bg" src="{% static 'images/meta_pic.jpg' %}" alt="" width="100%">
             <div class="title_block">
               <h3>Metagenealogia</h3>            
             </div>
@@ -63,7 +63,7 @@
       {% endif %}
       {% if grade.grade == 'PSI'  %}
       <div class="section col-lg-3 col-md-6 col-sm-6">
-        <div class="img-cont" style="background-color:rgb(146,181,65);">
+        <div class="img-cont" style="background-color:rgb(146,181,65); margin-bottom: 30px"">
           <a href="{% url 'catalog:block' category.0.title %}">
             <img class="img-bg" src="{% static 'images/intro_pic2.jpg' %}" alt="" style="width: 100%;">
             <div class="title_block">
@@ -73,7 +73,7 @@
         </div>        
       </div>            
       <div class="section col-lg-3 col-md-6 col-sm-6">
-        <div class="img-cont" style="background-color:rgb(211,155,0);">
+        <div class="img-cont" style="background-color:rgb(211,155,0); margin-bottom: 30px" >
           <a href="{% url 'catalog:block' category.1.title %}">
             <img class="img-bg" src="{% static 'images/tarot_pic2.jpg' %}" alt="">
             <div class="title_block">
@@ -83,7 +83,7 @@
         </div>
       </div>
       <div class="section col-lg-3 col-md-6 col-sm-6">
-        <div class="img-cont" style="background-color:rgb(0,41,131);">
+        <div class="img-cont" style="background-color:rgb(0,41,131); margin-bottom: 30px">
           <a href="{% url 'catalog:block' category.2.title %}">
             <img class="img-bg" src="{% static 'images/meta_pic.jpg' %}" alt="">
             <div class="title_block">
