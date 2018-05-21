@@ -6,29 +6,33 @@
 {% block content %}    
 	<div class="container block_content">        
 		<div class="row">
-            <div class="col-12 col-lg-9 ">
-                <h4><b>{{ s_vid.name }}</b></h4>                                
+            <div class="col-sm-12 col-md-12 col-lg-9">
+                <div class="col-12">
+                    <h4><b>{{ s_vid.name }}</b></h4>
+                </div>            
+                <div class="video-cont col-12">
+                    <video width="100%" controls controlsList="nodownload">
+                        <source src="{{ s_vid.link }}" type="video/mp4">
+                    </video>
+                </div>                
             </div>
-            <div class="col-12 col-lg-3">
-                <h4><b>Videos</b></h4>                
-            </div>
-            <div class="video-cont col-12 col-lg-9">
-                <video width="100%" controls controlsList="nodownload">
-                    <source src="{{ s_vid.link }}" type="video/mp4">
-                </video>
-            </div>
-            <div class="sli col-md-12 col-lg-3">
-                <div class="row">
-                    {% for vid in videos %}                
-                    <div class="vid_ele col-4 col-lg-12" id="{% url 'catalog:videos' title vid.pk %}">
-                            <a href="{% url 'catalog:videos' title vid.pk %}">
-                                <img class="img-sld" src="{{vid.image}}">
-                            </a>
-                            <div class="vid-title"><h6>{{ vid.name }}</h6></div>                        
-                        </div>                    
-                    {% endfor %}                                    
+            <div class="col-sm-12 col-md-12 col-lg-3">
+                <div class="col-12">
+                    <h4><b>Videos</b></h4>                
                 </div>
-            </div>			
+                <div class="sli col-md-12">
+                    <div class="row">
+                        {% for vid in videos %}                
+                        <div class="vid_ele col-4 col-lg-12" id="{% url 'catalog:videos' title vid.pk %}">
+                                <a href="{% url 'catalog:videos' title vid.pk %}">
+                                    <img class="img-sld" src="{{vid.image}}">
+                                </a>
+                                <div class="vid-title"><h6>{{ vid.name }}</h6></div>                        
+                            </div>                    
+                        {% endfor %}                                    
+                    </div>
+                </div>			                
+            </div>
 		</div>		        
     </div>    
     <div class="container contIMG">
@@ -96,8 +100,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <a id="downloadIMGBTN" download="">
-            <button type="button" id="downloadIMG" class="btn btn-primary">Descargar</button>            
+        <button type="button" id="downloadIMG" class="btn btn-primary">Descargar</button>                    
         </a>
       </div>
     </div>
@@ -119,9 +122,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>        
-        <form id="downloadPDFBTN" method="get" action="">
-            <button type="button" id="downloadIMG" class="btn btn-primary">Descargar</button>                        
-        </form>        
+        <button type="button" id="downloadIMG" class="btn btn-primary">Descargar</button>                                
       </div>
     </div>
   </div>
@@ -137,7 +138,7 @@
         //Cambiar imagen del modal
         $('#modalImage').attr('src',$(this).children('img').attr('src'));
         //Descargar imagen del modal       
-        $('#downloadIMGBTN').attr('download',$(this).children('img').attr('src'));
+        
         
     });
 
@@ -147,13 +148,13 @@
         //Cambiar pdf del modal
         $('#modalPDF').attr('src',$(this).children('img').attr('id'));
         //Agregar atribute hred en boton de descarga del modal
-        $('#downloadPDFBTN').attr('action',$(this).children('img').attr('id'));
+        
 
         
     });
 
     $('#downloadIMG').click(function(){
-        console.lolg($('#modalImage').attr('src'));
+        console.log($('#modalImage').attr('src'));
     });
 
 
