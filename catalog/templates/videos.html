@@ -22,13 +22,17 @@
                 </div>
                 <div class="sli col-md-12">
                     <div class="row">
-                        {% for vid in videos %}                
-                        <div class="vid_ele col-4 col-lg-12" id="{% url 'catalog:videos' title vid.pk %}">
-                                <a href="{% url 'catalog:videos' title vid.pk %}">
-                                    <img class="img-sld" src="{{vid.image}}">
-                                </a>
-                                <div class="vid-title"><h6>{{ vid.name }}</h6></div>                        
-                            </div>                    
+                        {% for vid in videos %}  
+                        {% if vid.status == True %}
+                            <div class="vid_ele col-4 col-lg-12" id="{% url 'catalog:videos' title vid.pk %}">
+                                    <a href="{% url 'catalog:videos' title vid.pk %}">
+                                        <img class="img-sld" src="{{vid.image}}">
+                                    </a>
+                                <div class="vid-title">
+                                    <h6>{{ vid.name }}</h6>
+                                </div>
+                            </div>                          
+                        {% endif %}
                         {% endfor %}                                    
                     </div>
                 </div>			                
