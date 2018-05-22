@@ -3,7 +3,8 @@ from catalog.models import Videos, Category, SubCategory, Docs, Subscriber
 
 @admin.register(Videos)
 class AdminVideo(admin.ModelAdmin):
-    list_display = ('name', 'category', 'subcategory', 'created_at')
+    list_display = ('name', 'category', 'subcategory', 'created_at','status')
+    list_editable = ('status',)
     ordering = ['name']
 
 @admin.register(Docs)
