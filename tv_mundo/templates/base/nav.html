@@ -30,8 +30,8 @@
             {% endif %}
             {% if request.user.subscriber.grade == 'PSI'  %}
               <a class="dropdown-item" href="{% url 'catalog:block' category.1.title %}">Tarot</a>              
-              <a class="dropdown-item" href="{% url 'catalog:block' category.2.title %}">Matagenealogia</a>
-              <a class="dropdown-item" href="{% url 'catalog:block' category.3.title %}">Psicochamanismo</a>
+              <a class="dropdown-item" href="{% url 'catalog:block' category.2.title %}">Metagenealogia</a>
+              <a class="dropdown-item" href="{% url 'catalog:block' category.3.title %}">Psicomagia</a>
             {% endif %}            
           </div>
         </li>        
