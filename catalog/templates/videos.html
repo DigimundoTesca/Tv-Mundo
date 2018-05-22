@@ -4,8 +4,14 @@
   <link rel="stylesheet" type="text/css" href="{% static 'css/templates/videos.css' %}">
 {% endblock link %}
 {% block content %}    
-	<div class="container block_content">        
-		<div class="row">
+    
+    {% if s_vid == "false" %}
+    <div class="noVideos">
+      <h3>Esta seccion no cuenta con videos por el momento</h3>        
+    </div>
+    {% else %}
+    <div class="container block_content">        
+        <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-9">
                 <div class="col-12">
                     <h4><b>{{ s_vid.name }}</b></h4>
@@ -22,22 +28,20 @@
                 </div>
                 <div class="sli col-md-12">
                     <div class="row">
-                        {% for vid in videos %}  
-                        {% if vid.status == True %}
-                            <div class="vid_ele col-4 col-lg-12" id="{% url 'catalog:videos' title vid.pk %}">
-                                    <a href="{% url 'catalog:videos' title vid.pk %}">
-                                        <img class="img-sld" src="{{vid.image}}">
-                                    </a>
-                                <div class="vid-title">
-                                    <h6>{{ vid.name }}</h6>
-                                </div>
-                            </div>                          
-                        {% endif %}
+                        {% for vid in videos %}                          
+                        <div class="vid_ele col-4 col-lg-12" id="{% url 'catalog:videos' title vid.pk %}">
+                                <a href="{% url 'catalog:videos' title vid.pk %}">
+                                    <img class="img-sld" src="{{vid.image}}">
+                                </a>
+                            <div class="vid-title">
+                                <h6>{{ vid.name }}</h6>
+                            </div>
+                        </div>                                                  
                         {% endfor %}                                    
                     </div>
-                </div>			                
+                </div>                          
             </div>
-		</div>		        
+        </div>              
     </div>    
     <div class="container contIMG">
         {% if docs|length >= 1 %}
@@ -87,6 +91,7 @@
             </div>
         {% endif %}
     </div>    
+    {% endif %}
 
 
 <!-- Image Modal -->
