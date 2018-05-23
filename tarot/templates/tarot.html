@@ -67,15 +67,13 @@
 </header>
 <div id="tarotContainer">
   <div class="container tarot-description mt-4">
-    <h2>Lorem ipsum</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vel dolor a nunc maximus viverra quis non ex.
-    Nulla laoreet, nisl vel scelerisque pretium, leo arcu faucibus lectus, nec pharetra odio lectus a turpis.</p>
+    <h1 class="text-center">Tu tarot virtual</h1>
+    <p class="text-center description">Aquí tienes un tarot digital para leerte o leerle el tarot a quien quiras y cuando quieras</p>
+    <p class="text-uppercase description-black text-center">¡disfrútalo!</p>
     <div id="resultado2">{{card}}</div>
-    <h1 class="text-center">Elija 3 cartas</h1>
-
+    <h1 class="text-center mt-5">Elija 3 cartas</h1>
   </div>
 
-  <div  class="col-md-12 mt-5 text-center"><h2 class="Reintentar mano py-5" id="return" onClick="window.location.reload()"><i class="fas fa-sync-alt"></i></h2></div>
   <div class="tarot-container text-center">
 
     <div id="tarot-cards" class="row justify-content-center text-center">
@@ -93,28 +91,40 @@
     </div>
   </div>
 
-
-
   <div class="form-group row justify-content-center" id="form-tarot">
-    <div class="col-10 col-md-7">
+      <div class="col-10 col-md-7">
+        <div  class="col-md-12 mt-5 text-center" id="reload-cards"><span class="Reintentar text-danger h4 mb-4" id="return" onClick="window.location.reload()"><i class="fas fa-sync-alt"></i></span></div>
       {% if available %}
-      <h4>Si quieres saber más llena el siguiente formulario, Cristobal te responderá en un video</h4>
-      <form class="" id="ask">
-        {% csrf_token %}
-        <h5 for="" class="">Nombre</h5>
-        <input id="nombre" type="text" class="form-control form-control-lg" name="nombre" required>
-        <h5 for="" class="">Correo</h5>
-        <input id="correo" type="email" class="form-control form-control-lg" name="correo" required>
-        <div class="form-group">
-          <h5 for="nota">Escribe lo que te gustaría saber </h5>
-          <textarea id="mensaje" class="form-control" name="nota" rows="4" required></textarea>
-        </div>
-        <p id="errorMessage" class="h5 font-weight-bold text-danger"></p>
-        <input type="submit" id="sendQuestion" class="btn btn-danger" name="" value="Enviar">
-      </form>
+      <div class="buttons mb-3">
+        <button class="btn btn-success mt-2" id="boton">Realiza tu Consulta</button>
+      </div>
+      <div id="form-consulta">
+        <h4>Si quieres quieres hacer tu consulta llena el siguiente formulario, Cristobal te responderá en un video</h4>
+        <form class="" id="ask">
+          {% csrf_token %}
+          <h5 for="" class="">Nombre</h5>
+          <input id="nombre" type="text" class="form-control form-control-lg" name="nombre" required>
+          <h5 for="" class="">Correo</h5>
+          <input id="correo" type="email" class="form-control form-control-lg" name="correo" required>
+          <div class="form-group">
+            <h5 for="nota">Escribe lo que te gustaría saber </h5>
+            <textarea id="mensaje" maxlength="200" class="form-control" name="nota" rows="4" placeholder="Escribe tu pregunta con un máximo 200 caracteres" required></textarea>
+          </div>
+          <p id="errorMessage" class="h5 font-weight-bold text-danger"></p>
+          <input type="submit" id="sendQuestion" class="btn btn-danger" name="" value="Enviar">
+        </form>
+      </div>
+        <p id="messageSuccess" class="h5 font-weight-bold text-success text-center"></p>
+        <p id="turno" class="mt-3 text-center text-success h3">Usted tiene el turno <span id="card_turno">{{turno}}</span> de la semana {{week}} </p>
       {% else %}
-      <div id="time" class="text-center"></div>
-      <div id="resultado" class="d-none"></div>
+      <div id="clock-container text-center">
+        <p class="text-center mt-2">Cristóbal Jodorowsky responde a 5 consultas sin costo alguno cada semana, para
+          obtener una consulta grátis haz click en el botón que aparecerá al terminar la siguiente cuenta regresiva</p>
+        <div id="time" class="text-center"></div>
+        <div id="resultado" class="d-none"></div>
+        <p class="mt-3 text-center">También puedes pedir una consulta urgente que Cristóbal responderá personalmente</p>
+        <button class="btn btn-danger" id="boton2">Consulta urgente</button>
+      </div>
       {% endif %}
     </div>
   </div>
@@ -138,6 +148,13 @@
 </html>
 
 <script type="text/javascript">
+if (document.getElementById("sendQuestion")) {
+  $('boton').addEvent('click', function() {
+    $('form-consulta').setStyles({
+      'display':'block'
+    })
+  })
+}
   $('show-menu').addEvent('click', function() {
     $('navigation').setStyles({
       'left':'0'
@@ -192,7 +209,6 @@
         },
         onSuccess: function(){
           console.log('se pudo');
-          window.location.reload();
         },
         onFailure: function(){
           console.log('Fallo en conexion AJAX');
@@ -272,12 +288,25 @@
           console.log(cardIds);
             if(cardIds.length == 3){
               var form = document.getElementById("form-tarot").setStyles({'display':'block'});
-              
-              function muestra(cardIds) {
-                var myFormChido =  document.getElementById('ask');
+              var myFormChido =  document.getElementById('ask');
+              if (document.getElementById("sendQuestion")) {
                 $('sendQuestion').addEvent('click', function(event) {
                   event.preventDefault();
                   if (myFormChido.checkValidity()) {
+                    $('sendQuestion').setStyles({
+                      'display':'none'
+                    }, 500)
+                    $('messageSuccess').innerHTML = 'Tu consulta ha sido enviado'+'<br><span class = "h6 text-center">Revisa los detalles en tu correo</Span>';
+                    let form = document.getElementById('form-consulta');
+                    form.setStyles({
+                      'display':'none'
+                    })
+                    $('boton').setStyles({
+                      'display':'none'
+                    })
+                    $('turno').setStyles({
+                      'display':'block'
+                    })
                     envia_ajax(cardIds);
                   }
                   else {
@@ -290,39 +319,32 @@
             const el = document.getElementById(elem);
             const timerUpdate = setInterval( () => {
               let t = getRmainTime(deadline);
-              el.innerHTML = '<span class= "timer" id="dia">' + t.remainDays + '<span class = "label" id="ldia">Días</span></span>' + ":" + '<span id = "hora" class="timer">' + t.remainHours + '<span class = "label" id="lhora"> Horas </span></span>' +  ":" + '<span class="timer" id="minutos">' + t.remainMinutes + '<span class="label">Minutos</span></span>' + ":" + '<span class="timer" id="segundos">' + t.remainSeconds + '<span class="label">Segundos</span></span>';
+              el.innerHTML = '<span class="timer" id="dia">' + t.remainDays + '<span class = "label" id="ldia">Días</span></span>' + ":" + '<span id = "hora" class="timer">' + t.remainHours + '<span class = "label" id="lhora"> Horas </span></span>' +  ":" + '<span class="timer" id="minutos">' + t.remainMinutes + '<span class="label ml-3">Minutos</span></span>' + ":" + '<span class="timer" id="segundos">' + t.remainSeconds + '<span class="label">Segundos</span></span>';
               if (t.remainTime <= 1) {
                 clearInterval(timerUpdate);
                 el.innerHTML = finalMessage;
-                muestra(cardIds);
               }
             }, 1000)
           };
           function fechaChida(mes, lunes){
-            countdown(''+mes+''+lunes+' 2018 12:30:00 GMT-0500', 'time', 'Puedes realizar tu consulta con Cristobal');
+            console.log(mes+ ""+ lunes)
+            countdown(''+mes+''+lunes+' 2018 12:00:00 GMT-0500', 'time', 'Puedes realizar tu consulta con Cristobal');
           }
           var hoy = new Date();
           dia = hoy.getDay();
           mes = hoy.getMonth();
-          fecha = 14
+          hora = hoy.getHours();
+          dia_mes = String(hoy);
+          dia_mes = dia_mes.split(" ");
+          fecha = parseInt(dia_mes[2]);
 
-          var month = new Array();
-          month[0] = "January";
-          month[1] = "February";
-          month[2] = "March";
-          month[3] = "April";
-          month[4] = "May";
-          month[5] = "June";
-          month[6] = "July";
-          month[7] = "August";
-          month[8] = "September";
-          month[9] = "October";
-          month[10] = "November";
-          month[11] = "December";
-          var n = month[hoy.getMonth()];
-          if (dia == 1 && hora == 23) {
-            var fecha = fecha + 7;
+          if (dia == 1) {
+            fecha = fecha +7
+          }else {
+            fecha = fecha + (8 -dia);
           }
+          var month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+          var n = month[hoy.getMonth()];
           if(dia >= 0){
             if (fecha > 31 && (mes == 0 || mes == 2 || mes == 4 || mes == 6 || mes == 7 || mes == 9 || mes == 11  )) {
               fecha = fecha - 31
@@ -330,7 +352,7 @@
               var n = month[hoy.getMonth()+1];
               fechaChida(n, fecha);
             }
-            else if (fecha > 30 && ( mes == 3 || mes == 5 || mes == 8 || mes == 10)) {
+            else if (fecha > 30 && (mes == 3 || mes == 5 || mes == 8 || mes == 10)) {
               fecha = fecha - 30
               console.log(fecha)
               var n = month[hoy.getMonth()+1];
@@ -342,7 +364,6 @@
               fechaChida(n, fecha);
             }
             else {
-              console.log(fecha)
               fechaChida(n, fecha);
             }
           }
@@ -354,7 +375,7 @@
           console.log(pc)
           if (pc_big.matches) {
             elFx.start({
-              'top': +720,
+              'top': +770,
               'left': pos.x - 45,
               'height': [132, 400],
               'width': [80, 220],
@@ -363,7 +384,7 @@
           }
           else if(pc.matches){
             elFx.start({
-              'top': +560,
+              'top': +610,
               'left': pos.x + 35,
               'height': [132, 400],
               'width': [80, 220],
@@ -372,7 +393,7 @@
           }
           else{
             elFx.start({
-              'top': +550,
+              'top': +600,
               'left': pos.x + 64,
               'height': [132, 400],
               'width': [80, 220],

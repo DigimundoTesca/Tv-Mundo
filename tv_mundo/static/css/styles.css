@@ -90,11 +90,23 @@ padding: 0;
   left: 0;
   bottom: 0;
 }
-
-span#ldia, #lhora {
-  position: absolute;
-  left: 20px;
+.description {
+  font-size: 22px;
 }
+.description-black {
+  font-size: 26px;
+  font-weight: 600;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+span#ldia {
+  left: 20% !important;
+}
+span#lhora {
+  left: 16% !important;
+}
+
 
 #navigation {
   overflow-y: scroll;
@@ -193,7 +205,7 @@ h1,h2,h3,h4,h5,h6{
 
 #tarot-cards div {
   position: absolute;
-  top: 21em;
+  top: 26em;
   left: 100px;
     background-image: url("../images/Tarot-Cards/img24.jpg");
     border: 3px solid #967996;
@@ -244,7 +256,6 @@ transition: left 3s ease;
 
 .mano{
   margin-top: 3.35em;
-  margin-bottom: 1.5em;
   cursor: pointer;
 }
 img:after{
@@ -312,7 +323,10 @@ img:after{
 .title-caps {
   font-size: 35px;
 }
-
+/*Form*/
+#form-consulta, #turno {
+display: none;
+}
 
 /*sesion*/
 
@@ -384,7 +398,7 @@ input[type="submit"] { cursor: pointer; }
 
 #login-form {
 	width: 400px;
-  margin-top: 10em;
+  margin-top: 11em;
 	text-align: center;
 	/*box-shadow:0 4px 8px 0 rgba(255, 255, 255, 0.2), 0 6px 20px 0 rgba(255, 255, 255, 0.19);*/
   box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -395,7 +409,7 @@ input[type="submit"] { cursor: pointer; }
 	background-color: #92b541;
 	border-radius: 5px 5px 0 0;
 	color: #fff;
-	font-size: 16px;
+	font-size: 18px;
 	padding: 20px;
 	text-align: center;
 	text-transform: uppercase;
@@ -454,7 +468,7 @@ input[type="submit"] { cursor: pointer; }
 	font-weight: bold;
 	padding: 12px 20px;
 	position: absolute;
-	bottom: 1em;
+	bottom: .5em;
 	right: 2em;
 }
 
@@ -639,7 +653,7 @@ padding: 10px 15px !important;
  #tarot-cards div {
    width: 130px;
    height: 172px;
-   top: 28em;
+   top: 32.5em;
  }
 
  .card-description, #tarot-cards h1 {
@@ -713,4 +727,25 @@ padding: 10px 15px !important;
 }
 .fa-youtube {
   color: #c4302b;
+}
+
+/*mostrar form o tarot*/
+#boton, #boton2 {
+  display: block;
+  margin: 0 auto;
+  box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#resultado {
+  display: block;
+  height: 0px;
+  position: relative;
+	box-shadow: 10px 10px 3px #D8D8D8;
+	transition: height .4s;
+}
+#card_turno {
+  padding: 15px 10px;
+  background-color: #28a745;
+  color: #FFF !important;
+  box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-weight: 600;
 }

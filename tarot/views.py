@@ -26,9 +26,9 @@ def start(request):
     available = False
     number = len(question_week)+1
     if len(question_week) < 5:
-        if datetime.datetime.today().weekday() == 1 and datetime.datetime.now().hour >= 12:
+        if datetime.datetime.today().weekday() == 0 and datetime.datetime.now().hour >= 12:
             available = True
-        elif datetime.datetime.today().weekday() != 1:
+        elif datetime.datetime.today().weekday() != 0:
             available = True
     if request.method == 'POST':
         if len(Question.objects.filter(week=week))>=5:
@@ -59,6 +59,8 @@ def start(request):
             sendCristobal(request, question_context)
     context = {
         'cards': cards,
+        'turno': number,
+        'week' : week,
         'title': "Tarot",
         'available': available,
     }
