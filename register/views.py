@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from catalog.models import Videos, Category, Docs
 from django.contrib.auth import logout
@@ -20,11 +20,7 @@ def register(request):
 
 def logout_view(request):
     logout(request)
-    template = 'logout.html'    
-    context = {        
-        'title': "Tv Mundo - Sesion Terminada",        
-    }
-    return render(request, template, context)    
+    return redirect('/login')
 
 def bienvenido(request):
     template = 'welcome.html'    
