@@ -3,35 +3,45 @@ from django.contrib.auth.decorators import login_required
 from catalog.models import Videos, Category, Docs
 from django.contrib.auth import logout
 from django.contrib.auth import authenticate, login
+from register.forms import RegisterForm
 
 def login_view(request):
-    template = 'login.html'    
-    context = {        
+    template = 'login.html'
+    context = {
         'title': "Tv Mundo",
     }
-    return render(request, template, context)   
+    return render(request, template, context)
 
 def register(request):
-    template = 'register.html'    
-    context = {        
+    template = 'register.html'
+    form = RegisterForm()
+    message = None
+    context = {
         'title': "Tv Mundo",
+        'form' : form,
+        'message':message
     }
-    return render(request, template, context)   
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            message = "Tu cuenta ha sido creada"
+    return render(request, template, context)
 
 def logout_view(request):
     logout(request)
-    template = 'logout.html'    
-    context = {        
-        'title': "Tv Mundo - Sesion Terminada",        
+    template = 'logout.html'
+    context = {
+        'title': "Tv Mundo - Sesion Terminada",
     }
-    return render(request, template, context)    
+    return render(request, template, context)
 
 def bienvenido(request):
-    template = 'welcome.html'    
+    template = 'welcome.html'
     title = 'Tv-Mundo Bienvenido'
     category = Category.objects.all()
 
-    context = {                
+    context = {
         'category': category,
         'title': title,
     }

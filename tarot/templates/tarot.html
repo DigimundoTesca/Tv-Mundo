@@ -35,7 +35,6 @@
           <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/saber-mas">Saber más</a>
           <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/libros">Libros</a>
           <a href="{% url 'tarot:start_tarot' %}">Tarot</a>
-          <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/consultas">Consultas</a>
           <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/agenda">Agenda</a>
           <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/contacto">Contacto</a>
           <a id="metamundo" href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/metamundo">Metamundo</a>
@@ -53,7 +52,6 @@
   <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/saber-mas"><i class="fas fa-question-circle mr-4"></i> Saber más</a>
   <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/libros"><i class="fas fa-book mr-4"></i>  Libros</a>
   <a href="{% url 'tarot:start_tarot' %}"><i class="far fa-sun mr-4"></i> Tarot</a>
-  <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/consultas"><i class="fas fa-video mr-4"></i> Consultas</a>
   <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/agenda"><i class="fas fa-calendar-alt mr-4"></i> Agenda</a>
   <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/contacto"><i class="fas fa-comments mr-4"></i> Contacto</a>
   <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/metamundo"><i class="fas fa-globe mr-4"></i> Metamundo</a>
@@ -67,6 +65,17 @@
 </header>
 <div id="tarotContainer">
   <div class="container tarot-description mt-4">
+    <div class="consulta">
+      <button id="icon">
+        <span>+</span>
+      </button>
+      <div>
+        <div id="oculto">
+          <a href="#">Consultas</a>
+          <a href="#">Tarot</a>
+        </div>
+      </div>
+    </div>
     <h1 class="text-center">Tu tarot virtual</h1>
     <p class="text-center description">Aquí tienes un tarot digital para leerte o leerle el tarot a quien quiras y cuando quieras</p>
     <p class="text-uppercase description-black text-center">¡disfrútalo!</p>
@@ -148,6 +157,12 @@
 </html>
 
 <script type="text/javascript">
+$('icon').addEvent('mouseover', function() {
+  $('oculto').setStyles({
+    'top':'0'
+  })
+})
+
 if (document.getElementById("sendQuestion")) {
   $('boton').addEvent('click', function() {
     $('form-consulta').setStyles({
