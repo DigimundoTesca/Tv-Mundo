@@ -59,13 +59,10 @@ def videos(request, name, pk=0):
     docs = Docs.objects.filter(category__title=name)
     title = name
 
-    if not videos:
-        s_vid = "false"
+    if pk == '0':
+        s_vid = videos.first()
     else:
-        if pk == '0':
-            s_vid = videos.first()
-        else:
-            s_vid = videos.filter(pk=pk)            
+        s_vid = videos.get(pk=pk)
 
     context = {
         's_vid': s_vid,
