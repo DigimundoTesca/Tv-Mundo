@@ -49,6 +49,7 @@ class Videos(models.Model):
     subcategory = models.ForeignKey(SubCategory, default=1, on_delete=models.CASCADE)
     created_at = models.DateTimeField(editable=False, auto_now=True)
     status = models.BooleanField(default=True)
+    order_number = models.IntegerField()
 
     def __str__(self):
         return self.name

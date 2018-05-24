@@ -54,7 +54,7 @@ def catalog(request):
 @login_required
 def videos(request, name, pk=0):
     template = 'videos.html'
-    videos = Videos.objects.filter(category__title=name).filter(status=True)
+    videos = Videos.objects.filter(category__title=name).filter(status=True).order_by('order_number')
     category = Category.objects.all()
     docs = Docs.objects.filter(category__title=name)
     title = name
