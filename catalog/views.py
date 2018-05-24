@@ -54,18 +54,15 @@ def catalog(request):
 @login_required
 def videos(request, name, pk=0):
     template = 'videos.html'
-    videos = Videos.objects.filter(category__title=name).filter(status=True)
+    videos = Videos.objects.filter(category__title=name).filter(status=True).order_by('order_number')
     category = Category.objects.all()
     docs = Docs.objects.filter(category__title=name)
     title = name
 
-    if not videos:
-        s_vid = "false"
+    if pk == '0':
+        s_vid = videos.first()
     else:
-        if pk == '0':
-            s_vid = videos.first()
-        else:
-            s_vid = videos.filter(pk=pk)            
+        s_vid = videos.get(pk=pk)
 
     context = {
         's_vid': s_vid,
