@@ -4,6 +4,7 @@ from catalog.models import Videos, Category, Docs
 from django.contrib.auth import logout
 from django.contrib.auth import authenticate, login
 from register.forms import RegisterForm
+from catalog.models import Subscriber
 
 def login_view(request):
     template = 'login.html'
@@ -18,13 +19,15 @@ def register(request):
     message = None
     context = {
         'title': "Tv Mundo",
-        'form' : form,
-        'message':message
+        'form': form,
+        'message': message
     }
     if request.method == 'POST':
-        form = RegisterForm(request.POST)
-        if form.is_valid():
-            form.save()
+        user = RegisterForm(request.POST)
+        if user.is_valid():
+            user.save()
+            #suscriber = Subscriber.objects.create(user=user1, frade='TAR')
+            #suscriber.save()
             message = "Tu cuenta ha sido creada"
     return render(request, template, context)
 
