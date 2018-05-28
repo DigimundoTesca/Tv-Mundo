@@ -17,7 +17,7 @@
                     <h4><b>{{ s_vid.name }}</b></h4>
                 </div>                            
                 <div class="video-cont">
-                    <video width="100%" controls controlsList="nodownload">
+                    <video width="100%" controls autoplay controlsList="nodownload">
                         <source src="{{ s_vid.link }}" type="video/mp4">
                     </video>
                 </div>                
@@ -192,7 +192,7 @@
         var number = id.split('-')[1];
         var nextNumber = Number(number) + Number(1);
         var number_nextVideo = id.split('-')[0]+"-"+nextNumber;
-        
+
         if(!$("#"+number_nextVideo).length){
             btn.hide();            
         }
