@@ -3,8 +3,8 @@
 	margin-top: 20%;	
 }
 
-.block_content{	
-	display: block;
+.block_content{		
+	margin-top: 20px;
 }
 
 .sli{	
@@ -43,6 +43,10 @@
 	margin-bottom: 5px;		
 }
 
+.vid-active{
+	background-color: orange;
+}
+
 .slider-img{	
 	display: block;
 	overflow-x: scroll;
@@ -58,6 +62,7 @@
 	height: 70vh;
 	width: 100%;
 }
+
 
 
 

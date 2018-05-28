@@ -16,7 +16,7 @@
                 <div class="col-12">
                     <h4><b>{{ s_vid.name }}</b></h4>
                 </div>                            
-                <div class="video-cont col-12">
+                <div class="video-cont">
                     <video width="100%" controls controlsList="nodownload">
                         <source src="{{ s_vid.link }}" type="video/mp4">
                     </video>
@@ -33,7 +33,11 @@
                                 <a href="{% url 'catalog:videos' title vid.pk %}">
                                     <img class="img-sld" src="{{vid.image}}">
                                 </a>
-                            <div class="vid-title">
+                        {% if  vid == s_vid %}
+                            <div class="vid-title vid-active" id="no-{{forloop.counter0}}">
+                        {% else %}
+                            <div class="vid-title" id="no-{{forloop.counter0}}">                                
+                        {% endif %}                                                                      
                                 <h6>{{ vid.name }}</h6>
                             </div>
                         </div>                                                  
@@ -41,6 +45,10 @@
                     </div>
                 </div>                          
             </div>
+            <div class="col-9">  
+                <button id="prevBtn" class="btn btn-primary">Video Anterior</button>
+                <button id="nextBtn" class="offset-8 btn btn-primary">Siguiente Video</button>                
+            </div>            
         </div>              
     </div>    
     <div class="container contIMG">
@@ -104,7 +112,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <embed id="modalPDF" src="" alt="No Image"">
+        <embed id="modalPDF" src="" alt="No Image">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>                        
@@ -157,14 +165,49 @@
         
     });
 
-    $('#downloadIMG').click(function(e){        
+    checkForPrevVideo();
+    checkForNextVideo();
+
+    function checkForPrevVideo(){
+        var btn = $('#prevBtn');
+        var id = getCurrentVideo();
+        var number = id.split('-')[1];
+        var prevNumber = Number(number) - Number(1);
+        var number_prevVideo = id.split('-')[0]+"-"+prevNumber;
+
+        if (number == 0){
+            btn.hide();
+            $('#nextBtn').attr('class','offset-10 col-2 btn btn-primary');
+        }        
+
+        btn.click(function(e){
+            var referencia = $("#"+number_prevVideo).parent().children('a').attr('href');
+            window.location.href = referencia;
+        });
+    }
+
+    function checkForNextVideo(){
+        var btn = $('#nextBtn');
+        var id = getCurrentVideo();
+        var number = id.split('-')[1];
+        var nextNumber = Number(number) + Number(1);
+        var number_nextVideo = id.split('-')[0]+"-"+nextNumber;
         
-    });
+        if(!$("#"+number_nextVideo).length){
+            btn.hide();            
+        }
 
+        btn.click(function(e){
+            var referencia = $("#"+number_nextVideo).parent().children('a').attr('href');
+            window.location.href = referencia;
+        });
 
-    
+    }
 
-
+    function getCurrentVideo(){
+        var current_video_number = $('.vid-active').attr('id');
+        return current_video_number;
+    };
 
 </script>
   
