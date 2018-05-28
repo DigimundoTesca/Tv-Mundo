@@ -165,6 +165,10 @@
         
     });
 
+    $('.sli').animate({
+        scrollTop: $(".vid-active").parent().offset().top -150
+    }, 2000);
+
     checkForPrevVideo();
     checkForNextVideo();
 
