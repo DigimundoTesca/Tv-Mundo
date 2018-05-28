@@ -1,6 +1,6 @@
 @font-face {
     font-family: myFirstFont;
-    src: url(../fonts/ACaslonPro-);
+    src: url(../fonts/ACaslonPro-Regular.otf);
 }
 @font-face {
     font-family: acpBold;
@@ -14,6 +14,19 @@
 .icons{
     font-size: 25px !important;
 }
+
+a:link {
+    color: black;
+}
+
+a:visited {
+    color: black;
+}
+
+a:hover {
+    color: orange;
+}
+
 
 #navBar2{
     padding-bottom: 0px !important;
