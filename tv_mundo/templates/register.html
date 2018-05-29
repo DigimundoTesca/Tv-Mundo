@@ -17,7 +17,10 @@
           <fieldset>
             <form action="" method="post">
               {% csrf_token %}
-                {{ form.as_p }}
+                {{ form.username }}
+                {{ form.email }}
+                {{ form.password1 }}
+                {{ form.password2 }}
               <input type="submit" id="reg" value="Registrarse">
               <footer class="clearfix">
               </footer>
