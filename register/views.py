@@ -32,12 +32,8 @@ def register(request):
     return render(request, template, context)
 
 def logout_view(request):
-    logout(request)
-    template = 'logout.html'
-    context = {
-        'title': "Tv Mundo - Sesion Terminada",
-    }
-    return render(request, template, context)
+    logout(request)    
+    return redirect('/login/')
 
 def bienvenido(request):
     template = 'welcome.html'
