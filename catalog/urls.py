@@ -11,5 +11,5 @@ urlpatterns = [
     url(r'^block/(?P<name>[\w-]+)/$', views.block, name='block'),
     url(r'^(?P<name>[\w-]+)/videos/(?P<pk>[0-9]+)/$', views.videos, name='videos'),
     url(r'^(?P<name>[\w-]+)/images/$', views.images, name='images'),
-    url(r'^(?P<name>[\w-]+)/docs/$', views.docs, name='docs'),    
+    url(r'^(?P<name>[\w-]+)/docs/$', views.docs, name='docs'),
 ]

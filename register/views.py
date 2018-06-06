@@ -13,6 +13,13 @@ def login_view(request):
     }
     return render(request, template, context)
 
+def payment(request):
+    template = 'payment.html'
+    context = {
+        'title': "Tv Mundo",
+    }
+    return render(request, template, context)    
+
 def register(request):
     template = 'register.html'
     form = RegisterForm()
@@ -26,8 +33,8 @@ def register(request):
         user = RegisterForm(request.POST)
         if user.is_valid():
             user.save()
-            #suscriber = Subscriber.objects.create(user=user1, frade='TAR')
-            #suscriber.save()
+            suscriber = Subscriber.objects.create(user=user, grade='TAR')
+            suscriber.save()
             message = "Tu cuenta ha sido creada"
     return render(request, template, context)
 
