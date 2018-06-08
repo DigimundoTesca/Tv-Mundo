@@ -1,6 +1,7 @@
-.noImg{		
+@import "home.css";
+.noImg{
 	text-align: center;
-	margin-top: 20%;	
+	margin-top: 20%;
 }
 
 .content{
@@ -26,9 +27,3 @@
 .card-title{
   font-size: 13px;
 }
-
-
-
-
-
-

@@ -2,7 +2,7 @@
   transform: scale(1.05);
   transition: box-shadow 0.3s ease-in-out;
   transition: transform 0.3s ease-in-out;
-  box-shadow: 7px 7px 3px #888888;
+  box-shadow:0 8px 16px 0 rgba(0, 0, 0, 0.32), 0 12px 40px 0 rgba(0, 0, 0, 0.319);
 }
 
 @font-face {
@@ -13,42 +13,101 @@
 @font-face {
   font-family: acpBold;
   src: url(../fonts/ACaslonPro-Bold.otf);
-} 
+}
 
 body{
-  font-family: myFirstFont;  
+  font-family: myFirstFont;
+}
+#social {
+    display: inline-flex;
+    position: relative;
+
+  }
+  #social ul {
+    display: block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  #social li {
+    display: inline-flex;
+    font-size: 17pt;
+    margin: 0 5px;
+  }
+
+#social a:hover {
+  color: #154FCF !important;
+  cursor: pointer !important;
+}
+
+.fa-instagram{
+  color: #D13EB6 !important;
+}
+.fab:hover {
+  cursor: pointer !important;
+}
+.fa-facebook-square{
+  color: 	#3b5998 !important;
+}
+.fa-twitter {
+  color: #00aced !important;
+}
+.fa-youtube {
+  color: #c4302b;
+}
+.share {
+  width: 300px;
+  letter-spacing: .45em;
+  padding-top: .5em;
 }
 
 img{
-  height: 93%;    
+  height: 93%;
 }
 
 .img-cont{
-  height: 80vh;  
+  height: 500px;
   text-align: center;
-  overflow: hidden;  
+  overflow: hidden;
+  padding-bottom: 1.5em;
 }
-
+.img-bg {
+  position: relative;
+  display: block;
+  opacity: .8;
+}
 a{
   color: white;
-}
 
-a:hover .img-cont{  
+}
+a:hover {
+  text-decoration: none !important;
+}
+a:hover .img-cont{
   color: white;
 }
 
-.cont{  
+.cont{
   padding: 60px;
 }
 
 .title_block{
   padding: 10px;
+  color: #FFF;
+  text-decoration: none;
+  font-weight: 600;
 }
-
-
-
-
-
-
-
-
+@media screen and (min-width: 768px) {
+  #arbol {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 767px) {
+  .section {
+    padding: 0 !important;
+    margin-bottom: 2em;
+  }
+  #arbol {
+    width: 100%;
+  }
+}
