@@ -20,7 +20,39 @@
 </body>
 {% endblock content %}
 {% block javascript %}    
-  <script src="{%static 'javascript/effects.js'%}"></script>  
+  <script>
+    
+    var contenedor = $('#inicio');
+
+    contenedor.css({'background-image':'url(../static/images/metamundo/01.jpg)'});
+
+    var img1 = loadImage('/static/images/metamundo/01.jpg');
+    var img2 = loadImage('/static/images/metamundo/02.jpg');
+    var img3 = loadImage('/static/images/metamundo/03.jpg');
+    var img4 = loadImage('/static/images/metamundo/04.jpg');
+    var img5 = loadImage('/static/images/metamundo/05.jpg'); 
+
+    var imagenes = [img1,img2,img3,img4,img5];  
+    changeBG();    
+
+    function loadImage(url){
+
+      var newImg = new Image;
+      newImg.src = url;
+      return newImg;
+    }
+
+    function changeBG(){
+      var direccion = imagenes[Math.floor(Math.random() * imagenes.length)].src;
+      console.log(direccion);
+      contenedor.css({'background-image': direccion});
+      contenedor.fadeIn();
+      console.log("iteracion");
+      setTimeout(changeBG,2000);
+    };
+
+
+  </script>  
   <script src="https://www.paypalobjects.com/api/checkout.js"></script>
   <script>
     paypal.Button.render({
@@ -28,6 +60,11 @@
       client: {
             sandbox:    'AaD_guMFdUW7qPoBoUxwS_LXnF03eXW290hbUwRfnjmV1Hbaeo3pLP8LS9n4G8xGAniomoj7_4wXFExD',
             production: 'xxxxxxxxx'
+      },
+
+      funding: {
+          allowed: [ paypal.FUNDING.CARD],
+          disallowed: [ ]
       },
 
       commit: true, // Show a 'Pay Now' button
@@ -50,23 +87,11 @@
       },
 
       onAuthorize: function(data, actions) {
-        return actions.payment.execute().then(function(payment) {
-            // The payment is complete!
-            // You can now show a confirmation message to the customer
+        return actions.payment.execute().then(function() {
+          window.alert('Payment Complete!');
         });
       },
-
-      onCancel: function(data, actions) {
-        /*
-         * Buyer cancelled the payment
-         */
-      },
-
-      onError: function(err) {
-        /*
-         * An error occurred during the transaction
-         */
-      }
+      
     }, '#paypal-button');
   </script>
 {% endblock javascript %}
