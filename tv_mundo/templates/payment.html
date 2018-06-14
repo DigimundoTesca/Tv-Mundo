@@ -1,0 +1,98 @@
+{% extends "base/nav.html" %}
+{% load static %}
+{% block nav %}
+{% endblock nav %}
+{% block link %}
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+{% endblock link %}
+{% block content %}
+<body id="sesion">
+  <div class="container-fluid" >
+    <div class="row justify-content-center" id="inicio">
+        <div class="align-self-center text-center" id="login-form">          
+          <h1>Pago</h1>          
+          <div id="paypal-button"></div>
+        </div>
+    </div>
+  </div>    
+</body>
+{% endblock content %}
+{% block javascript %}    
+  
+  <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+  <script>
+    paypal.Button.render({
+      env: 'sandbox', // Or 'sandbox',
+      client: {
+            sandbox:    'AaD_guMFdUW7qPoBoUxwS_LXnF03eXW290hbUwRfnjmV1Hbaeo3pLP8LS9n4G8xGAniomoj7_4wXFExD',
+            production: 'xxxxxxxxx'
+      },
+
+      funding: {
+          allowed: [ paypal.FUNDING.CARD ],
+          disallowed: [ ]
+      },
+
+      commit: true, // Show a 'Pay Now' button
+
+      style: {
+        color: 'gold',
+        size: 'small'
+      },
+
+      payment: function(data, actions) {
+        return actions.payment.create({
+          payment: {
+            transactions: [
+              {
+                amount: { total: '1.00', currency: 'USD' }
+              }
+            ]
+          }
+        });
+      },
+
+      onAuthorize: function(data, actions) {
+        return actions.payment.execute().then(function() {
+          window.alert('Payment Complete!');
+        });
+      },
+      
+    }, '#paypal-button');
+  </script>
+  <script>
+    
+    var contenedor = $('#inicio');
+
+    contenedor.css({'background-image':'url(../static/images/metamundo/01.jpg)'});
+
+    var img1 = loadImage('/static/images/metamundo/01.jpg');
+    var img2 = loadImage('/static/images/metamundo/02.jpg');
+    var img3 = loadImage('/static/images/metamundo/03.jpg');
+    var img4 = loadImage('/static/images/metamundo/04.jpg');
+    var img5 = loadImage('/static/images/metamundo/05.jpg'); 
+
+    var imagenes = [img1,img2,img3,img4,img5];  
+    changeBG();    
+
+    function loadImage(url){
+
+      var newImg = new Image;
+      newImg.src = url;
+      return newImg;
+    }
+
+    function changeBG(){
+      var direccion = imagenes[Math.floor(Math.random() * imagenes.length)].src;
+      console.log(direccion);
+      contenedor.css({'background-image': direccion});
+      contenedor.fadeIn();
+      console.log("iteracion");
+      setTimeout(changeBG,2000);
+    };
+
+
+  </script>  
+{% endblock javascript %}
