@@ -522,6 +522,10 @@ input[type="submit"] { cursor: pointer; }
     left: -1.65%;
     top: -28px;
   }
+  #login-form {
+    width: 80%;
+    margin-top: 7em;
+  }
   .card-description, #tarot-cards h1 {
     left: -12%;
     width: 265px;
@@ -765,43 +769,40 @@ padding: 10px 15px !important;
   box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   font-weight: 600;
 }
-.consulta {
+
+#dock-container {
   position: fixed;
-  top: 35%;
+  top: 45%;
 }
-.consulta #icon {
-  z-index: 1001;
-  overflow: hidden;
-  width:60px;
-    height:60px;
-    border-radius:100%;
-    background:#F44336;
-    left:-100px;
-    position:absolute;
-    margin-right:16px;
-    margin-bottom:16px;
-    border:none;
-    outline:none;
-    color:#FFF;
-    font-size:36px;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-    transition:.3s;
-    cursor: pointer;
+#dock ul {
+  list-style: none;
+  padding:0;
+  margin: .5em;
 }
-.consulta > div {
-  overflow: hidden;
-  position: relative;
-  top: -5.25em;
-  left: -100px;
-  z-index: -1;
+
+#dock li img {
+  width: 68px;
+  height: 68px;
+  -webkit-box-reflect: below 2px
+		    -webkit-gradient(linear, left top, left bottom, from(transparent),
+		    color-stop(0.7, transparent), to(rgba(255,255,255,.5)));
+  -webkit-transition: all 0.3s;
+  -webkit-transform-origin: 50% 100%;
 }
-.consulta div > div {
-  position: relative;
-  left: 0;
-  bottom: -5em;
+
+#dock li:hover img {
+  -webkit-transform: scale(2.15);
+  margin: 0 2em;
 }
-#oculto a {
-  display: inherit;
-  padding: .3em;
-  font-size: 1.2em;
+
+#dock li:hover + li img,
+#dock li.prev img {
+  -webkit-transform: scale(1.4);
+  margin: 0 1.5em;
+}
+@media screen and (min-width: 2000px) {
+  #dock li img {
+    width: 120px;
+    height: 120px;
+  }
 }

@@ -1,3 +1,4 @@
+@import "home.css";
 .img-sld{
   margin: auto;
 }
@@ -7,10 +8,10 @@ h3{
   text-align: center;
 }
 
-img{ 
-  
+img{
+
 }
- 
+
 .line{
 	margin-top: 30px;
 }

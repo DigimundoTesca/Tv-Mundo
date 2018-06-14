@@ -5,10 +5,10 @@
 @font-face {
     font-family: acpBold;
     src: url(../fonts/ACaslonPro-Bold.otf);
-} 
+}
 
-.title-a{    
-    color:blue !important;    
+.title-a{
+    color:blue !important;
 }
 
 .icons{
@@ -34,8 +34,8 @@ a:hover {
     margin-top: 0px !important;
     margin-bottom: 0px !important;
     background-color:rgb(190,2,17)!important;
-    padding-left: 60px;
-    padding-right: 60px;
+    padding-left: 30px;
+    padding-right: 30px;
     font-size: 20px;
 }
 
@@ -43,14 +43,14 @@ a:hover {
     padding-bottom: 0px !important;
     padding-top: 0px !important;
     margin-top: 0px !important;
-    margin-bottom: 0px !important;    
+    margin-bottom: 0px !important;
     padding-left: 60px;
     padding-right: 60px;
 }
 
 p{
-    font-family: acpBold;    
-    margin-bottom: 0px;        
+    font-family: acpBold;
+    margin-bottom: 0px;
 }
 
 a{

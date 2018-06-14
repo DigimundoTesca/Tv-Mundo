@@ -4,13 +4,11 @@
 <head>
   <!-- Title and Metas -->
 	<title> {{ title }} </title>
-	
-  <meta charset="utf-8">	
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <!-- Font Styles and Material Icons -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Fjalla+One|Open+Sans+Condensed:300|Open+Sans:300,400" rel="stylesheet">  
-	
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Fjalla+One|Open+Sans+Condensed:300|Open+Sans:300,400" rel="stylesheet">
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
 	<link rel="stylesheet" href="{% static 'css/base.css' %}">
@@ -26,9 +24,9 @@
 	<main>
 		{% block content %}
 		{% endblock content %}
-	</main>				
-	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-	<script src="{% static 'javascript/jquery-3.3.1.js'%}"></script>		
+	</main>
+	<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+	<script src="{% static 'javascript/jquery-3.3.1.js'%}"></script>
 	<script src="{% static 'javascript/popper.js'%}"></script>
 	<script src="{% static 'javascript/bootstrap.js'%}"></script>
 
