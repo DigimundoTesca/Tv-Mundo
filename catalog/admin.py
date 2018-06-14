@@ -5,7 +5,7 @@ from catalog.models import Videos, Category, SubCategory, Docs, Subscriber
 class AdminVideo(admin.ModelAdmin):
     list_display = ('id','name', 'category', 'subcategory','status','order_number','image')
     list_display_links = ('id',)
-    list_editable = ('name','status','order_number','image')
+    list_editable = ('name','status','order_number','image','subcategory')
     ordering = ['name']
 
 @admin.register(Docs)
@@ -20,8 +20,11 @@ class AdminSubscriber(admin.ModelAdmin):
 
 @admin.register(Category)
 class AdminCategory(admin.ModelAdmin):
-    pass
+    list_display = ['id','name']
+    list_editable = ['name']
+    
 
 @admin.register(SubCategory)
 class AdminSubCategory(admin.ModelAdmin):
-    pass
+    list_display = ('id', 'name',)
+    list_editable = ['name']

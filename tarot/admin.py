@@ -1,5 +1,5 @@
 from django.contrib import admin
-from tarot.models import Card, Question, Response, Week
+from tarot.models import Card, Question, Week
 
 @admin.register(Card)
 class AdminCard(admin.ModelAdmin):
@@ -15,8 +15,4 @@ class AdminQuestion(admin.ModelAdmin):
 class AdminWeek(admin.ModelAdmin):
     list_display = ('number_week', 'year',)
 
-
-@admin.register(Response)
-class AdminSubCategory(admin.ModelAdmin):
-    list_display = ('id', 'video',)
 
