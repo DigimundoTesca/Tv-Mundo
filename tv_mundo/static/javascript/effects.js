@@ -1,18 +1,26 @@
 /*background aleatorio*/
-do {
-  $(document).ready(function() {
+var contenedor = $('#inicio');
 
-  var contenedor = $('#inicio');
-  var imagenes = ['01.JPG', '02.JPG', '03.jpg', '04.JPG', '05.JPG', '06.JPG'];
-  var tiempo = 3500;
-  contenedor.css({'background-image':'url(../static/images/metamundo/03.jpg)'});
+contenedor.css({'background-image':'url(../static/images/metamundo/01.jpg)'});
 
-  function image(){
-  setTimeout(function() {
-  contenedor.fadeIn('slow', 0.9, function() {
-  $(this).css({'background-image': 'url(../static/images/metamundo/' + imagenes[Math.floor(Math.random() * imagenes.length)] + ')'});
-  image();}).fadeIn('slow', 0.9); },tiempo); }
+var img1 = loadImage('/static/images/metamundo/01.jpg');
+var img2 = loadImage('/static/images/metamundo/02.jpg');
+var img3 = loadImage('/static/images/metamundo/03.jpg');
+var img4 = loadImage('/static/images/metamundo/04.jpg');
+var img5 = loadImage('/static/images/metamundo/05.jpg'); 
 
-  image();
-  });
-} while (false);
+var imagenes = [img1,img2,img3,img4,img5];  
+changeBG();    
+
+function loadImage(url){
+  var newImg = new Image;
+  newImg.src = url;
+  return newImg;
+}
+
+function changeBG(){
+  var direccion = imagenes[Math.floor(Math.random() * imagenes.length)].src;
+  $('#inicio').css({'background-image':'url('+direccion+')'});
+  $('#inicio').fadeIn();
+  setTimeout(changeBG,4000);
+};
