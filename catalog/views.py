@@ -55,6 +55,9 @@ def catalog(request):
 def videos(request, name, pk=0):
     template = 'videos.html'
     videos = Videos.objects.filter(category__name=name).filter(status=True).order_by('order_number')
+    if(request.user.subscriber.grade == 'TAR'):
+        videos = videos.filter(subcategory__name='2da Edicion')
+
     category = Category.objects.all()
     docs = Docs.objects.filter(category__name=name)
     title = name
