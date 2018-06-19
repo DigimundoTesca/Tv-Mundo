@@ -8,7 +8,8 @@ app_name = 'register'
 urlpatterns = [    
     url(r'^login/$', auth_views.login, {'template_name': 'login.html'}, name='login'),
     url(r'^logout/$', views.logout_view ,  name='logout'),
-    url(r'^register/$', views.register, name='register'),    
+    url(r'^register/$', views.register, name='register'),
+    url(r'^payment/$', views.payment, name='payment'),
     url(r'^bienvenido/?$', views.bienvenido, name='bienvenido'),
 ]
 
