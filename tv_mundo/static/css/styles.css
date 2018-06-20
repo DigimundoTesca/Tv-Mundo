@@ -951,3 +951,6 @@ span#popup-cerrar {
   background: #27AE60;
   color: white;
 }
+#first {
+  opacity: .65;
+}

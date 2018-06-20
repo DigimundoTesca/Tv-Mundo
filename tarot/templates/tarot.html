@@ -139,7 +139,7 @@
 </div>
 <div class="modal-wrapper" id="popup">
    <div class="popup-contenedor">
-     {% include 'base/modalPago.html' %}
+     {% include 'payment.html' %}
       <span id="popup-cerrar">X</span>
    </div>
 </div>
@@ -162,6 +162,7 @@
 </html>
 
 <script type="text/javascript">
+
 function addPrevClass (e) {
   var target = e.target;
     if(target.getAttribute('src')) { // check if it is img
