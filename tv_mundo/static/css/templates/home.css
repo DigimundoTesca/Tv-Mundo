@@ -1,3 +1,8 @@
+body {
+  margin: 2% 3.5%;
+  margin-bottom: 0;
+}
+
 .section:hover .img-cont{
   transform: scale(1.05);
   transition: box-shadow 0.3s ease-in-out;
@@ -59,6 +64,7 @@ body{
   width: 300px;
   letter-spacing: .45em;
   padding-top: .5em;
+  text-align: right;
 }
 
 img{
