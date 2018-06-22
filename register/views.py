@@ -33,8 +33,8 @@ def register(request):
         user = RegisterForm(request.POST)
         if user.is_valid():
             user.save()
-            suscriber = Subscriber.objects.create(user=user, grade='TAR')
-            suscriber.save()
+            #suscriber = Subscriber.objects.create(user=user, grade='TAR')
+            #suscriber.save()
             message = "Tu cuenta ha sido creada"
     return render(request, template, context)
 
