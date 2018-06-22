@@ -21,16 +21,61 @@
     </fieldset>
     <fieldset>
         <h2 class="fs-title">Pago</h2>
-        <h3 class="fs-subtitle">Elije tu forma de pago</h3>
-        <div id="paypal-button"></div>
+        <!--<h3 class="fs-subtitle">Elije tu forma de pago</h3>-->
+        <div class="payment">
+          <div class="form-group" id="card-number-field">
+              <input type="text" class="form-control" placeholder="Numero de Tarjeta" id="cardNumber">
+          </div>
+          <div class="row">
+            <div class="form-group col-8" id="expiration-date">
+                <select>
+                    <option value="01">MM</option>
+                    <option value="02">January</option>
+                    <option value="03">February </option>
+                    <option value="04">March</option>
+                    <option value="05">April</option>
+                    <option value="06">May</option>
+                    <option value="07">June</option>
+                    <option value="08">July</option>
+                    <option value="09">August</option>
+                    <option value="10">September</option>
+                    <option value="11">October</option>
+                    <option value="12">November</option>
+                    <option value="13">December</option>
+                </select>
+                <select>
+                    <option value="AAAA">AAAA</option>
+                    <option value="18"> 2018</option>
+                    <option value="19"> 2019</option>
+                    <option value="20"> 2020</option>
+                    <option value="21"> 2021</option>
+                </select>
+            </div>
+            <div class="form-group CVV col-4">
+                <input type="text" class="form-control" placeholder="CVV" id="cvv">
+            </div>
+          </div>
+
+            <div class="form-group owner">
+                <input type="text" class="form-control" placeholder="Nombre en la tarjeta" id="owner">
+            </div>
+            <div class="form-group" id="credit_cards">
+                <img src="assets/images/visa.jpg" id="visa">
+                <img src="assets/images/mastercard.jpg" id="mastercard">
+                <img src="assets/images/amex.jpg" id="amex">
+            </div>
+
+    </div>
+        <!--<div id="paypal-button"></div>-->
 
         <input type="button" name="previous" class="previous action-button" value="Anterior" />
+        <input id="pagoP" type="button" class="next action-button" disabled name=""  value="Pago">
         <input type="button" name="next" class="next action-button" value="Continuar">
     </fieldset>
     <fieldset>
-        <h3 class="fs-title">Da click en finalizar para concluir tu consulta</h3>
-        <h3 class="fs-subtitle">Alguna frase estaria bien aquí</h3>
-        <input type="submit" id="" class=" action-button" name="enviar"  value="Finalizar">
+        <h3 class="fs-title">Tu consulta se ha realizado correctamente</h3>
+        <h3 class="fs-subtitle">Gracias, da click en finalizar</h3>
+        <a href='#' class=" action-button">Finalizar</a>
     </fieldset>
 </form>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -116,6 +161,7 @@
   <script type="text/javascript">
     jQuery.noConflict();
     (function($) {
+
       var $form = $("#msform");
       var current_fs = 0;
       var animating = false;
