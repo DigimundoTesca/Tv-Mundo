@@ -5,57 +5,98 @@
 {% endblock link %}
 
 {% block content %}
-<div class="container cont">  
-  <div class="row">
-    <div class="col-12 col-md-6">      
-      <div class="cCategory">        
+<div class="container-fluid" id="container-block">
+  <div class="row" id="block">
+    <div class="col-lg-5 col-md-12" id="introduction">
+      <div class="cCategory">
         {% if selCat.title == "Introduccion" %}
-        <img class="image" src="{% static 'images/intro_pic2.jpg' %}" alt="" width="100%">          
-        {% elif selCat.title == "Tarot"%}
-        <img class="image" src="{% static 'images/tarot_pic2.jpg' %}" alt="">
-        {% elif selCat.title == "Metagenealogia"%}
-        <img class="image" src="{% static 'images/meta_pic.jpg' %}" alt="">
-        {% elif selCat.title == "Psicochamanismo"%}
-        <img class="image" src="{% static 'images/psico_pic2.jpg' %}" alt="">
-        {% endif %} 
+        <img id="intro_img" class="image img-fluid img-thumbnail" src="{% static 'images/psico.jpg' %}" alt="" width="100%">
         <div class="message">
           <div class="text">{{selCat.title}}</div>
         </div>
+        {% elif selCat.title == "Tarot"%}
+        <img class="image img-fluid img-thumbnail" src="{% static 'images/fondo1.jpeg' %}" alt="">
+        <div class="message">
+          <div class="text">Trabajando con el <br><span id="tarot">{{selCat.title}}</span></div>
+        </div>
+        {% elif selCat.title == "Metagenealogia"%}
+        <img id="arbol_img" class="image img-fluid img-thumbnail" src="{% static 'images/meta_pic.jpg' %}" alt="">
+        <div class="message">
+          <div class="text">Entendiendo la <span id="Metagenealogia">{{selCat.title}}</span></div>
+        </div>
+        {% elif selCat.title == "Psicochamanismo"%}
+        <img class="image img-fluid img-thumbnail" src="{% static 'images/psico_pic2.jpg' %}" alt="">
+        <div class="message">
+          <div class="text">Adentrandose en el <span id="Psico">{{selCat.title}}</span></div>
+        </div>
+        {% endif %}
+
       </div>
     </div>
-    <div class="col-12 col-md-6">
+    <div class="col-lg-7 col-md-12">
+      <p class="text-success h2 text-center">Multimedia</p>
       <div class="row">
-        <div class="col-12">
-          <a href="{% url 'catalog:videos' selCat.title 0 %}" >
+        <div class="col-lg-6 col-md-6 widgets media">
+
+
+
             <div class="cVideos">
-              <img class="img_a" src="{% static 'images/vid_bg.jpg' %}" alt="No img">
-              <div class="overlay_a">
-                <div class="text">Videos</div>
+              <div class="" >
+                <figure class="snip1033">
+            <img class="img_a img-fluid img" src="{% static 'images/video.jpeg' %}" alt="No img">
+            <figcaption>
+              <div class="left">
+                <h3>¡Vamos a</h3>
+              </div>
+              <div class="right">
+                <h3 class="white">Clases!</h3>
+              </div>
+            </figcaption>
+            <div class="center"><i class="ion-ios-loop-strong"></i></div>
+            <a href="{% url 'catalog:videos' selCat.title 0 %}" >
+            </figure>
+                <div class="overlay_a">
+                  <div class="text">Vídeos</div>
+                </div>
+                <div class="message">
+                  <div class="texto">Clases</div>
+                </div>
+
               </div>
             </div>
           </a>
-        </div>        
-        <div class="col-12">
+        </div>
+        <div class="col-lg-6 col-md-6 widgets media">
           <a href="{% url 'catalog:images' selCat.title %}">
             <div class="cImg">
-              <img class="img_b" src="{% static 'images/images_bg.jpg' %}" alt="No img">
-              <div class="overlay_b">
-                <div class="text">Imagenes</div>
+              <div class="div-img" >
+                <img class="img_b img-fluid img" src="{% static 'images/images.jpeg' %}" alt="No img">
+                <div class="overlay_b">
+                  <div class="text">Imágenes</div>
+                </div>
+                <div class="message">
+                  <div class="texto">Material</div>
+                </div>
               </div>
             </div>
           </a>
         </div>
-        <div class="col-12">
+        <div class="col-lg-12 col-md-12 widgets docs">
           <a href="{% url 'catalog:docs' selCat.title %}">
             <div class="cDoc">
-              <img class="img_c" src="{% static 'images/doc_bg.jpg' %}" alt="No img">
-              <div class="overlay_c">
-                <div class="text">Documentos</div>
+              <div class="div-img" >
+                <img class="img_c img-fluid img" src="{% static 'images/doc_bg.jpg' %}" alt="No img">
+                <div class="overlay_c">
+                  <div class="text">Documentos</div>
+                </div>
+                <div class="message">
+                  <div class="texto">Lecturas</div>
+                </div>
               </div>
             </div>
           </a>
         </div>
-      </div>    
+      </div>
     </div>
   </div>
 </div>
@@ -63,7 +104,7 @@
 
 {% block javascript %}
 <script>
-  
+
 
 </script>
 {% endblock javascript %}

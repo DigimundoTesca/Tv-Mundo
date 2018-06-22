@@ -1,3 +1,4 @@
+
 {% load static %}
 <!DOCTYPE html>
 <html>
@@ -64,18 +65,16 @@
 </div>
 </header>
 <div id="tarotContainer">
-  <div class="container tarot-description mt-4">
-    <div class="consulta">
-      <button id="icon">
-        <span>+</span>
-      </button>
-      <div>
-        <div id="oculto">
-          <a href="#">Consultas</a>
-          <a href="#">Tarot</a>
-        </div>
-      </div>
-    </div>
+  <div class="container-fluid tarot-description mt-4">
+    <div id="dock-container">
+  <div id="dock">
+  <ul>
+    <!--<li title="Consultar"><a href="#"><img class="rounded-circle" src="{%static '/images/fondo1.jpeg' %}"/></a><!<span class="h4 text-center">Consultar</span></li>-->
+    <li title="Consultas"><a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/consultas/"><img class="rounded-circle" src="{%static '/images/fondo2.jpg' %}"/></a><!--<span class="h4 text-center">Consultas</span>--></li>
+  </ul>
+  <div class="base"></div>
+  </div>
+</div>
     <h1 class="text-center">Tu tarot virtual</h1>
     <p class="text-center description">Aquí tienes un tarot digital para leerte o leerle el tarot a quien quiras y cuando quieras</p>
     <p class="text-uppercase description-black text-center">¡disfrútalo!</p>
@@ -132,12 +131,19 @@
         <div id="time" class="text-center"></div>
         <div id="resultado" class="d-none"></div>
         <p class="mt-3 text-center">También puedes pedir una consulta urgente que Cristóbal responderá personalmente</p>
-        <button class="btn btn-danger" id="boton2">Consulta urgente</button>
+        <a href="#popup" class="btn btn-danger popup-link" id="boton2">Consulta urgente</a>
       </div>
       {% endif %}
     </div>
   </div>
 </div>
+<div class="modal-wrapper" id="popup">
+   <div class="popup-contenedor">
+     {% include 'payment.html' %}
+      <span id="popup-cerrar">X</span>
+   </div>
+</div>
+
 <footer id="tarotFooter">
   <div class="container">
     <div class="text-center">
@@ -145,7 +151,6 @@
     </div>
   </div>
 </footer>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <!--font awesome -->
 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
@@ -157,12 +162,24 @@
 </html>
 
 <script type="text/javascript">
-$('icon').addEvent('mouseover', function() {
-  $('oculto').setStyles({
-    'top':'0'
-  })
-})
 
+function addPrevClass (e) {
+  var target = e.target;
+    if(target.getAttribute('src')) { // check if it is img
+      var li = target.parentNode.parentNode;
+      var prevLi = li.previousElementSibling;
+      if(prevLi) {
+        prevLi.className = 'prev';
+      }
+
+      target.addEventListener('mouseout', function() {
+        prevLi.removeAttribute('class');
+      }, false);
+  }
+}
+if (window.addEventListener) {
+  document.getElementById("dock").addEventListener('mouseover', addPrevClass, false);
+}
 if (document.getElementById("sendQuestion")) {
   $('boton').addEvent('click', function() {
     $('form-consulta').setStyles({
@@ -353,9 +370,13 @@ if (document.getElementById("sendQuestion")) {
           dia_mes = dia_mes.split(" ");
           fecha = parseInt(dia_mes[2]);
 
-          if (dia == 1) {
-            fecha = fecha +7
-          }else {
+          if (dia == 0 && hora > 12 ) {
+            fecha = fecha + 1
+          }
+          else if (dia == 1 && hora < 12) {
+            fecha = fecha
+          }
+          else {
             fecha = fecha + (8 -dia);
           }
           var month = ["January","February","March","April","May","June","July","August","September","October","November","December"];

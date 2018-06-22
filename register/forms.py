@@ -29,3 +29,7 @@ class RegisterForm(UserCreationForm):
 			'password1':'Contraseña',
 			'password2': 'Confirmar contraseña',
 		}
+		widgets = {
+			'username': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Nombre de Usuario'}),
+			'email': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Correo'}), 
+		}

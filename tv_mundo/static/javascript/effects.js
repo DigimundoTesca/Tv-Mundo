@@ -9,9 +9,9 @@ do {
 
   function image(){
   setTimeout(function() {
-  contenedor.fadeIn('slow', 0.5, function() {
+  contenedor.fadeIn('slow', 0.9, function() {
   $(this).css({'background-image': 'url(../static/images/metamundo/' + imagenes[Math.floor(Math.random() * imagenes.length)] + ')'});
-  image();}).fadeIn('slow', 0.5); },tiempo); }
+  image();}).fadeIn('slow', 0.9); },tiempo); }
 
   image();
   });
