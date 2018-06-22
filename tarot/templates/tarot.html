@@ -1,3 +1,4 @@
+
 {% load static %}
 <!DOCTYPE html>
 <html>
@@ -130,12 +131,19 @@
         <div id="time" class="text-center"></div>
         <div id="resultado" class="d-none"></div>
         <p class="mt-3 text-center">También puedes pedir una consulta urgente que Cristóbal responderá personalmente</p>
-        <button class="btn btn-danger" id="boton2">Consulta urgente</button>
+        <a  href="#popup" class="btn btn-danger popup-link" id="boton2">Consulta urgente</a>
       </div>
       {% endif %}
     </div>
   </div>
 </div>
+<div class="modal-wrapper" id="popup">
+   <div class="popup-contenedor">
+     {% include 'payment.html' %}
+      <span id="popup-cerrar">X</span>
+   </div>
+</div>
+
 <footer id="tarotFooter">
   <div class="container">
     <div class="text-center">
@@ -143,7 +151,6 @@
     </div>
   </div>
 </footer>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <!--font awesome -->
 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
@@ -155,6 +162,15 @@
 </html>
 
 <script type="text/javascript">
+
+  jQuery.noConflict();
+  (function($) {
+    $("#popup-cerrar").click(function(){
+      $("#popup").css({"visibility": hidden})
+    })
+
+  })(jQuery);
+
 function addPrevClass (e) {
   var target = e.target;
     if(target.getAttribute('src')) { // check if it is img
@@ -362,8 +378,8 @@ if (document.getElementById("sendQuestion")) {
           dia_mes = dia_mes.split(" ");
           fecha = parseInt(dia_mes[2]);
 
-          if (dia == 1 && hora > 12 ) {
-            fecha = fecha +7
+          if (dia == 0 && hora > 12 ) {
+            fecha = fecha + 1
           }
           else if (dia == 1 && hora < 12) {
             fecha = fecha

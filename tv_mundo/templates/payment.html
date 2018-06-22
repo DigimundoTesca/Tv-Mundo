@@ -1,26 +1,87 @@
-{% extends "base/nav.html" %}
-{% load static %}
-{% block nav %}
-{% endblock nav %}
-{% block link %}
-
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-
-{% endblock link %}
-{% block content %}
-<body id="sesion">
-  <div class="container-fluid" >
-    <div class="row justify-content-center" id="inicio">
-        <div class="align-self-center text-center" id="login-form">          
-          <h1>Pago</h1>          
-          <div id="paypal-button"></div>
+<!-- multistep form -->
+<form id="msform">
+  {% csrf_token %}
+    <!-- progressbar -->
+    <ul id="progressbar">
+        <li class="active">Pregunta</li>
+        <li>Pago</li>
+        <li>Finalizar</li>
+    </ul>
+    <!-- fieldsets -->
+    <fieldset>
+        <h2 class="">Consulta Urgente</h2>
+        <h3 class="fs-subtitle">Realiza tu pregunta, Cristóbal te responderá personalmente en un vídeo</h3>
+        <input id="nombre" type="text" class="form-control form-control-lg datos" name="nombre" placeholder="Escribe tu nombre"required>
+        <input id="correo" type="email" class="form-control form-control-lg datos" name="correo" placeholder="Escribe tu correo" required>
+        <div class="form-group">
+          <textarea id="mensaje" maxlength="200" class="form-control datos" name="nota" rows="4" placeholder="Escribe tu pregunta con un máximo 200 caracteres" required></textarea>
         </div>
+        <p id="errorMessage" class="h5 font-weight-bold text-danger"></p>
+        <input type="button" id="first" name="next" class="next action-button" disabled value="Siguiente" />
+    </fieldset>
+    <fieldset>
+        <h2 class="fs-title">Pago</h2>
+        <!--<h3 class="fs-subtitle">Elije tu forma de pago</h3>-->
+        <div class="payment">
+          <div class="form-group" id="card-number-field">
+              <input type="text" class="form-control" placeholder="Numero de Tarjeta" id="cardNumber">
+          </div>
+          <div class="row">
+            <div class="form-group col-8" id="expiration-date">
+                <select>
+                    <option value="01">MM</option>
+                    <option value="02">January</option>
+                    <option value="03">February </option>
+                    <option value="04">March</option>
+                    <option value="05">April</option>
+                    <option value="06">May</option>
+                    <option value="07">June</option>
+                    <option value="08">July</option>
+                    <option value="09">August</option>
+                    <option value="10">September</option>
+                    <option value="11">October</option>
+                    <option value="12">November</option>
+                    <option value="13">December</option>
+                </select>
+                <select>
+                    <option value="AAAA">AAAA</option>
+                    <option value="18"> 2018</option>
+                    <option value="19"> 2019</option>
+                    <option value="20"> 2020</option>
+                    <option value="21"> 2021</option>
+                </select>
+            </div>
+            <div class="form-group CVV col-4">
+                <input type="text" class="form-control" placeholder="CVV" id="cvv">
+            </div>
+          </div>
+
+            <div class="form-group owner">
+                <input type="text" class="form-control" placeholder="Nombre en la tarjeta" id="owner">
+            </div>
+            <div class="form-group" id="credit_cards">
+                <img src="assets/images/visa.jpg" id="visa">
+                <img src="assets/images/mastercard.jpg" id="mastercard">
+                <img src="assets/images/amex.jpg" id="amex">
+            </div>
+
     </div>
-  </div>    
-</body>
-{% endblock content %}
-{% block javascript %}    
-  
+        <!--<div id="paypal-button"></div>-->
+
+        <input type="button" name="previous" class="previous action-button" value="Anterior" />
+        <input id="pagoP" type="button" class="next action-button" disabled name=""  value="Pago">
+        <input type="button" name="next" class="next action-button" value="Continuar">
+    </fieldset>
+    <fieldset>
+        <h3 class="fs-title">Tu consulta se ha realizado correctamente</h3>
+        <h3 class="fs-subtitle">Gracias, da click en finalizar</h3>
+        <a href='#' class=" action-button">Finalizar</a>
+    </fieldset>
+</form>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+{% block javascript %}
   <script src="https://www.paypalobjects.com/api/checkout.js"></script>
   <script>
     paypal.Button.render({
@@ -59,11 +120,13 @@
           window.alert('Payment Complete!');
         });
       },
-      
+
     }, '#paypal-button');
+
+
   </script>
-  <script>
-    
+  <!--<script>
+
     var contenedor = $('#inicio');
 
     contenedor.css({'background-image':'url(../static/images/metamundo/01.jpg)'});
@@ -72,10 +135,10 @@
     var img2 = loadImage('/static/images/metamundo/02.jpg');
     var img3 = loadImage('/static/images/metamundo/03.jpg');
     var img4 = loadImage('/static/images/metamundo/04.jpg');
-    var img5 = loadImage('/static/images/metamundo/05.jpg'); 
+    var img5 = loadImage('/static/images/metamundo/05.jpg');
 
-    var imagenes = [img1,img2,img3,img4,img5];  
-    changeBG();    
+    var imagenes = [img1,img2,img3,img4,img5];
+    changeBG();
 
     function loadImage(url){
 
@@ -94,5 +157,100 @@
     };
 
 
-  </script>  
+  </script> -->
+  <script type="text/javascript">
+    jQuery.noConflict();
+    (function($) {
+
+      var $form = $("#msform");
+      var current_fs = 0;
+      var animating = false;
+      function gotoStep(step) {
+          if (animating || step === current_fs) {
+              return;
+          }
+
+          animating = true;
+
+          var $step_fs = $("fieldset", $form).eq(step);
+          var $current_fs = $("fieldset", $form).eq(current_fs);
+
+          $("#progressbar li:gt(" + step + ")", $form).removeClass("active");
+
+          $("#progressbar li:lt(" + (step + 1) + ")", $form).addClass("active");
+
+
+          $step_fs.show();
+
+          $current_fs.animate({ opacity: 0 }, {
+              step: function (now, mx) {
+
+                  var scale = 1 - (1 - now) * 0.01;
+
+                  var left = (now * 50) + "%";
+
+                  var opacity = 1 - now;
+                  $current_fs.css({
+                      'transform': 'scale(' + scale + ')',
+                      'position': 'absolute'
+                  });
+                  $step_fs.css({ 'left': left, 'opacity': opacity });
+              },
+              duration: 800,
+              complete: function () {
+                  $current_fs.hide();
+                  current_fs = step;
+                  animating = false;
+              },
+              easing: 'easeInOutBack'
+          });
+      }
+      function checkCampos(obj) {
+          var camposRellenados = true;
+          obj.find(".datos").each(function() {
+          var $this = $(this);
+                  if( $this.val().length <= 0 ) {
+                      camposRellenados = false;
+                      return false;
+                  }
+          });
+          if(camposRellenados == false) {
+              return false;
+          }
+          else {
+              return true;
+          }
+      }
+      function valida() {
+        $("#msform .datos").keyup(function() {
+           var form = $(this).parents("#msform");
+           var check = checkCampos(form);
+           if(check) {
+             $("#first").css("opacity","1");
+             $("#first").prop("disabled", false);
+           }
+           else {
+             $("#first").css("opacity", ".65");
+             $("#first").prop("disabled", true);
+             }
+        });
+      }
+      valida();
+      $(".next", $form).click(function() {
+        gotoStep(current_fs + 1);
+      });
+
+      $(".previous", $form).click(function() {
+          gotoStep(current_fs - 1);
+      });
+
+      $("#progressbar li", $form).click(function() {
+          var step = $("#progressbar li", $form).index($(this));
+      });
+
+      $(".submit", $form).click(function() {
+          return false;
+      });
+    })(jQuery);
+  </script>
 {% endblock javascript %}

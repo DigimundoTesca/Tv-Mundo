@@ -6,7 +6,7 @@
 
 {% block content %}
 <div class="container-fluid" id="container-block">
-  <div class="row">
+  <div class="row" id="block">
     <div class="col-lg-5 col-md-12" id="introduction">
       <div class="cCategory">
         {% if selCat.name == "Introduccion" %}
@@ -17,21 +17,31 @@
         <img id="arbol_img" class="image img-fluid img-thumbnail" src="{% static 'images/meta_pic.jpg' %}" alt="">
         {% elif selCat.name == "Psicochamanismo"%}
         <img class="image img-fluid img-thumbnail" src="{% static 'images/psico_pic2.jpg' %}" alt="">
-        {% endif %}
-        <p class="text-center align-self-center">No mames</p>
         <div class="message">
           <div class="text">{{selCat.name}}</div>
         </div>
+        {% endif %}
       </div>
     </div>
     <div class="col-lg-7 col-md-12">
       <p class="text-success h2 text-center">Multimedia</p>
       <div class="row">
         <div class="col-lg-6 col-md-6 widgets media">
-          <a href="{% url 'catalog:videos' selCat.name 0 %}" >
             <div class="cVideos">
-              <div class="div-img" >
-                <img class="img_a img-fluid img" src="{% static 'images/video.jpeg' %}" alt="No img">
+              <div class="" >
+                <figure class="snip1033">
+            <img class="img_a img-fluid img" src="{% static 'images/video.jpeg' %}" alt="No img">
+            <figcaption>
+              <div class="left">
+                <h3>¡Vamos a</h3>
+              </div>
+              <div class="right">
+                <h3 class="white">Clases!</h3>
+              </div>
+            </figcaption>
+            <div class="center"><i class="ion-ios-loop-strong"></i></div>
+            <a href="{% url 'catalog:videos' selCat.name 0 %}" >
+            </figure>
                 <div class="overlay_a">
                   <div class="text">Vídeos</div>
                 </div>
