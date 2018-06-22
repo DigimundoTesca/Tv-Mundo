@@ -9,21 +9,78 @@
 <body id="sesion">
   <div class="container-fluid" >
     <div class="row justify-content-center" id="inicio">
-        <div class="align-self-center text-center" id="login-form">          
-          <h1>Pago</h1>          
-          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-            <input type="hidden" name="cmd" value="_s-xclick">
-            <input type="hidden" name="hosted_button_id" value="5ZN3C2WRJ8M8J">
-            <input type="image" src="https://www.paypalobjects.com/es_XC/MX/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal, la forma más segura y rápida de pagar en línea.">
-            <img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
-          </form>
+      
+      <div class="align-self-center text-center" id="login-form">          
+        <h1>Pago</h1>          
+        <div id="paypal-button-container"> 
+        
         </div>
+      </div>
     </div>
   </div>    
 </body>
 {% endblock content %}
 {% block javascript %}    
   
+
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
+
+
+
+<script>
+
+    // Render the PayPal button
+
+    paypal.Button.render({
+
+        // Set your environment
+
+        env: 'sandbox', // sandbox | production
+
+        // Specify the style of the button
+
+        style: {
+            label: 'buynow',
+            fundingicons: true, // optional
+            branding: true, // optional
+            size:  'small', // small | medium | large | responsive
+            shape: 'rect',   // pill | rect
+            color: 'gold'   // gold | blue | silve | black
+        },
+
+        // PayPal Client IDs - replace with your own
+        // Create a PayPal app: https://developer.paypal.com/developer/applications/create
+
+        client: {
+            sandbox:    'AWlLSrQ0eqY157mxfkkhD-1BS5QkW04wNgOg46w2kCqt1tqbILMKMF3toU45SQbG5e3xnljKeNifex9l',
+            production: '<insert production client id>'
+        },
+
+        // Wait for the PayPal button to be clicked
+
+        payment: function(data, actions) {
+            return actions.payment.create({
+                transactions: [
+                    {
+                        amount: { total: '1.00', currency: 'MXN' }
+                    }
+                ]
+            });
+        },
+
+        // Wait for the payment to be authorized by the customer
+
+        onAuthorize: function(data, actions) {
+            return actions.payment.execute().then(function() {
+                window.alert('Payment Complete!');
+            });
+        }
+
+    }, '#paypal-button-container');
+
+</script>
+    
+
   <script src="{%static 'javascript/effects.js'%}"></script>    
    
 {% endblock javascript %}
