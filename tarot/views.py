@@ -138,7 +138,7 @@ def sendmail(request, email_user, new_context):
 
 def sendCristobal(request, Questions):
     fromaddr = "cristobal.jodorowskyt@gmail.com"
-    toaddr = 'managerdigimundo@gmail.com'
+    toaddr = 'ceo@digimundo.com.mx'
     template = get_template('mailC.html')
     html_content = template.render(Questions)
     msg = MIMEMultipart()
