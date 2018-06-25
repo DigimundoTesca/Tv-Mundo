@@ -125,8 +125,9 @@
 
 
   </script>
-  <!--<script>
-
+  <script>
+    jQuery.noConflict();
+    (function($) {
     var contenedor = $('#inicio');
 
     contenedor.css({'background-image':'url(../static/images/metamundo/01.jpg)'});
@@ -156,10 +157,10 @@
       setTimeout(changeBG,2000);
     };
 
-
-  </script> -->
+    })(jQuery);
+  </script>
   <script type="text/javascript">
-    jQuery.noConflict();
+    jQuery.noConflict(); //Agregué esto para que no se muera el tarot ya que es jQuery y lo de tarot está con mootoolls no es compatible
     (function($) {
 
       var $form = $("#msform");
