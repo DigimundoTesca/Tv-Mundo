@@ -3,80 +3,135 @@
 {% block nav %}
 {% endblock nav %}
 {% block link %}
+
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/payment.css' %}">
+
 {% endblock link %}
 {% block content %}
 <body id="sesion">
   <div class="container-fluid" >
     <div class="row justify-content-center" id="inicio">
-      
-      <div class="align-self-center text-center" id="login-form">          
-        <h1>Pago</h1>          
-        <div id="paypal-button-container"> 
-        
-        </div>
-      </div>
+        <div class="align-self-center text-center" id="login-form">          
+          <h1>Pago</h1>          
+          Pague con Paypal o Tarjeta
+          <div class="row">
+            <div class="col-5">
+              <div id="paypal-button"></div>
+            </div>
+            <div class="col-5">
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                Tarjeta
+              </button>
+            </div>
+          </div>
+        </div>  
     </div>
   </div>    
 </body>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Pago con Tarjeta Credito/Debito</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="#" class="credit-card-div">
+  <div class="panel panel-default" >
+    <div class="panel-heading">
+      <div class="row ">
+        <div class="col-md-12">
+          <input type="text" class="form-control" placeholder="Numero de Tarjeta" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 col-sm-3 col-xs-3">
+          <span class="help-block text-muted small-font" > Mes de Expiracion</span>
+          <input type="text" class="form-control" placeholder="MM" />
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-3">
+          <span class="help-block text-muted small-font" >  Año de Expiracion</span>
+          <input type="text" class="form-control" placeholder="YY" />
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-3">
+          <span class="help-block text-muted small-font" >  CCV</span>
+          <input type="text" class="form-control" placeholder="CCV" />
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-3">
+          <img src="assets/img/1.png" class="img-rounded" />
+        </div>
+      </div>
+      <div class="row ">
+        <div class="col-md-12 pad-adjust">
+          <input type="text" class="form-control" placeholder="Titular de la Tarjeta" />
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      <button type="button" class="btn btn-primary">Pagar ahora</button>
+  </div>
+</div>
+
+
+
+
 {% endblock content %}
 {% block javascript %}    
-  
-
-<script src="https://www.paypalobjects.com/api/checkout.js"></script>
-<script src="{%static 'javascript/effects.js'%}"></script>  
-<script>
-
-    // Render the PayPal button
-
+  <script src="{%static 'javascript/effects.js'%}"></script>  
+  <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+  <script>
     paypal.Button.render({
+      env: 'sandbox', // Or 'sandbox',
+      client: {
+            sandbox:    'AaD_guMFdUW7qPoBoUxwS_LXnF03eXW290hbUwRfnjmV1Hbaeo3pLP8LS9n4G8xGAniomoj7_4wXFExD',
+            production: 'xxxxxxxxx'
+      },
 
-        // Set your environment
+      commit: true, // Show a 'Pay Now' button
 
-        env: 'sandbox', // sandbox | production
+      style: {
+        color: 'gold',
+        size: 'small'
+      },
 
-        // Specify the style of the button
+      payment: function(data, actions) {
+        return actions.payment.create({
+          payment: {
+            transactions: [
+              {
+                amount: { total: '1.00', currency: 'USD' }
+              }
+            ]
+          }
+        });
+      },
 
-        style: {
-            label: 'buynow',
-            fundingicons: true, // optional
-            branding: true, // optional
-            size:  'small', // small | medium | large | responsive
-            shape: 'rect',   // pill | rect
-            color: 'gold'   // gold | blue | silve | black
-        },
+      onAuthorize: function(data, actions) {
+        return actions.payment.execute().then(function(payment) {
+            // The payment is complete!
+            // You can now show a confirmation message to the customer
+        });
+      },
 
-        // PayPal Client IDs - replace with your own
-        // Create a PayPal app: https://developer.paypal.com/developer/applications/create
+      onCancel: function(data, actions) {
+        /*
+         * Buyer cancelled the payment
+         */
+      },
 
-        client: {
-            sandbox:    'AWlLSrQ0eqY157mxfkkhD-1BS5QkW04wNgOg46w2kCqt1tqbILMKMF3toU45SQbG5e3xnljKeNifex9l',
-            production: '<insert production client id>'
-        },
+      onError: function(err) {
+        /*
+         * An error occurred during the transaction
+         */
+      }
+    }, '#paypal-button');
+  </script>
 
-        // Wait for the PayPal button to be clicked
-
-        payment: function(data, actions) {
-            return actions.payment.create({
-                transactions: [
-                    {
-                        amount: { total: '1.00', currency: 'MXN' }
-                    }
-                ]
-            });
-        },
-
-        // Wait for the payment to be authorized by the customer
-
-        onAuthorize: function(data, actions) {
-            return actions.payment.execute().then(function() {
-                window.alert('Payment Complete!');
-            });
-        }
-
-    }, '#paypal-button-container');
-
-</script>
-    
 {% endblock javascript %}
-
