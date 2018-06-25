@@ -65,6 +65,7 @@ padding: 0;
   clear: both;
   margin-right: 0 !important;
   background: #17692a !important;
+  padding: 5px 18px;
 }
 #time {
   color: #962a20;
@@ -318,7 +319,7 @@ img:after{
   font-size: 11pt;
   line-height: 20pt;
   font-weight: 600;
-  font-family: 'Adobe Caslon Pro';
+  font-family: "ACaslonPro-semibold";
   padding: 0;
 }
 .title-caps {
@@ -512,7 +513,7 @@ input[type="submit"] { cursor: pointer; }
 }
 
 
-@media screen and (min-width: 300px) and (max-width: 1023px){
+@media screen and (min-width: 300px) and (max-width: 767px){
   body#tarot-page {
     margin-top: 5%;
   }
@@ -593,23 +594,69 @@ input[type="submit"] { cursor: pointer; }
     left: -12%;
     width: 280px;
   }
+  .site-title {
+     font-size: 25px;
+     line-height: 40px;
+     margin: 0;
+     margin-left: 25px;
+     padding: 3px;
+     padding-bottom: 15px;
+     word-spacing: 10px;
+ }
+}
+@media screen and (min-width:768px) and (max-width:1023px) {
+  .site-title, #submenu {
+      font-size: 25pt;
+      margin-top: .5em;
+    }
+    .title-caps {
+    font-size: 47px;
+  }
+  .site-title a {
+    margin-left: 1.20em;
+  }
+}
+@media screen and (min-width: 768px) {
   .brand-logo {
     display: none;
   }
   .menu-boton {
     display: none;
   }
-}
+  .nav-content {
+    padding: 0;
+    margin: 0;
+    display: block;
+    height: auto;
+  }
+  #sub {
+    position: relative;
+  }
+  #submenu {
+    display: none;
+    margin-top: 5px;
+    position: absolute;
+    left: 0;
+    padding: 0;
+    top: 1em;
+    width: 188px;
+    font-size: 30px;
+    font-family: ACaslonPro-regular;
 
-@media screen and (min-width: 768px) {
-  .site-title {
-      font-size: 25px;
-      line-height: 40px;
-      margin: 0;
-      margin-left: 25px;
-      padding: 3px;
-      padding-bottom: 15px;
-      word-spacing: 10px;
+  }
+  #submenu li:first-child {
+    text-align: center;
+  }
+  #submenu li:last-child a {
+    width: 172px;
+  }
+  #submenu li {
+    background: #002983;
+    list-style: none;
+  }
+
+  #sub:hover #submenu{
+    display: block;
   }
 }
 @media screen and (min-width: 1200px) {
@@ -620,7 +667,10 @@ input[type="submit"] { cursor: pointer; }
     left: 4%;
   }
   .nav-containier a {
-    font-size: 28px;
+    font-size: 30px;
+    font-family: "ACaslonPro-regular" !important;
+      padding: 5px 8.5px;
+      padding-top: 6px;
   }
   .card-description, #tarot-cards h1 {
     left: -28%;
@@ -641,7 +691,15 @@ input[type="submit"] { cursor: pointer; }
  }
 }
 @media screen and (min-width: 2000px) {
-
+  #submenu {
+    width: 345px;
+  }
+.subelement {
+  width: 318px;
+}
+#social ul a {
+  font-size: 70px !important;
+}
   #Tarot {
     max-width: 2500px;
 
@@ -655,12 +713,13 @@ position: relative;
     display: inline-block;
     color: #FFF !important;
 padding: 5px;
-margin-left: .5em;
-margin-right: 1px;
-font-size: 38pt;
+margin-left: .25em;
+margin-right: 14px;
+font-size: 40pt;
 text-decoration: none !important;
 background: none !important;
-padding: 10px 15px !important;
+padding: 9px 15px !important;
+padding-left: 8px;
   }
   #tarot-cards {
     left: calc(10.9% + 30px);
@@ -770,36 +829,6 @@ padding: 10px 15px !important;
   font-weight: 600;
 }
 
-#dock-container {
-  position: fixed;
-  top: 45%;
-}
-#dock ul {
-  list-style: none;
-  padding:0;
-  margin: .5em;
-}
-
-#dock li img {
-  width: 68px;
-  height: 68px;
-  -webkit-box-reflect: below 2px
-		    -webkit-gradient(linear, left top, left bottom, from(transparent),
-		    color-stop(0.7, transparent), to(rgba(255,255,255,.5)));
-  -webkit-transition: all 0.3s;
-  -webkit-transform-origin: 50% 100%;
-}
-
-#dock li:hover img {
-  -webkit-transform: scale(2.15);
-  margin: 0 2em;
-}
-
-#dock li:hover + li img,
-#dock li.prev img {
-  -webkit-transform: scale(1.4);
-  margin: 0 1.5em;
-}
 @media screen and (min-width: 2000px) {
   #dock li img {
     width: 120px;
@@ -810,6 +839,7 @@ padding: 10px 15px !important;
    visibility: hidden;
    opacity: 0;
    margin-top: -300px;
+   transition: all 1s; 
 }
 #popup:target {
    visibility: visible;
@@ -829,9 +859,10 @@ padding: 10px 15px !important;
    margin:0 auto;
    width:50%;
 }
-span#popup-cerrar {
+#popup-cerrar {
    position: absolute;
    top:3px;
+   cursor: pointer;
    padding: .5em 1em;
    right:3px;
    background-color: #9f010f;
@@ -1266,4 +1297,8 @@ input option, select option {
     -webkit-transform: rotateY(360deg);
             transform: rotateY(360deg);
   }
+}
+
+.nav-containier a {
+  font-family: "ACaslonPro-regular" !important;
 }
