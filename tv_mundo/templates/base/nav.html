@@ -3,11 +3,11 @@
 {% block nav %}
 <!-- First NavBar -->
 <nav class="navbar navbar-light navbar-expand-md bg-faded justify-content-center" id="navBar1">
-    <p href="/" class="navbar-brand d-flex w-50 mr-auto title-a">METAMUNDO ONLINE</p>
+    <p href="/" class="navbar-brand d-flex w-50 mr-auto name-a">METAMUNDO ONLINE</p>
     <div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
         <ul class="navbar-nav w-100 justify-content-center">
             <li class="nav-item active">
-                <p class="title-b">De Cristobal Jodorowsky</p>
+                <p class="name-b">De Cristobal Jodorowsky</p>
             </li>
         </ul>
         <div class="share">
@@ -29,35 +29,35 @@
         <ul class="navbar-nav w-100 justify-content-center">
             {% if request.user.subscriber.grade == 'TAR'  %}
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'catalog:block' category.0.title %}">Introduccion</a>
+                <a class="nav-link" href="{% url 'catalog:block' category.0.name %}">Introduccion</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'catalog:block' category.1.title %}">Tarot</a>
+                <a class="nav-link" href="{% url 'catalog:block' category.1.name %}">Tarot</a>
               </li>
             {% endif %}
             {% if request.user.subscriber.grade == 'MET'  %}
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'catalog:block' category.0.title %}">Introduccion</a>
+                <a class="nav-link" href="{% url 'catalog:block' category.0.name %}">Introduccion</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'catalog:block' category.1.title %}">Tarot</a>
+                <a class="nav-link" href="{% url 'catalog:block' category.1.name %}">Tarot</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'catalog:block' category.2.title %}">Matagenealogia</a>
+                <a class="nav-link" href="{% url 'catalog:block' category.2.name %}">Matagenealogia</a>
               </li>
             {% endif %}
             {% if request.user.subscriber.grade == 'PSI'  %}
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'catalog:block' category.0.title %}">Introduccion</a>
+                <a class="nav-link" href="{% url 'catalog:block' category.0.name %}">Introduccion</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'catalog:block' category.1.title %}">Tarot</a>
+                <a class="nav-link" href="{% url 'catalog:block' category.1.name %}">Tarot</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'catalog:block' category.2.title %}">Matagenealogia</a>
+                <a class="nav-link" href="{% url 'catalog:block' category.2.name %}">Matagenealogia</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="{% url 'catalog:block' category.3.title %}">Psicomagia</a>
+                  <a class="nav-link" href="{% url 'catalog:block' category.3.name %}">Psicomagia</a>
               </li>
             {% endif %}
         </ul>

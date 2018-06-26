@@ -1,0 +1,23 @@
+{% extends "base/nav.html" %}
+{% load static %}
+{% block nav %}
+{% endblock nav %}
+{% block link %}
+	<link rel="stylesheet" href="{% static 'css/signup.css' %}">
+	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% endblock link %}
+{% block content %}
+<div id="inicio">
+	<div class="container">
+		<h2>Sign up</h2>
+	  	<form method="post">
+	    	{% csrf_token %}
+	    	{{ form.as_p }}
+	    	<button type="submit">Registrarse</button>
+	  	</form>	
+	</div>
+</div>
+{% endblock %}
+{% block javascript %}
+	<script src="{%static 'javascript/effects.js'%}"></script>  
+{% endblock javascript %}

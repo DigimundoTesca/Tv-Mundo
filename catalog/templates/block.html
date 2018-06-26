@@ -27,10 +27,9 @@
         {% elif selCat.title == "Psicochamanismo"%}
         <img class="image img-fluid" src="{% static 'images/psico_pic2.jpg' %}" alt="">
         <div class="message">
-          <div class="text">Adentrandose en el <span id="Psico">{{selCat.title}}</span></div>
+          <div class="text">{{selCat.name}}</div>
         </div>
         {% endif %}
-
       </div>
     </div>
     <div class="col-lg-7 col-md-12">
@@ -52,7 +51,7 @@
           </a>
         </div>
         <div class="col-lg-6 col-md-6 widgets media">
-          <a href="{% url 'catalog:images' selCat.title %}">
+          <a href="{% url 'catalog:images' selCat.name %}">
             <div class="cImg">
               <div class="div-img" >
                 <img class="img_b img-fluid img" src="{% static 'images/images.jpeg' %}" alt="No img">
@@ -67,7 +66,7 @@
           </a>
         </div>
         <div class="col-lg-12 col-md-12 widgets docs">
-          <a href="{% url 'catalog:docs' selCat.title %}">
+          <a href="{% url 'catalog:docs' selCat.name %}">
             <div class="cDoc">
               <div class="div-img" >
                 <img class="img_c img-fluid img" src="{% static 'images/doc_bg.jpg' %}" alt="No img">

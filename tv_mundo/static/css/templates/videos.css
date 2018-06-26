@@ -30,6 +30,7 @@ main {
 
 .img-sld{
 	width:100%;
+
 }
 
 .titles{
@@ -40,11 +41,14 @@ main {
 	text-align: center;
 }
 
+.vid_ele{
+	margin-bottom: 40px;
+}
+
 .vid-title{
-	padding: 8px;
 	background-color: #BE0211;
+	padding: 8px;
 	color: white;
-	margin-bottom: 5px;
 }
 
 .vid-active{

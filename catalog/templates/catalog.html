@@ -10,7 +10,7 @@
         <div class="col-xl-3 col-md-6 col-sm-6 main-card">
           <div id="{{cat.name}}">
             <div class="content-title">
-              <h2>{{cat.title}}</h2>
+              <h2>{{cat.name}}</h2>
             </div>
             <div class="vid-title">
               Videos
@@ -19,7 +19,7 @@
               <ul class="list-group">
                 {% for vid in videos %}
                   {% if vid.category == cat %}
-                    <li id="{% url "catalog:vid" vid.category.title vid.pk %}" class="list-group-item list-group-item-action vid-ele">
+                    <li id="{% url "catalog:vid" vid.category.name vid.pk %}" class="list-group-item list-group-item-action vid-ele">
                       {{vid.name}}
                     </li>
                   {% endif %}

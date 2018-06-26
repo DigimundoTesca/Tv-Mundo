@@ -13,6 +13,7 @@
     <div class="container block_content">        
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-9">
+
                 <div class="col-12">
                     <h4><b>{{ s_vid.name }}</b></h4>
                 </div>                            
@@ -28,11 +29,11 @@
                 </div>
                 <div class="sli col-md-12">
                     <div class="row">
-                        {% for vid in videos %}                          
+                        {% for vid in videos %}     
                         <div class="vid_ele col-4 col-lg-12" id="{% url 'catalog:videos' title vid.pk %}">
-                                <a href="{% url 'catalog:videos' title vid.pk %}">
-                                    <img class="img-sld" src="{{vid.image}}">
-                                </a>
+                            <a href="{% url 'catalog:videos' title vid.pk %}">
+                                <img class="img-sld" src="{{vid.image}}">
+                            </a>
                         {% if  vid == s_vid %}
                             <div class="vid-title vid-active" id="no-{{forloop.counter0}}">
                         {% else %}
