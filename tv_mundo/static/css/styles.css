@@ -535,7 +535,7 @@ input[type="submit"] { cursor: pointer; }
     margin-top: 63em;
   }
   .nav-content {
-    display: none;
+    display: none !important;
   }
   .site-branding {
         margin-top: 3.75rem !important;
@@ -830,16 +830,20 @@ padding-left: 8px;
 }
 
 @media screen and (min-width: 2000px) {
-  #dock li img {
-    width: 120px;
-    height: 120px;
+  #submenu {
+    margin-top: 21px; 
   }
+  #submenu li:last-child a{
+    width: 318px !important;
+  }
+
+
 }
 #popup {
    visibility: hidden;
    opacity: 0;
    margin-top: -300px;
-   transition: all 1s; 
+   transition: all 1s;
 }
 #popup:target {
    visibility: visible;
