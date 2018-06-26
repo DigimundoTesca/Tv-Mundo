@@ -1,4 +1,3 @@
-
 {% load static %}
 <!DOCTYPE html>
 <html>
@@ -35,12 +34,15 @@
           <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/biografia">Biografía</a>
           <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/saber-mas">Saber más</a>
           <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/libros">Libros</a>
-          <a href="{% url 'tarot:start_tarot' %}">Tarot</a>
+          <span id="sub"><a  href="{% url 'tarot:start_tarot' %}">Tarot</a>
+            <ul id="submenu" class="">
+              <li><a class="subelement" href="{% url 'tarot:start_tarot' %}">Tarot Virtual</a></li>
+              <li><a class="subelement" href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/consultas/">Consulas</a></li>
+            </ul>
+          </span>
           <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/agenda">Agenda</a>
           <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/contacto">Contacto</a>
           <a id="metamundo" href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/metamundo">Metamundo</a>
-<!--<a href="{% url 'tarot:news_tarot' %}">Últimas Respuestas</a>
-  <a href="{% url 'tarot:admin_tarot' %}">Dar videorespuesta</a>-->
 </div>
 </div>
 <div id="navigation" class="">
@@ -66,15 +68,6 @@
 </header>
 <div id="tarotContainer">
   <div class="container-fluid tarot-description mt-4">
-    <div id="dock-container">
-  <div id="dock">
-  <ul>
-    <!--<li title="Consultar"><a href="#"><img class="rounded-circle" src="{%static '/images/fondo1.jpeg' %}"/></a><!<span class="h4 text-center">Consultar</span></li>-->
-    <li title="Consultas"><a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/consultas/"><img class="rounded-circle" src="{%static '/images/fondo2.jpg' %}"/></a><!--<span class="h4 text-center">Consultas</span>--></li>
-  </ul>
-  <div class="base"></div>
-  </div>
-</div>
     <h1 class="text-center">Tu tarot virtual</h1>
     <p class="text-center description">Aquí tienes un tarot digital para leerte o leerle el tarot a quien quiras y cuando quieras</p>
     <p class="text-uppercase description-black text-center">¡disfrútalo!</p>
@@ -166,7 +159,8 @@
   jQuery.noConflict();
   (function($) {
     $("#popup-cerrar").click(function(){
-      $("#popup").css({"visibility": hidden})
+      $("#popup").fadeOut("slow");
+      history.pushState(null, "", "/start");
     })
 
   })(jQuery);
@@ -185,9 +179,7 @@ function addPrevClass (e) {
       }, false);
   }
 }
-if (window.addEventListener) {
-  document.getElementById("dock").addEventListener('mouseover', addPrevClass, false);
-}
+
 if (document.getElementById("sendQuestion")) {
   $('boton').addEvent('click', function() {
     $('form-consulta').setStyles({
