@@ -831,7 +831,7 @@ padding-left: 8px;
 
 @media screen and (min-width: 2000px) {
   #submenu {
-    margin-top: 21px; 
+    margin-top: 21px;
   }
   #submenu li:last-child a{
     width: 318px !important;
@@ -1305,4 +1305,8 @@ input option, select option {
 
 .nav-containier a {
   font-family: "ACaslonPro-regular" !important;
+}
+
+.site-title a {
+  font-family: "ACaslonPro-semibold" !important;
 }
