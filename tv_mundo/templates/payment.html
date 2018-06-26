@@ -1,130 +1,27 @@
-<!-- multistep form -->
-<form id="msform">
-  {% csrf_token %}
-    <!-- progressbar -->
-    <ul id="progressbar">
-        <li class="active">Pregunta</li>
-        <li>Pago</li>
-        <li>Finalizar</li>
-    </ul>
-    <!-- fieldsets -->
-    <fieldset>
-        <h2 class="">Consulta Urgente</h2>
-        <h3 class="fs-subtitle">Realiza tu pregunta, Cristóbal te responderá personalmente en un vídeo</h3>
-        <input id="nombre" type="text" class="form-control form-control-lg datos" name="nombre" placeholder="Escribe tu nombre"required>
-        <input id="correo" type="email" class="form-control form-control-lg datos" name="correo" placeholder="Escribe tu correo" required>
-        <div class="form-group">
-          <textarea id="mensaje" maxlength="200" class="form-control datos" name="nota" rows="4" placeholder="Escribe tu pregunta con un máximo 200 caracteres" required></textarea>
+{% extends "base/nav.html" %}
+{% load static %}
+{% block nav %}
+{% endblock nav %}
+{% block link %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% endblock link %}
+{% block content %}
+<body id="sesion">
+  <div class="container-fluid" >
+    <div class="row justify-content-center" id="inicio">
+      
+      <div class="align-self-center text-center" id="login-form">          
+        <h1>Pago</h1>          
+        <div id="paypal-button-container"> 
+        
         </div>
-        <p id="errorMessage" class="h5 font-weight-bold text-danger"></p>
-        <input type="button" id="first" name="next" class="next action-button" disabled value="Siguiente" />
-    </fieldset>
-    <fieldset>
-        <h2 class="fs-title">Pago</h2>
-        <!--<h3 class="fs-subtitle">Elije tu forma de pago</h3>-->
-        <div class="payment">
-          <div class="form-group" id="card-number-field">
-              <input type="text" class="form-control" placeholder="Numero de Tarjeta" id="cardNumber">
-          </div>
-          <div class="row">
-            <div class="form-group col-8" id="expiration-date">
-                <select>
-                    <option value="01">MM</option>
-                    <option value="02">January</option>
-                    <option value="03">February </option>
-                    <option value="04">March</option>
-                    <option value="05">April</option>
-                    <option value="06">May</option>
-                    <option value="07">June</option>
-                    <option value="08">July</option>
-                    <option value="09">August</option>
-                    <option value="10">September</option>
-                    <option value="11">October</option>
-                    <option value="12">November</option>
-                    <option value="13">December</option>
-                </select>
-                <select>
-                    <option value="AAAA">AAAA</option>
-                    <option value="18"> 2018</option>
-                    <option value="19"> 2019</option>
-                    <option value="20"> 2020</option>
-                    <option value="21"> 2021</option>
-                </select>
-            </div>
-            <div class="form-group CVV col-4">
-                <input type="text" class="form-control" placeholder="CVV" id="cvv">
-            </div>
-          </div>
-
-            <div class="form-group owner">
-                <input type="text" class="form-control" placeholder="Nombre en la tarjeta" id="owner">
-            </div>
-            <div class="form-group" id="credit_cards">
-                <img src="assets/images/visa.jpg" id="visa">
-                <img src="assets/images/mastercard.jpg" id="mastercard">
-                <img src="assets/images/amex.jpg" id="amex">
-            </div>
-
+      </div>
     </div>
-        <!--<div id="paypal-button"></div>-->
-
-        <input type="button" name="previous" class="previous action-button" value="Anterior" />
-        <input id="pagoP" type="button" class="next action-button" disabled name=""  value="Pago">
-        <input type="button" name="next" class="next action-button" value="Continuar">
-    </fieldset>
-    <fieldset>
-        <h3 class="fs-title">Tu consulta se ha realizado correctamente</h3>
-        <h3 class="fs-subtitle">Gracias, da click en finalizar</h3>
-        <a href='#' class=" action-button">Finalizar</a>
-    </fieldset>
-</form>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-
-{% block javascript %}
-  <script src="https://www.paypalobjects.com/api/checkout.js"></script>
-  <script>
-    paypal.Button.render({
-      env: 'sandbox', // Or 'sandbox',
-      client: {
-            sandbox:    'AaD_guMFdUW7qPoBoUxwS_LXnF03eXW290hbUwRfnjmV1Hbaeo3pLP8LS9n4G8xGAniomoj7_4wXFExD',
-            production: 'xxxxxxxxx'
-      },
-
-      funding: {
-          allowed: [ paypal.FUNDING.CARD ],
-          disallowed: [ ]
-      },
-
-      commit: true, // Show a 'Pay Now' button
-
-      style: {
-        color: 'gold',
-        size: 'small'
-      },
-
-      payment: function(data, actions) {
-        return actions.payment.create({
-          payment: {
-            transactions: [
-              {
-                amount: { total: '1.00', currency: 'USD' }
-              }
-            ]
-          }
-        });
-      },
-
-      onAuthorize: function(data, actions) {
-        return actions.payment.execute().then(function() {
-          window.alert('Payment Complete!');
-        });
-      },
-
-    }, '#paypal-button');
-
-
-  </script>
+  </div>    
+</body>
+{% endblock content %}
+{% block javascript %}    
+ 
   <script>
     jQuery.noConflict();
     (function($) {
@@ -160,7 +57,7 @@
     })(jQuery);
   </script>
   <script type="text/javascript">
-    jQuery.noConflict(); //Agregué esto para que no se muera el tarot ya que es jQuery y lo de tarot está con mootoolls no es compatible
+    jQuery.noConflict(); 
     (function($) {
 
       var $form = $("#msform");
@@ -172,86 +69,61 @@
           }
 
           animating = true;
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
+<script src="{%static 'javascript/effects.js'%}"></script>  
+<script>
 
-          var $step_fs = $("fieldset", $form).eq(step);
-          var $current_fs = $("fieldset", $form).eq(current_fs);
+    // Render the PayPal button
 
-          $("#progressbar li:gt(" + step + ")", $form).removeClass("active");
-
-          $("#progressbar li:lt(" + (step + 1) + ")", $form).addClass("active");
+    paypal.Button.render({
 
 
-          $step_fs.show();
+        // Set your environment
 
-          $current_fs.animate({ opacity: 0 }, {
-              step: function (now, mx) {
+        env: 'sandbox', // sandbox | production
 
-                  var scale = 1 - (1 - now) * 0.01;
+        // Specify the style of the button
 
-                  var left = (now * 50) + "%";
+        style: {
+            label: 'buynow',
+            fundingicons: true, // optional
+            branding: true, // optional
+            size:  'small', // small | medium | large | responsive
+            shape: 'rect',   // pill | rect
+            color: 'gold'   // gold | blue | silve | black
+        },
 
-                  var opacity = 1 - now;
-                  $current_fs.css({
-                      'transform': 'scale(' + scale + ')',
-                      'position': 'absolute'
-                  });
-                  $step_fs.css({ 'left': left, 'opacity': opacity });
-              },
-              duration: 800,
-              complete: function () {
-                  $current_fs.hide();
-                  current_fs = step;
-                  animating = false;
-              },
-              easing: 'easeInOutBack'
-          });
-      }
-      function checkCampos(obj) {
-          var camposRellenados = true;
-          obj.find(".datos").each(function() {
-          var $this = $(this);
-                  if( $this.val().length <= 0 ) {
-                      camposRellenados = false;
-                      return false;
-                  }
-          });
-          if(camposRellenados == false) {
-              return false;
-          }
-          else {
-              return true;
-          }
-      }
-      function valida() {
-        $("#msform .datos").keyup(function() {
-           var form = $(this).parents("#msform");
-           var check = checkCampos(form);
-           if(check) {
-             $("#first").css("opacity","1");
-             $("#first").prop("disabled", false);
-           }
-           else {
-             $("#first").css("opacity", ".65");
-             $("#first").prop("disabled", true);
-             }
-        });
-      }
-      valida();
-      $(".next", $form).click(function() {
-        gotoStep(current_fs + 1);
-      });
+        // PayPal Client IDs - replace with your own
+        // Create a PayPal app: https://developer.paypal.com/developer/applications/create
 
-      $(".previous", $form).click(function() {
-          gotoStep(current_fs - 1);
-      });
+        client: {
+            sandbox:    'AWlLSrQ0eqY157mxfkkhD-1BS5QkW04wNgOg46w2kCqt1tqbILMKMF3toU45SQbG5e3xnljKeNifex9l',
+            production: '<insert production client id>'
+        },
 
-      $("#progressbar li", $form).click(function() {
-          var step = $("#progressbar li", $form).index($(this));
-      });
+        // Wait for the PayPal button to be clicked
 
-      $(".submit", $form).click(function() {
-          return false;
-      });
-    })(jQuery);
-  </script>
+        payment: function(data, actions) {
+            return actions.payment.create({
+                transactions: [
+                    {
+                        amount: { total: '1.00', currency: 'MXN' }
+                    }
+                ]
+            });
+        },
+
+        // Wait for the payment to be authorized by the customer
+
+        onAuthorize: function(data, actions) {
+            return actions.payment.execute().then(function() {
+                window.alert('Payment Complete!');
+            });
+        }
+
+    }, '#paypal-button-container');
+
+</script>
+    
 {% endblock javascript %}
+

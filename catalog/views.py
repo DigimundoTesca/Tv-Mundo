@@ -23,7 +23,7 @@ def home(request):
 def block(request, name):
     template = 'block.html'
     cat = Category.objects.all()
-    selCat = cat.get(title=name)
+    selCat = cat.get(name=name)
     title = name
 
     context = {
@@ -54,9 +54,12 @@ def catalog(request):
 @login_required
 def videos(request, name, pk=0):
     template = 'videos.html'
-    videos = Videos.objects.filter(category__title=name).filter(status=True).order_by('order_number')
+    videos = Videos.objects.filter(category__name=name).filter(status=True).order_by('order_number')
+    if(request.user.subscriber.grade == 'TAR'):
+        videos = videos.filter(subcategory__name='2da Edicion')
+
     category = Category.objects.all()
-    docs = Docs.objects.filter(category__title=name)
+    docs = Docs.objects.filter(category__name=name)
     title = name
 
     if pk == '0':
@@ -76,7 +79,7 @@ def videos(request, name, pk=0):
 @login_required
 def images(request, name, pk=None):
     template = 'images.html'
-    docs = Docs.objects.filter(category__title=name).filter(kind="IMG")
+    docs = Docs.objects.filter(category__name=name).filter(kind="IMG")
     category = Category.objects.all()
     title = name
 
@@ -91,7 +94,7 @@ def images(request, name, pk=None):
 @login_required
 def docs(request, name, pk=None):
     template = 'documents.html'
-    docs = Docs.objects.all().filter(category__title=name)
+    docs = Docs.objects.all().filter(category__name=name)
     category = Category.objects.all()
     title = name
 
