@@ -9,22 +9,22 @@
   <div class="row" id="block">
     <div class="col-lg-5 col-md-12" id="introduction">
       <div class="cCategory">
-        {% if selCat.title == "Introduccion" %}
+        {% if selCat.name == "Introduccion" %}
         <img id="intro_img" class="image img-fluid" src="{% static 'images/psico.jpg' %}" alt="" width="100%">
         <div class="message">
-          <div class="text">{{selCat.title}}</div>
+          <div class="text">{{selCat.name}}</div>
         </div>
-        {% elif selCat.title == "Tarot"%}
+        {% elif selCat.name == "Tarot"%}
         <img class="image img-fluid" src="{% static 'images/fondo1.jpeg' %}" alt="">
         <div class="message">
-          <div class="text">Trabajando con el <br><span id="tarot">{{selCat.title}}</span></div>
+          <div class="text">Trabajando con el <br><span id="tarot">{{selCat.name}}</span></div>
         </div>
-        {% elif selCat.title == "Metagenealogia"%}
+        {% elif selCat.name == "Metagenealogia"%}
         <img id="arbol_img" class="image img-fluid" src="{% static 'images/meta_pic.jpg' %}" alt="">
         <div class="message">
-          <div class="text">Entendiendo la <span id="Metagenealogia">{{selCat.title}}</span></div>
+          <div class="text">Entendiendo la <span id="Metagenealogia">{{selCat.name}}</span></div>
         </div>
-        {% elif selCat.title == "Psicochamanismo"%}
+        {% elif selCat.name == "Psicochamanismo"%}
         <img class="image img-fluid" src="{% static 'images/psico_pic2.jpg' %}" alt="">
         <div class="message">
           <div class="text">{{selCat.name}}</div>
@@ -36,7 +36,7 @@
       <p class="text-success h2 text-center">Multimedia</p>
       <div class="row">
         <div class="col-lg-6 col-md-6 widgets media">
-          <a href="{% url 'catalog:images' selCat.title %}">
+          <a href="{% url 'catalog:videos' selCat.name 0 %}">
             <div class="cVideos">
               <div class="div-img" >
                 <img class="img_a img-fluid img" src="{% static 'images/video.jpeg' %}" alt="No img">
