@@ -1,9 +1,5 @@
 
 {% load static %}
-
-{% block link %}
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-{% endblock link %}
 {% block content %}
 <body id="sesion">
   <div class="container-fluid" >
@@ -20,8 +16,9 @@
 </body>
 {% endblock content %}
 
-{% block javascript %}    
+{% block javascript %}
 <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+<script src="{% static 'javascript/jquery-3.3.1.js'%}"></script>
 <script src="{%static 'javascript/effects.js'%}"></script>
 <script>
 
