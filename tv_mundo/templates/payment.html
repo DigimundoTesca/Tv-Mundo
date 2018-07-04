@@ -1,7 +1,6 @@
-{% extends "base/nav.html" %}
+
 {% load static %}
-{% block nav %}
-{% endblock nav %}
+
 {% block link %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 {% endblock link %}
@@ -9,21 +8,21 @@
 <body id="sesion">
   <div class="container-fluid" >
     <div class="row justify-content-center" id="inicio">
-      
-      <div class="align-self-center text-center" id="login-form">          
-        <h1>Pago</h1>          
-        <div id="paypal-button-container"> 
-        
+
+      <div class="align-self-center text-center" id="login-form">
+        <h1>Pago</h1>
+        <div id="paypal-button-container">
+
         </div>
       </div>
     </div>
-  </div>    
+  </div>
 </body>
 {% endblock content %}
+
 {% block javascript %}    
- 
 <script src="https://www.paypalobjects.com/api/checkout.js"></script>
-<script src="{%static 'javascript/effects.js'%}"></script>  
+<script src="{%static 'javascript/effects.js'%}"></script>
 <script>
 
     // Render the PayPal button
@@ -77,6 +76,5 @@
     }, '#paypal-button-container');
 
 </script>
-    
-{% endblock javascript %}
 
+{% endblock javascript %}

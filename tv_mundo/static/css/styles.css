@@ -513,7 +513,7 @@ input[type="submit"] { cursor: pointer; }
 }
 
 
-@media screen and (min-width: 300px) and (max-width: 767px){
+@media screen and (min-width: 300px) and (max-width: 1000px){
   body#tarot-page {
     margin-top: 5%;
   }
@@ -616,7 +616,7 @@ input[type="submit"] { cursor: pointer; }
     margin-left: 1.20em;
   }
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1024px) {
   .brand-logo {
     display: none;
   }
@@ -1309,4 +1309,16 @@ input option, select option {
 
 .site-title a {
   font-family: "ACaslonPro-semibold" !important;
+}
+
+@media screen and (min-width: 768px) {
+  .site-title {
+      font-size: 25px;
+      line-height: 40px;
+      margin: 0;
+      margin-left: 25px;
+      padding: 3px;
+      padding-bottom: 15px;
+      word-spacing: 10px;
+  }
 }
