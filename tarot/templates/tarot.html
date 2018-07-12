@@ -9,9 +9,24 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
-<body id="tarot-page">
+<div id="containerFormBegin">
+  <div class="formBegin">
+    <div><span><i class="fas fa-lock"></i></span></div>
+    <form action="" method="post" id="form">
+      <p class="h3 text-center"><b>Suscribete para comenzar</b></p>
+      <fieldset class="text-center">
+        {% csrf_token %}
+        <input id="nombre" type="text" class="form-control form-control-lg mb-3" placeholder="Nombre" name="nombre" required>
+        <input id="correo" type="email" class="form-control form-control-lg mb-3" name="correo" placeholder="Correo electrónico" required>
+        <a href="http://ec2-52-34-233-203.us-west-2.compute.amazonaws.com/Cristobal/" class="btn btn-success text-center">Regresar</a>
+        <button id="loadTarot"type="button" class="btn btn-danger" name="button" disabled>Continuar</button>
+      </fieldset>
+    </form>
+  </div>
+</div>
+<body id="tarot-page" class="backForm">
   <div id="movil"></div>
-  <div class="container-fluid" id="Tarot">
+  <div class="container-fluid hide" id="Tarot">
     <header>
       <div class="site-branding">
         <button id="show-menu" class="menu-boton"><a href="http://www.faceboook.com" class="dropbtn icon-container fas fa-bars"></a></button>
@@ -73,7 +88,7 @@
     <p class="text-center description">Aquí tienes un tarot digital para leerte o leerle el tarot a quien quiras y cuando quieras</p>
     <p class="text-uppercase description-black text-center">¡disfrútalo!</p>
     <div id="resultado2">{{card}}</div>
-    <h1 class="text-center mt-5">Elija 3 cartas</h1>
+    <h1 class="text-center mt-5">Prepara una pregunta y Elige tres cartas</h1>
   </div>
 
   <div class="tarot-container text-center">
@@ -104,10 +119,6 @@
         <h4>Si quieres quieres hacer tu consulta llena el siguiente formulario, Cristobal te responderá en un video</h4>
         <form class="" id="ask">
           {% csrf_token %}
-          <h5 for="" class="">Nombre</h5>
-          <input id="nombre" type="text" class="form-control form-control-lg" name="nombre" required>
-          <h5 for="" class="">Correo</h5>
-          <input id="correo" type="email" class="form-control form-control-lg" name="correo" required>
           <div class="form-group">
             <h5 for="nota">Escribe lo que te gustaría saber </h5>
             <textarea id="mensaje" maxlength="200" class="form-control" name="nota" rows="4" placeholder="Escribe tu pregunta con un máximo 200 caracteres" required></textarea>
@@ -156,30 +167,6 @@
 </html>
 
 <script type="text/javascript">
-
-  jQuery.noConflict();
-  (function($) {
-    $("#popup-cerrar").click(function(){
-      $("#popup").fadeOut("slow");
-      history.pushState(null, "", "/start");
-    })
-
-  })(jQuery);
-
-function addPrevClass (e) {
-  var target = e.target;
-    if(target.getAttribute('src')) { // check if it is img
-      var li = target.parentNode.parentNode;
-      var prevLi = li.previousElementSibling;
-      if(prevLi) {
-        prevLi.className = 'prev';
-      }
-
-      target.addEventListener('mouseout', function() {
-        prevLi.removeAttribute('class');
-      }, false);
-  }
-}
 
 if (document.getElementById("sendQuestion")) {
   $('boton').addEvent('click', function() {
@@ -413,7 +400,7 @@ if (document.getElementById("sendQuestion")) {
           if (pc_big.matches) {
             elFx.start({
               'top': +770,
-              'left': pos.x - 45,
+              'left': pos.x - 65,
               'height': [132, 400],
               'width': [80, 220],
               'background-size': [80, 160]
@@ -430,8 +417,8 @@ if (document.getElementById("sendQuestion")) {
           }
           else{
             elFx.start({
-              'top': +600,
-              'left': pos.x + 64,
+              'top': +630,
+              'left': pos.x + 61,
               'height': [132, 400],
               'width': [80, 220],
               'background-size': [80, 160]
@@ -455,5 +442,48 @@ if (document.getElementById("sendQuestion")) {
       return ancho;
     }
   }
-  cardsTarot.delay(1000);
+  jQuery.noConflict();
+  (function($) {
+    function checkCampos(obj) {
+      var camposRellenados = true;
+      obj.find("input").each(function() {
+      var $this = $(this);
+              if( $this.val().length <= 0 ) {
+                  camposRellenados = false;
+                  return false;
+              }
+      });
+      if(camposRellenados == false) {
+          return false;
+      }
+      else {
+          return true;
+        }
+      }
+      $("#popup-cerrar").click(function(){
+        $("#popup").fadeOut("slow");
+        history.pushState(null, "", "/start");
+      });
+    $(document).ready(function() {
+    //Siempre que salgamos de un campo de texto, se chequeará esta función
+    $("#form input").keyup(function() {
+        var form = $(this).parents("#form");
+        var check = checkCampos(form);
+        if(check) {
+            $("#loadTarot").prop("disabled", false);
+        }
+        else {
+            $("#loadTarot").prop("disabled", true);
+        }
+    });
+
+
+    $("#loadTarot").on('click', function(){
+      $("#containerFormBegin").fadeOut(1000);
+      $("#tarot-page").removeClass("backForm");
+      $("#Tarot").fadeIn(2100);
+      cardsTarot.delay(1000);
+    });
+  });
+  })(jQuery);
 </script>

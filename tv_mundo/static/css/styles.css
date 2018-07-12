@@ -516,11 +516,16 @@ input[type="submit"] { cursor: pointer; }
 @media screen and (min-width: 300px) and (max-width: 1000px){
   body#tarot-page {
     margin-top: 5%;
+    height: 100vh;
+  }
+  .formBegin {
+      width: 75%;
+      font-size: 20px;
   }
   #tarot-cards {
     max-width: 500px;
     position: absolute;
-    left: -1.65%;
+    left: 1%;
     top: -28px;
   }
   #login-form {
@@ -585,7 +590,7 @@ input[type="submit"] { cursor: pointer; }
   #tarot-cards {
     max-width: 500px;
     position: absolute;
-    left: -1.6%;
+    left: 2.46%;
   }
   .nav-containier a {
     font-size: 22px;
@@ -664,7 +669,7 @@ input[type="submit"] { cursor: pointer; }
     max-width: 500px;
     position: absolute;
 
-    left: 4%;
+    left: 5%;
   }
   .nav-containier a {
     font-size: 30px;
@@ -722,7 +727,7 @@ padding: 9px 15px !important;
 padding-left: 8px;
   }
   #tarot-cards {
-    left: calc(10.9% + 30px);
+    left: calc(11.35% + 35px);
     top: -31px;
 
  }
@@ -840,13 +845,13 @@ padding-left: 8px;
 
 }
 #popup {
-   visibility: hidden;
+   display: none;
    opacity: 0;
    margin-top: -300px;
    transition: all 1s;
 }
 #popup:target {
-   visibility: visible;
+  display: block;
    opacity: 1;
    background-color: rgba(0,0,0,0.8);
    position: fixed;
@@ -1309,6 +1314,94 @@ input option, select option {
 
 .site-title a {
   font-family: "ACaslonPro-semibold" !important;
+}
+body.backForm {
+  margin: 0 !important;
+  background-image: url('../images/fondo1.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.backForm::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+}
+#containerFormBegin {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  z-index: 100;
+}
+
+.formBegin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 35%;
+  display: block;
+  margin: 0 auto;
+  transform: translate(-50%, -50%);
+}
+.formBegin div {
+  width: 50px;
+  height: 50px;
+  padding: 1.5em;
+  border-radius: 20px;
+  border-radius: ;
+  background: #9f010f;
+  color: #FFF;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  margin-bottom: -1.5em;
+  -webkit-box-shadow: 0px 0px 25px 1px rgba(255,255,255,0.64);
+-moz-box-shadow: 0px 0px 25px 1px rgba(255,255,255,0.64);
+box-shadow: 0px 0px 25px 1px rgba(255,255,255,0.64);
+}
+.formBegin form {
+  padding: 3em 2em;
+    background: rgba(255, 255, 255, 0.45);
+    border-radius: 15px;
+    -webkit-box-shadow: 0px 0px 25px 1px rgba(255,255,255,0.64);
+-moz-box-shadow: 0px 0px 25px 1px rgba(255,255,255,0.64);
+box-shadow: 0px 0px 25px 1px rgba(255,255,255,0.64);
+}
+.formBegin form p {
+  color: #474747;
+}
+.formBegin div span {
+  font-size: 2em;
+  position: absolute;
+  top: 0;
+  left: 11px;
+}
+.hide {
+  display: none;
+}
+
+@media screen and (min-width: 300px) and (max-width: 1024px){
+  body {
+    height: 100vh;
+  }
+  .formBegin {
+      width: 90%;
+  }
+  .formBegin form, .formBegin input, .formBegin button, .formBegin a {
+    font-size: 50px;
+  }
+  .formBegin div {
+    width: 110px;
+    height: 110px;
+    margin-bottom: -2.5em;
+  }
+  .formBegin div span {
+    font-size: 2.5em;
+    padding: .45em;
+  }
 }
 
 @media screen and (min-width: 768px) {
